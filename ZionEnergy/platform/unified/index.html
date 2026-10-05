@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Sign in — Zion Unified</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bungee&family=Public+Sans:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="../assets/logo-light.png"/>
+<style>
+:root{
+ --uni:#047857; --unih:#059669;
+ --disp:'Anton',system-ui,sans-serif;
+ --street:'Bungee',system-ui,sans-serif;
+ --ui:'Public Sans',system-ui,-apple-system,sans-serif;
+ --mono:'Spline Sans Mono',ui-monospace,monospace;
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0;height:100%}
+body{font-family:var(--ui);background:#08080A;color:#fff;overflow:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit;color:inherit}
+
+/* the photograph carries the page — its own grey half holds the form */
+.bg{position:fixed;inset:0;z-index:0;
+ background:#0B0B0D url('../assets/safety.jpg') center 42%/cover no-repeat;
+ transform:scaleX(-1) scale(1.05);animation:drift 30s ease-in-out infinite alternate}
+@keyframes drift{from{transform:scaleX(-1) scale(1.05)}to{transform:scaleX(-1) scale(1.12) translate3d(1.4%,-1%,0)}}
+.veil{position:fixed;inset:0;z-index:1;pointer-events:none;
+ background:linear-gradient(96deg,rgba(9,9,11,.92) 0%,rgba(9,9,11,.8) 24%,rgba(9,9,11,.4) 44%,rgba(9,9,11,.05) 62%,rgba(9,9,11,0) 100%)}
+.grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.28;
+ background-image:radial-gradient(rgba(255,255,255,.07) 1px,transparent 1px);background-size:3px 3px}
+.rule{position:fixed;left:0;right:0;top:0;height:3px;z-index:4;
+ background:linear-gradient(90deg,var(--uni),#10B981 40%,transparent 40%)}
+
+.wrap{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;
+ width:min(580px,48vw);padding:34px 0 30px;
+ animation:in .6s cubic-bezier(.5,0,.2,1) both}
+@keyframes in{from{opacity:0;transform:translateX(-30px)}to{opacity:1;transform:none}}
+.brandrow{padding:0 64px;display:flex;align-items:center;gap:14px}
+.brandrow img{height:32px;display:block}
+.brandrow .tag{font-family:var(--mono);font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;
+ color:#fff;background:var(--uni);padding:3px 8px;border-radius:20px}
+.core{flex:1;display:flex;flex-direction:column;justify-content:center;padding:0 64px}
+.foot{padding:0 64px;font-size:11.5px;color:rgba(255,255,255,.32)}
+@media(max-width:1100px){.wrap{width:min(540px,66vw)}.brandrow,.core,.foot{padding-left:40px;padding-right:40px}}
+@media(max-width:760px){.wrap{width:100%}
+ .veil{background:linear-gradient(180deg,rgba(9,9,11,.92),rgba(9,9,11,.74))}}
+
+h1{font-family:var(--street);font-size:clamp(28px,3vw,40px);line-height:1.05;margin:0;
+ text-transform:uppercase;letter-spacing:-.01em;text-shadow:0 3px 30px rgba(0,0,0,.6)}
+.who{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
+ margin-top:12px;color:#6EE7B7}
+.blurb{margin:20px 0 0;font-size:13.5px;line-height:1.62;color:rgba(255,255,255,.6);max-width:42ch}
+form{margin-top:32px;max-width:400px}
+.fld{margin-bottom:16px}
+.fld label{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.17em;
+ text-transform:uppercase;color:rgba(255,255,255,.42);margin-bottom:8px}
+.fld input{width:100%;background:rgba(10,10,12,.45);backdrop-filter:blur(8px);
+ border:1px solid rgba(255,255,255,.2);border-radius:9px;padding:14px 15px;font-size:14.5px;
+ outline:none;transition:.16s}
+.fld input::placeholder{color:rgba(255,255,255,.26)}
+.fld input:focus{border-color:rgba(255,255,255,.5);background:rgba(10,10,12,.62)}
+.signin{width:100%;margin-top:10px;border:0;border-radius:9px;padding:15px;cursor:pointer;color:#fff;
+ background:var(--uni);font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;
+ text-transform:uppercase;transition:.16s}
+.signin:hover{background:var(--unih)}
+.alt{display:flex;justify-content:space-between;margin-top:18px;font-size:11.5px;color:rgba(255,255,255,.38)}
+.alt a:hover{color:#fff}
+.back{align-self:flex-start;display:flex;align-items:center;gap:8px;background:none;border:0;cursor:pointer;
+ font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+ color:rgba(255,255,255,.42);padding:7px 10px 7px 0;margin-bottom:28px}
+.back:hover{color:#fff}
+@media(prefers-reduced-motion:reduce){.bg,.wrap{animation:none}}
+</style>
+</head>
+<body>
+
+<div class="bg"></div><div class="veil"></div><div class="grain"></div><div class="rule"></div>
+
+<div class="wrap">
+  <div class="brandrow">
+    <img src="../assets/logo-light.png" alt="Zion Energy Services"/>
+    <span class="tag">Unified</span>
+  </div>
+
+  <div class="core">
+    <a class="back" href="../index.html">&larr; All workspaces</a>
+    <h1>Zion Unified</h1>
+    <div class="who">Dispatch + Inspection + Billing</div>
+    <p class="blurb">One platform for the whole operation — the crew that goes out, the report that comes back, and the invoice that follows. One customer master, one workforce, one set of rates.</p>
+
+    <form id="f">
+      <div class="fld"><label for="em">Email address</label>
+        <input id="em" type="email" placeholder="you@zionenergyservices.com" autocomplete="username" autofocus/></div>
+      <div class="fld"><label for="pw">Password</label>
+        <input id="pw" type="password" placeholder="••••••••••" autocomplete="current-password"/></div>
+      <button class="signin" type="submit" id="go">Sign in</button>
+      <div class="alt"><a href="#">Forgot password?</a><span>Session expires after 8 hours</span></div>
+    </form>
+  </div>
+
+  <div class="foot">&copy; 2026 Zion Energy Services &middot; Midland, Texas</div>
+</div>
+
+<script>
+document.getElementById('f').addEventListener('submit', function (e) {
+  e.preventDefault();
+  var b = document.getElementById('go');
+  b.textContent = 'Signing in…';
+  setTimeout(function () { window.location.href = 'app.html'; }, 620);
+});
+</script>
+</body>
+</html>

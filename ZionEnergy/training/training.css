@@ -1,0 +1,87 @@
+/* ===== Zion Training & Competency — product styles, layered on ../css/styles.css ===== */
+
+/* Environment badge in the topbar (the only place sample data is declared) */
+.envchip {
+  font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 700;
+  letter-spacing: .09em; color: #8A6D00; background: #FFF4D1; border: 1px solid #F0DFA0;
+  padding: 4px 8px; border-radius: 5px; white-space: nowrap; flex: none;
+}
+
+/* Traffic-light status */
+.rag { display: inline-block; width: 20px; height: 20px; border-radius: 5px;
+       border: 1px solid rgba(0,0,0,.07); vertical-align: middle; }
+.rag.g { background: #34C759; } .rag.a { background: #FF9500; }
+.rag.r { background: #FF3B30; } .rag.n { background: #E5E5EA; }
+.rag.x { background: transparent; border: 1px dashed #D1D1D6; }
+.rag-key { display: flex; flex-wrap: wrap; gap: 15px; font-size: 11.5px; color: #48484A; align-items: center; }
+.rag-key span.s { display: flex; align-items: center; gap: 7px; }
+
+.matrix-wrap { overflow-x: auto; }
+table.matrix { border-collapse: separate; border-spacing: 0; }
+table.matrix th.rot { height: 136px; width: 42px; padding: 0; vertical-align: bottom; }
+table.matrix th.rot > div { writing-mode: vertical-rl; transform: rotate(180deg);
+  font-size: 10.5px; font-weight: 700; letter-spacing: .02em; padding: 10px 0 12px; white-space: nowrap; }
+table.matrix td.person { white-space: nowrap; font-weight: 700; }
+table.matrix td.cell { text-align: center; padding: 7px 4px; }
+
+/* Adopted signature block */
+.sig { border: 1px solid #E5E5EA; border-radius: 8px; padding: 12px 14px; background: #FAFAFA; }
+.sig .name { font-family: 'Barlow', sans-serif; font-size: 21px; font-style: italic;
+             font-weight: 600; color: #1C1C1E; }
+.sig .meta { font-size: 10px; color: #8E8E93; margin-top: 5px;
+             font-family: 'JetBrains Mono', monospace; letter-spacing: .04em; }
+.sig.empty { background: #fff; border-style: dashed; }
+.sig.empty .name { color: #C7C7CC; font-style: normal; font-size: 13px; font-weight: 500; }
+
+/* Progress bar */
+.bar { height: 8px; background: #EFEFF4; border-radius: 20px; overflow: hidden; min-width: 90px; }
+.bar > i { display: block; height: 100%; border-radius: 20px; background: #FFC400; }
+.bar > i.ok { background: #34C759; }
+
+/* Assessment radio */
+.ro { display: inline-block; width: 17px; height: 17px; border-radius: 50%;
+      border: 1.5px solid #D1D1D6; vertical-align: middle; }
+.ro > i { display: block; width: 9px; height: 9px; border-radius: 50%; margin: 2.5px auto; }
+.ro.on.met  { border-color: #34C759; } .ro.on.met  > i { background: #34C759; }
+.ro.on.cont { border-color: #FF9500; } .ro.on.cont > i { background: #FF9500; }
+.ro.on.na   { border-color: #C7C7CC; } .ro.on.na   > i { background: #C7C7CC; }
+
+/* Card grids (courses, categories) */
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 13px; }
+.card { background: #fff; border: 1px solid #E5E5EA; border-left: 3px solid #D1D1D6;
+        border-radius: 9px; padding: 14px 15px; cursor: pointer; transition: .15s; }
+.card:hover { border-left-color: #FFC400; box-shadow: 0 5px 15px rgba(0,0,0,.07); transform: translateY(-1px); }
+.card .ix { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #8E8E93; }
+.card h4 { font-size: 13.5px; font-weight: 800; margin: 5px 0 6px; color: #1C1C1E; line-height: 1.3; }
+.card .meta { font-size: 11px; color: #8E8E93; line-height: 1.6; }
+.card .foot { margin-top: 10px; padding-top: 9px; border-top: 1px solid #F2F2F7;
+              display: flex; justify-content: space-between; align-items: center; font-size: 11px; }
+
+/* Record header strip on detail screens */
+.rec-head { display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+            background: #fff; border: 1px solid #E5E5EA; border-radius: 10px;
+            padding: 16px 18px; margin-bottom: 16px; }
+.rec-av { width: 48px; height: 48px; border-radius: 50%; background: #1C1C1E; color: #FFC400;
+          display: flex; align-items: center; justify-content: center;
+          font-weight: 800; font-size: 16px; flex: none; }
+.rec-id h3 { font-size: 17px; font-weight: 800; margin: 0; color: #1C1C1E; }
+.rec-id .s { font-size: 12px; color: #8E8E93; margin-top: 2px; }
+.rec-stats { display: flex; gap: 26px; margin-left: auto; flex-wrap: wrap; }
+.rec-stat .l { font-size: 10px; letter-spacing: .07em; text-transform: uppercase; color: #8E8E93;
+               font-family: 'JetBrains Mono', monospace; }
+.rec-stat .v { font-size: 17px; font-weight: 800; color: #1C1C1E; margin-top: 3px; }
+
+/* Attention / activity feed rows */
+.feed { display: flex; gap: 11px; padding: 11px 0; border-bottom: 1px solid #F2F2F7; font-size: 12.5px; }
+.feed:last-child { border-bottom: 0; }
+.feed .ft { flex: 1; line-height: 1.5; }
+.feed .fm { font-size: 11px; color: #8E8E93; margin-top: 2px; }
+.feed .fw { font-size: 11px; color: #8E8E93; white-space: nowrap; }
+
+/* Shared small bits */
+.mono { font-family: 'JetBrains Mono', monospace; font-size: 11.5px; }
+.sub  { font-size: 11px; color: #8E8E93; margin-top: 2px; line-height: 1.45; }
+.kv   { display: flex; justify-content: space-between; gap: 14px; padding: 8px 0;
+        border-bottom: 1px solid #F2F2F7; font-size: 12.5px; }
+.kv:last-child { border-bottom: 0; }
+.kv .k { color: #8E8E93; } .kv .v { color: #1C1C1E; font-weight: 600; text-align: right; }

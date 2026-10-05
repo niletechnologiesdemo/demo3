@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CrewViewPro - Teams & Crew Management</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&family=Barlow+Condensed:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+<!-- ===== SIDEBAR ===== -->
+<nav class="sidebar">
+  <div class="sidebar-logo">
+    <div class="bolt">&#9889;</div>
+    <div class="brand">Crew<span>View</span></div>
+  </div>
+  <div class="sidebar-nav">
+    <div class="nav-section">
+      <div class="nav-section-label">Overview</div>
+      <div class="nav-item" onclick="window.location.href='dashboard.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Dashboard</div>
+      <div class="nav-item" onclick="window.location.href='../index.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 8h7M9 12h7M9 16h4"/><circle cx="6" cy="8" r="0.6"/><circle cx="6" cy="12" r="0.6"/><circle cx="6" cy="16" r="0.6"/></svg>Screen Index</div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">Clients & Sites</div>
+      <div class="nav-item" onclick="window.location.href='clients.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M9 8h1M9 12h1M9 16h1M14 8h1M14 12h1M14 16h1"/><rect x="5" y="3" width="14" height="18" rx="1"/></svg>Client Master</div>
+      <div class="nav-item" onclick="window.location.href='client-detail.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Client Profile</div>
+      <div class="nav-item" onclick="window.location.href='portal-users.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Client Portal Users<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">Workforce</div>
+      <div class="nav-item" onclick="window.location.href='employees.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Employees</div>
+      <div class="nav-item" onclick="window.location.href='employee-detail.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Employee Profile</div>
+      <div class="nav-item active" onclick="window.location.href='teams.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Teams & Crews</div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">Dispatch</div>
+      <div class="nav-item" onclick="window.location.href='inspection-requests.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11L2 12v6a2 2 0 002 2h16a2 2 0 002-2v-6l-3.45-6.89A2 2 0 0016.76 4H7.24a2 2 0 00-1.79 1.11z"/></svg>Inspection Requests<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='jobs.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>Jobs & Dispatch<span class="nav-badge">3</span></div>
+      <div class="nav-item" onclick="window.location.href='create-job.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>Create Job & Dispatch</div>
+      <div class="nav-item" onclick="window.location.href='calendar.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Calendar</div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">Inspections</div>
+      <div class="nav-item" onclick="window.location.href='inspections.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 2h6v4H9z"/><path d="M7 4H5v18h14V4h-2"/><path d="M9 12h7M9 16h5"/></svg>Inspections<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='inspection-tickets.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h18v4a2 2 0 000 4v4H3v-4a2 2 0 000-4z"/><path d="M12 7v10"/></svg>Inspection Tickets<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='inspected-items.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>Inspected Items<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='field-capture.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M11 19h2"/></svg>Crew View Capture<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='job-safety.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L4 6v6c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V6z"/></svg>Job Safety Analysis<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">Assets & Standards</div>
+      <div class="nav-item" onclick="window.location.href='standards.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>Standards Library<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='inspection-package.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M7 6h10M5 8v4a2 2 0 002 2h3M19 8v4a2 2 0 01-2 2h-3"/></svg>Inspection Packages<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='asset-models.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>Tool & Item Templates<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='equipment.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21a9 9 0 119-9"/><path d="M12 12l4-3"/></svg>Equipment & Calibration<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">Operations</div>
+      <div class="nav-item" onclick="window.location.href='attendance.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Attendance</div>
+      <div class="nav-item" onclick="window.location.href='timesheet.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="13" r="8"/><path d="M12 9v4M9 2h6"/></svg>Timesheets</div>
+      <div class="nav-item" onclick="window.location.href='overtime.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="13" r="8"/><path d="M12 9v4M9 2h6"/></svg>Overtime<span class="nav-badge">5</span></div>
+      <div class="nav-item" onclick="window.location.href='payroll.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7H5a2 2 0 010-4h13v4"/><path d="M3 5v14a2 2 0 002 2h15v-5"/><path d="M18 12a2 2 0 000 4h4v-4z"/></svg>Payroll<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='geo.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Operations Map</div>
+      <div class="nav-item" onclick="window.location.href='mileage.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21L8 3M20 21l-4-18M12 6v3M12 12v3M12 18v3"/></svg>Mileage</div>
+      <div class="nav-item" onclick="window.location.href='billing.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.5 9.5h5M9.5 14.5h5"/></svg>Billing & Costing</div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">Commercial</div>
+      <div class="nav-item" onclick="window.location.href='rate-master.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.6 13.4L12 22l-9-9V4h9z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg>Rate Master<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='purchase-orders.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2h9l5 5v15H6z"/><path d="M15 2v5h5"/><path d="M9 13h6M9 17h4"/></svg>Purchase Orders<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='invoices.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2h9l5 5v15H6z"/><path d="M15 2v5h5"/><path d="M9 12h7M9 16h5"/></svg>Invoices<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='profitability.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 7-7"/><path d="M17 8h4v4"/></svg>Profitability<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">Intelligence</div>
+      <div class="nav-item" onclick="window.location.href='alerts.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>Alerts<span class="nav-badge">8</span></div>
+      <div class="nav-item" onclick="window.location.href='reports.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M8 16v-4M12 16V8M16 16v-6"/></svg>Reports</div>
+      <div class="nav-item" onclick="window.location.href='report-templates.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>Report Templates<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">System</div>
+      <div class="nav-item" onclick="window.location.href='settings.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 11-4 0v-.09A1.65 1.65 0 008 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06A1.65 1.65 0 004.6 15a1.65 1.65 0 00-1.51-1H3a2 2 0 110-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06A1.65 1.65 0 009 4.6a1.65 1.65 0 001-1.51V3a2 2 0 114 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 110 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>Settings</div>
+      <div class="nav-item" onclick="window.location.href='notifications.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>Notifications</div>
+      <div class="nav-item" onclick="window.location.href='login.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><path d="M16 17l5-5-5-5M21 12H9"/></svg>Logout</div>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== TOPBAR ===== -->
+<header class="topbar">
+  <div class="topbar-left">
+    <div>
+      <div class="topbar-title" id="topbarTitle">Teams & Crew Management</div>
+      <div class="breadcrumb" id="topbarBreadcrumb">
+        <a href="dashboard.html">Home</a>
+        <span>/</span>
+        <span>Teams</span>
+      </div>
+    </div>
+  </div>
+  <div class="topbar-right">
+    <div class="topbar-search">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      <input type="text" placeholder="Search anything...">
+    </div>
+    <div class="topbar-icon-btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+      <div class="notif-dot"></div>
+    </div>
+    <div class="user-pill">
+      <div class="user-avatar">HS</div>
+      <div>
+        <div class="user-name">Hunter Sisti</div>
+        <div class="user-role">Super Admin</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== MAIN CONTENT ===== -->
+<main class="main">
+
+<!-- ==================== SCREEN 8: TEAMS ==================== -->
+<div class="screen active" id="screen-teams">
+  <div style="display:flex;justify-content:space-between;margin-bottom:20px;"><h2 style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;">Team & Crew Management</h2><button class="btn btn-primary" onclick="toggleCreateTeam()">+ Create Team</button></div>
+
+  <!-- ===== CREATE TEAM FORM ===== -->
+  <div id="createTeamForm" style="display:none;margin-bottom:24px;animation:fadeIn 0.2s ease;">
+    <div class="panel" style="border-top:3px solid var(--gold);">
+      <div class="panel-header" style="background:linear-gradient(180deg, var(--gold-dim) 0%, var(--white) 100%);">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:32px;height:32px;border-radius:8px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;color:var(--black);">+</div>
+          <div>
+            <div class="panel-title" style="margin:0;">Create New Team / Crew</div>
+            <div style="font-size:11px;color:var(--light-gray);margin-top:2px;">Configure team details, assign members, and set operational parameters</div>
+          </div>
+        </div>
+        <button class="btn btn-sm btn-ghost" onclick="toggleCreateTeam()" style="font-size:18px;padding:4px 8px;">&times;</button>
+      </div>
+      <div class="panel-body">
+
+        <!-- Section 1: Team Identity -->
+        <div style="font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--gold-dark);margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid var(--gold-dim);">Team Identity</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Team Name *</label>
+            <input class="form-input" placeholder="e.g. Team Charlie, Crew Delta">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Status</label>
+            <select class="form-select">
+              <option selected>Active</option>
+              <option>Standby</option>
+              <option>Training</option>
+              <option>Inactive</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Shift Assignment *</label>
+            <select class="form-select">
+              <option value="" disabled selected>Select shift...</option>
+              <option>Day Shift (6:00 AM &ndash; 6:00 PM)</option>
+              <option>Night Shift (6:00 PM &ndash; 6:00 AM)</option>
+              <option>Swing Shift (2:00 PM &ndash; 10:00 PM)</option>
+              <option>Rotating</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Section 2: Team Composition -->
+        <div style="font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--gold-dark);margin-bottom:12px;margin-top:20px;padding-bottom:6px;border-bottom:1px solid var(--gold-dim);">Team Composition &mdash; Quality Control Chain</div>
+
+        <div style="display:flex;gap:16px;margin-bottom:16px;flex-wrap:wrap;">
+          <!-- Crew Lead -->
+          <div style="flex:1;min-width:200px;background:var(--gold-dim);border:2px solid var(--gold);border-radius:8px;padding:16px;">
+            <div style="font-size:11px;font-weight:700;color:var(--gold-dark);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">&#9733; Crew Lead (Required)</div>
+            <div class="form-group" style="margin-bottom:8px;">
+              <label class="form-label">Select Employee *</label>
+              <select class="form-select">
+                <option value="" disabled selected>Choose crew lead...</option>
+                <option>Ezven Ortiz &mdash; Lead Inspector</option>
+                <option>Sebastian Salgado &mdash; Inspector (Night)</option>
+                <option>Isaac Black &mdash; Ops Manager</option>
+                <option>Marcus Reyes &mdash; Senior Inspector</option>
+              </select>
+            </div>
+            <div class="form-group" style="margin-bottom:0;">
+              <label class="form-label">Role Override</label>
+              <input class="form-input" placeholder="e.g. Lead Inspector, Crew Foreman">
+            </div>
+          </div>
+
+          <!-- Technician -->
+          <div style="flex:1;min-width:200px;background:#F2F2F7;border:2px dashed #D1D1D6;border-radius:8px;padding:16px;">
+            <div style="font-size:11px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">Technician / Inspector</div>
+            <div class="form-group" style="margin-bottom:8px;">
+              <label class="form-label">Select Employee</label>
+              <select class="form-select">
+                <option value="" disabled selected>Choose technician...</option>
+                <option>Leo Lawrence &mdash; Inspector L1</option>
+                <option>Caleb Washington &mdash; Field Tech</option>
+                <option>Briston Clark &mdash; Field Tech (Night)</option>
+                <option>Derek Simmons &mdash; Inspector L2</option>
+                <option>Javier Morales &mdash; NDT Tech</option>
+              </select>
+            </div>
+            <div class="form-group" style="margin-bottom:0;">
+              <label class="form-label">Role Override</label>
+              <input class="form-input" placeholder="e.g. Inspector L1, NDT Technician">
+            </div>
+          </div>
+
+          <!-- Assistant -->
+          <div style="flex:1;min-width:200px;background:#F2F2F7;border:2px dashed #D1D1D6;border-radius:8px;padding:16px;">
+            <div style="font-size:11px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">Assistant / Field Tech</div>
+            <div class="form-group" style="margin-bottom:8px;">
+              <label class="form-label">Select Employee</label>
+              <select class="form-select">
+                <option value="" disabled selected>Choose assistant...</option>
+                <option>Caleb Washington &mdash; Field Tech</option>
+                <option>Briston Clark &mdash; Field Tech (Night)</option>
+                <option>Leo Lawrence &mdash; Inspector L1</option>
+                <option>Tommy Fuentes &mdash; Helper</option>
+              </select>
+            </div>
+            <div class="form-group" style="margin-bottom:0;">
+              <label class="form-label">Role Override</label>
+              <input class="form-input" placeholder="e.g. Field Tech, Helper">
+            </div>
+          </div>
+        </div>
+
+        <!-- Dynamic Additional Members Container -->
+        <div id="additionalMembersContainer"></div>
+
+        <div style="text-align:center;margin-bottom:16px;">
+          <button class="btn btn-sm btn-outline" style="border-style:dashed;" onclick="addTeamMember()">+ Add Another Member</button>
+        </div>
+
+        <!-- Section 3: Operational Config -->
+        <div style="font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--gold-dark);margin-bottom:12px;margin-top:8px;padding-bottom:6px;border-bottom:1px solid var(--gold-dim);">Operational Configuration</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Service Capabilities</label>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;">
+              <div class="filter-pill active">API Inspection</div>
+              <div class="filter-pill">NDT &mdash; UT</div>
+              <div class="filter-pill">NDT &mdash; MT</div>
+              <div class="filter-pill">Piping</div>
+              <div class="filter-pill">Welding</div>
+              <div class="filter-pill">Pressure Testing</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Client Assignment</label>
+            <select class="form-select">
+              <option value="" disabled selected>Select client (optional)...</option>
+              <option>Arrival Energy Solutions</option>
+              <option>Bridgeport Fishing &amp; Rental</option>
+              <option>Basin Energy Services</option>
+              <option>Tubular Solutions Inc.</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Section 4: Scheduling & Alerts -->
+        <div style="font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--gold-dark);margin-bottom:12px;margin-top:20px;padding-bottom:6px;border-bottom:1px solid var(--gold-dim);">Scheduling &amp; Notifications</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Overtime Cap (weekly)</label>
+            <select class="form-select">
+              <option>No Cap</option>
+              <option>10 hours</option>
+              <option selected>20 hours</option>
+              <option>30 hours</option>
+              <option>40 hours</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Dispatch Priority</label>
+            <select class="form-select">
+              <option>Low</option>
+              <option selected>Normal</option>
+              <option>High</option>
+              <option>Critical / On-Call</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px;">
+          <div class="form-group" style="margin-bottom:0;">
+            <div class="switch"><div class="switch-track on"></div><span style="font-size:13px;font-weight:500;">SMS notifications to members</span></div>
+            <div style="font-size:11px;color:var(--light-gray);margin-top:4px;margin-left:44px;">Send job alerts via text to all team members</div>
+          </div>
+          <div class="form-group" style="margin-bottom:0;">
+            <div class="switch"><div class="switch-track on"></div><span style="font-size:13px;font-weight:500;">Geo-fence tracking active</span></div>
+            <div style="font-size:11px;color:var(--light-gray);margin-top:4px;margin-left:44px;">Track team location while on active jobs</div>
+          </div>
+        </div>
+
+        <!-- Section 5: Notes -->
+        <div style="margin-top:20px;">
+          <div class="form-group">
+            <label class="form-label">Team Notes / Special Instructions</label>
+            <textarea class="form-input" rows="3" style="resize:vertical;" placeholder="Optional notes — e.g. certifications needed, client preferences, scheduling constraints..."></textarea>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div style="display:flex;justify-content:space-between;align-items:center;padding-top:16px;border-top:1px solid #E5E5EA;">
+          <div style="font-size:11px;color:var(--light-gray);">&#128274; Visible to Ops Manager, Dispatch, and HR Admin</div>
+          <div style="display:flex;gap:8px;">
+            <button class="btn btn-outline" onclick="toggleCreateTeam()">Cancel</button>
+            <button class="btn btn-outline">Save as Draft</button>
+            <button class="btn btn-primary" style="padding:10px 24px;">Create Team</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="panel"><div class="panel-header"><div class="panel-title" style="display:flex;align-items:center;gap:8px;"><span style="width:10px;height:10px;border-radius:50%;background:var(--green);"></span>Team Alpha</div><span class="badge green">Active</span></div><div class="panel-body">
+      <div style="font-size:12px;color:var(--light-gray);margin-bottom:12px;">Day Shift</div>
+      <div style="font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--gray);margin-bottom:8px;">Quality Control Chain</div>
+      <div style="display:flex;gap:8px;align-items:center;margin-bottom:16px;">
+        <div style="background:var(--gold-dim);border:1px solid var(--gold);border-radius:6px;padding:8px 12px;text-align:center;position:relative;"><div style="font-size:11px;color:var(--gold-dark);font-weight:700;">CREW LEAD</div><div style="font-weight:700;font-size:13px;">Ezven Ortiz</div><div style="font-size:11px;color:var(--light-gray);">Lead Inspector</div><button class="btn btn-sm btn-ghost" onclick="openSwapModal('Alpha','Ezven Ortiz','Crew Lead')" style="margin-top:6px;font-size:11px;padding:2px 8px;border:1px dashed var(--gold);color:var(--gold-dark);">Swap Member</button></div>
+        <span style="color:var(--silver);">&#8594;</span>
+        <div style="background:#F2F2F7;border-radius:6px;padding:8px 12px;text-align:center;position:relative;"><div style="font-size:11px;color:var(--gray);font-weight:700;">TECHNICIAN</div><div style="font-weight:700;font-size:13px;">Leo Lawrence</div><div style="font-size:11px;color:var(--light-gray);">Inspector L1</div><button class="btn btn-sm btn-ghost" onclick="openSwapModal('Alpha','Leo Lawrence','Technician')" style="margin-top:6px;font-size:11px;padding:2px 8px;border:1px dashed var(--gold);color:var(--gold-dark);">Swap Member</button></div>
+        <span style="color:var(--silver);">&#8594;</span>
+        <div style="background:#F2F2F7;border-radius:6px;padding:8px 12px;text-align:center;position:relative;"><div style="font-size:11px;color:var(--gray);font-weight:700;">ASSISTANT</div><div style="font-weight:700;font-size:13px;">Caleb Washington</div><div style="font-size:11px;color:var(--light-gray);">Field Tech</div><button class="btn btn-sm btn-ghost" onclick="openSwapModal('Alpha','Caleb Washington','Assistant')" style="margin-top:6px;font-size:11px;padding:2px 8px;border:1px dashed var(--gold);color:var(--gold-dark);">Swap Member</button></div>
+      </div>
+      <div style="display:flex;gap:8px;"><button class="btn btn-sm btn-outline">Edit Team</button></div>
+    </div></div>
+    <div class="panel"><div class="panel-header"><div class="panel-title" style="display:flex;align-items:center;gap:8px;"><span style="width:10px;height:10px;border-radius:50%;background:var(--red);"></span>Team Bravo</div><span class="badge red">Inactive</span></div><div class="panel-body">
+      <div style="font-size:12px;color:var(--light-gray);margin-bottom:12px;">Night Shift</div>
+      <div style="font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--gray);margin-bottom:8px;">Quality Control Chain</div>
+      <div style="display:flex;gap:8px;align-items:center;margin-bottom:16px;">
+        <div style="background:var(--gold-dim);border:1px solid var(--gold);border-radius:6px;padding:8px 12px;text-align:center;position:relative;"><div style="font-size:11px;color:var(--gold-dark);font-weight:700;">CREW LEAD</div><div style="font-weight:700;font-size:13px;">Sebastian Salgado</div><div style="font-size:11px;color:var(--light-gray);">Inspector (Night)</div><button class="btn btn-sm btn-ghost" onclick="openSwapModal('Bravo','Sebastian Salgado','Crew Lead')" style="margin-top:6px;font-size:11px;padding:2px 8px;border:1px dashed var(--gold);color:var(--gold-dark);">Swap Member</button></div>
+        <span style="color:var(--silver);">&#8594;</span>
+        <div style="background:#F2F2F7;border-radius:6px;padding:8px 12px;text-align:center;position:relative;"><div style="font-size:11px;color:var(--gray);font-weight:700;">ASSISTANT</div><div style="font-weight:700;font-size:13px;">Briston Clark</div><div style="font-size:11px;color:var(--light-gray);">Field Tech (Night)</div><button class="btn btn-sm btn-ghost" onclick="openSwapModal('Bravo','Briston Clark','Assistant')" style="margin-top:6px;font-size:11px;padding:2px 8px;border:1px dashed var(--gold);color:var(--gold-dark);">Swap Member</button></div>
+      </div>
+      <div style="display:flex;gap:8px;"><button class="btn btn-sm btn-outline">Edit Team</button></div>
+    </div></div>
+  </div>
+</div>
+
+<!-- ===== SWAP MEMBER MODAL ===== -->
+<div id="swapMemberModal" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:9999;animation:fadeIn 0.2s ease;">
+  <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);" onclick="closeSwapModal()"></div>
+  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--white);border-radius:14px;width:820px;max-height:85vh;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.3);">
+    <!-- Modal Header -->
+    <div style="padding:16px 24px;border-bottom:1px solid #E5E5EA;background:linear-gradient(180deg, var(--gold-dim) 0%, var(--white) 100%);display:flex;justify-content:space-between;align-items:center;">
+      <div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;">Swap Team Member</div>
+        <div id="swapModalSubtitle" style="font-size:12px;color:var(--light-gray);margin-top:2px;">Drag & drop or use arrows to move employees between team and available pool</div>
+      </div>
+      <button class="btn btn-sm btn-ghost" onclick="closeSwapModal()" style="font-size:20px;padding:4px 8px;">&times;</button>
+    </div>
+    <!-- Modal Body -->
+    <div style="padding:20px 24px;display:flex;gap:0;align-items:stretch;min-height:380px;">
+      <!-- LEFT: Team Members -->
+      <div style="flex:1;display:flex;flex-direction:column;">
+        <div style="font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--gold-dark);margin-bottom:10px;display:flex;align-items:center;gap:6px;">
+          <span style="width:8px;height:8px;border-radius:50%;background:var(--gold);display:inline-block;"></span>
+          <span id="swapTeamLabel">Team Alpha Members</span>
+        </div>
+        <div id="swapTeamList" style="flex:1;border:2px solid var(--gold);border-radius:10px;padding:8px;background:rgba(232,168,56,0.03);min-height:280px;overflow-y:auto;"
+          ondragover="event.preventDefault();this.style.background='rgba(232,168,56,0.1)'"
+          ondragleave="this.style.background='rgba(232,168,56,0.03)'"
+          ondrop="handleDrop(event,'team');this.style.background='rgba(232,168,56,0.03)'">
+        </div>
+      </div>
+      <!-- CENTER: Transfer Controls -->
+      <div style="display:flex;flex-direction:column;justify-content:center;align-items:center;padding:0 16px;gap:10px;">
+        <button class="btn btn-sm btn-outline" onclick="moveCheckedToAvailable()" title="Move selected to Available" style="padding:8px 12px;font-size:14px;min-width:44px;">&#8594;</button>
+        <div style="font-size:10px;color:var(--light-gray);text-align:center;line-height:1.3;">Drag &amp;<br>Drop</div>
+        <button class="btn btn-sm btn-outline" onclick="moveCheckedToTeam()" title="Move selected to Team" style="padding:8px 12px;font-size:14px;min-width:44px;">&#8592;</button>
+      </div>
+      <!-- RIGHT: Available Employees -->
+      <div style="flex:1;display:flex;flex-direction:column;">
+        <div style="font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--green);margin-bottom:10px;display:flex;align-items:center;gap:6px;">
+          <span style="width:8px;height:8px;border-radius:50%;background:var(--green);display:inline-block;"></span>
+          Available Employees
+        </div>
+        <div id="swapAvailableList" style="flex:1;border:2px solid var(--green);border-radius:10px;padding:8px;background:rgba(52,199,89,0.03);min-height:280px;overflow-y:auto;"
+          ondragover="event.preventDefault();this.style.background='rgba(52,199,89,0.1)'"
+          ondragleave="this.style.background='rgba(52,199,89,0.03)'"
+          ondrop="handleDrop(event,'available');this.style.background='rgba(52,199,89,0.03)'">
+        </div>
+      </div>
+    </div>
+    <!-- Modal Footer -->
+    <div style="padding:14px 24px;border-top:1px solid #E5E5EA;display:flex;justify-content:flex-end;gap:8px;">
+      <button class="btn btn-outline" onclick="closeSwapModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="closeSwapModal()">Confirm Swap</button>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<script>
+// Swap Modal Data
+var teamAlphaMembers = [
+  {id:'e1', name:'Ezven Ortiz', role:'Lead Inspector', badge:'Crew Lead'},
+  {id:'e2', name:'Leo Lawrence', role:'Inspector L1', badge:'Technician'},
+  {id:'e3', name:'Caleb Washington', role:'Field Tech', badge:'Assistant'}
+];
+var teamBravoMembers = [
+  {id:'e4', name:'Sebastian Salgado', role:'Inspector (Night)', badge:'Crew Lead'},
+  {id:'e5', name:'Briston Clark', role:'Field Tech (Night)', badge:'Assistant'}
+];
+var availableEmployees = [
+  {id:'a1', name:'Marcus Reed', role:'Senior Inspector'},
+  {id:'a2', name:'Derek Simmons', role:'Inspector L2'},
+  {id:'a3', name:'Tanya Brooks', role:'NDT Technician'},
+  {id:'a4', name:'Javier Morales', role:'NDT Tech'},
+  {id:'a5', name:'Tommy Fuentes', role:'Helper'},
+  {id:'a6', name:'Isaac Black', role:'Ops Manager'},
+  {id:'a7', name:'Marcus Reyes', role:'Senior Inspector'}
+];
+
+var currentSwapTeam = 'Alpha';
+var swapTeamData = [];
+var swapAvailData = [];
+
+function openSwapModal(team, memberName, memberRole) {
+  currentSwapTeam = team;
+  var members = team === 'Alpha' ? teamAlphaMembers : teamBravoMembers;
+  swapTeamData = members.map(function(m){ return Object.assign({},m); });
+  swapAvailData = availableEmployees.map(function(m){ return Object.assign({},m); });
+  document.getElementById('swapTeamLabel').textContent = 'Team ' + team + ' Members';
+  document.getElementById('swapModalSubtitle').textContent = 'Swapping: ' + memberName + ' (' + memberRole + ') — Drag & drop or use arrows to move employees';
+  renderSwapLists();
+  document.getElementById('swapMemberModal').style.display = '';
+}
+
+function closeSwapModal() {
+  document.getElementById('swapMemberModal').style.display = 'none';
+}
+
+function renderSwapLists() {
+  var teamList = document.getElementById('swapTeamList');
+  var availList = document.getElementById('swapAvailableList');
+  teamList.innerHTML = swapTeamData.map(function(emp){
+    return '<div draggable="true" ondragstart="handleDragStart(event,\'' + emp.id + '\',\'team\')" data-id="' + emp.id + '" style="display:flex;align-items:center;gap:10px;padding:10px 12px;margin-bottom:6px;background:var(--white);border:1px solid #E5E5EA;border-radius:8px;cursor:grab;transition:all 0.15s;" onmouseover="this.style.borderColor=\'var(--gold)\';this.style.boxShadow=\'0 2px 8px rgba(232,168,56,0.15)\'" onmouseout="this.style.borderColor=\'#E5E5EA\';this.style.boxShadow=\'none\'">' +
+      '<input type="checkbox" class="swap-team-cb" value="' + emp.id + '" style="width:16px;height:16px;accent-color:var(--gold);cursor:pointer;">' +
+      '<div style="width:34px;height:34px;border-radius:50%;background:var(--gold-dim);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;color:var(--gold-dark);flex-shrink:0;">' + emp.name.split(' ').map(function(n){return n[0]}).join('') + '</div>' +
+      '<div style="flex:1;"><div style="font-weight:600;font-size:13px;">' + emp.name + '</div><div style="font-size:11px;color:var(--light-gray);">' + emp.role + '</div></div>' +
+      (emp.badge ? '<span class="badge gold" style="font-size:10px;">' + emp.badge + '</span>' : '') +
+      '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#C7C7CC" stroke-width="2" style="flex-shrink:0;"><path d="M8 6h.01M8 12h.01M8 18h.01M16 6h.01M16 12h.01M16 18h.01"/></svg>' +
+    '</div>';
+  }).join('');
+
+  availList.innerHTML = swapAvailData.map(function(emp){
+    return '<div draggable="true" ondragstart="handleDragStart(event,\'' + emp.id + '\',\'available\')" data-id="' + emp.id + '" style="display:flex;align-items:center;gap:10px;padding:10px 12px;margin-bottom:6px;background:var(--white);border:1px solid #E5E5EA;border-radius:8px;cursor:grab;transition:all 0.15s;" onmouseover="this.style.borderColor=\'var(--green)\';this.style.boxShadow=\'0 2px 8px rgba(52,199,89,0.15)\'" onmouseout="this.style.borderColor=\'#E5E5EA\';this.style.boxShadow=\'none\'">' +
+      '<input type="checkbox" class="swap-avail-cb" value="' + emp.id + '" style="width:16px;height:16px;accent-color:var(--green);cursor:pointer;">' +
+      '<div style="width:34px;height:34px;border-radius:50%;background:rgba(52,199,89,0.12);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;color:#34C759;flex-shrink:0;">' + emp.name.split(' ').map(function(n){return n[0]}).join('') + '</div>' +
+      '<div style="flex:1;"><div style="font-weight:600;font-size:13px;">' + emp.name + '</div><div style="font-size:11px;color:var(--light-gray);">' + emp.role + '</div></div>' +
+      '<span class="badge green" style="font-size:10px;">Available</span>' +
+      '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#C7C7CC" stroke-width="2" style="flex-shrink:0;"><path d="M8 6h.01M8 12h.01M8 18h.01M16 6h.01M16 12h.01M16 18h.01"/></svg>' +
+    '</div>';
+  }).join('');
+}
+
+// Drag and Drop
+var dragData = {id:'', source:''};
+function handleDragStart(e, id, source) {
+  dragData.id = id;
+  dragData.source = source;
+  e.dataTransfer.effectAllowed = 'move';
+  e.dataTransfer.setData('text/plain', id);
+}
+function handleDrop(e, target) {
+  e.preventDefault();
+  if(dragData.source === target) return; // same list, no-op
+  if(dragData.source === 'team' && target === 'available') {
+    var idx = swapTeamData.findIndex(function(m){return m.id === dragData.id});
+    if(idx > -1) { swapAvailData.push(swapTeamData.splice(idx,1)[0]); }
+  } else if(dragData.source === 'available' && target === 'team') {
+    var idx = swapAvailData.findIndex(function(m){return m.id === dragData.id});
+    if(idx > -1) { swapTeamData.push(swapAvailData.splice(idx,1)[0]); }
+  }
+  renderSwapLists();
+}
+
+// Arrow button transfers
+function moveCheckedToAvailable() {
+  var cbs = document.querySelectorAll('.swap-team-cb:checked');
+  cbs.forEach(function(cb){
+    var id = cb.value;
+    var idx = swapTeamData.findIndex(function(m){return m.id === id});
+    if(idx > -1) { swapAvailData.push(swapTeamData.splice(idx,1)[0]); }
+  });
+  renderSwapLists();
+}
+function moveCheckedToTeam() {
+  var cbs = document.querySelectorAll('.swap-avail-cb:checked');
+  cbs.forEach(function(cb){
+    var id = cb.value;
+    var idx = swapAvailData.findIndex(function(m){return m.id === id});
+    if(idx > -1) { swapTeamData.push(swapAvailData.splice(idx,1)[0]); }
+  });
+  renderSwapLists();
+}
+</script>
+
+<script src="../js/app.js"></script>
+</body>
+</html>

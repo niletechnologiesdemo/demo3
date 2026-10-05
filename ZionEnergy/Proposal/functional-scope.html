@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"/>
+<title>Zion Unified — Functional Scope</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Public+Sans:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#18181B;--ink2:#52525B;--ink3:#A1A1AA;--line:#E4E4E7;--paper:#fff;--panel:#FAFAFA;
+ --brand:#C2410C;--brandd:#9A3412;--soft:#FFF3EC;--sline:#FBD5BE;
+ --disp:'Anton',sans-serif;--ui:'Public Sans',system-ui,sans-serif;--mono:'Spline Sans Mono',monospace}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:#71717A;font-family:var(--ui);color:var(--ink);font-size:12.5px;line-height:1.55}
+.doc{width:210mm;background:var(--paper);margin:22px auto;padding:16mm 15mm 16mm;box-shadow:0 10px 40px rgba(0,0,0,.35)}
+@media print{body{background:#fff}.doc{margin:0;box-shadow:none;width:auto;padding:12mm}@page{size:A4;margin:12mm}
+ .mod{break-inside:avoid}}
+.top{display:flex;align-items:flex-start;gap:14px;padding-bottom:12px;border-bottom:3px solid var(--ink)}
+.top img{height:30px}.top .sp{flex:1}
+.top .meta{text-align:right;font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);line-height:1.7}
+h1{font-family:var(--disp);font-size:34px;line-height:1;text-transform:uppercase;margin:18px 0 0}
+.lede{margin:10px 0 0;color:var(--ink2);font-size:13px;max-width:70ch;line-height:1.6}
+.note{border:1px solid var(--line);border-left:3px solid var(--brand);background:var(--panel);
+ padding:11px 13px;font-size:11.5px;color:var(--ink2);line-height:1.6;margin-top:14px}
+.note b{color:var(--ink)}
+h2.sec{font-family:var(--disp);font-size:19px;text-transform:uppercase;margin:26px 0 0;padding-bottom:7px;
+ border-bottom:2px solid var(--ink)}
+.mod{margin-top:16px}
+.mod h3{display:flex;align-items:baseline;gap:9px;margin:0 0 7px;font-size:14px;font-weight:700}
+.mod h3 .n{font-family:var(--mono);font-size:11px;color:var(--brand);font-weight:500}
+.mod h3 .eff{margin-left:auto;font-family:var(--mono);font-size:10.5px;color:var(--ink3);font-weight:500}
+.mod h3 .inv{font-family:var(--mono);font-size:11px;color:var(--ink);font-weight:700;
+ background:var(--soft);border:1px solid var(--sline);border-radius:20px;padding:1px 8px}
+ul{margin:0;padding:0;list-style:none;columns:2;column-gap:20px}
+ul.one{columns:1}
+li{font-size:11.5px;color:var(--ink2);padding:2.5px 0 2.5px 13px;position:relative;line-height:1.5;
+ break-inside:avoid}
+li::before{content:'';position:absolute;left:0;top:9px;width:4px;height:4px;border-radius:4px;background:var(--brand)}
+.foot{margin-top:26px;padding-top:9px;border-top:1px solid var(--line);font-family:var(--mono);
+ font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3);display:flex;justify-content:space-between}
+</style></head><body><div class="doc">
+<div class="top"><img src="logo-dark.png" alt="Zion Energy Services"/><div class="sp"></div>
+<div class="meta">Functional Scope<br/>Zion Unified Platform<br/>Nile Technologies Pvt. Ltd.</div></div>
+<h1>Functional Scope</h1>
+<p class="lede">This document sets out the functionality included in Phase&nbsp;1 of the Zion Unified platform, and the functionality available as optional modules. It is the reference for what is being built.</p>
+<div class="note"><b>How to read this.</b> Everything listed under Phase&nbsp;1 is included in the Phase&nbsp;1 investment. Everything listed under Optional Modules is available separately at the stated effort and price. Functionality not described in this document has not been scoped and would be assessed and quoted on request.</div>
+
+<h2 class="sec">Phase 1 — Zion Unified Core</h2>
+<div class="mod"><h3><span class="n">01</span> Platform Foundation &amp; Access Control</h3><ul>
+<li>Single unified application replacing the separate dispatch and reporting systems</li>
+<li>Landing and authentication; session handling with configurable expiry</li>
+<li>Role management — create unlimited roles with module-level Create, Read, Update, Delete permissions</li>
+<li>Data-level permissions — control who can see customer contact details, rates, margin and payroll</li>
+<li>Pre-configured roles: Super Admin, Operations Manager, Inspector, Billing, Read-only</li>
+<li>Employee kill switch — marking a person terminated revokes web access, mobile app access, job roster placement and customer communication in a single action</li>
+<li>Session tracking — user, role, IP address, device, browser, login and logout times, duration</li>
+<li>Activity log across every module with before-and-after values, user, timestamp and IP</li>
+<li>Contextual in-app help markers on fields, actions and screens, with a global help mode</li>
+<li>Responsive interface optimised for iPad field use, including a collapsible sidebar for maximum screen area</li>
+<li>Business settings — company details, three logo slots (platform, invoice, inspection report), business hours, holidays</li>
+<li>Notification centre and in-app alerts</li>
+</ul></div>
+<div class="mod"><h3><span class="n">02</span> Customer, Site &amp; Division Master</h3><ul>
+<li>Customer headquarters register with client code, industry, website, payment terms, tax rate and status</li>
+<li>Unlimited sites per customer with full address, city, state, ZIP, territory and district</li>
+<li>Unlimited divisions per site — the third level of the hierarchy</li>
+<li>Contacts per customer and site with name, job title, phone and status</li>
+<li>Typed email distribution list per customer — complete report, inspected items only, category-restricted reports, manager, shop, accounts payable</li>
+<li>Per-customer business rules: require PO on inspection submit, require PO after invoice, PO request reminder cadence, report delivery format (single PDF, multiple PDF, combined), reminder due-date cadence, finance fee, minimum callout, total mileage allowance, send inspected items on submit</li>
+<li>Configurable inspection table columns per customer (Operator, Job #, PO #, Rig, DT #, Lease/Well)</li>
+<li>Default job safety analysis template per customer</li>
+<li>Geo-fence configuration per site — allowed radius, grace period, escalation target</li>
+<li>Missed-attendance triggers per site — late after, absent after, notification target</li>
+<li>Certification requirements per customer</li>
+<li>Document store per customer with controlled-document and customer-spec flags</li>
+<li>Connection types assigned per customer</li>
+<li>Complete job and inspection history per customer</li>
+<li>Per-account activity log</li>
+<li>Customer status management and CSV export</li>
+</ul></div>
+<div class="mod"><h3><span class="n">03</span> Price Sheets &amp; Rate Master</h3><ul>
+<li>Standard pricing per customer — item, material, method, unit of measure, rate, discount percentage, discounted rate, commission percentage</li>
+<li>Customer-specific tool pricing — tool ID, description, prefix, UOM, size, pins, boxes, misc item count</li>
+<li>Project pricing — item, price, discount</li>
+<li>Automatic charges applied without manual entry</li>
+<li>Closeout item charges — name, UOM, rate, discount</li>
+<li>Misc items library shared across pricing and inspection</li>
+<li>Mileage rate and inspector hourly rate held on the same sheet the inspection bills from</li>
+<li>Holiday, after-hours and priority pricing logic</li>
+<li>Tax handling per customer with configurable percentage</li>
+</ul></div>
+<div class="mod"><h3><span class="n">04</span> Workforce, Crews &amp; Payroll Rules</h3><ul>
+<li>Employee master with profile, role, territory, district, contact details and status</li>
+<li>Certification register per employee with type, level and expiry date</li>
+<li>Pay rules per employee — hourly or salaried, pay rate, pay frequency, overtime threshold, overtime multiplier, mileage rate</li>
+<li>Employee documents and signature capture for report sign-off</li>
+<li>Crews and teams — crew lead, members, shift window, home base, overtime cap, dispatch priority</li>
+<li>Swap crew members without generating attendance anomalies</li>
+<li>Service capabilities per crew</li>
+<li>Portal users — customer-side logins mapped to customer and site</li>
+<li>Employee assignment, attendance, overtime, mileage, payout, certification and document views per person</li>
+</ul></div>
+<div class="mod"><h3><span class="n">05</span> Jobs &amp; Dispatch</h3><ul>
+<li>Job creation with customer, site, division, work type, inspection type and priority</li>
+<li>Pre-job checklist so crews know what to carry before leaving</li>
+<li>Job task checklist assigned to dispatched crew members</li>
+<li>Crew or individual assignment, including assign-all</li>
+<li>Document attachment to a job before dispatch</li>
+<li>Configurable job progress stages with colour, sequence and live progress bar</li>
+<li>Job templates for repeat work</li>
+<li>Scheduled start, estimated end and push reminders to assigned crew</li>
+<li>Optional map pin per job</li>
+<li>Job lifecycle statuses from scheduled through to invoiced</li>
+<li>Employee-initiated reschedule and extension requests with reason, notifying the administrator</li>
+</ul></div>
+<div class="mod"><h3><span class="n">06</span> Scheduling Calendar</h3><ul>
+<li>Day, week and month views</li>
+<li>Week view arranged by crew, with an unassigned row for jobs still needing a crew</li>
+<li>Inspections and invoice due dates shown on the same calendar as crew work</li>
+<li>Colour coding by status; click through to the underlying record</li>
+<li>Today marker and forward and backward navigation</li>
+</ul></div>
+<div class="mod"><h3><span class="n">07</span> Operations Map &amp; Geo-Compliance</h3><ul>
+<li>Live map of crew positions and job sites with real coordinates</li>
+<li>Geo-fence rings drawn per site from the radius on the customer record</li>
+<li>Crew status — on site, in transit, off shift — with last-updated time</li>
+<li>Route display for crews in transit</li>
+<li>Open-job count per site</li>
+<li>Region switching for multi-territory operations</li>
+<li>Geo violation detection — check-in outside the fence, unexpected departure, unusual movement</li>
+<li>Crew status and site panels with click-through to the job or account</li>
+</ul></div>
+<div class="mod"><h3><span class="n">08</span> Attendance, Time &amp; Site Cost</h3><ul>
+<li>Geo-verified check in and check out against the site record</li>
+<li>Attendance notes captured at check in and check out</li>
+<li>Exception flagging — late arrival, early exit, absence, missed check-out, outside fence</li>
+<li>Administrator correction of missed check-outs with an audit trail</li>
+<li>Hours calculated per person per job</li>
+<li>Timesheet generation by week with draft, submitted, approved, rejected and paid states</li>
+<li>Overtime monitoring against per-employee thresholds with projected cost impact</li>
+<li>Overtime distribution by department and team</li>
+<li>Live cost per site — crew hours at their real pay rate tied to the customer location</li>
+<li>Payroll view — regular pay, overtime pay, travel pay, mileage reimbursement and gross payout per person</li>
+</ul></div>
+<div class="mod"><h3><span class="n">09</span> Mileage</h3><ul>
+<li>Trip capture with start and end location and distance</li>
+<li>Work or personal classification</li>
+<li>Billable flag and reimbursement calculated from the customer price sheet</li>
+<li>Approve, reject and reopen workflow with bulk approval</li>
+<li>Mileage attributed to the job it belongs to so it reaches the invoice</li>
+<li>Export for finance, tax rebate and customer billing</li>
+</ul></div>
+<div class="mod"><h3><span class="n">10</span> Standards, Procedures &amp; Acceptance Criteria</h3><ul>
+<li>Standards register with issuing body, designation, revision and effective date</li>
+<li>Standard revisions with version history</li>
+<li>Zion inspection procedures held against the standards they implement</li>
+<li>NDT method register — MPI, LPI, VT, UT, ET, Dimensional and others</li>
+<li>Techniques defined per method</li>
+<li>Equipment, probe and reference-standard requirements per technique</li>
+<li>Acceptance criteria sets by standard, customer and OEM</li>
+<li>Required inspector qualification per procedure</li>
+<li>Asset type to governing standard mapping, so selecting the asset determines the applicable rules</li>
+<li>Connection type library with reface type and per-dimension tolerance ranges across pin and box</li>
+<li>Reface type register</li>
+<li>Dimension and dimension-header configuration</li>
+<li>Guard preventing acceptance criteria from one asset class being applied to another</li>
+</ul></div>
+<div class="mod"><h3><span class="n">11</span> Tool &amp; Item Templates</h3><ul>
+<li>Tool templates per customer, single or multi-part</li>
+<li>Template identity — description, abbreviation, serial prefix, tool size, model type</li>
+<li>Methods and materials per template</li>
+<li>Report format assignment per template</li>
+<li>Default misc items per template</li>
+<li>Weld report flag</li>
+<li>Custom column definition — free measurement columns and status columns with their own allowed values</li>
+<li>Parts list for multi-part tools, each part captured against every defined column</li>
+<li>Customer approval state per template</li>
+<li>Template images</li>
+<li>Item templates for single tools sent in repeatedly, pre-filling description, prefix, size, methods, materials, connection standard and rate</li>
+<li>Template import</li>
+</ul></div>
+<div class="mod"><h3><span class="n">12</span> Inspection Tickets &amp; Requests</h3><ul>
+<li>Inspection tickets raised by customers through the portal or by operations</li>
+<li>Ticket detail with customer, site, operator, rig, DT number, job number and item list</li>
+<li>Accept a ticket and dispatch a crew directly from it</li>
+<li>Convert a ticket into a full inspection with data carried across</li>
+<li>Inspection request register with status and tool and connection summary</li>
+</ul></div>
+<div class="mod"><h3><span class="n">13</span> Inspections</h3><ul>
+<li>Inspection record with job header, equipment, specification, job safety analysis, inspection table, report items, photos, documents, quality assurance, close out, billing authorisation and print</li>
+<li>Job header — customer location, project, division, contact, lead and assistant inspectors, date, lease/well, operator, area, yard, rig/DT number, AFE/PO, customer job number, work order, third-party flag and address</li>
+<li>User-defined custom fields on the job header</li>
+<li>Calibrated equipment selection with serial, calibration date, expiry and certificate; validity checked against the job date</li>
+<li>Specification capture — inspected-per standards, methods, white light intensity, blacklight intensity, bath strength and batch, dry powder batch, penetrant and developer batches, contrast and oxide brands, tool surface temperature, pen and developer dwell times, control strip and block test verification</li>
+<li>User-defined additional specification fields</li>
+<li>Inspection table with per-customer configurable columns and a dimensional view</li>
+<li>Status workflow — in progress, submitted, approved, invoice pending, invoiced</li>
+<li>Clone inspection</li>
+<li>Re-inspection and submit-for-review</li>
+<li>Soft delete with restore and a deleted-records view</li>
+<li>Filtering by customer, project, inspector, status and date range; column chooser; CSV export</li>
+</ul></div>
+<div class="mod"><h3><span class="n">14</span> Inspected Items &amp; Measurements</h3><ul>
+<li>Item record with serial number, description, tool template, material, methods, size, tool length and hours used</li>
+<li>Body status and body internal status with acceptance codes</li>
+<li>Connection measurements captured per pin and per box across all defined dimensions</li>
+<li>Fractional imperial entry as written in the field, normalised to decimal by the platform</li>
+<li>Automatic comparison against the connection standard with pass, marginal and fail verdicts</li>
+<li>Margin-to-limit reporting so dimensions trending toward rejection are visible before they fail</li>
+<li>Misc items per inspected item with their own acceptance codes and inspection methods</li>
+<li>Custom template columns captured per part for multi-part tools</li>
+<li>Verdict roll-up taking the worst of body condition, connection results, misc findings and status columns</li>
+<li>Remedial work generated from findings and priced onto the item</li>
+<li>Photographs attached per item</li>
+<li>Item-level pricing with rate, quantity, discount and standard rates</li>
+<li>Cross-inspection item register with filtering by operator, customer, rig, DT, job number, acceptance code, body status and date</li>
+<li>Asset history — every previous inspection of the same serial</li>
+</ul></div>
+<div class="mod"><h3><span class="n">15</span> Equipment &amp; Calibration</h3><ul>
+<li>Equipment register with description, serial number, category and location</li>
+<li>Calibration date, expiry date and certificate storage</li>
+<li>Calibration validity checked automatically against every job the instrument is used on</li>
+<li>Expiry warnings ahead of time</li>
+<li>Tool boxes assigned per customer</li>
+<li>Recalibration booking with vendor and new dates</li>
+</ul></div>
+<div class="mod"><h3><span class="n">16</span> Job Safety Analysis</h3><ul>
+<li>JSA template library, global or customer-specific</li>
+<li>Sequence of basic steps with potential hazards and controls for each</li>
+<li>Job safety equipment matrix across the full PPE list</li>
+<li>Persons in attendance and noteworthy conditions</li>
+<li>Template selection per inspection with sign-off</li>
+<li>Create a new template from a completed JSA</li>
+</ul></div>
+<div class="mod"><h3><span class="n">17</span> Reporting Engine</h3><ul>
+<li>Report format designer — ordered columns typed as connection, body or tool status</li>
+<li>Report formats assigned per tool template and per customer</li>
+<li>Single PDF report, combined report and individual reports as a zip</li>
+<li>Inspected items report, equipment report, specification report and job safety analysis report</li>
+<li>Billing authorisation document</li>
+<li>Certificate of compliance structure</li>
+<li>Report preview before issue</li>
+<li>Distribution rules per customer determining which address types receive which report</li>
+<li>Email template management</li>
+<li>Email log per inspection</li>
+</ul></div>
+<div class="mod"><h3><span class="n">18</span> Close Out, Billing Authorisation &amp; Invoicing</h3><ul>
+<li>Close out converting inspected items and remedial findings into priced lines</li>
+<li>Closeout requirements with description, UOM, rate, quantity and discount</li>
+<li>Billing authorisation with priced recap by item and customer signature capture</li>
+<li>Invoice generation from the approved billing authorisation</li>
+<li>Invoice header — number, PO number, invoice date, due date computed from customer terms</li>
+<li>Line items carried from close out with rate, UOM, quantity, discount and amount</li>
+<li>Subtotal, tax at the customer rate, discount by percentage or fixed amount, and total</li>
+<li>Payment recording including partial payments, method and reference</li>
+<li>Invoice reminders and PO request reminders</li>
+<li>Purchase order register mapped against invoices</li>
+<li>Invoice status tracking — unsent, sent, overdue, paid, free</li>
+<li>Invoice analytics — total billed, pending billing, paid, outstanding, average invoice value, status breakdown, payment methods and ageing analysis</li>
+<li>Payment risk scoring per invoice based on the customer's own settlement history</li>
+</ul></div>
+<div class="mod"><h3><span class="n">19</span> Profitability &amp; Margin</h3><ul>
+<li>Delivered cost per job — crew hours at real pay rates, overtime at the applicable multiplier, mileage and consumables</li>
+<li>Revenue per job from the invoice and billing authorisation</li>
+<li>Gross margin per job in currency and percentage</li>
+<li>Profitability by inspection, customer, site, inspector and service category</li>
+<li>Rate source visibility — purchase order, standard rate, project rate or holiday rate</li>
+<li>Quoted value against invoiced value against delivered cost</li>
+<li>Period roll-up of total revenue, total delivered cost and gross margin</li>
+</ul></div>
+<div class="mod"><h3><span class="n">20</span> Master Data &amp; Configuration</h3><ul>
+<li>Methods, materials, tool types, makes, models, operators, units of measure, yards</li>
+<li>Pin/box, body and weld acceptance codes</li>
+<li>Territories and districts</li>
+<li>Misc items with type and inspection-allowed flags</li>
+<li>Connection types and reface types</li>
+<li>Job types, inspection types and progress stages</li>
+<li>Certification types, employee roles and departments</li>
+<li>Client industry types, service types, site types and contact roles</li>
+<li>Every list maintained centrally and reflected across the platform immediately</li>
+</ul></div>
+<div class="mod"><h3><span class="n">21</span> Data Migration</h3><ul>
+<li>Customers, sites, divisions, contacts and email distribution lists</li>
+<li>Employees, roles, certifications and pay rules</li>
+<li>Tool templates, item templates and report formats</li>
+<li>Connection types with their tolerance ranges</li>
+<li>All master data and vocabularies</li>
+<li>Active and recent inspections with inspected items, measurements and attachments</li>
+<li>Open invoices, purchase orders and outstanding balances</li>
+<li>Reconciliation report comparing source and destination record counts</li>
+<li>Remaining historical records retained in a read-only archive, queryable from the platform</li>
+</ul></div>
+<div class="mod"><h3><span class="n">22</span> Mobile &amp; Field Use</h3><ul>
+<li>Existing employee mobile applications updated to run against the unified platform</li>
+<li>iPad-optimised inspection capture in the web application</li>
+<li>Field check in and check out with location capture</li>
+<li>Mileage capture and trip classification</li>
+<li>Assigned job and task visibility</li>
+<li>Document and photograph upload from the field</li>
+</ul></div>
+<div class="mod"><h3><span class="n">23</span> Deployment, Support &amp; Ownership</h3><ul>
+<li>Cloud hosting setup and deployment</li>
+<li>Environment configuration and release management</li>
+<li>User acceptance testing support and defect resolution</li>
+<li>Administrator and end-user handover sessions</li>
+<li>Four months of post-deployment support at no additional cost</li>
+<li>No recurring licence or platform fees payable to Nile</li>
+<li>Full source code, database and intellectual property transferred to Zion</li>
+</ul></div>
+<h2 class="sec">Optional Modules</h2>
+<div class="mod"><h3>Communications Hub <span class="eff">48 days</span> <span class="inv">$9,600</span></h3><ul>
+<li>In-app calling from crew to customer through platform-owned numbers</li>
+<li>Customer telephone numbers never exposed to or stored on crew devices</li>
+<li>Sticky number per customer so they always see the same Zion line</li>
+<li>In-app messaging, crew to crew and crew to customer</li>
+<li>Masked SMS through the same number</li>
+<li>Full call and message log attached to the job it belongs to</li>
+<li>Optional call recording with announcement</li>
+<li>Instant revocation when an employee is terminated</li>
+<li>Telephony provider account, carrier registration and usage charges are Zion's</li>
+</ul></div>
+<div class="mod"><h3>Customer Portal <span class="eff">45 days</span> <span class="inv">$9,000</span></h3><ul>
+<li>Customer login with role-based access</li>
+<li>Raise and track inspection tickets</li>
+<li>Job and inspection status visibility</li>
+<li>Report download and history</li>
+<li>Outstanding and paid invoice visibility</li>
+<li>Purchase order submission</li>
+</ul></div>
+<div class="mod"><h3>LMS &amp; Certification Management <span class="eff">60 days</span> <span class="inv">$12,000</span></h3><ul>
+<li>Course and training material library</li>
+<li>On-the-job training records per employee</li>
+<li>Assessments and completion tracking</li>
+<li>Certification register with levels, issue and expiry dates</li>
+<li>Renewal reminders and expiry escalation</li>
+<li>Competency matrix mapped to the qualifications each inspection procedure requires</li>
+<li>Blocking or warning when an unqualified inspector is assigned</li>
+</ul></div>
+<div class="mod"><h3>Company Document Centre with AI <span class="eff">42 days</span> <span class="inv">$8,400</span></h3><ul>
+<li>Central store for employee handbook, processes, W-9, certificates of insurance and policies</li>
+<li>Version control and controlled-document flags</li>
+<li>Acknowledgement tracking per employee</li>
+<li>Secure share links with expiry</li>
+<li>Email delivery to customers and staff</li>
+<li>AI search and question answering across the document set</li>
+</ul></div>
+<div class="mod"><h3>Asset Management, Vendors &amp; Purchase Orders <span class="eff">80 days</span> <span class="inv">$16,000</span></h3><ul>
+<li>Asset register with categories, locations and lifecycle events</li>
+<li>Maintenance scheduling and history</li>
+<li>Parts and supplies inventory with reorder rules</li>
+<li>Vendor register and vendor SKUs</li>
+<li>Purchase order raising and tracking</li>
+<li>Vendor invoice capture and matching</li>
+<li>Audit templates, schedules, runs and observations</li>
+</ul></div>
+<div class="mod"><h3>Advanced Billing <span class="eff">55 days</span> <span class="inv">$11,000</span></h3><ul>
+<li>Recurring invoices</li>
+<li>Customer statements and scheduled statement delivery</li>
+<li>Combined invoices across multiple inspections</li>
+<li>Inspector commission calculation and reporting</li>
+<li>Payment gateway integration for card payment</li>
+<li>Finance fee automation</li>
+</ul></div>
+<div class="mod"><h3>QMS &amp; Safety Data Sheets <span class="eff">32 days</span> <span class="inv">$6,400</span></h3><ul>
+<li>Corrective and preventive action reports tied to inspections and employees</li>
+<li>Risk level, warning stage and follow-up tracking</li>
+<li>Supplier register</li>
+<li>Safety data sheet library with supplier links</li>
+<li>Controlled document handling</li>
+</ul></div>
+<div class="mod"><h3>Standards Content Encoding <span class="eff">30 days</span> <span class="inv">$6,000</span></h3><ul>
+<li>Encoding of acceptance criteria from the standards Zion supplies</li>
+<li>Priority set: API RP 7G-2, API RP 8B, API RP 4G with API Spec 4F, AWS D1.1</li>
+<li>Mapping of criteria to asset classes, methods and techniques</li>
+<li>Zion supplies licensed standards documents and validates the encoded criteria</li>
+</ul></div>
+<div class="mod"><h3>Full Historical Data Migration <span class="eff">38 days</span> <span class="inv">$7,600</span></h3><ul>
+<li>Complete five-year history transformed into the new model rather than archived</li>
+<li>Historical inspections, items, connections and measurements</li>
+<li>Historical invoices, line items and payments</li>
+<li>Historical attachments and evidence</li>
+<li>Full reconciliation reporting</li>
+</ul></div>
+<div class="mod"><h3>Zion Intelligence — AI Layer <span class="eff">To be scoped</span> <span class="inv">Phase 2</span></h3><ul>
+<li>Automatic inspection package generation — job type determines assets, standards, procedures, methods, equipment and specifications</li>
+<li>Pre-job checklist generated from the inspection package</li>
+<li>AI-assisted report generation and certificate of compliance</li>
+<li>AI quality control of completed reports against the applicable rules</li>
+<li>AI-assisted invoicing from historical patterns</li>
+<li>Per-module intelligence panels surfacing what needs attention</li>
+<li>Ask Zion — natural language questions answered from live platform data</li>
+<li>Scoped and priced once the unified platform is in production</li>
+</ul></div>
+<div class="note" style="margin-top:24px"><b>Assumptions.</b> Zion provides access to the existing system and its database for migration, supplies licensed copies of any standards to be encoded, and makes operational staff available for walkthrough sessions and user acceptance testing. Third-party accounts — telephony, payment gateway, app store, mapping — are held in Zion's name. Hosting infrastructure costs are billed to Zion at cost.</div>
+<div class="foot"><span>Zion Unified &middot; Functional Scope</span><span>Nile Technologies Pvt. Ltd.</span></div>
+</div></body></html>

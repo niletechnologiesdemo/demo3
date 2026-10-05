@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Zion Energy Services</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bungee&family=Public+Sans:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="assets/logo-light.png"/>
+<style>
+:root{
+ --ink:#18181B; --brand:#C2410C; --brandh:#EA580C; --blue:#1D4ED8; --blueh:#2563EB;
+ --disp:'Anton',system-ui,sans-serif;
+ --street:'Bungee',system-ui,sans-serif;
+ --ui:'Public Sans',system-ui,-apple-system,sans-serif;
+ --mono:'Spline Sans Mono',ui-monospace,monospace;
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0;height:100%}
+body{font-family:var(--ui);background:#08080A;color:#fff;overflow:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit;color:inherit}
+
+/* ================= video backdrop ================= */
+.shot{position:fixed;inset:0;z-index:0;overflow:hidden;background:#08080A}
+.shot video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+ transform:scale(1.06);animation:ken 44s ease-in-out infinite alternate;
+ filter:contrast(1.06) saturate(.9) brightness(.9)}
+@keyframes ken{from{transform:scale(1.06)}to{transform:scale(1.14) translate3d(-2%,-1.2%,0)}}
+/* keep the left readable, let the right of the frame stay bright */
+.shot::after{content:'';position:absolute;inset:0;
+ background:linear-gradient(95deg,rgba(8,8,10,.93) 0%,rgba(8,8,10,.78) 30%,rgba(8,8,10,.24) 58%,rgba(8,8,10,.06) 78%,rgba(8,8,10,.34) 100%)}
+.rule{position:fixed;left:0;right:0;top:0;height:3px;z-index:6;
+ background:linear-gradient(90deg,var(--brand),#F97316 42%,transparent 42%)}
+.grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.3;
+ background-image:radial-gradient(rgba(255,255,255,.07) 1px,transparent 1px);background-size:3px 3px}
+
+/* ================= page ================= */
+.page{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;
+ transition:opacity .4s ease,transform .55s cubic-bezier(.6,0,.2,1)}
+.page.gone{opacity:0;transform:scale(.985);pointer-events:none}
+.bar{display:flex;align-items:center;gap:16px;padding:28px 46px}
+.bar img{height:34px;width:auto;display:block}
+.bar .sp{flex:1}
+.tagline{font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.45)}
+.mid{flex:1;display:flex;flex-direction:column;justify-content:center;padding:0 46px 32px;min-height:0}
+.inner{width:100%;max-width:1240px;margin:0 auto}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:#FB923C}
+h1{font-family:var(--disp);font-size:clamp(40px,6.2vw,82px);line-height:.9;margin:18px 0 0;
+ text-transform:uppercase;letter-spacing:.005em;max-width:13ch;
+ text-shadow:0 2px 40px rgba(0,0,0,.5)}
+.sub{margin:20px 0 0;max-width:44ch;font-size:15.5px;line-height:1.6;color:rgba(255,255,255,.72)}
+.pick{margin-top:22px;display:flex;flex-direction:column;gap:18px;max-width:600px}
+
+/* compact selectable tiles — deliberately short so the film stays visible */
+.tile{position:relative;overflow:hidden;cursor:pointer;text-align:left;display:flex;align-items:center;gap:22px;
+ background:rgba(10,10,12,.52);border:1px solid rgba(255,255,255,.15);border-radius:16px;
+ padding:30px 30px 30px 36px;backdrop-filter:blur(14px);
+ transition:transform .3s cubic-bezier(.3,.8,.4,1),background .25s,border-color .25s,box-shadow .3s}
+.tile::before{content:'';position:absolute;left:0;top:0;bottom:0;width:5px;transition:width .28s cubic-bezier(.3,.8,.4,1)}
+.tile.rep::before{background:var(--brand)} .tile.dis::before{background:var(--blue)}
+.tile:hover::before{width:9px}
+.tile:hover{transform:translateY(-4px);background:rgba(14,14,17,.7);border-color:rgba(255,255,255,.3);
+ box-shadow:0 26px 56px rgba(0,0,0,.5)}
+.tile .body{flex:1;min-width:0}
+.tile .k{font-family:var(--mono);font-size:9.5px;letter-spacing:.19em;text-transform:uppercase}
+.tile.rep .k{color:#FDBA74} .tile.dis .k{color:#93C5FD}
+.tile h2{font-family:var(--street);font-size:clamp(26px,2.7vw,38px);line-height:1.06;margin:12px 0 0;
+ text-transform:uppercase;letter-spacing:-.005em;text-shadow:0 3px 26px rgba(0,0,0,.5)}
+.tile .meta{margin:14px 0 0;font-family:var(--mono);font-size:11px;letter-spacing:.08em;
+ color:rgba(255,255,255,.5);text-transform:uppercase}
+.tile .arw{flex:none;width:52px;height:52px;border-radius:52px;display:grid;place-items:center;
+ border:1px solid rgba(255,255,255,.2);transition:.28s}
+.tile.rep .arw{color:#FDBA74} .tile.dis .arw{color:#93C5FD}
+.tile:hover .arw{transform:translateX(6px)}
+.tile.rep:hover .arw{background:var(--brand);border-color:var(--brand);color:#fff}
+.tile.dis:hover .arw{background:var(--blue);border-color:var(--blue);color:#fff}
+.tile .arw svg{width:19px;height:19px}
+@media(max-width:640px){.tile{padding:24px 22px 24px 26px;gap:14px}.tile .arw{width:42px;height:42px}}
+
+.foot{display:flex;justify-content:space-between;padding:0 46px 26px;font-size:11.5px;
+ color:rgba(255,255,255,.34);gap:20px;flex-wrap:wrap}
+.foot .r{display:flex;gap:22px}
+.foot a:hover{color:rgba(255,255,255,.7)}
+
+/* ================= auth split ================= */
+.auth{position:fixed;inset:0;z-index:8;opacity:0;pointer-events:none;transition:opacity .5s ease;overflow:hidden}
+.auth.on{opacity:1;pointer-events:auto}
+.auth-bg{position:absolute;inset:0;background:#0B0B0D center/cover no-repeat;
+ transform:scale(1.06) scaleX(var(--flip,1));transition:transform 1.6s cubic-bezier(.35,0,.2,1)}
+.auth.on .auth-bg{transform:scale(1) scaleX(var(--flip,1))}
+.auth-veil{position:absolute;inset:0;pointer-events:none;transition:background .5s ease;
+ background:linear-gradient(96deg,rgba(9,9,11,var(--v1,.9)) 0%,rgba(9,9,11,var(--v2,.8)) 24%,
+   rgba(9,9,11,var(--v3,.42)) 44%,rgba(9,9,11,var(--v4,.06)) 62%,rgba(9,9,11,var(--v5,0)) 100%)}
+.auth-l{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;
+ padding:34px 0 30px;width:min(560px,46vw);
+ transform:translateX(-34px);opacity:0;transition:transform .65s cubic-bezier(.55,0,.2,1) .1s,opacity .5s ease .1s}
+.auth.on .auth-l{transform:none;opacity:1}
+.auth-l .brandrow{padding:0 62px;display:flex;align-items:center;gap:14px}
+.auth-l .brandrow img{height:32px}
+.auth-l .core{flex:1;display:flex;flex-direction:column;justify-content:center;padding:0 62px}
+.auth-l .foot2{padding:0 62px;font-size:11.5px;color:rgba(255,255,255,.34)}
+@media(max-width:1100px){.auth-l{width:min(520px,62vw)}
+ .auth-l .brandrow,.auth-l .core,.auth-l .foot2{padding-left:40px;padding-right:40px}}
+
+.back{align-self:flex-start;display:flex;align-items:center;gap:8px;background:none;border:0;cursor:pointer;
+ font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+ color:rgba(255,255,255,.45);padding:7px 10px 7px 0;margin-bottom:30px}
+.back:hover{color:#fff}
+.auth h3{font-family:var(--street);font-size:clamp(28px,3vw,40px);line-height:1.05;margin:0;
+ text-transform:uppercase;letter-spacing:-.01em;text-shadow:0 3px 30px rgba(0,0,0,.6)}
+.auth .who{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;margin-top:12px}
+.auth.rep .who{color:#FDBA74} .auth.dis .who{color:#93C5FD}
+.form{margin-top:34px;max-width:400px}
+.fld{margin-bottom:16px}
+.fld label{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.17em;
+ text-transform:uppercase;color:rgba(255,255,255,.42);margin-bottom:8px}
+.fld input{width:100%;background:rgba(10,10,12,.45);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.2);
+ border-radius:9px;padding:14px 15px;font-size:14.5px;outline:none;transition:.16s}
+.fld input::placeholder{color:rgba(255,255,255,.26)}
+.fld input:focus{border-color:rgba(255,255,255,.5);background:rgba(10,10,12,.62)}
+.signin{width:100%;margin-top:10px;border:0;border-radius:9px;padding:15px;cursor:pointer;color:#fff;
+ font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;transition:.16s}
+.auth.rep .signin{background:var(--brand)} .auth.rep .signin:hover{background:var(--brandh)}
+.auth.dis .signin{background:var(--blue)} .auth.dis .signin:hover{background:var(--blueh)}
+.alt{display:flex;justify-content:space-between;margin-top:18px;font-size:11.5px;color:rgba(255,255,255,.38)}
+.alt a:hover{color:#fff}
+
+@media(max-width:900px){.auth-l{width:100%}
+ .auth-veil{background:linear-gradient(180deg,rgba(9,9,11,.9),rgba(9,9,11,.72))}}
+@media(prefers-reduced-motion:reduce){.shot video{animation:none}
+ .page,.auth,.auth-l,.auth-bg{transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+
+<div class="shot">
+  <video src="assets/pulse.mp4" poster="assets/ndt-detail.jpg" autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
+</div>
+<div class="grain"></div><div class="rule"></div>
+
+<div class="page" id="page">
+  <div class="bar">
+    <img src="assets/logo-light.png" alt="Zion Energy Services"/>
+    <div class="sp"></div>
+    <span class="tagline">Oilfield NDT &amp; Tubular Inspection</span>
+  </div>
+
+  <div class="mid"><div class="inner">
+    <div class="eyebrow">Choose your workspace</div>
+
+    <div class="pick">
+      <div class="tile rep" role="button" tabindex="0" data-key="rep">
+        <div class="body">
+          <div class="k">Inspection &amp; Billing</div>
+          <h2>Zion Reporting</h2>
+          <div class="meta">Inspections &middot; Standards &middot; Reports &middot; Invoices</div>
+        </div>
+        <span class="arw"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </div>
+      <div class="tile dis" role="button" tabindex="0" data-key="dis">
+        <div class="body">
+          <div class="k">Crews &amp; Field Operations</div>
+          <h2>Zion Dispatch</h2>
+          <div class="meta">Jobs &middot; Crews &middot; Attendance &middot; Mileage</div>
+        </div>
+        <span class="arw"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </div>
+    </div>
+  </div></div>
+
+  <div class="foot">
+    <span>&copy; 2026 Zion Energy Services &middot; Midland, Texas</span>
+    <span class="r"><a href="#">Support</a><a href="#">Privacy</a><a href="#">Status</a></span>
+  </div>
+</div>
+
+<!-- full-screen sign-in split -->
+<div class="auth" id="auth">
+  <div class="auth-bg" id="authBg"></div>
+  <div class="auth-veil"></div>
+  <div class="auth-l">
+    <div class="brandrow"><img src="assets/logo-light.png" alt="Zion Energy Services"/></div>
+    <div class="core">
+      <button class="back" id="back">&larr; Back</button>
+      <h3 id="authTitle">Zion Reporting</h3>
+      <div class="who" id="authWho">Inspection &amp; Billing</div>
+      <form class="form" id="authForm">
+        <div class="fld"><label for="em">Email address</label>
+          <input id="em" type="email" placeholder="you@zionenergyservices.com" autocomplete="username"/></div>
+        <div class="fld"><label for="pw">Password</label>
+          <input id="pw" type="password" placeholder="••••••••••" autocomplete="current-password"/></div>
+        <button class="signin" type="submit" id="signin">Sign in</button>
+        <div class="alt"><a href="#">Forgot password?</a><span>Session expires after 8 hours</span></div>
+      </form>
+    </div>
+    <div class="foot2">&copy; 2026 Zion Energy Services &middot; Midland, Texas</div>
+  </div>
+</div>
+
+<script>
+(function(){
+  /* keep the film running — browsers pause background/blocked autoplay */
+  var vid = document.querySelector('.shot video');
+  function play(){ if (vid && vid.paused) { var p = vid.play(); if (p && p.catch) p.catch(function(){}); } }
+  ['loadeddata','canplay','stalled','pause'].forEach(function(e){ vid && vid.addEventListener(e, play); });
+  document.addEventListener('visibilitychange', function(){ if (!document.hidden) play(); });
+  window.addEventListener('focus', play);
+  ['pointerdown','keydown'].forEach(function(e){ document.addEventListener(e, play, { once:false }); });
+  play();
+
+  var page = document.getElementById('page'), auth = document.getElementById('auth');
+  var bg = document.getElementById('authBg'), signin = document.getElementById('signin');
+  var CFG = {
+    rep:{ title:'Zion Reporting', who:'Inspection & Billing',
+          img:'assets/hero-inspection.jpg', pos:'center 46%', veil:['.88','.74','.32','.04','0'],
+          alt:'Zion inspector taking ultrasonic readings on drill pipe',
+          target:'reporting/index.html', external:false },
+    dis:{ title:'Zion Dispatch', who:'Crews & Field Operations',
+          img:'assets/field-yard.jpg', pos:'62% 52%', veil:['.95','.9','.66','.2','.12'],
+          alt:'Zion crew inspecting tubulars in a pipe yard at dusk',
+          target:'http://44.213.195.233', external:true }
+  };
+  var current = null;
+
+  function open(key){
+    if (current) return;
+    current = CFG[key];
+    document.getElementById('authTitle').textContent = current.title;
+    document.getElementById('authWho').textContent = current.who;
+    bg.style.backgroundImage = 'url("' + current.img + '")';
+    bg.style.backgroundPosition = current.pos;
+    bg.style.setProperty('--flip', current.flip || 1);
+    var veil = document.querySelector('.auth-veil');
+    current.veil.forEach(function(v,i){ veil.style.setProperty('--v' + (i+1), v); });
+    auth.classList.remove('rep','dis'); auth.classList.add(key);
+    page.classList.add('gone');
+    requestAnimationFrame(function(){
+      auth.classList.add('on');
+      setTimeout(function(){ document.getElementById('em').focus(); }, 620);
+    });
+  }
+  function close(){
+    if (!current) return;
+    current = null;
+    auth.classList.remove('on');
+    page.classList.remove('gone');
+    signin.textContent = 'Sign in';
+  }
+
+  [].forEach.call(document.querySelectorAll('.tile'), function(t){
+    t.addEventListener('click', function(){ open(t.dataset.key); });
+    t.addEventListener('keydown', function(e){
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(t.dataset.key); } });
+  });
+  document.getElementById('back').addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') close(); });
+
+  document.getElementById('authForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    if (!current) return;
+    var c = current;
+    signin.textContent = 'Signing in…';
+    setTimeout(function(){
+      if (c.external) { window.open(c.target, '_blank', 'noopener'); signin.textContent = 'Sign in'; }
+      else window.location.href = c.target;
+    }, 620);
+  });
+})();
+</script>
+</body>
+</html>

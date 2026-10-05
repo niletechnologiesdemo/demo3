@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CrewViewPro - New Employee</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&family=Barlow+Condensed:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+<!-- ===== SIDEBAR ===== -->
+<nav class="sidebar">
+  <div class="sidebar-logo">
+    <div class="bolt">&#9889;</div>
+    <div class="brand">Crew<span>View</span></div>
+  </div>
+  <div class="sidebar-nav">
+    <div class="nav-section">
+      <div class="nav-section-label">Overview</div>
+      <div class="nav-item" onclick="window.location.href='dashboard.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Dashboard</div>
+      <div class="nav-item" onclick="window.location.href='../index.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 8h7M9 12h7M9 16h4"/><circle cx="6" cy="8" r="0.6"/><circle cx="6" cy="12" r="0.6"/><circle cx="6" cy="16" r="0.6"/></svg>Screen Index</div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">Clients & Sites</div>
+      <div class="nav-item" onclick="window.location.href='clients.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M9 8h1M9 12h1M9 16h1M14 8h1M14 12h1M14 16h1"/><rect x="5" y="3" width="14" height="18" rx="1"/></svg>Client Master</div>
+      <div class="nav-item" onclick="window.location.href='client-detail.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Client Profile</div>
+      <div class="nav-item" onclick="window.location.href='portal-users.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Client Portal Users<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">Workforce</div>
+      <div class="nav-item" onclick="window.location.href='employees.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Employees</div>
+      <div class="nav-item active" onclick="window.location.href='employee-detail.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Employee Profile</div>
+      <div class="nav-item" onclick="window.location.href='teams.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Teams & Crews</div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">Dispatch</div>
+      <div class="nav-item" onclick="window.location.href='inspection-requests.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11L2 12v6a2 2 0 002 2h16a2 2 0 002-2v-6l-3.45-6.89A2 2 0 0016.76 4H7.24a2 2 0 00-1.79 1.11z"/></svg>Inspection Requests<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='jobs.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>Jobs & Dispatch<span class="nav-badge">3</span></div>
+      <div class="nav-item" onclick="window.location.href='create-job.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>Create Job & Dispatch</div>
+      <div class="nav-item" onclick="window.location.href='calendar.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Calendar</div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">Inspections</div>
+      <div class="nav-item" onclick="window.location.href='inspections.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 2h6v4H9z"/><path d="M7 4H5v18h14V4h-2"/><path d="M9 12h7M9 16h5"/></svg>Inspections<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='inspection-tickets.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h18v4a2 2 0 000 4v4H3v-4a2 2 0 000-4z"/><path d="M12 7v10"/></svg>Inspection Tickets<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='inspected-items.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>Inspected Items<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='field-capture.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M11 19h2"/></svg>Crew View Capture<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='job-safety.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L4 6v6c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V6z"/></svg>Job Safety Analysis<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">Assets & Standards</div>
+      <div class="nav-item" onclick="window.location.href='standards.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>Standards Library<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='inspection-package.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M7 6h10M5 8v4a2 2 0 002 2h3M19 8v4a2 2 0 01-2 2h-3"/></svg>Inspection Packages<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='asset-models.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>Tool & Item Templates<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='equipment.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21a9 9 0 119-9"/><path d="M12 12l4-3"/></svg>Equipment & Calibration<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">Operations</div>
+      <div class="nav-item" onclick="window.location.href='attendance.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Attendance</div>
+      <div class="nav-item" onclick="window.location.href='timesheet.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="13" r="8"/><path d="M12 9v4M9 2h6"/></svg>Timesheets</div>
+      <div class="nav-item" onclick="window.location.href='overtime.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="13" r="8"/><path d="M12 9v4M9 2h6"/></svg>Overtime<span class="nav-badge">5</span></div>
+      <div class="nav-item" onclick="window.location.href='payroll.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7H5a2 2 0 010-4h13v4"/><path d="M3 5v14a2 2 0 002 2h15v-5"/><path d="M18 12a2 2 0 000 4h4v-4z"/></svg>Payroll<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='geo.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Operations Map</div>
+      <div class="nav-item" onclick="window.location.href='mileage.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21L8 3M20 21l-4-18M12 6v3M12 12v3M12 18v3"/></svg>Mileage</div>
+      <div class="nav-item" onclick="window.location.href='billing.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.5 9.5h5M9.5 14.5h5"/></svg>Billing & Costing</div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">Commercial</div>
+      <div class="nav-item" onclick="window.location.href='rate-master.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.6 13.4L12 22l-9-9V4h9z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg>Rate Master<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='purchase-orders.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2h9l5 5v15H6z"/><path d="M15 2v5h5"/><path d="M9 13h6M9 17h4"/></svg>Purchase Orders<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='invoices.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2h9l5 5v15H6z"/><path d="M15 2v5h5"/><path d="M9 12h7M9 16h5"/></svg>Invoices<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='profitability.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 7-7"/><path d="M17 8h4v4"/></svg>Profitability<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">Intelligence</div>
+      <div class="nav-item" onclick="window.location.href='alerts.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>Alerts<span class="nav-badge">8</span></div>
+      <div class="nav-item" onclick="window.location.href='reports.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M8 16v-4M12 16V8M16 16v-6"/></svg>Reports</div>
+      <div class="nav-item" onclick="window.location.href='report-templates.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>Report Templates<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">System</div>
+      <div class="nav-item" onclick="window.location.href='settings.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 11-4 0v-.09A1.65 1.65 0 008 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06A1.65 1.65 0 004.6 15a1.65 1.65 0 00-1.51-1H3a2 2 0 110-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06A1.65 1.65 0 009 4.6a1.65 1.65 0 001-1.51V3a2 2 0 114 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 110 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>Settings</div>
+      <div class="nav-item" onclick="window.location.href='notifications.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>Notifications</div>
+      <div class="nav-item" onclick="window.location.href='login.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><path d="M16 17l5-5-5-5M21 12H9"/></svg>Logout</div>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== TOPBAR ===== -->
+<header class="topbar">
+  <div class="topbar-left">
+    <div>
+      <div class="topbar-title" id="topbarTitle">New Employee</div>
+      <div class="breadcrumb" id="topbarBreadcrumb">
+        <a href="dashboard.html">Home</a>
+        <span>/</span>
+        <span>Employees / Profile</span>
+      </div>
+    </div>
+  </div>
+  <div class="topbar-right">
+    <div class="topbar-search">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      <input type="text" placeholder="Search anything...">
+    </div>
+    <div class="topbar-icon-btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+      <div class="notif-dot"></div>
+    </div>
+    <div class="user-pill">
+      <div class="user-avatar">HS</div>
+      <div>
+        <div class="user-name">Hunter Sisti</div>
+        <div class="user-role">Super Admin</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== MAIN CONTENT ===== -->
+<main class="main">
+
+<!-- ==================== SCREEN 6/7: EMPLOYEE DETAIL ==================== -->
+<div class="screen active" id="screen-employeeDetail">
+  <!-- Header -->
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+    <div style="display:flex;gap:16px;align-items:center;">
+      <div style="width:56px;height:56px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px;color:var(--black);">EO</div>
+      <div><h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:24px;">Ezven Ortiz</h2><div style="display:flex;gap:8px;margin-top:4px;"><span class="badge gold">Sr. Inspector / Account Lead</span><span class="badge green">Active</span><span style="font-size:12px;color:var(--light-gray);">Team Alpha &middot; Day Shift</span></div></div>
+    </div>
+    <div style="display:flex;gap:8px;"><button class="btn btn-outline">Edit Profile</button><button class="btn btn-primary">Save</button></div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs" id="employeeDetailTabs">
+    <div class="tab active" onclick="showEmployeeTab('overview')">Overview</div>
+    <div class="tab" onclick="showEmployeeTab('assignments')">Assignments</div>
+    <div class="tab" onclick="showEmployeeTab('attendance')">Attendance & Time</div>
+    <div class="tab" onclick="showEmployeeTab('overtime')">Overtime</div>
+    <div class="tab" onclick="showEmployeeTab('mileage')">Mileage</div>
+    <div class="tab" onclick="showEmployeeTab('certifications')">Certifications</div>
+    <div class="tab" onclick="showEmployeeTab('payroll')">Payroll</div>
+    <div class="tab" onclick="showEmployeeTab('documents')">Documents</div>
+  </div>
+
+  <!-- ===== TAB 1: OVERVIEW ===== -->
+  <div class="emp-tab active" id="empTab-overview">
+    <div class="grid-7-3">
+      <div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">Personal Information</div></div><div class="panel-body">
+          <div class="form-row-3"><div class="form-group"><label class="form-label">Email</label><input class="form-input" value="eortiz@zionenergy.com" readonly></div><div class="form-group"><label class="form-label">Phone</label><input class="form-input" value="(432) 555-0201" readonly></div><div class="form-group"><label class="form-label">Hire Date</label><input class="form-input" value="March 15, 2023" readonly></div></div>
+          <div class="form-row-3"><div class="form-group"><label class="form-label">Pay Type</label><input class="form-input" value="Hourly" readonly></div><div class="form-group"><label class="form-label">Pay Rate</label><input class="form-input" value="$42.00/hr" readonly></div><div class="form-group"><label class="form-label">OT Threshold</label><input class="form-input" value="40 hours/week" readonly></div></div>
+        </div></div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">Emergency Contact</div></div><div class="panel-body">
+          <div class="form-row-3"><div class="form-group"><label class="form-label">Name</label><input class="form-input" value="Maria Ortiz" readonly></div><div class="form-group"><label class="form-label">Relationship</label><input class="form-input" value="Spouse" readonly></div><div class="form-group"><label class="form-label">Phone</label><input class="form-input" value="(432) 555-0202" readonly></div></div>
+        </div></div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">Quick Stats</div></div><div class="panel-body">
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:13px;color:var(--gray);">Jobs Completed</span><span style="font-weight:700;">47</span></div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:13px;color:var(--gray);">Active Assignments</span><span style="font-weight:700;">2</span></div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:13px;color:var(--gray);">Avg Weekly Hours</span><span style="font-weight:700;">38.4</span></div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:13px;color:var(--gray);">OT Hours (MTD)</span><span style="font-weight:700;">4.2</span></div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;"><span style="font-size:13px;color:var(--gray);">SLA Compliance</span><span class="badge green">98.5%</span></div>
+        </div></div>
+      </div>
+      <div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">This Week</div></div><div class="panel-body">
+          <div style="text-align:center;margin-bottom:12px;"><div class="kpi-value" style="font-size:48px;">36.2</div><div style="font-size:12px;color:var(--light-gray);">Hours Worked</div></div>
+          <div class="progress-bar"><div class="progress-fill gold" style="width:90%;"></div></div>
+          <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--light-gray);margin-top:4px;"><span>0h</span><span>40h threshold</span></div>
+        </div></div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">Certifications</div></div><div class="panel-body">
+          <div style="padding:6px 0;border-bottom:1px solid #F2F2F7;"><div style="font-weight:600;font-size:13px;">API 570 Inspector</div><div style="font-size:11px;color:var(--light-gray);">Expires: Dec 2026</div><span class="badge green" style="margin-top:2px;">Current</span></div>
+          <div style="padding:6px 0;border-bottom:1px solid #F2F2F7;"><div style="font-weight:600;font-size:13px;">NDT Level II - MT</div><div style="font-size:11px;color:var(--light-gray);">Expires: Aug 2026</div><span class="badge green" style="margin-top:2px;">Current</span></div>
+          <div style="padding:6px 0;"><div style="font-weight:600;font-size:13px;">Eye Exam</div><div style="font-size:11px;color:var(--light-gray);">Last: Jan 2026</div><span class="badge green" style="margin-top:2px;">Valid</span></div>
+        </div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TAB 2: ASSIGNMENTS ===== -->
+  <div class="emp-tab" id="empTab-assignments">
+    <div class="kpi-row">
+      <div class="kpi-card gold"><div class="kpi-label">Active Assignments</div><div class="kpi-value">2</div><div class="kpi-delta up">Currently on-site</div></div>
+      <div class="kpi-card blue"><div class="kpi-label">Completed This Month</div><div class="kpi-value">8</div><div class="kpi-delta up">&#9650; 2 vs last month</div></div>
+      <div class="kpi-card green"><div class="kpi-label">Total Career Jobs</div><div class="kpi-value">47</div><div class="kpi-delta up">Since Mar 2023</div></div>
+      <div class="kpi-card amber"><div class="kpi-label">Avg Job Duration</div><div class="kpi-value">3.2d</div><div class="kpi-delta warn">Across all assignments</div></div>
+    </div>
+
+    <div style="margin-bottom:12px;">
+      <div style="position:relative;max-width:360px;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="2" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        <input class="form-input" type="text" placeholder="Search assignments..." oninput="filterTable(this,'assignmentsTable')" style="padding-left:32px;">
+      </div>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+      <div class="filter-bar" id="assignFilterBar"><div class="filter-pill active">All</div><div class="filter-pill">Active</div><div class="filter-pill">Completed</div><div class="filter-pill">Upcoming</div></div>
+      <button class="btn btn-primary" id="assignJobBtn" onclick="toggleAssignJob()">+ Assign to Job</button>
+    </div>
+
+    <!-- ASSIGN TO JOB FORM -->
+    <div id="assignJobForm" style="display:none;border-bottom:2px solid var(--gold);background:linear-gradient(180deg, var(--gold-dim) 0%, var(--white) 100%);border-radius:10px;margin-bottom:16px;">
+      <div style="padding:20px 20px 0 20px;display:flex;justify-content:space-between;align-items:center;">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:32px;height:32px;border-radius:8px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;color:var(--black);">+</div>
+          <div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:16px;text-transform:uppercase;letter-spacing:0.5px;">Assign to Job</div>
+            <div style="font-size:11px;color:var(--light-gray);">Employee: Ezven Ortiz &middot; Lead Inspector &middot; Team Alpha</div>
+          </div>
+        </div>
+        <button class="btn btn-sm btn-ghost" onclick="toggleAssignJob()" style="font-size:18px;padding:4px 8px;">&times;</button>
+      </div>
+      <div style="padding:20px;">
+
+        <!-- Section 1: Job Selection -->
+        <div style="font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--gold-dark);margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid var(--gold-dim);">Job Selection</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Select Job *</label>
+            <select class="form-select">
+              <option value="" disabled selected>Search or select an open job...</option>
+              <option>JOB-2026-0045 &mdash; Arrival Energy &mdash; WTX Yard 2 (Scheduled)</option>
+              <option>JOB-2026-0046 &mdash; Basin Energy &mdash; Permian Site B (Draft)</option>
+              <option>JOB-2026-0047 &mdash; Tubular Solutions &mdash; Main Facility (Scheduled)</option>
+              <option>JOB-2026-0048 &mdash; Bridgeport F&R &mdash; South Dock (Scheduled)</option>
+              <option>JOB-2026-0050 &mdash; Arrival Energy &mdash; East Pad 4 (Draft)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Assignment Type *</label>
+            <select class="form-select">
+              <option selected>Primary Assignment</option>
+              <option>Backup / Standby</option>
+              <option>Temporary Fill-In</option>
+              <option>Training / Shadow</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Job Preview Panel -->
+        <div class="panel" style="margin-bottom:16px;border:1px solid #E5E5EA;">
+          <div class="panel-header"><div class="panel-title">Job Preview</div><span class="badge blue">Scheduled</span></div>
+          <div class="panel-body">
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px;">
+              <div><div style="font-size:11px;color:var(--light-gray);text-transform:uppercase;letter-spacing:0.5px;">Job ID</div><div style="font-weight:700;font-family:'JetBrains Mono',monospace;font-size:13px;">JOB-2026-0045</div></div>
+              <div><div style="font-size:11px;color:var(--light-gray);text-transform:uppercase;letter-spacing:0.5px;">Client</div><div style="font-weight:700;font-size:13px;">Arrival Energy Solutions</div></div>
+              <div><div style="font-size:11px;color:var(--light-gray);text-transform:uppercase;letter-spacing:0.5px;">Site</div><div style="font-weight:700;font-size:13px;">WTX Yard 2</div></div>
+              <div><div style="font-size:11px;color:var(--light-gray);text-transform:uppercase;letter-spacing:0.5px;">Type</div><div style="font-weight:700;font-size:13px;">API Inspection</div></div>
+              <div><div style="font-size:11px;color:var(--light-gray);text-transform:uppercase;letter-spacing:0.5px;">Scheduled Date</div><div style="font-weight:700;font-size:13px;">Mar 20, 2026</div></div>
+              <div><div style="font-size:11px;color:var(--light-gray);text-transform:uppercase;letter-spacing:0.5px;">Duration (Est.)</div><div style="font-weight:700;font-size:13px;">3 days</div></div>
+              <div><div style="font-size:11px;color:var(--light-gray);text-transform:uppercase;letter-spacing:0.5px;">Priority</div><div><span class="badge gold">High</span></div></div>
+              <div><div style="font-size:11px;color:var(--light-gray);text-transform:uppercase;letter-spacing:0.5px;">SLA</div><div><span class="badge green">On Track</span></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 2: Role & Schedule -->
+        <div style="font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--gold-dark);margin-bottom:12px;margin-top:8px;padding-bottom:6px;border-bottom:1px solid var(--gold-dim);">Role &amp; Schedule</div>
+        <div class="form-row-3">
+          <div class="form-group">
+            <label class="form-label">Assigned Role *</label>
+            <select class="form-select">
+              <option selected>Lead Inspector</option>
+              <option>QC Inspector</option>
+              <option>NDT Technician L1</option>
+              <option>NDT Technician L2</option>
+              <option>Field Technician</option>
+              <option>Welder</option>
+              <option>Safety Officer</option>
+              <option>Helper / Laborer</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Team *</label>
+            <select class="form-select">
+              <option selected>Team Alpha</option>
+              <option>Team Bravo</option>
+              <option>Team Charlie</option>
+              <option>Unassigned / Solo</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Shift *</label>
+            <select class="form-select">
+              <option selected>Day Shift (6 AM &ndash; 6 PM)</option>
+              <option>Night Shift (6 PM &ndash; 6 AM)</option>
+              <option>Swing Shift (2 PM &ndash; 12 AM)</option>
+              <option>Custom</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row-3">
+          <div class="form-group">
+            <label class="form-label">Start Date *</label>
+            <input class="form-input" type="date">
+          </div>
+          <div class="form-group">
+            <label class="form-label">End Date (Est.)</label>
+            <input class="form-input" type="date">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Report Time</label>
+            <input class="form-input" type="time" value="06:00">
+          </div>
+        </div>
+
+        <!-- Section 3: Billing & Rate -->
+        <div style="font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--gold-dark);margin-bottom:12px;margin-top:8px;padding-bottom:6px;border-bottom:1px solid var(--gold-dim);">Billing &amp; Rate</div>
+        <div class="form-row-3">
+          <div class="form-group">
+            <label class="form-label">Bill Rate</label>
+            <input class="form-input" value="$85.00/hr" readonly style="background:#FAFAFA;">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Pay Rate</label>
+            <input class="form-input" value="$42.00/hr" readonly style="background:#FAFAFA;">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Mileage Reimbursement</label>
+            <input class="form-input" placeholder="$2/Mile">
+          </div>
+          <div class="form-group">
+            <label class="form-label">OT Eligible</label>
+            <div style="padding-top:6px;"><div class="switch"><div class="switch-track on"></div><span style="font-size:13px;font-weight:500;">Overtime after 40 hrs/week at 1.5x</span></div></div>
+          </div>
+        </div>
+
+        <!-- Section 4: Compliance Check -->
+        <div style="font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--gold-dark);margin-bottom:12px;margin-top:8px;padding-bottom:6px;border-bottom:1px solid var(--gold-dim);">Compliance Check</div>
+        <div class="panel" style="margin-bottom:16px;border:1px solid #E5E5EA;">
+          <div class="panel-body" style="padding:12px 16px;">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+              <div style="display:flex;align-items:center;gap:8px;padding:6px 0;">
+                <span style="width:20px;height:20px;border-radius:50%;background:var(--green);color:white;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;">&#10003;</span>
+                <span style="font-size:13px;">API 570 &mdash; Valid (Exp: Dec 2026)</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px;padding:6px 0;">
+                <span style="width:20px;height:20px;border-radius:50%;background:var(--green);color:white;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;">&#10003;</span>
+                <span style="font-size:13px;">TWIC Card &mdash; Valid (Exp: Mar 2030)</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px;padding:6px 0;">
+                <span style="width:20px;height:20px;border-radius:50%;background:var(--green);color:white;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;">&#10003;</span>
+                <span style="font-size:13px;">NDT Level II (MT) &mdash; Valid (Exp: Aug 2026)</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px;padding:6px 0;">
+                <span style="width:20px;height:20px;border-radius:50%;background:var(--green);color:white;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;">&#10003;</span>
+                <span style="font-size:13px;">NDT Level II (UT) &mdash; Valid (Exp: Aug 2026)</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px;padding:6px 0;">
+                <span style="width:20px;height:20px;border-radius:50%;background:var(--amber);color:white;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;">!</span>
+                <span style="font-size:13px;color:var(--amber);font-weight:600;">H2S SafeLand &mdash; Expiring (89 days)</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px;padding:6px 0;">
+                <span style="width:20px;height:20px;border-radius:50%;background:var(--green);color:white;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;">&#10003;</span>
+                <span style="font-size:13px;">Drug Screen &mdash; Clear (Jan 2026)</span>
+              </div>
+            </div>
+            <div style="margin-top:10px;padding:8px 12px;background:#E8F5E9;border-radius:6px;display:flex;align-items:center;gap:8px;">
+              <span style="font-size:16px;">&#9989;</span>
+              <span style="font-size:13px;font-weight:600;color:#2E7D32;">Employee meets all certification requirements for this job.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 5: Job Task Checklist -->
+        <div style="font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--gold-dark);margin-bottom:12px;margin-top:8px;padding-bottom:6px;border-bottom:1px solid var(--gold-dim);">Job Task Checklist</div>
+        <div class="panel" style="margin-bottom:16px;border:1px solid #E5E5EA;">
+          <div class="panel-header">
+            <div class="panel-title">Task Items</div>
+            <button class="btn btn-sm btn-primary" onclick="addChecklistItem()">+ Add Task</button>
+          </div>
+          <div class="panel-body" style="padding:12px 16px;">
+            <!-- Pre-loaded checklist items -->
+            <div id="checklistContainer">
+              <div class="checklist-item" style="display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid #F2F2F7;">
+                <input type="checkbox" style="margin-top:3px;width:16px;height:16px;accent-color:var(--gold);cursor:pointer;">
+                <div style="flex:1;">
+                  <div style="font-weight:600;font-size:13px;">Pre-Job Safety Briefing</div>
+                  <div style="font-size:11px;color:var(--light-gray);">Conduct site-specific safety orientation before starting work</div>
+                </div>
+                <span class="badge gold" style="font-size:10px;">Required</span>
+              </div>
+              <div class="checklist-item" style="display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid #F2F2F7;">
+                <input type="checkbox" style="margin-top:3px;width:16px;height:16px;accent-color:var(--gold);cursor:pointer;">
+                <div style="flex:1;">
+                  <div style="font-weight:600;font-size:13px;">Verify Equipment Calibration</div>
+                  <div style="font-size:11px;color:var(--light-gray);">Confirm UT gauge, MT yoke, and all NDT instruments are calibrated</div>
+                </div>
+                <span class="badge gold" style="font-size:10px;">Required</span>
+              </div>
+              <div class="checklist-item" style="display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid #F2F2F7;">
+                <input type="checkbox" style="margin-top:3px;width:16px;height:16px;accent-color:var(--gold);cursor:pointer;">
+                <div style="flex:1;">
+                  <div style="font-weight:600;font-size:13px;">Review Work Scope &amp; P&IDs</div>
+                  <div style="font-size:11px;color:var(--light-gray);">Review piping diagrams, inspection points, and scope of work documents</div>
+                </div>
+                <span class="badge blue" style="font-size:10px;">Standard</span>
+              </div>
+              <div class="checklist-item" style="display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid #F2F2F7;">
+                <input type="checkbox" style="margin-top:3px;width:16px;height:16px;accent-color:var(--gold);cursor:pointer;">
+                <div style="flex:1;">
+                  <div style="font-weight:600;font-size:13px;">PPE Inspection</div>
+                  <div style="font-size:11px;color:var(--light-gray);">Verify hard hat, steel toes, FR clothing, safety glasses, gloves, H2S monitor</div>
+                </div>
+                <span class="badge gold" style="font-size:10px;">Required</span>
+              </div>
+              <div class="checklist-item" style="display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid #F2F2F7;">
+                <input type="checkbox" style="margin-top:3px;width:16px;height:16px;accent-color:var(--gold);cursor:pointer;">
+                <div style="flex:1;">
+                  <div style="font-weight:600;font-size:13px;">Client Site Check-In</div>
+                  <div style="font-size:11px;color:var(--light-gray);">Report to client site supervisor and sign visitor/contractor log</div>
+                </div>
+                <span class="badge blue" style="font-size:10px;">Standard</span>
+              </div>
+              <div class="checklist-item" style="display:flex;align-items:flex-start;gap:10px;padding:10px 0;">
+                <input type="checkbox" style="margin-top:3px;width:16px;height:16px;accent-color:var(--gold);cursor:pointer;">
+                <div style="flex:1;">
+                  <div style="font-weight:600;font-size:13px;">Submit Daily Inspection Report</div>
+                  <div style="font-size:11px;color:var(--light-gray);">Complete and upload inspection findings at end of each shift</div>
+                </div>
+                <span class="badge blue" style="font-size:10px;">Standard</span>
+              </div>
+            </div>
+
+            <!-- Add custom task inline -->
+            <div id="addTaskRow" style="display:none;margin-top:12px;padding:12px;background:#F2F2F7;border-radius:8px;border:2px dashed #D1D1D6;">
+              <div style="display:flex;gap:12px;align-items:flex-end;">
+                <div class="form-group" style="flex:2;margin-bottom:0;">
+                  <label class="form-label">Task Name *</label>
+                  <input class="form-input" id="newTaskName" placeholder="e.g. Conduct thickness measurements on vessel shells">
+                </div>
+                <div class="form-group" style="flex:2;margin-bottom:0;">
+                  <label class="form-label">Description</label>
+                  <input class="form-input" id="newTaskDesc" placeholder="Optional details or instructions">
+                </div>
+                <div class="form-group" style="width:120px;margin-bottom:0;">
+                  <label class="form-label">Priority</label>
+                  <select class="form-select" id="newTaskPriority">
+                    <option>Required</option>
+                    <option selected>Standard</option>
+                    <option>Optional</option>
+                  </select>
+                </div>
+                <button class="btn btn-sm btn-primary" onclick="saveChecklistItem()" style="margin-bottom:2px;">Add</button>
+                <button class="btn btn-sm btn-ghost" onclick="document.getElementById('addTaskRow').style.display='none'" style="margin-bottom:2px;">&times;</button>
+              </div>
+            </div>
+
+            <div style="margin-top:12px;display:flex;justify-content:space-between;align-items:center;">
+              <div style="font-size:11px;color:var(--light-gray);">Checklist items will be assigned to the employee upon job dispatch.</div>
+              <div style="font-size:12px;font-weight:600;color:var(--gold-dark);">6 tasks &middot; 3 required</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 6: Notes -->
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Dispatch Notes</label>
+            <textarea class="form-input" rows="3" style="resize:vertical;" placeholder="Special instructions, gate codes, PPE requirements, reporting instructions, etc."></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Notifications</label>
+            <div style="display:flex;flex-direction:column;gap:10px;padding-top:4px;">
+              <div class="switch"><div class="switch-track on"></div><span style="font-size:13px;font-weight:500;">Notify employee via SMS</span></div>
+              <div class="switch"><div class="switch-track on"></div><span style="font-size:13px;font-weight:500;">Notify employee via Email</span></div>
+              <div class="switch"><div class="switch-track on"></div><span style="font-size:13px;font-weight:500;">Notify team lead (Isaac Black)</span></div>
+              <div class="switch"><div class="switch-track"></div><span style="font-size:13px;font-weight:500;">Notify client contact</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div style="display:flex;justify-content:space-between;align-items:center;padding-top:12px;border-top:1px solid #E5E5EA;">
+          <div style="font-size:11px;color:var(--light-gray);">&#128274; Assignment will appear on dispatch board and employee calendar.</div>
+          <div style="display:flex;gap:8px;">
+            <button class="btn btn-outline" onclick="toggleAssignJob()">Cancel</button>
+            <button class="btn btn-outline" onclick="toggleAssignJob()">Save as Draft</button>
+            <button class="btn btn-primary" style="padding:10px 24px;" onclick="toggleAssignJob()">Assign &amp; Notify</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-7-3">
+      <div>
+        <div class="table-container">
+          <div class="table-header"><div class="table-title">Assignment History</div><button class="btn btn-sm btn-outline">Export</button></div>
+          <table>
+            <thead><tr><th>Job ID</th><th>Client</th><th>Site</th><th>Role</th><th>Start Date</th><th>End Date</th><th>Hours</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td style="font-family:'JetBrains Mono',monospace;font-size:12px;">JOB-2026-0042</td><td><strong>Arrival Energy</strong></td><td>WTX Yard 1</td><td>Lead Inspector</td><td>Mar 10, 2026</td><td>&mdash;</td><td>18.4h</td><td><span class="badge green">Active</span></td></tr>
+              <tr><td style="font-family:'JetBrains Mono',monospace;font-size:12px;">JOB-2026-0038</td><td><strong>Basin Energy</strong></td><td>Permian Site A</td><td>Lead Inspector</td><td>Mar 8, 2026</td><td>&mdash;</td><td>6.2h</td><td><span class="badge green">Active</span></td></tr>
+              <tr><td style="font-family:'JetBrains Mono',monospace;font-size:12px;">JOB-2026-0035</td><td><strong>Arrival Energy</strong></td><td>WTX Yard 3</td><td>Lead Inspector</td><td>Mar 3, 2026</td><td>Mar 7, 2026</td><td>42.0h</td><td><span class="badge gray">Completed</span></td></tr>
+              <tr><td style="font-family:'JetBrains Mono',monospace;font-size:12px;">JOB-2026-0031</td><td><strong>Tubular Solutions</strong></td><td>Main Facility</td><td>Inspector</td><td>Feb 24, 2026</td><td>Feb 28, 2026</td><td>38.5h</td><td><span class="badge gray">Completed</span></td></tr>
+              <tr><td style="font-family:'JetBrains Mono',monospace;font-size:12px;">JOB-2026-0028</td><td><strong>Arrival Energy</strong></td><td>East Pad 2</td><td>Lead Inspector</td><td>Feb 17, 2026</td><td>Feb 21, 2026</td><td>40.0h</td><td><span class="badge gray">Completed</span></td></tr>
+              <tr><td style="font-family:'JetBrains Mono',monospace;font-size:12px;">JOB-2026-0022</td><td><strong>Bridgeport F&R</strong></td><td>South Dock</td><td>Inspector</td><td>Feb 10, 2026</td><td>Feb 14, 2026</td><td>36.8h</td><td><span class="badge gray">Completed</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">Current Assignment Detail</div></div><div class="panel-body">
+          <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:12px;color:var(--gray);">Job</span><span style="font-weight:600;font-size:13px;font-family:'JetBrains Mono',monospace;">JOB-2026-0042</span></div>
+          <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:12px;color:var(--gray);">Client</span><span style="font-weight:600;font-size:13px;">Arrival Energy</span></div>
+          <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:12px;color:var(--gray);">Site</span><span style="font-weight:600;font-size:13px;">WTX Yard 1</span></div>
+          <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:12px;color:var(--gray);">Role</span><span style="font-weight:600;font-size:13px;">Lead Inspector</span></div>
+          <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:12px;color:var(--gray);">Team</span><span style="font-weight:600;font-size:13px;">Team Alpha</span></div>
+          <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:12px;color:var(--gray);">Shift</span><span style="font-weight:600;font-size:13px;">Day (6AM &ndash; 6PM)</span></div>
+          <div style="display:flex;justify-content:space-between;padding:6px 0;"><span style="font-size:12px;color:var(--gray);">Geo-fence</span><span class="badge green">Inside</span></div>
+        </div></div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">Preferred Clients</div></div><div class="panel-body">
+          <div style="padding:6px 0;border-bottom:1px solid #F2F2F7;display:flex;justify-content:space-between;"><span style="font-weight:600;font-size:13px;">Arrival Energy Solutions</span><span class="badge gold">Primary</span></div>
+          <div style="padding:6px 0;border-bottom:1px solid #F2F2F7;display:flex;justify-content:space-between;"><span style="font-weight:600;font-size:13px;">Basin Energy Services</span><span class="badge gray">Secondary</span></div>
+          <div style="padding:6px 0;display:flex;justify-content:space-between;"><span style="font-weight:600;font-size:13px;">Bridgeport F&R</span><span class="badge gray">Available</span></div>
+        </div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TAB 3: ATTENDANCE & TIME ===== -->
+  <div class="emp-tab" id="empTab-attendance">
+    <div class="kpi-row">
+      <div class="kpi-card green"><div class="kpi-label">On-Time Rate</div><div class="kpi-value">96.2%</div><div class="kpi-delta up">&#9650; 1.1% vs last month</div></div>
+      <div class="kpi-card gold"><div class="kpi-label">Hours This Week</div><div class="kpi-value">36.2</div><div class="kpi-delta warn">3.8h remaining to threshold</div></div>
+      <div class="kpi-card blue"><div class="kpi-label">Hours This Month</div><div class="kpi-value">142.8</div><div class="kpi-delta up">On track</div></div>
+      <div class="kpi-card amber"><div class="kpi-label">Late Arrivals (MTD)</div><div class="kpi-value">1</div><div class="kpi-delta warn">Mar 5 &mdash; 8 min late</div></div>
+    </div>
+
+    <div class="grid-7-3">
+      <div>
+        <div class="table-container">
+          <div class="table-header"><div class="table-title">Weekly Time Log &mdash; Mar 10&ndash;14, 2026</div>
+            <div class="table-actions"><button class="btn btn-sm btn-outline">&#8592; Prev Week</button><button class="btn btn-sm btn-outline">Next Week &#8594;</button><button class="btn btn-sm btn-outline">Export</button></div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:center;padding:10px 16px;background:#FAFAFA;border-bottom:1px solid #E5E5EA;">
+            <label style="font-size:12px;font-weight:600;color:var(--gray);">Date Range:</label>
+            <input class="form-input" type="text" placeholder="From (MM/DD/YYYY)" id="weeklyFrom" style="max-width:160px;font-size:12px;padding:6px 10px;" onchange="filterTableByDateRange('weeklyTimeTable','weeklyFrom','weeklyTo')">
+            <span style="font-size:12px;color:var(--light-gray);">to</span>
+            <input class="form-input" type="text" placeholder="To (MM/DD/YYYY)" id="weeklyTo" style="max-width:160px;font-size:12px;padding:6px 10px;" onchange="filterTableByDateRange('weeklyTimeTable','weeklyFrom','weeklyTo')">
+          </div>
+          <table id="weeklyTimeTable">
+            <thead><tr><th>Date</th><th>Check-In</th><th>Check-Out</th><th>Regular</th><th>OT</th><th>Total</th><th>Job</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Mon, Mar 10</strong></td><td style="font-family:'JetBrains Mono',monospace;font-size:12px;">05:58 AM</td><td style="font-family:'JetBrains Mono',monospace;font-size:12px;">06:12 PM</td><td>12.0h</td><td>0.2h</td><td style="font-weight:700;">12.2h</td><td>JOB-0042</td><td><span class="badge green">Approved</span></td></tr>
+              <tr><td><strong>Tue, Mar 11</strong></td><td style="font-family:'JetBrains Mono',monospace;font-size:12px;">06:02 AM</td><td style="font-family:'JetBrains Mono',monospace;font-size:12px;">06:00 PM</td><td>12.0h</td><td>0.0h</td><td style="font-weight:700;">12.0h</td><td>JOB-0042</td><td><span class="badge green">Approved</span></td></tr>
+              <tr><td><strong>Wed, Mar 12</strong></td><td style="font-family:'JetBrains Mono',monospace;font-size:12px;">05:55 AM</td><td style="font-family:'JetBrains Mono',monospace;font-size:12px;">06:05 PM</td><td>12.0h</td><td>0.2h</td><td style="font-weight:700;">12.2h</td><td>JOB-0042</td><td><span class="badge gold">Pending</span></td></tr>
+              <tr><td><strong>Thu, Mar 13</strong></td><td style="font-family:'JetBrains Mono',monospace;font-size:12px;">06:00 AM</td><td style="font-family:'JetBrains Mono',monospace;font-size:12px;">&mdash;</td><td>6.2h</td><td>0.0h</td><td style="font-weight:700;">6.2h</td><td>JOB-0042</td><td><span class="badge blue">In Progress</span></td></tr>
+              <tr style="background:var(--off-white);"><td><strong>Fri, Mar 14</strong></td><td style="color:var(--light-gray);">&mdash;</td><td style="color:var(--light-gray);">&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td><span class="badge gray">Scheduled</span></td></tr>
+            </tbody>
+            <tfoot><tr style="background:#FAFAFA;font-weight:700;"><td>Week Total</td><td></td><td></td><td>42.2h</td><td>0.4h</td><td style="color:var(--gold-dark);">42.6h</td><td></td><td></td></tr></tfoot>
+          </table>
+        </div>
+
+        <div class="panel"><div class="panel-header"><div class="panel-title">Monthly Attendance Summary</div>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <select class="form-select" style="font-size:12px;padding:6px 10px;min-width:90px;" id="attendanceYear" onchange="filterAttendanceByYear(this.value)">
+              <option selected>2026</option>
+              <option>2025</option>
+              <option>2024</option>
+            </select>
+            <button class="btn btn-sm btn-outline">Export</button>
+          </div></div>
+          <div style="display:flex;gap:12px;align-items:center;padding:10px 16px;background:#FAFAFA;border-bottom:1px solid #E5E5EA;">
+            <label style="font-size:12px;font-weight:600;color:var(--gray);">Date Range:</label>
+            <input class="form-input" type="text" placeholder="From (MM/DD/YYYY)" id="attendFrom" style="max-width:160px;font-size:12px;padding:6px 10px;" onchange="filterTableByDateRange('monthlyAttendTable','attendFrom','attendTo')">
+            <span style="font-size:12px;color:var(--light-gray);">to</span>
+            <input class="form-input" type="text" placeholder="To (MM/DD/YYYY)" id="attendTo" style="max-width:160px;font-size:12px;padding:6px 10px;" onchange="filterTableByDateRange('monthlyAttendTable','attendFrom','attendTo')">
+          </div>
+          <div style="padding:0;">
+            <table id="monthlyAttendTable">
+              <thead><tr><th>Month</th><th>Days Worked</th><th>On Time</th><th>Late</th><th>Absent</th><th>Total Hours</th><th>OT Hours</th><th>Attendance %</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Mar 2026</strong></td><td>9</td><td>8</td><td>1</td><td>0</td><td>142.8h</td><td>4.2h</td><td><span class="badge green">96.2%</span></td></tr>
+                <tr><td><strong>Feb 2026</strong></td><td>20</td><td>19</td><td>1</td><td>0</td><td>168.5h</td><td>8.5h</td><td><span class="badge green">97.5%</span></td></tr>
+                <tr><td><strong>Jan 2026</strong></td><td>22</td><td>22</td><td>0</td><td>0</td><td>176.0h</td><td>6.0h</td><td><span class="badge green">100%</span></td></tr>
+                <tr><td><strong>Dec 2025</strong></td><td>18</td><td>17</td><td>0</td><td>1</td><td>148.2h</td><td>2.2h</td><td><span class="badge amber">94.4%</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">Today&rsquo;s Status</div></div><div class="panel-body">
+          <div style="text-align:center;margin-bottom:12px;">
+            <span class="badge green" style="font-size:14px;padding:8px 16px;">On Site</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:12px;color:var(--gray);">Checked In</span><span style="font-weight:600;font-size:13px;">06:00 AM</span></div>
+          <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:12px;color:var(--gray);">Hours So Far</span><span style="font-weight:600;font-size:13px;">6.2h</span></div>
+          <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:12px;color:var(--gray);">Job</span><span style="font-weight:600;font-size:13px;">JOB-2026-0042</span></div>
+          <div style="display:flex;justify-content:space-between;padding:6px 0;"><span style="font-size:12px;color:var(--gray);">Geo-fence</span><span class="badge green">Inside</span></div>
+        </div></div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">OT Threshold</div></div><div class="panel-body">
+          <div style="text-align:center;margin-bottom:8px;"><div class="kpi-value" style="font-size:36px;">36.2<span style="font-size:16px;color:var(--light-gray);">/40h</span></div></div>
+          <div class="progress-bar"><div class="progress-fill gold" style="width:90%;"></div></div>
+          <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--light-gray);margin-top:4px;"><span>0h</span><span style="color:var(--amber);font-weight:600;">3.8h remaining</span><span>40h</span></div>
+        </div></div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">Recent Exceptions</div></div><div class="panel-body">
+          <div class="timeline-item">
+            <div class="timeline-dot amber">!</div>
+            <div class="timeline-content"><div class="timeline-title">Late Check-In (8 min)</div><div class="timeline-time">Mar 5, 2026 &middot; 06:08 AM</div></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot gold">&#8634;</div>
+            <div class="timeline-content"><div class="timeline-title">Shift Swap: Night &rarr; Day</div><div class="timeline-time">Feb 18, 2026 &middot; Approved by Isaac B.</div></div>
+          </div>
+        </div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TAB 4: OVERTIME ===== -->
+  <div class="emp-tab" id="empTab-overtime">
+    <div class="kpi-row">
+      <div class="kpi-card gold"><div class="kpi-label">OT Hours This Week</div><div class="kpi-value">0.4</div><div class="kpi-delta warn">Threshold: 40h</div></div>
+      <div class="kpi-card amber"><div class="kpi-label">OT Hours This Month</div><div class="kpi-value">4.2</div><div class="kpi-delta down">&#9650; 1.8h vs Feb</div></div>
+      <div class="kpi-card blue"><div class="kpi-label">OT Cost (MTD)</div><div class="kpi-value">$264.60</div><div class="kpi-delta warn">Rate: $63.00/hr (1.5x)</div></div>
+      <div class="kpi-card green"><div class="kpi-label">Avg Weekly OT</div><div class="kpi-value">1.8h</div><div class="kpi-delta up">Below company avg of 2.4h</div></div>
+    </div>
+
+    <div class="grid-7-3">
+      <div>
+        <div class="table-container">
+          <div class="table-header"><div class="table-title">Overtime Log</div><button class="btn btn-sm btn-outline">Export</button></div>
+          <div style="display:flex;gap:12px;align-items:center;padding:10px 16px;background:#FAFAFA;border-bottom:1px solid #E5E5EA;flex-wrap:wrap;">
+            <div style="position:relative;min-width:220px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="2" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+              <input class="form-input" type="text" placeholder="Search..." oninput="filterTable(this,'otLogTable')" style="padding-left:32px;font-size:12px;padding-top:6px;padding-bottom:6px;">
+            </div>
+            <label style="font-size:12px;font-weight:600;color:var(--gray);">Date Range:</label>
+            <input class="form-input" type="text" placeholder="From (MM/DD/YYYY)" id="otLogFrom" style="max-width:160px;font-size:12px;padding:6px 10px;" onchange="filterTableByDateRange('otLogTable','otLogFrom','otLogTo')">
+            <span style="font-size:12px;color:var(--light-gray);">to</span>
+            <input class="form-input" type="text" placeholder="To (MM/DD/YYYY)" id="otLogTo" style="max-width:160px;font-size:12px;padding:6px 10px;" onchange="filterTableByDateRange('otLogTable','otLogFrom','otLogTo')">
+          </div>
+          <table id="otLogTable">
+            <thead><tr><th>Week Ending</th><th>Job ID</th><th>Regular Hours</th><th>OT Hours</th><th>Total Hours</th><th>OT Rate</th><th>OT Cost</th><th>Approval</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Mar 14, 2026</strong></td><td style="font-family:'JetBrains Mono',monospace;font-size:12px;">JOB-0042</td><td>36.2h</td><td>0.4h</td><td>36.6h</td><td>$63.00</td><td>$25.20</td><td>&mdash;</td><td><span class="badge blue">In Progress</span></td></tr>
+              <tr><td><strong>Mar 7, 2026</strong></td><td style="font-family:'JetBrains Mono',monospace;font-size:12px;">JOB-0042</td><td>40.0h</td><td>2.0h</td><td>42.0h</td><td>$63.00</td><td>$126.00</td><td>Isaac Black</td><td><span class="badge green">Approved</span></td></tr>
+              <tr><td><strong>Feb 28, 2026</strong></td><td style="font-family:'JetBrains Mono',monospace;font-size:12px;">JOB-0038</td><td>40.0h</td><td>1.8h</td><td>41.8h</td><td>$63.00</td><td>$113.40</td><td>Isaac Black</td><td><span class="badge green">Approved</span></td></tr>
+              <tr><td><strong>Feb 21, 2026</strong></td><td style="font-family:'JetBrains Mono',monospace;font-size:12px;">JOB-0035</td><td>38.5h</td><td>0.0h</td><td>38.5h</td><td>$63.00</td><td>$0.00</td><td>&mdash;</td><td><span class="badge gray">No OT</span></td></tr>
+              <tr><td><strong>Feb 14, 2026</strong></td><td style="font-family:'JetBrains Mono',monospace;font-size:12px;">JOB-0035</td><td>40.0h</td><td>3.2h</td><td>43.2h</td><td>$63.00</td><td>$201.60</td><td>Isaac Black</td><td><span class="badge green">Approved</span></td></tr>
+              <tr><td><strong>Feb 7, 2026</strong></td><td style="font-family:'JetBrains Mono',monospace;font-size:12px;">JOB-0031</td><td>40.0h</td><td>3.5h</td><td>43.5h</td><td>$63.00</td><td>$220.50</td><td>Isaac Black</td><td><span class="badge green">Approved</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="panel"><div class="panel-header"><div class="panel-title">OT Threshold Configuration</div></div><div class="panel-body">
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">Weekly OT Threshold</label><input class="form-input" value="40 hours"></div>
+            <div class="form-group"><label class="form-label">OT Multiplier</label><input class="form-input" value="1.5x" readonly style="background:#FAFAFA;"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">Pre-Approval Required</label><div class="switch"><div class="switch-track on"></div><span style="font-size:13px;font-weight:500;">Yes &mdash; Must be approved by Ops Manager</span></div></div>
+            <div class="form-group"><label class="form-label">Auto-Alert Threshold</label><input class="form-input" value="38 hours (2h before OT)"></div>
+          </div>
+        </div></div>
+      </div>
+      <div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">This Week Projection</div></div><div class="panel-body">
+          <div style="text-align:center;margin-bottom:8px;"><div class="kpi-value" style="font-size:36px;">36.2<span style="font-size:16px;color:var(--light-gray);">/40h</span></div></div>
+          <div class="progress-bar"><div class="progress-fill gold" style="width:90%;"></div></div>
+          <div style="font-size:12px;color:var(--amber);font-weight:600;text-align:center;margin-top:8px;">Projected: ~42h by end of week</div>
+          <div style="margin-top:16px;padding:12px;background:var(--amber-dim);border-radius:8px;font-size:12px;color:#CC7D00;">
+            <strong>&#9888; OT Alert:</strong> If Ezven works through Friday at current pace, estimated 2.0h overtime.
+          </div>
+        </div></div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">OT Trend (Last 8 Weeks)</div></div><div class="panel-body">
+          <div style="display:flex;align-items:flex-end;gap:6px;height:120px;padding-top:8px;">
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
+              <div style="background:var(--gold);width:100%;border-radius:4px 4px 0 0;height:35px;"></div>
+              <span style="font-size:10px;color:var(--light-gray);">W1</span>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
+              <div style="background:var(--gold);width:100%;border-radius:4px 4px 0 0;height:52px;"></div>
+              <span style="font-size:10px;color:var(--light-gray);">W2</span>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
+              <div style="background:var(--gold);width:100%;border-radius:4px 4px 0 0;height:0px;"></div>
+              <span style="font-size:10px;color:var(--light-gray);">W3</span>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
+              <div style="background:var(--amber);width:100%;border-radius:4px 4px 0 0;height:48px;"></div>
+              <span style="font-size:10px;color:var(--light-gray);">W4</span>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
+              <div style="background:var(--gold);width:100%;border-radius:4px 4px 0 0;height:27px;"></div>
+              <span style="font-size:10px;color:var(--light-gray);">W5</span>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
+              <div style="background:var(--gold);width:100%;border-radius:4px 4px 0 0;height:30px;"></div>
+              <span style="font-size:10px;color:var(--light-gray);">W6</span>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
+              <div style="background:var(--gold);width:100%;border-radius:4px 4px 0 0;height:18px;"></div>
+              <span style="font-size:10px;color:var(--light-gray);">W7</span>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
+              <div style="background:var(--blue);width:100%;border-radius:4px 4px 0 0;height:6px;"></div>
+              <span style="font-size:10px;color:var(--light-gray);">W8</span>
+            </div>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--light-gray);margin-top:8px;"><span>Jan 20</span><span>Current</span></div>
+        </div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TAB 5: MILEAGE ===== -->
+  <div class="emp-tab" id="empTab-mileage">
+    <div class="kpi-row">
+      <div class="kpi-card gold"><div class="kpi-label">Miles This Month</div><div class="kpi-value">842</div><div class="kpi-delta up">&#9650; 12% vs Feb</div></div>
+      <div class="kpi-card blue"><div class="kpi-label">Reimbursement (MTD)</div><div class="kpi-value">$555.72</div><div class="kpi-delta up">@ $0.66/mile</div></div>
+      <div class="kpi-card green"><div class="kpi-label">YTD Total Miles</div><div class="kpi-value">2,480</div><div class="kpi-delta up">Since Jan 2026</div></div>
+      <div class="kpi-card amber"><div class="kpi-label">Avg Daily Miles</div><div class="kpi-value">93.6</div><div class="kpi-delta warn">Above team avg of 78</div></div>
+    </div>
+
+    <div class="grid-7-3">
+      <div>
+        <div class="table-container">
+          <div class="table-header"><div class="table-title">Mileage Log</div>
+            <div class="table-actions"><button class="btn btn-sm btn-outline">Export</button></div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:center;padding:10px 16px;background:#FAFAFA;border-bottom:1px solid #E5E5EA;flex-wrap:wrap;">
+            <div style="position:relative;min-width:220px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="2" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+              <input class="form-input" type="text" placeholder="Search..." oninput="filterTable(this,'mileageLogTable')" style="padding-left:32px;font-size:12px;padding-top:6px;padding-bottom:6px;">
+            </div>
+            <label style="font-size:12px;font-weight:600;color:var(--gray);">Date Range:</label>
+            <input class="form-input" type="text" placeholder="From (MM/DD/YYYY)" id="mileageFrom" style="max-width:160px;font-size:12px;padding:6px 10px;" onchange="filterTableByDateRange('mileageLogTable','mileageFrom','mileageTo')">
+            <span style="font-size:12px;color:var(--light-gray);">to</span>
+            <input class="form-input" type="text" placeholder="To (MM/DD/YYYY)" id="mileageTo" style="max-width:160px;font-size:12px;padding:6px 10px;" onchange="filterTableByDateRange('mileageLogTable','mileageFrom','mileageTo')">
+          </div>
+          <table id="mileageLogTable">
+            <thead><tr><th>Date</th><th>From</th><th>To</th><th>Job</th><th>Miles</th><th>Rate</th><th>Amount</th><th>Status</th><th>Action</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Mar 13</strong></td><td>Home (Midland)</td><td>WTX Yard 1</td><td>JOB-0042</td><td>48.2</td><td>$0.66</td><td>$31.81</td><td><span class="badge blue">In Progress</span></td><td><button class="btn btn-sm btn-primary" style="padding:4px 10px;font-size:11px;">Approve</button> <button class="btn btn-sm btn-outline" style="padding:4px 10px;font-size:11px;color:var(--red);border-color:var(--red);">Reject</button></td></tr>
+              <tr><td><strong>Mar 12</strong></td><td>Home (Midland)</td><td>WTX Yard 1</td><td>JOB-0042</td><td>96.4</td><td>$0.66</td><td>$63.62</td><td><span class="badge gold">Pending</span></td><td><button class="btn btn-sm btn-primary" style="padding:4px 10px;font-size:11px;">Approve</button> <button class="btn btn-sm btn-outline" style="padding:4px 10px;font-size:11px;color:var(--red);border-color:var(--red);">Reject</button></td></tr>
+              <tr><td><strong>Mar 11</strong></td><td>Home (Midland)</td><td>WTX Yard 1</td><td>JOB-0042</td><td>96.4</td><td>$0.66</td><td>$63.62</td><td><span class="badge green">Approved</span></td><td><button class="btn btn-sm btn-outline" style="padding:4px 10px;font-size:11px;color:var(--red);border-color:var(--red);">Revoke</button></td></tr>
+              <tr><td><strong>Mar 10</strong></td><td>Home (Midland)</td><td>WTX Yard 1</td><td>JOB-0042</td><td>96.4</td><td>$0.66</td><td>$63.62</td><td><span class="badge green">Approved</span></td><td><button class="btn btn-sm btn-outline" style="padding:4px 10px;font-size:11px;color:var(--red);border-color:var(--red);">Revoke</button></td></tr>
+              <tr><td><strong>Mar 8</strong></td><td>Home (Midland)</td><td>Permian Site A</td><td>JOB-0038</td><td>112.6</td><td>$0.66</td><td>$74.32</td><td><span class="badge green">Approved</span></td><td><button class="btn btn-sm btn-outline" style="padding:4px 10px;font-size:11px;color:var(--red);border-color:var(--red);">Revoke</button></td></tr>
+              <tr><td><strong>Mar 7</strong></td><td>WTX Yard 3</td><td>Home (Midland)</td><td>JOB-0035</td><td>52.1</td><td>$0.66</td><td>$34.39</td><td><span class="badge green">Approved</span></td><td><button class="btn btn-sm btn-outline" style="padding:4px 10px;font-size:11px;color:var(--red);border-color:var(--red);">Revoke</button></td></tr>
+              <tr><td><strong>Mar 6</strong></td><td>Home (Midland)</td><td>WTX Yard 3</td><td>JOB-0035</td><td>104.2</td><td>$0.66</td><td>$68.77</td><td><span class="badge green">Approved</span></td><td><button class="btn btn-sm btn-outline" style="padding:4px 10px;font-size:11px;color:var(--red);border-color:var(--red);">Revoke</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">Mileage Configuration</div></div><div class="panel-body">
+          <div class="form-group"><label class="form-label">Reimbursement Rate</label><input class="form-input" value="$0.66/mile (IRS 2026)" readonly style="background:#FAFAFA;"></div>
+          <div class="form-group"><label class="form-label">Home Address</label><input class="form-input" value="Midland, TX 79701" readonly></div>
+          <div class="form-group"><label class="form-label">Vehicle</label><input class="form-input" value="2024 Ford F-150 (Personal)" readonly></div>
+        </div></div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">Monthly Summary</div></div><div class="panel-body">
+          <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:12px;color:var(--gray);">Mar 2026</span><span style="font-weight:600;">842 mi / $555.72</span></div>
+          <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:12px;color:var(--gray);">Feb 2026</span><span style="font-weight:600;">752 mi / $496.32</span></div>
+          <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:12px;color:var(--gray);">Jan 2026</span><span style="font-weight:600;">886 mi / $584.76</span></div>
+          <div style="display:flex;justify-content:space-between;padding:6px 0;"><span style="font-size:12px;color:var(--gray);">Dec 2025</span><span style="font-weight:600;">648 mi / $427.68</span></div>
+        </div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TAB 6: CERTIFICATIONS ===== -->
+  <div class="emp-tab" id="empTab-certifications">
+    <div class="kpi-row">
+      <div class="kpi-card green"><div class="kpi-label">Active Certifications</div><div class="kpi-value">6</div><div class="kpi-delta up">All current</div></div>
+      <div class="kpi-card amber"><div class="kpi-label">Expiring Soon</div><div class="kpi-value">1</div><div class="kpi-delta warn">Within 90 days</div></div>
+      <div class="kpi-card blue"><div class="kpi-label">Training Hours (YTD)</div><div class="kpi-value">24</div><div class="kpi-delta up">Target: 40h/year</div></div>
+      <div class="kpi-card gold"><div class="kpi-label">Compliance Score</div><div class="kpi-value">100%</div><div class="kpi-delta up">Fully compliant</div></div>
+    </div>
+
+    <div class="grid-7-3">
+      <div>
+        <div class="table-container">
+          <div class="table-header"><div class="table-title">Certification Registry</div>
+            <div class="table-actions"><button class="btn btn-sm btn-outline" id="certExportBtn">Export</button><button class="btn btn-sm btn-primary" id="addCertBtn" onclick="toggleAddCert()">+ Add Certification</button></div>
+          </div>
+
+          <!-- ADD CERTIFICATION FORM -->
+          <div id="addCertForm" style="display:none;border-bottom:2px solid var(--gold);background:linear-gradient(180deg, var(--gold-dim) 0%, var(--white) 100%);">
+            <div style="padding:20px 20px 0 20px;display:flex;justify-content:space-between;align-items:center;">
+              <div style="display:flex;align-items:center;gap:10px;">
+                <div style="width:32px;height:32px;border-radius:8px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;color:var(--black);">+</div>
+                <div>
+                  <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:16px;text-transform:uppercase;letter-spacing:0.5px;">Add New Certification</div>
+                  <div style="font-size:11px;color:var(--light-gray);">Employee: Ezven Ortiz &middot; All fields marked * are required</div>
+                </div>
+              </div>
+              <button class="btn btn-sm btn-ghost" onclick="toggleAddCert()" style="font-size:18px;padding:4px 8px;">&times;</button>
+            </div>
+            <div style="padding:20px;">
+              <!-- Row 1: Cert Type & Name -->
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Certification Type *</label>
+                  <select class="form-select" id="certType">
+                    <option value="" disabled selected>Select certification type...</option>
+                    <option>API Inspection</option>
+                    <option>NDT &mdash; Magnetic Particle (MT)</option>
+                    <option>NDT &mdash; Ultrasonic (UT)</option>
+                    <option>NDT &mdash; Radiographic (RT)</option>
+                    <option>NDT &mdash; Liquid Penetrant (PT)</option>
+                    <option>NDT &mdash; Visual (VT)</option>
+                    <option>TWIC Card</option>
+                    <option>H2S / SafeLand</option>
+                    <option>OSHA Safety</option>
+                    <option>Eye Exam / Vision Acuity</option>
+                    <option>Drug Screen</option>
+                    <option>Driver&rsquo;s License (CDL)</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Certification Name *</label>
+                  <input class="form-input" placeholder="e.g. API 570 Piping Inspector">
+                </div>
+              </div>
+
+              <!-- Row 2: Issuing Body & Level -->
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Issuing Body / Organization *</label>
+                  <select class="form-select">
+                    <option value="" disabled selected>Select issuing body...</option>
+                    <option>American Petroleum Institute (API)</option>
+                    <option>ASNT (American Society for Nondestructive Testing)</option>
+                    <option>IADC (International Association of Drilling Contractors)</option>
+                    <option>TSA (Transportation Security Administration)</option>
+                    <option>OSHA</option>
+                    <option>NACE International</option>
+                    <option>AWS (American Welding Society)</option>
+                    <option>State DMV</option>
+                    <option>Medical Provider</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Certification Level</label>
+                  <select class="form-select">
+                    <option value="" disabled selected>Select level (if applicable)...</option>
+                    <option>Level I</option>
+                    <option>Level II</option>
+                    <option>Level III</option>
+                    <option>Senior</option>
+                    <option>N/A</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Row 3: License #, Issue Date, Expiry Date -->
+              <div class="form-row-3">
+                <div class="form-group">
+                  <label class="form-label">License / Certificate Number</label>
+                  <input class="form-input" placeholder="e.g. API-570-28491" style="font-family:'JetBrains Mono',monospace;">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Issue Date *</label>
+                  <input class="form-input" type="date">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Expiry Date *</label>
+                  <input class="form-input" type="date">
+                </div>
+              </div>
+
+              <!-- Row 4: Renewal Period & Auto-Reminder -->
+              <div class="form-row-3">
+                <div class="form-group">
+                  <label class="form-label">Renewal Period</label>
+                  <select class="form-select">
+                    <option value="" disabled selected>Select renewal cycle...</option>
+                    <option>1 Year</option>
+                    <option>2 Years</option>
+                    <option>3 Years</option>
+                    <option>5 Years</option>
+                    <option>Non-Expiring</option>
+                    <option>Custom</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Reminder Lead Time</label>
+                  <select class="form-select">
+                    <option>30 days before expiry</option>
+                    <option>60 days before expiry</option>
+                    <option selected>90 days before expiry</option>
+                    <option>120 days before expiry</option>
+                    <option>180 days before expiry</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Auto-Reminder</label>
+                  <div style="padding-top:6px;"><div class="switch"><div class="switch-track on"></div><span style="font-size:13px;font-weight:500;">Send email &amp; dashboard alert</span></div></div>
+                </div>
+              </div>
+
+              <!-- Row 5: Training Hours & Provider -->
+              <div class="form-row-3">
+                <div class="form-group">
+                  <label class="form-label">Training Hours (for this cert)</label>
+                  <input class="form-input" type="number" placeholder="e.g. 40" min="0">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Training Provider</label>
+                  <input class="form-input" placeholder="e.g. TUV Rheinland, ASNT Online">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Training Type</label>
+                  <select class="form-select">
+                    <option value="" disabled selected>Select...</option>
+                    <option>In-Person Classroom</option>
+                    <option>Online / Virtual</option>
+                    <option>On-the-Job (OJT)</option>
+                    <option>Self-Study / Exam Only</option>
+                    <option>Blended (Online + In-Person)</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Row 6: Cost & Paid By -->
+              <div class="form-row-3">
+                <div class="form-group">
+                  <label class="form-label">Certification Cost</label>
+                  <input class="form-input" placeholder="$0.00" type="text">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Paid By</label>
+                  <select class="form-select">
+                    <option selected>Company (Zion Energy)</option>
+                    <option>Employee (Reimbursable)</option>
+                    <option>Employee (Non-Reimbursable)</option>
+                    <option>Third Party / Client</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Reimbursement Status</label>
+                  <select class="form-select">
+                    <option selected>N/A &mdash; Company Paid</option>
+                    <option>Pending Reimbursement</option>
+                    <option>Reimbursed</option>
+                    <option>Declined</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Row 7: Upload & Notes -->
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Upload Certificate Document *</label>
+                  <div style="border:2px dashed #D1D1D6;border-radius:8px;padding:24px;text-align:center;cursor:pointer;transition:all 0.15s;background:var(--white);">
+                    <div style="font-size:24px;margin-bottom:8px;">&#128196;</div>
+                    <div style="font-size:13px;font-weight:600;color:var(--near-black);">Drop file here or click to browse</div>
+                    <div style="font-size:11px;color:var(--light-gray);margin-top:4px;">PDF, JPG, PNG up to 10MB</div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Notes / Comments</label>
+                  <textarea class="form-input" rows="4" style="resize:vertical;" placeholder="Optional notes about this certification, e.g. renewal requirements, special conditions, training details..."></textarea>
+                </div>
+              </div>
+
+              <!-- Row 8: Compliance Flags -->
+              <div class="panel" style="margin-bottom:16px;border:1px solid #E5E5EA;">
+                <div class="panel-header"><div class="panel-title">Compliance Settings</div></div>
+                <div class="panel-body">
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+                    <div class="form-group" style="margin-bottom:0;">
+                      <div class="switch"><div class="switch-track on"></div><span style="font-size:13px;font-weight:500;">Required for Field Work</span></div>
+                      <div style="font-size:11px;color:var(--light-gray);margin-top:4px;margin-left:44px;">Employee cannot be dispatched if expired</div>
+                    </div>
+                    <div class="form-group" style="margin-bottom:0;">
+                      <div class="switch"><div class="switch-track on"></div><span style="font-size:13px;font-weight:500;">Client-Specific Requirement</span></div>
+                      <div style="font-size:11px;color:var(--light-gray);margin-top:4px;margin-left:44px;">Required by one or more client contracts</div>
+                    </div>
+                    <div class="form-group" style="margin-bottom:0;">
+                      <div class="switch"><div class="switch-track"></div><span style="font-size:13px;font-weight:500;">Block Dispatch on Expiry</span></div>
+                      <div style="font-size:11px;color:var(--light-gray);margin-top:4px;margin-left:44px;">Hard-block: system prevents job assignment</div>
+                    </div>
+                    <div class="form-group" style="margin-bottom:0;">
+                      <div class="switch"><div class="switch-track on"></div><span style="font-size:13px;font-weight:500;">Notify Supervisor on Expiry</span></div>
+                      <div style="font-size:11px;color:var(--light-gray);margin-top:4px;margin-left:44px;">Alert sent to Isaac Black (Ops Manager)</div>
+                    </div>
+                  </div>
+                  <div style="margin-top:16px;">
+                    <label class="form-label">Linked Clients (Requirement)</label>
+                    <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                      <div class="filter-pill active">Arrival Energy Solutions</div>
+                      <div class="filter-pill">Basin Energy Services</div>
+                      <div class="filter-pill">Tubular Solutions Inc.</div>
+                      <div class="filter-pill">Bridgeport F&R</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Action Buttons -->
+              <div style="display:flex;justify-content:space-between;align-items:center;padding-top:8px;border-top:1px solid #E5E5EA;">
+                <div style="font-size:11px;color:var(--light-gray);">&#128274; This record will be visible to HR Admin, Ops Manager, and the employee.</div>
+                <div style="display:flex;gap:8px;">
+                  <button class="btn btn-outline" onclick="toggleAddCert()">Cancel</button>
+                  <button class="btn btn-outline">Save as Draft</button>
+                  <button class="btn btn-primary" style="padding:10px 24px;">Submit Certification</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="certSearchBar" style="display:flex;gap:12px;align-items:center;padding:10px 16px;background:#FAFAFA;border-bottom:1px solid #E5E5EA;">
+            <div style="position:relative;min-width:280px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="2" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+              <input class="form-input" type="text" placeholder="Search certifications..." oninput="filterTable(this,'certRegistryTable')" style="padding-left:32px;font-size:12px;padding-top:6px;padding-bottom:6px;">
+            </div>
+          </div>
+          <table id="certRegistryTable">
+            <thead><tr><th>Certification</th><th>Issuing Body</th><th>License #</th><th>Issue Date</th><th>Expiry Date</th><th>Days Remaining</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody>
+              <tr><td><strong>API 570 Piping Inspector</strong></td><td>American Petroleum Institute</td><td style="font-family:'JetBrains Mono',monospace;font-size:12px;">API-570-28491</td><td>Dec 15, 2023</td><td>Dec 15, 2026</td><td>277</td><td><span class="badge green">Current</span></td><td><button class="btn btn-sm btn-ghost">View</button></td></tr>
+              <tr><td><strong>NDT Level II &mdash; MT</strong></td><td>ASNT</td><td style="font-family:'JetBrains Mono',monospace;font-size:12px;">ASNT-MT2-14822</td><td>Aug 20, 2024</td><td>Aug 20, 2026</td><td>160</td><td><span class="badge green">Current</span></td><td><button class="btn btn-sm btn-ghost">View</button></td></tr>
+              <tr><td><strong>NDT Level II &mdash; UT</strong></td><td>ASNT</td><td style="font-family:'JetBrains Mono',monospace;font-size:12px;">ASNT-UT2-14823</td><td>Aug 20, 2024</td><td>Aug 20, 2026</td><td>160</td><td><span class="badge green">Current</span></td><td><button class="btn btn-sm btn-ghost">View</button></td></tr>
+              <tr><td><strong>TWIC Card</strong></td><td>TSA</td><td style="font-family:'JetBrains Mono',monospace;font-size:12px;">TWC-0049182</td><td>Mar 1, 2025</td><td>Mar 1, 2030</td><td>1,448</td><td><span class="badge green">Current</span></td><td><button class="btn btn-sm btn-ghost">View</button></td></tr>
+              <tr><td><strong>H2S Safety (SafeLand)</strong></td><td>IADC</td><td style="font-family:'JetBrains Mono',monospace;font-size:12px;">SL-2025-8841</td><td>Jun 10, 2025</td><td>Jun 10, 2026</td><td style="color:var(--amber);font-weight:700;">89</td><td><span class="badge amber">Expiring Soon</span></td><td><button class="btn btn-sm btn-ghost">Renew</button></td></tr>
+              <tr><td><strong>Eye Exam (Near Vision Acuity)</strong></td><td>Dr. Ramirez Optometry</td><td style="font-family:'JetBrains Mono',monospace;font-size:12px;">&mdash;</td><td>Jan 8, 2026</td><td>Jan 8, 2027</td><td>301</td><td><span class="badge green">Valid</span></td><td><button class="btn btn-sm btn-ghost">View</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+      <div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">Compliance Summary</div></div><div class="panel-body">
+          <div style="text-align:center;margin-bottom:12px;">
+            <div class="kpi-value" style="font-size:48px;color:var(--green);">100%</div>
+            <div style="font-size:12px;color:var(--light-gray);">Fully Compliant</div>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:13px;color:var(--gray);">Active Certs</span><span style="font-weight:700;">6</span></div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:13px;color:var(--gray);">Expired</span><span style="font-weight:700;color:var(--green);">0</span></div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:13px;color:var(--gray);">Expiring &lt;90d</span><span style="font-weight:700;color:var(--amber);">1</span></div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;"><span style="font-size:13px;color:var(--gray);">Training Hours</span><span style="font-weight:700;">24/40h</span></div>
+        </div></div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">Upcoming Renewals</div></div><div class="panel-body">
+          <div class="timeline-item">
+            <div class="timeline-dot amber">!</div>
+            <div class="timeline-content"><div class="timeline-title">H2S Safety (SafeLand)</div><div class="timeline-time">Expires Jun 10, 2026 &middot; 89 days</div></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot blue">&#8634;</div>
+            <div class="timeline-content"><div class="timeline-title">NDT Level II &mdash; MT</div><div class="timeline-time">Expires Aug 20, 2026 &middot; 160 days</div></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot blue">&#8634;</div>
+            <div class="timeline-content"><div class="timeline-title">NDT Level II &mdash; UT</div><div class="timeline-time">Expires Aug 20, 2026 &middot; 160 days</div></div>
+          </div>
+        </div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TAB 7: PAYROLL ===== -->
+  <div class="emp-tab" id="empTab-payroll">
+    <div class="kpi-row">
+      <div class="kpi-card gold"><div class="kpi-label">Gross Pay (MTD)</div><div class="kpi-value">$6,261</div><div class="kpi-delta up">142.8h regular + 4.2h OT</div></div>
+      <div class="kpi-card blue"><div class="kpi-label">Base Hourly Rate</div><div class="kpi-value">$42.00</div><div class="kpi-delta up">Last raise: Jan 2026</div></div>
+      <div class="kpi-card green"><div class="kpi-label">YTD Earnings</div><div class="kpi-value">$18,490</div><div class="kpi-delta up">Through Mar 13, 2026</div></div>
+      <div class="kpi-card amber"><div class="kpi-label">OT Pay (MTD)</div><div class="kpi-value">$264.60</div><div class="kpi-delta warn">4.2h @ $63.00/hr</div></div>
+    </div>
+
+    <div class="grid-7-3">
+      <div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">Pay Configuration</div></div><div class="panel-body">
+          <div class="form-row-3">
+            <div class="form-group"><label class="form-label">Pay Type</label><select class="form-select"><option selected>Hourly</option><option>Salary</option></select></div>
+            <div class="form-group"><label class="form-label">Base Rate</label><input class="form-input" value="$42.00/hr"></div>
+            <div class="form-group"><label class="form-label">Pay Frequency</label><select class="form-select"><option selected>Weekly</option><option>Bi-Weekly</option><option>Semi-Monthly</option></select></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">OT Rate (1.5x)</label><input class="form-input" value="$63.00/hr" readonly style="background:#FAFAFA;"></div>
+            <div class="form-group"><label class="form-label">OT Threshold</label><input class="form-input" value="40 hours/week"></div>
+          </div>
+        </div></div>
+
+        <div class="table-container">
+          <div class="table-header"><div class="table-title">Payroll History</div><button class="btn btn-sm btn-outline">Export</button></div>
+          <table>
+            <thead><tr><th>Pay Period</th><th>Regular Hours</th><th>OT Hours</th><th>Gross Pay</th><th>Deductions</th><th>Net Pay</th><th>Status</th><th>Stub</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Mar 3&ndash;9, 2026</strong></td><td>40.0h</td><td>2.0h</td><td>$1,806.00</td><td>$451.50</td><td>$1,354.50</td><td><span class="badge green">Paid</span></td><td><span style="color:var(--gold-dark);cursor:pointer;font-weight:600;">&#128196;</span></td></tr>
+              <tr><td><strong>Feb 24&ndash;Mar 2, 2026</strong></td><td>38.5h</td><td>0.0h</td><td>$1,617.00</td><td>$404.25</td><td>$1,212.75</td><td><span class="badge green">Paid</span></td><td><span style="color:var(--gold-dark);cursor:pointer;font-weight:600;">&#128196;</span></td></tr>
+              <tr><td><strong>Feb 17&ndash;23, 2026</strong></td><td>40.0h</td><td>3.2h</td><td>$1,881.60</td><td>$470.40</td><td>$1,411.20</td><td><span class="badge green">Paid</span></td><td><span style="color:var(--gold-dark);cursor:pointer;font-weight:600;">&#128196;</span></td></tr>
+              <tr><td><strong>Feb 10&ndash;16, 2026</strong></td><td>40.0h</td><td>3.5h</td><td>$1,900.50</td><td>$475.13</td><td>$1,425.38</td><td><span class="badge green">Paid</span></td><td><span style="color:var(--gold-dark);cursor:pointer;font-weight:600;">&#128196;</span></td></tr>
+              <tr><td><strong>Feb 3&ndash;9, 2026</strong></td><td>40.0h</td><td>1.8h</td><td>$1,793.40</td><td>$448.35</td><td>$1,345.05</td><td><span class="badge green">Paid</span></td><td><span style="color:var(--gold-dark);cursor:pointer;font-weight:600;">&#128196;</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">Pay Rate History</div></div><div class="panel-body">
+          <div class="timeline-item">
+            <div class="timeline-dot gold">$</div>
+            <div class="timeline-content"><div class="timeline-title">$42.00/hr</div><div class="timeline-time">Jan 1, 2026 &middot; Annual raise (+$4.00)</div></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot green">$</div>
+            <div class="timeline-content"><div class="timeline-title">$38.00/hr</div><div class="timeline-time">Jul 1, 2024 &middot; Promotion to Sr. Inspector</div></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot blue">$</div>
+            <div class="timeline-content"><div class="timeline-title">$32.00/hr</div><div class="timeline-time">Mar 15, 2023 &middot; Initial hire rate</div></div>
+          </div>
+        </div></div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">Deduction Breakdown</div><button class="btn btn-sm btn-primary" id="addDeductionBtn" onclick="toggleAddDeduction()">+ Add Deduction</button></div><div class="panel-body">
+          <div id="deductionList">
+            <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:13px;color:var(--gray);">Federal Tax</span><span style="font-weight:600;">$180.60</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:13px;color:var(--gray);">State Tax (TX)</span><span style="font-weight:600;">$0.00</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:13px;color:var(--gray);">Social Security</span><span style="font-weight:600;">$111.97</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:13px;color:var(--gray);">Medicare</span><span style="font-weight:600;">$26.19</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:13px;color:var(--gray);">Health Insurance</span><span style="font-weight:600;">$95.00</span></div>
+            <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:13px;color:var(--gray);">401(k) (6%)</span><span style="font-weight:600;">$108.36</span></div>
+          </div>
+          <!-- Add Deduction Inline Form -->
+          <div id="addDeductionForm" style="display:none;padding:10px 0;border-bottom:1px solid #F2F2F7;animation:fadeIn 0.2s ease;">
+            <div style="display:flex;gap:8px;align-items:flex-end;">
+              <div style="flex:1;">
+                <label style="font-size:11px;font-weight:600;color:var(--gray);display:block;margin-bottom:4px;">Deduction Name</label>
+                <input class="form-input" id="newDeductionName" placeholder="e.g. Union Dues, Garnishment" style="font-size:12px;padding:6px 10px;">
+              </div>
+              <div style="width:120px;">
+                <label style="font-size:11px;font-weight:600;color:var(--gray);display:block;margin-bottom:4px;">Amount</label>
+                <input class="form-input" id="newDeductionAmount" placeholder="$0.00" style="font-size:12px;padding:6px 10px;">
+              </div>
+              <button class="btn btn-sm btn-primary" onclick="saveDeduction()" style="padding:6px 14px;font-size:12px;">Save</button>
+              <button class="btn btn-sm btn-outline" onclick="toggleAddDeduction()" style="padding:6px 10px;font-size:12px;">Cancel</button>
+            </div>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;font-weight:700;border-top:2px solid var(--gold);margin-top:4px;"><span>Total Deductions</span><span>$522.12</span></div>
+        </div></div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ===== TAB 9: DOCUMENTS ===== -->
+  <div class="emp-tab" id="empTab-documents">
+    <div class="kpi-row">
+      <div class="kpi-card gold"><div class="kpi-label">Total Documents</div><div class="kpi-value">14</div><div class="kpi-delta up">All categories</div></div>
+      <div class="kpi-card green"><div class="kpi-label">Verified</div><div class="kpi-value">12</div><div class="kpi-delta up">HR approved</div></div>
+      <div class="kpi-card amber"><div class="kpi-label">Pending Review</div><div class="kpi-value">2</div><div class="kpi-delta warn">Awaiting verification</div></div>
+      <div class="kpi-card blue"><div class="kpi-label">Last Upload</div><div class="kpi-value">Mar 8</div><div class="kpi-delta up">W-4 update</div></div>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+      <div class="filter-bar"><div class="filter-pill active">All</div><div class="filter-pill">Employment</div><div class="filter-pill">Certifications</div><div class="filter-pill">Tax / Payroll</div><div class="filter-pill">Safety</div><div class="filter-pill">Other</div></div>
+      <button class="btn btn-primary" onclick="openUploadDocModal()">+ Upload Document</button>
+    </div>
+
+    <div class="grid-7-3">
+      <div>
+        <div class="table-container">
+          <div class="table-header"><div class="table-title">Document Vault</div><button class="btn btn-sm btn-outline">Export List</button></div>
+          <table>
+            <thead><tr><th>Document</th><th>Category</th><th>Upload Date</th><th>Uploaded By</th><th>Size</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Employment Agreement</strong></td><td><span class="badge gold">Employment</span></td><td>Mar 15, 2023</td><td>HR System</td><td>245 KB</td><td><span class="badge green">Verified</span></td><td><button class="btn btn-sm btn-ghost" onclick="openViewDocModal('Employment Agreement','Employment','Mar 15, 2023','HR System','245 KB','Verified','Standard employment agreement covering terms of service, compensation structure, and company policies. Signed by employee and HR manager.')">View</button><button class="btn btn-sm btn-ghost">&#8595;</button></td></tr>
+              <tr><td><strong>W-4 (2026 Updated)</strong></td><td><span class="badge blue">Tax / Payroll</span></td><td>Mar 8, 2026</td><td>Ezven Ortiz</td><td>128 KB</td><td><span class="badge amber">Pending</span></td><td><button class="btn btn-sm btn-ghost" onclick="openViewDocModal('W-4 (2026 Updated)','Tax / Payroll','Mar 8, 2026','Ezven Ortiz','128 KB','Pending','Updated W-4 form for tax year 2026. Withholding allowances updated to reflect change in filing status.')">View</button><button class="btn btn-sm btn-ghost">&#8595;</button></td></tr>
+              <tr><td><strong>I-9 Employment Verification</strong></td><td><span class="badge gold">Employment</span></td><td>Mar 15, 2023</td><td>HR System</td><td>312 KB</td><td><span class="badge green">Verified</span></td><td><button class="btn btn-sm btn-ghost" onclick="openViewDocModal('I-9 Employment Verification','Employment','Mar 15, 2023','HR System','312 KB','Verified','Employment eligibility verification form. Identity and work authorization documents verified by HR.')">View</button><button class="btn btn-sm btn-ghost">&#8595;</button></td></tr>
+              <tr><td><strong>API 570 Certificate</strong></td><td><span class="badge green">Certification</span></td><td>Dec 20, 2023</td><td>Ezven Ortiz</td><td>1.2 MB</td><td><span class="badge green">Verified</span></td><td><button class="btn btn-sm btn-ghost" onclick="openViewDocModal('API 570 Certificate','Certification','Dec 20, 2023','Ezven Ortiz','1.2 MB','Verified','API 570 Piping Inspector certification issued by the American Petroleum Institute. Valid through Dec 2026.')">View</button><button class="btn btn-sm btn-ghost">&#8595;</button></td></tr>
+              <tr><td><strong>NDT Level II &mdash; MT Certificate</strong></td><td><span class="badge green">Certification</span></td><td>Sep 1, 2024</td><td>Ezven Ortiz</td><td>980 KB</td><td><span class="badge green">Verified</span></td><td><button class="btn btn-sm btn-ghost" onclick="openViewDocModal('NDT Level II — MT Certificate','Certification','Sep 1, 2024','Ezven Ortiz','980 KB','Verified','NDT Level II certification for Magnetic Particle Testing. Issued by ASNT. Expires Aug 2026.')">View</button><button class="btn btn-sm btn-ghost">&#8595;</button></td></tr>
+              <tr><td><strong>NDT Level II &mdash; UT Certificate</strong></td><td><span class="badge green">Certification</span></td><td>Sep 1, 2024</td><td>Ezven Ortiz</td><td>965 KB</td><td><span class="badge green">Verified</span></td><td><button class="btn btn-sm btn-ghost" onclick="openViewDocModal('NDT Level II — UT Certificate','Certification','Sep 1, 2024','Ezven Ortiz','965 KB','Verified','NDT Level II certification for Ultrasonic Testing. Issued by ASNT. Expires Aug 2026.')">View</button><button class="btn btn-sm btn-ghost">&#8595;</button></td></tr>
+              <tr><td><strong>TWIC Card Copy</strong></td><td><span class="badge green">Certification</span></td><td>Mar 5, 2025</td><td>Ezven Ortiz</td><td>420 KB</td><td><span class="badge green">Verified</span></td><td><button class="btn btn-sm btn-ghost" onclick="openViewDocModal('TWIC Card Copy','Certification','Mar 5, 2025','Ezven Ortiz','420 KB','Verified','Transportation Worker Identification Credential card. Required for unescorted access to secure maritime facilities.')">View</button><button class="btn btn-sm btn-ghost">&#8595;</button></td></tr>
+              <tr><td><strong>H2S SafeLand Certificate</strong></td><td><span class="badge amber">Safety</span></td><td>Jun 15, 2025</td><td>Ezven Ortiz</td><td>756 KB</td><td><span class="badge green">Verified</span></td><td><button class="btn btn-sm btn-ghost" onclick="openViewDocModal('H2S SafeLand Certificate','Safety','Jun 15, 2025','Ezven Ortiz','756 KB','Verified','SafeLand/SafeGulf orientation and H2S safety training completion certificate. Annual renewal required.')">View</button><button class="btn btn-sm btn-ghost">&#8595;</button></td></tr>
+              <tr><td><strong>Eye Exam Report</strong></td><td><span class="badge amber">Safety</span></td><td>Jan 12, 2026</td><td>Ezven Ortiz</td><td>340 KB</td><td><span class="badge green">Verified</span></td><td><button class="btn btn-sm btn-ghost" onclick="openViewDocModal('Eye Exam Report','Safety','Jan 12, 2026','Ezven Ortiz','340 KB','Verified','Annual near-vision acuity exam report. Meets Jaeger J1 standard as required for NDT inspection work.')">View</button><button class="btn btn-sm btn-ghost">&#8595;</button></td></tr>
+              <tr><td><strong>Direct Deposit Authorization</strong></td><td><span class="badge blue">Tax / Payroll</span></td><td>Mar 15, 2023</td><td>HR System</td><td>98 KB</td><td><span class="badge green">Verified</span></td><td><button class="btn btn-sm btn-ghost" onclick="openViewDocModal('Direct Deposit Authorization','Tax / Payroll','Mar 15, 2023','HR System','98 KB','Verified','Authorization for direct deposit to employee bank account ending ****4821. Signed at hire.')">View</button><button class="btn btn-sm btn-ghost">&#8595;</button></td></tr>
+              <tr><td><strong>Driver&rsquo;s License Copy</strong></td><td><span class="badge gold">Employment</span></td><td>Mar 15, 2023</td><td>Ezven Ortiz</td><td>1.8 MB</td><td><span class="badge green">Verified</span></td><td><button class="btn btn-sm btn-ghost" onclick="openViewDocModal('Driver\'s License Copy','Employment','Mar 15, 2023','Ezven Ortiz','1.8 MB','Verified','Texas Class C driver\'s license copy. Expires Feb 2028. Used as primary identification document.')">View</button><button class="btn btn-sm btn-ghost">&#8595;</button></td></tr>
+              <tr><td><strong>Vehicle Insurance (2026)</strong></td><td><span class="badge gray">Other</span></td><td>Jan 2, 2026</td><td>Ezven Ortiz</td><td>512 KB</td><td><span class="badge amber">Pending</span></td><td><button class="btn btn-sm btn-ghost" onclick="openViewDocModal('Vehicle Insurance (2026)','Other','Jan 2, 2026','Ezven Ortiz','512 KB','Pending','Personal vehicle insurance declaration page for 2026. Required for mileage reimbursement eligibility.')">View</button><button class="btn btn-sm btn-ghost">&#8595;</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">Document Stats</div></div><div class="panel-body">
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:13px;color:var(--gray);">Employment</span><span style="font-weight:700;">3</span></div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:13px;color:var(--gray);">Certifications</span><span style="font-weight:700;">4</span></div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:13px;color:var(--gray);">Tax / Payroll</span><span style="font-weight:700;">3</span></div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:13px;color:var(--gray);">Safety</span><span style="font-weight:700;">2</span></div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;"><span style="font-size:13px;color:var(--gray);">Other</span><span style="font-weight:700;">2</span></div>
+        </div></div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">Required Documents</div></div><div class="panel-body">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:13px;">Employment Agreement</span><span class="badge green">&#10003;</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:13px;">I-9 Verification</span><span class="badge green">&#10003;</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:13px;">W-4 Tax Form</span><span class="badge green">&#10003;</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:13px;">Direct Deposit Auth</span><span class="badge green">&#10003;</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:13px;">Driver&rsquo;s License</span><span class="badge green">&#10003;</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;"><span style="font-size:13px;">Vehicle Insurance</span><span class="badge green">&#10003;</span></div>
+        </div></div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">Recent Activity</div></div><div class="panel-body">
+          <div class="timeline-item">
+            <div class="timeline-dot gold">&#8593;</div>
+            <div class="timeline-content"><div class="timeline-title">W-4 (2026 Updated) uploaded</div><div class="timeline-time">Mar 8, 2026 &middot; By Ezven Ortiz</div></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot green">&#10003;</div>
+            <div class="timeline-content"><div class="timeline-title">Eye Exam Report verified</div><div class="timeline-time">Jan 14, 2026 &middot; By HR Admin</div></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot blue">&#8593;</div>
+            <div class="timeline-content"><div class="timeline-title">Vehicle Insurance uploaded</div><div class="timeline-time">Jan 2, 2026 &middot; By Ezven Ortiz</div></div>
+          </div>
+        </div></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ===== UPLOAD DOCUMENT MODAL ===== -->
+<div id="uploadDocModal" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:9999;animation:fadeIn 0.2s ease;">
+  <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);" onclick="closeUploadDocModal()"></div>
+  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--white);border-radius:14px;width:560px;max-height:85vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,0.3);">
+    <!-- Modal Header -->
+    <div style="padding:16px 24px;border-bottom:1px solid #E5E5EA;background:linear-gradient(180deg, var(--gold-dim) 0%, var(--white) 100%);display:flex;justify-content:space-between;align-items:center;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="width:32px;height:32px;border-radius:8px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;color:var(--black);">&#8593;</div>
+        <div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;">Upload Document</div>
+          <div style="font-size:11px;color:var(--light-gray);margin-top:2px;">Add a new document to the employee vault</div>
+        </div>
+      </div>
+      <button class="btn btn-sm btn-ghost" onclick="closeUploadDocModal()" style="font-size:20px;padding:4px 8px;">&times;</button>
+    </div>
+    <!-- Modal Body -->
+    <div style="padding:20px 24px;">
+      <!-- File Upload Area -->
+      <div style="border:2px dashed #D1D1D6;border-radius:10px;padding:28px;text-align:center;margin-bottom:20px;background:#FAFAFA;cursor:pointer;" onclick="document.getElementById('docFileInput').click()">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="1.5" style="margin-bottom:8px;"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        <div style="font-size:13px;font-weight:600;color:var(--gray);">Click to browse or drag &amp; drop file here</div>
+        <div style="font-size:11px;color:var(--light-gray);margin-top:4px;">PDF, JPG, PNG, DOC up to 10MB</div>
+        <input type="file" id="docFileInput" style="display:none;" onchange="document.getElementById('docFileName').textContent=this.files[0]?this.files[0].name:'No file selected'">
+      </div>
+      <div id="docFileName" style="font-size:12px;color:var(--gold-dark);font-weight:600;margin-bottom:16px;text-align:center;">No file selected</div>
+
+      <!-- Document Name -->
+      <div class="form-group">
+        <label class="form-label">Document Name *</label>
+        <input class="form-input" id="uploadDocName" placeholder="e.g. API 570 Certificate, W-4 Form">
+      </div>
+
+      <!-- Category -->
+      <div class="form-group">
+        <label class="form-label">Category *</label>
+        <select class="form-select" id="uploadDocCategory">
+          <option value="" disabled selected>Select category...</option>
+          <option>Employment</option>
+          <option>Certification</option>
+          <option>Tax / Payroll</option>
+          <option>Safety</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <!-- Uploaded By -->
+      <div class="form-group">
+        <label class="form-label">Uploaded By</label>
+        <input class="form-input" value="Ezven Ortiz" readonly style="background:#FAFAFA;">
+      </div>
+
+      <!-- Status -->
+      <div class="form-group">
+        <label class="form-label">Status</label>
+        <select class="form-select" id="uploadDocStatus">
+          <option selected>Pending</option>
+          <option>Verified</option>
+        </select>
+      </div>
+
+      <!-- Notes -->
+      <div class="form-group">
+        <label class="form-label">Notes (Optional)</label>
+        <textarea class="form-input" rows="2" style="resize:vertical;" placeholder="Any additional notes about this document..."></textarea>
+      </div>
+    </div>
+    <!-- Modal Footer -->
+    <div style="padding:14px 24px;border-top:1px solid #E5E5EA;display:flex;justify-content:flex-end;gap:8px;">
+      <button class="btn btn-outline" onclick="closeUploadDocModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="closeUploadDocModal()">Upload Document</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== VIEW DOCUMENT MODAL ===== -->
+<div id="viewDocModal" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:9999;animation:fadeIn 0.2s ease;">
+  <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);" onclick="closeViewDocModal()"></div>
+  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--white);border-radius:14px;width:560px;max-height:85vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,0.3);">
+    <!-- Modal Header -->
+    <div style="padding:16px 24px;border-bottom:1px solid #E5E5EA;background:linear-gradient(180deg, var(--gold-dim) 0%, var(--white) 100%);display:flex;justify-content:space-between;align-items:center;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="width:32px;height:32px;border-radius:8px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--black);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </div>
+        <div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;" id="viewDocTitle">Document Name</div>
+          <div style="font-size:11px;color:var(--light-gray);margin-top:2px;">Document Details</div>
+        </div>
+      </div>
+      <button class="btn btn-sm btn-ghost" onclick="closeViewDocModal()" style="font-size:20px;padding:4px 8px;">&times;</button>
+    </div>
+    <!-- Modal Body -->
+    <div style="padding:20px 24px;">
+      <!-- Document Preview Placeholder -->
+      <div style="border:1px solid #E5E5EA;border-radius:10px;padding:32px;text-align:center;margin-bottom:20px;background:#FAFAFA;">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#C7C7CC" stroke-width="1.5" style="margin-bottom:8px;"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        <div style="font-size:13px;font-weight:600;color:var(--gray);" id="viewDocPreviewName">document.pdf</div>
+        <div style="font-size:11px;color:var(--light-gray);margin-top:4px;">Preview not available &mdash; click Download to open</div>
+      </div>
+
+      <!-- Document Info -->
+      <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #F2F2F7;">
+        <span style="font-size:13px;color:var(--gray);font-weight:600;">Document Name</span>
+        <span style="font-weight:600;font-size:13px;" id="viewDocName">—</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #F2F2F7;">
+        <span style="font-size:13px;color:var(--gray);font-weight:600;">Category</span>
+        <span id="viewDocCategory">—</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #F2F2F7;">
+        <span style="font-size:13px;color:var(--gray);font-weight:600;">Upload Date</span>
+        <span style="font-weight:600;font-size:13px;" id="viewDocDate">—</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #F2F2F7;">
+        <span style="font-size:13px;color:var(--gray);font-weight:600;">Uploaded By</span>
+        <span style="font-weight:600;font-size:13px;" id="viewDocUploader">—</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #F2F2F7;">
+        <span style="font-size:13px;color:var(--gray);font-weight:600;">File Size</span>
+        <span style="font-weight:600;font-size:13px;" id="viewDocSize">—</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #F2F2F7;">
+        <span style="font-size:13px;color:var(--gray);font-weight:600;">Status</span>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <span id="viewDocStatus">—</span>
+          <select class="form-select" id="viewDocStatusSelect" onchange="updateViewDocStatus(this.value)" style="font-size:12px;padding:4px 8px;min-width:110px;">
+            <option value="Pending">Pending</option>
+            <option value="Verified">Verified</option>
+            <option value="Rejected">Rejected</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Notes -->
+      <div style="margin-top:16px;">
+        <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--gold-dark);margin-bottom:8px;">Notes</div>
+        <div style="font-size:13px;color:var(--gray);line-height:1.5;padding:10px 12px;background:#FAFAFA;border-radius:8px;border:1px solid #E5E5EA;" id="viewDocNotes">—</div>
+      </div>
+    </div>
+    <!-- Modal Footer -->
+    <div style="padding:14px 24px;border-top:1px solid #E5E5EA;display:flex;justify-content:flex-end;gap:8px;">
+      <button class="btn btn-outline" onclick="closeViewDocModal()">Close</button>
+      <button class="btn btn-outline">&#8595; Download</button>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<script src="../js/app.js"></script>
+</body>
+</html>

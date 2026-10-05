@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CrewViewPro - Create Job</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&family=Barlow+Condensed:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+<!-- ===== SIDEBAR ===== -->
+<nav class="sidebar">
+  <div class="sidebar-logo">
+    <div class="bolt">&#9889;</div>
+    <div class="brand">Crew<span>View</span></div>
+  </div>
+  <div class="sidebar-nav">
+    <div class="nav-section">
+      <div class="nav-section-label">Overview</div>
+      <div class="nav-item" onclick="window.location.href='dashboard.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Dashboard</div>
+      <div class="nav-item" onclick="window.location.href='../index.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 8h7M9 12h7M9 16h4"/><circle cx="6" cy="8" r="0.6"/><circle cx="6" cy="12" r="0.6"/><circle cx="6" cy="16" r="0.6"/></svg>Screen Index</div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">Clients & Sites</div>
+      <div class="nav-item" onclick="window.location.href='clients.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M9 8h1M9 12h1M9 16h1M14 8h1M14 12h1M14 16h1"/><rect x="5" y="3" width="14" height="18" rx="1"/></svg>Client Master</div>
+      <div class="nav-item" onclick="window.location.href='client-detail.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Client Profile</div>
+      <div class="nav-item" onclick="window.location.href='portal-users.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Client Portal Users<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">Workforce</div>
+      <div class="nav-item" onclick="window.location.href='employees.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Employees</div>
+      <div class="nav-item" onclick="window.location.href='employee-detail.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Employee Profile</div>
+      <div class="nav-item" onclick="window.location.href='teams.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Teams & Crews</div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">Dispatch</div>
+      <div class="nav-item" onclick="window.location.href='inspection-requests.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11L2 12v6a2 2 0 002 2h16a2 2 0 002-2v-6l-3.45-6.89A2 2 0 0016.76 4H7.24a2 2 0 00-1.79 1.11z"/></svg>Inspection Requests<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='jobs.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>Jobs & Dispatch<span class="nav-badge">3</span></div>
+      <div class="nav-item active" onclick="window.location.href='create-job.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>Create Job & Dispatch</div>
+      <div class="nav-item" onclick="window.location.href='calendar.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Calendar</div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">Inspections</div>
+      <div class="nav-item" onclick="window.location.href='inspections.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 2h6v4H9z"/><path d="M7 4H5v18h14V4h-2"/><path d="M9 12h7M9 16h5"/></svg>Inspections<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='inspection-tickets.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h18v4a2 2 0 000 4v4H3v-4a2 2 0 000-4z"/><path d="M12 7v10"/></svg>Inspection Tickets<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='inspected-items.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>Inspected Items<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='field-capture.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M11 19h2"/></svg>Crew View Capture<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='job-safety.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L4 6v6c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V6z"/></svg>Job Safety Analysis<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">Assets & Standards</div>
+      <div class="nav-item" onclick="window.location.href='standards.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>Standards Library<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='inspection-package.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M7 6h10M5 8v4a2 2 0 002 2h3M19 8v4a2 2 0 01-2 2h-3"/></svg>Inspection Packages<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='asset-models.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>Tool & Item Templates<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='equipment.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21a9 9 0 119-9"/><path d="M12 12l4-3"/></svg>Equipment & Calibration<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">Operations</div>
+      <div class="nav-item" onclick="window.location.href='attendance.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Attendance</div>
+      <div class="nav-item" onclick="window.location.href='timesheet.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="13" r="8"/><path d="M12 9v4M9 2h6"/></svg>Timesheets</div>
+      <div class="nav-item" onclick="window.location.href='overtime.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="13" r="8"/><path d="M12 9v4M9 2h6"/></svg>Overtime<span class="nav-badge">5</span></div>
+      <div class="nav-item" onclick="window.location.href='payroll.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7H5a2 2 0 010-4h13v4"/><path d="M3 5v14a2 2 0 002 2h15v-5"/><path d="M18 12a2 2 0 000 4h4v-4z"/></svg>Payroll<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='geo.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Operations Map</div>
+      <div class="nav-item" onclick="window.location.href='mileage.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21L8 3M20 21l-4-18M12 6v3M12 12v3M12 18v3"/></svg>Mileage</div>
+      <div class="nav-item" onclick="window.location.href='billing.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.5 9.5h5M9.5 14.5h5"/></svg>Billing & Costing</div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">Commercial</div>
+      <div class="nav-item" onclick="window.location.href='rate-master.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.6 13.4L12 22l-9-9V4h9z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg>Rate Master<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='purchase-orders.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2h9l5 5v15H6z"/><path d="M15 2v5h5"/><path d="M9 13h6M9 17h4"/></svg>Purchase Orders<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='invoices.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2h9l5 5v15H6z"/><path d="M15 2v5h5"/><path d="M9 12h7M9 16h5"/></svg>Invoices<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='profitability.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 7-7"/><path d="M17 8h4v4"/></svg>Profitability<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">Intelligence</div>
+      <div class="nav-item" onclick="window.location.href='alerts.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>Alerts<span class="nav-badge">8</span></div>
+      <div class="nav-item" onclick="window.location.href='reports.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M8 16v-4M12 16V8M16 16v-6"/></svg>Reports</div>
+      <div class="nav-item" onclick="window.location.href='report-templates.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>Report Templates<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">System</div>
+      <div class="nav-item" onclick="window.location.href='settings.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 11-4 0v-.09A1.65 1.65 0 008 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06A1.65 1.65 0 004.6 15a1.65 1.65 0 00-1.51-1H3a2 2 0 110-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06A1.65 1.65 0 009 4.6a1.65 1.65 0 001-1.51V3a2 2 0 114 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 110 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>Settings</div>
+      <div class="nav-item" onclick="window.location.href='notifications.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>Notifications</div>
+      <div class="nav-item" onclick="window.location.href='login.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><path d="M16 17l5-5-5-5M21 12H9"/></svg>Logout</div>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== TOPBAR ===== -->
+<header class="topbar">
+  <div class="topbar-left">
+    <div>
+      <div class="topbar-title" id="topbarTitle">Create Job</div>
+      <div class="breadcrumb" id="topbarBreadcrumb">
+        <a href="dashboard.html">Home</a>
+        <span>/</span>
+        <span>Dispatch / Create Job</span>
+      </div>
+    </div>
+  </div>
+  <div class="topbar-right">
+    <div class="topbar-search">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      <input type="text" placeholder="Search anything...">
+    </div>
+    <div class="topbar-icon-btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+      <div class="notif-dot"></div>
+    </div>
+    <div class="user-pill">
+      <div class="user-avatar">HS</div>
+      <div>
+        <div class="user-name">Hunter Sisti</div>
+        <div class="user-role">Super Admin</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== MAIN CONTENT ===== -->
+<main class="main">
+<!--LIFECYCLE--><div class="panel"><div class="panel-header"><div class="panel-title">Inspection lifecycle</div></div><div class="panel-body"><div class="workflow-steps"><div class="wf-step done" style="cursor:pointer" onclick="window.location.href='inspection-requests.html'"><div class="wf-dot">&#10003;</div>Request<div style="font-size:10px;font-weight:500;color:#8E8E93;margin-top:2px">Client raises it</div></div><div class="wf-step done" style="cursor:pointer" onclick="window.location.href='inspection-package.html'"><div class="wf-dot">&#10003;</div>Package<div style="font-size:10px;font-weight:500;color:#8E8E93;margin-top:2px">Standard resolves</div></div><div class="wf-step active" style="cursor:pointer" onclick="window.location.href='create-job.html'"><div class="wf-dot">3</div>Dispatch<div style="font-size:10px;font-weight:500;color:#8E8E93;margin-top:2px">Crew + checklist</div></div><div class="wf-step pending" style="cursor:pointer" onclick="window.location.href='job-detail.html'"><div class="wf-dot">4</div>On Job<div style="font-size:10px;font-weight:500;color:#8E8E93;margin-top:2px">Cost + geo, live</div></div><div class="wf-step pending" style="cursor:pointer" onclick="window.location.href='field-capture.html'"><div class="wf-dot">5</div>Capture<div style="font-size:10px;font-weight:500;color:#8E8E93;margin-top:2px">Crew inspects</div></div><div class="wf-step pending" style="cursor:pointer" onclick="window.location.href='inspection-detail.html'"><div class="wf-dot">6</div>Report<div style="font-size:10px;font-weight:500;color:#8E8E93;margin-top:2px">Close out</div></div><div class="wf-step pending" style="cursor:pointer" onclick="window.location.href='invoice-detail.html'"><div class="wf-dot">7</div>Invoice<div style="font-size:10px;font-weight:500;color:#8E8E93;margin-top:2px">Billing authorised</div></div></div><div class="sub" style="text-align:center;margin-top:2px">One record travels the whole way. The request becomes the job, the job becomes the report, the report becomes the invoice &mdash; nothing is re-keyed and nothing is lost between systems.</div></div></div><!--/LIFECYCLE-->
+
+
+
+
+<!-- ==================== SCREEN 10: CREATE JOB ==================== -->
+<div class="screen active" id="screen-createJob">
+  <div style="margin-bottom:20px;"><h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:22px;text-transform:uppercase;letter-spacing:1px;color:var(--near-black);margin:0;">Create Job</h2></div>
+  <div class="grid-7-3">
+    <div>
+      <div class="panel"><div class="panel-header"><div class="panel-title">Client & Site Selection</div></div><div class="panel-body">
+        <div class="form-row"><div class="form-group"><label class="form-label">Client</label><select class="form-select"><option>Arrival Energy Solutions</option><option>Bridgeport Fishing & Rental</option><option>Tubular Solutions Inc.</option></select></div><div class="form-group"><label class="form-label">Division</label><select class="form-select"><option>WTX Operations</option></select></div></div>
+        <div class="form-group"><label class="form-label">Site / Location</label><select class="form-select" id="siteLocationSelect" onchange="handleSiteLocationChange(this)"><option>WTX Yard 3 - 1200 Industrial Blvd, Midland, TX</option><option>ETX Yard 1 - 800 Refinery Rd, Beaumont, TX</option><option>Permian Basin Site 7 - Hwy 302, Kermit, TX</option><option value="pin_location">📍 Allow Employee to Pin Location</option></select></div>
+        <!-- Pin Location Info (shown when pin option selected) -->
+        <div id="pinLocationInfo" style="display:none;margin-top:-8px;margin-bottom:16px;padding:12px 16px;background:linear-gradient(135deg, #FFF8E7 0%, #FFFFFF 100%);border:1px solid var(--gold-dim);border-radius:8px;animation:fadeIn 0.2s;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div style="width:36px;height:36px;border-radius:50%;background:var(--gold-dim);display:flex;align-items:center;justify-content:center;font-size:18px;">📍</div>
+            <div style="flex:1;">
+              <div style="font-weight:700;font-size:13px;color:var(--near-black);">Employee Pin Location Enabled</div>
+              <div style="font-size:11px;color:var(--gray);margin-top:2px;">Assigned employees will be prompted to pin their exact location on a map when they arrive at the job site.</div>
+            </div>
+            <button class="btn btn-sm btn-outline" onclick="openJobPinMapModal()" style="white-space:nowrap;">Preview Map</button>
+          </div>
+        </div>
+        <div class="form-group"><label class="form-label">Notes</label><textarea class="form-input" rows="3" style="resize:vertical;" placeholder="Turn-by-turn notes for field locations with spotty service...">Take County Rd 127 past the grain elevator, left at the unmarked fork, 2.3 miles to the pad. Look for the blue storage containers.</textarea></div>
+      </div></div>
+      <div class="panel"><div class="panel-header"><div class="panel-title">Job Details</div></div><div class="panel-body">
+        <div class="form-row-3"><div class="form-group"><label class="form-label">Job Type</label><select class="form-select"><option>Inspection</option><option>Repair</option><option>Refacing</option></select></div><div class="form-group"><label class="form-label">Inspection Type</label><select class="form-select"><option>Magnetic Particle</option><option>Dye Penetrant</option></select></div><div class="form-group"><label class="form-label">Priority</label><select class="form-select"><option>Normal</option><option>High</option><option selected>Critical</option></select></div></div>
+        <!-- Job Task Checklist -->
+        <div style="font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--gold-dark);margin-bottom:12px;margin-top:8px;padding-bottom:6px;border-bottom:1px solid var(--gold-dim);">Job Task Checklist</div>
+        <div style="border:1px solid #E5E5EA;border-radius:8px;margin-bottom:16px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid #E5E5EA;background:#FAFAFA;border-radius:8px 8px 0 0;">
+            <div style="font-weight:700;font-size:13px;">Task Items</div>
+            <button class="btn btn-sm btn-primary" onclick="addJobChecklistItem()">+ Add Task</button>
+          </div>
+          <div style="padding:0 16px;">
+            <div id="jobChecklistContainer">
+              <div class="checklist-item" style="display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid #F2F2F7;">
+                <input type="checkbox" style="margin-top:3px;width:16px;height:16px;accent-color:var(--gold);cursor:pointer;">
+                <div style="flex:1;">
+                  <div style="font-weight:600;font-size:13px;">Pre-Job Safety Briefing</div>
+                  <div style="font-size:11px;color:var(--light-gray);">Conduct site-specific safety orientation before starting work</div>
+                </div>
+                <span class="badge gold" style="font-size:10px;">Required</span>
+              </div>
+              <div class="checklist-item" style="display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid #F2F2F7;">
+                <input type="checkbox" style="margin-top:3px;width:16px;height:16px;accent-color:var(--gold);cursor:pointer;">
+                <div style="flex:1;">
+                  <div style="font-weight:600;font-size:13px;">Verify Equipment Calibration</div>
+                  <div style="font-size:11px;color:var(--light-gray);">Confirm UT gauge, MT yoke, and all NDT instruments are calibrated</div>
+                </div>
+                <span class="badge gold" style="font-size:10px;">Required</span>
+              </div>
+              <div class="checklist-item" style="display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid #F2F2F7;">
+                <input type="checkbox" style="margin-top:3px;width:16px;height:16px;accent-color:var(--gold);cursor:pointer;">
+                <div style="flex:1;">
+                  <div style="font-weight:600;font-size:13px;">Review Work Scope &amp; P&amp;IDs</div>
+                  <div style="font-size:11px;color:var(--light-gray);">Review piping diagrams, inspection points, and scope of work documents</div>
+                </div>
+                <span class="badge blue" style="font-size:10px;">Standard</span>
+              </div>
+              <div class="checklist-item" style="display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid #F2F2F7;">
+                <input type="checkbox" style="margin-top:3px;width:16px;height:16px;accent-color:var(--gold);cursor:pointer;">
+                <div style="flex:1;">
+                  <div style="font-weight:600;font-size:13px;">PPE Inspection</div>
+                  <div style="font-size:11px;color:var(--light-gray);">Verify hard hat, steel toes, FR clothing, safety glasses, gloves, H2S monitor</div>
+                </div>
+                <span class="badge gold" style="font-size:10px;">Required</span>
+              </div>
+              <div class="checklist-item" style="display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid #F2F2F7;">
+                <input type="checkbox" style="margin-top:3px;width:16px;height:16px;accent-color:var(--gold);cursor:pointer;">
+                <div style="flex:1;">
+                  <div style="font-weight:600;font-size:13px;">Client Site Check-In</div>
+                  <div style="font-size:11px;color:var(--light-gray);">Report to client site supervisor and sign visitor/contractor log</div>
+                </div>
+                <span class="badge blue" style="font-size:10px;">Standard</span>
+              </div>
+              <div class="checklist-item" style="display:flex;align-items:flex-start;gap:10px;padding:10px 0;">
+                <input type="checkbox" style="margin-top:3px;width:16px;height:16px;accent-color:var(--gold);cursor:pointer;">
+                <div style="flex:1;">
+                  <div style="font-weight:600;font-size:13px;">Submit Daily Inspection Report</div>
+                  <div style="font-size:11px;color:var(--light-gray);">Complete and upload inspection findings at end of each shift</div>
+                </div>
+                <span class="badge blue" style="font-size:10px;">Standard</span>
+              </div>
+            </div>
+
+            <!-- Add custom task inline -->
+            <div id="jobAddTaskRow" style="display:none;margin:12px 0;padding:12px;background:#F2F2F7;border-radius:8px;border:2px dashed #D1D1D6;">
+              <div style="display:flex;gap:12px;align-items:flex-end;">
+                <div class="form-group" style="flex:2;margin-bottom:0;">
+                  <label class="form-label">Task Name *</label>
+                  <input class="form-input" id="jobNewTaskName" placeholder="e.g. Conduct thickness measurements on vessel shells">
+                </div>
+                <div class="form-group" style="flex:2;margin-bottom:0;">
+                  <label class="form-label">Description</label>
+                  <input class="form-input" id="jobNewTaskDesc" placeholder="Optional details or instructions">
+                </div>
+                <div class="form-group" style="width:120px;margin-bottom:0;">
+                  <label class="form-label">Priority</label>
+                  <select class="form-select" id="jobNewTaskPriority">
+                    <option>Required</option>
+                    <option selected>Standard</option>
+                    <option>Optional</option>
+                  </select>
+                </div>
+                <button class="btn btn-sm btn-primary" onclick="saveJobChecklistItem()" style="margin-bottom:2px;">Add</button>
+                <button class="btn btn-sm btn-ghost" onclick="document.getElementById('jobAddTaskRow').style.display='none'" style="margin-bottom:2px;">&times;</button>
+              </div>
+            </div>
+          </div>
+          <div style="padding:8px 16px;background:#FAFAFA;border-radius:0 0 8px 8px;border-top:1px solid #E5E5EA;display:flex;justify-content:space-between;align-items:center;">
+            <div style="font-size:11px;color:var(--light-gray);">Checklist items will be assigned to dispatched crew members.</div>
+            <div style="font-size:12px;font-weight:600;color:var(--gold-dark);">6 tasks &middot; 3 required</div>
+          </div>
+        </div>
+
+        <div class="form-group"><label class="form-label">Description & Special Instructions</label><textarea class="form-input" rows="3" style="resize:vertical;" placeholder="Job description..."></textarea></div>
+
+        <!-- Upload Documents -->
+        <div class="form-group">
+          <label class="form-label">Upload Documents</label>
+          <div style="border:2px dashed #D1D1D6;border-radius:8px;padding:24px;text-align:center;cursor:pointer;transition:all 0.15s;background:var(--white);" onmouseover="this.style.borderColor='var(--gold)';this.style.background='var(--gold-dim)'" onmouseout="this.style.borderColor='#D1D1D6';this.style.background='var(--white)'">
+            <div style="font-size:24px;margin-bottom:8px;">&#128196;</div>
+            <div style="font-size:13px;font-weight:600;color:var(--near-black);">Drop files here or click to browse</div>
+            <div style="font-size:11px;color:var(--light-gray);margin-top:4px;">PDF, JPG, PNG, DOCX up to 10MB &middot; Max 5 files</div>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;">
+            <div style="display:flex;align-items:center;gap:6px;background:#F2F2F7;border-radius:6px;padding:6px 10px;font-size:12px;">
+              <span style="color:var(--gold-dark);">&#128196;</span>
+              <span style="font-weight:600;">Site_Access_Map.pdf</span>
+              <span style="color:var(--light-gray);">1.2 MB</span>
+              <button style="background:none;border:none;cursor:pointer;color:#8E8E93;font-size:14px;padding:0 2px;" onmouseover="this.style.color='#FF3B30'" onmouseout="this.style.color='#8E8E93'">&times;</button>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px;background:#F2F2F7;border-radius:6px;padding:6px 10px;font-size:12px;">
+              <span style="color:var(--gold-dark);">&#128196;</span>
+              <span style="font-weight:600;">Safety_Briefing.pdf</span>
+              <span style="color:var(--light-gray);">0.8 MB</span>
+              <button style="background:none;border:none;cursor:pointer;color:#8E8E93;font-size:14px;padding:0 2px;" onmouseover="this.style.color='#FF3B30'" onmouseout="this.style.color='#8E8E93'">&times;</button>
+            </div>
+          </div>
+        </div>
+      </div></div>
+    </div>
+    <div>
+      <div class="panel"><div class="panel-header"><div class="panel-title">Site Preview</div></div>
+        <div class="map-placeholder" style="height:180px;border-radius:0;border:none;"><div style="position:relative;z-index:1;">&#128205; WTX Yard 3</div></div>
+      </div>
+      <div class="panel"><div class="panel-header"><div class="panel-title">Schedule</div></div><div class="panel-body">
+        <div class="form-group"><label class="form-label">Start Date & Time</label><input class="form-input" type="datetime-local" value="2026-03-11T06:00"></div>
+        <div class="form-group"><label class="form-label">Estimated End</label><input class="form-input" type="datetime-local" value="2026-03-11T18:00"></div>
+        <div class="form-group"><label class="form-label">Reminder</label><select class="form-select"><option selected>1 hour before</option></select></div>
+      </div></div>
+      <div class="panel"><div class="panel-header"><div class="panel-title">Assign Team</div></div><div class="panel-body">
+        <div class="form-group"><label class="form-label">Team</label><select class="form-select" id="teamSelect" onchange="showTeamMembers(this.value)"><option value="" disabled>Select team...</option><option value="alpha" selected>Team Alpha (Ezven Ortiz)</option><option value="bravo">Team Bravo (Sebastian Salgado)</option><option value="charlie">Team Charlie</option><option value="unassigned">Unassigned</option></select></div>
+
+        <!-- Team Members (shown based on team selection) -->
+        <div id="teamMembersList" style="border:1px solid #E5E5EA;border-radius:8px;margin-bottom:14px;">
+          <div style="padding:8px 12px;background:#FAFAFA;border-bottom:1px solid #E5E5EA;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--gray);">Team Members</div>
+          <div id="teamAlphaMembers">
+            <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-bottom:1px solid #F2F2F7;">
+              <input type="checkbox" checked style="accent-color:var(--gold);width:15px;height:15px;cursor:pointer;">
+              <div style="width:28px;height:28px;border-radius:50%;background:var(--gold-dim);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:var(--gold-dark);">EO</div>
+              <div style="flex:1;"><div style="font-weight:600;font-size:13px;">Ezven Ortiz</div><div style="font-size:11px;color:var(--light-gray);">Lead Inspector &middot; Crew Lead</div></div>
+              <span class="badge green" style="font-size:10px;">Available</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-bottom:1px solid #F2F2F7;">
+              <input type="checkbox" checked style="accent-color:var(--gold);width:15px;height:15px;cursor:pointer;">
+              <div style="width:28px;height:28px;border-radius:50%;background:var(--gold-dim);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:var(--gold-dark);">LL</div>
+              <div style="flex:1;"><div style="font-weight:600;font-size:13px;">Leo Lawrence</div><div style="font-size:11px;color:var(--light-gray);">Inspector L1 &middot; Technician</div></div>
+              <span class="badge green" style="font-size:10px;">Available</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;">
+              <input type="checkbox" checked style="accent-color:var(--gold);width:15px;height:15px;cursor:pointer;">
+              <div style="width:28px;height:28px;border-radius:50%;background:var(--gold-dim);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:var(--gold-dark);">CW</div>
+              <div style="flex:1;"><div style="font-weight:600;font-size:13px;">Caleb Washington</div><div style="font-size:11px;color:var(--light-gray);">Field Tech &middot; Assistant</div></div>
+              <span class="badge green" style="font-size:10px;">Available</span>
+            </div>
+          </div>
+          <div id="teamBravoMembers" style="display:none;">
+            <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-bottom:1px solid #F2F2F7;">
+              <input type="checkbox" checked style="accent-color:var(--gold);width:15px;height:15px;cursor:pointer;">
+              <div style="width:28px;height:28px;border-radius:50%;background:var(--gold-dim);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:var(--gold-dark);">SS</div>
+              <div style="flex:1;"><div style="font-weight:600;font-size:13px;">Sebastian Salgado</div><div style="font-size:11px;color:var(--light-gray);">Inspector (Night) &middot; Crew Lead</div></div>
+              <span class="badge green" style="font-size:10px;">Available</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;">
+              <input type="checkbox" checked style="accent-color:var(--gold);width:15px;height:15px;cursor:pointer;">
+              <div style="width:28px;height:28px;border-radius:50%;background:var(--gold-dim);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:var(--gold-dark);">BC</div>
+              <div style="flex:1;"><div style="font-weight:600;font-size:13px;">Briston Clark</div><div style="font-size:11px;color:var(--light-gray);">Field Tech (Night) &middot; Assistant</div></div>
+              <span class="badge green" style="font-size:10px;">Available</span>
+            </div>
+          </div>
+          <div id="teamCharlieMembers" style="display:none;">
+            <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-bottom:1px solid #F2F2F7;">
+              <input type="checkbox" checked style="accent-color:var(--gold);width:15px;height:15px;cursor:pointer;">
+              <div style="width:28px;height:28px;border-radius:50%;background:var(--gold-dim);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:var(--gold-dark);">MR</div>
+              <div style="flex:1;"><div style="font-weight:600;font-size:13px;">Marcus Reyes</div><div style="font-size:11px;color:var(--light-gray);">Senior Inspector &middot; Crew Lead</div></div>
+              <span class="badge green" style="font-size:10px;">Available</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;">
+              <input type="checkbox" checked style="accent-color:var(--gold);width:15px;height:15px;cursor:pointer;">
+              <div style="width:28px;height:28px;border-radius:50%;background:var(--gold-dim);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:var(--gold-dark);">AV</div>
+              <div style="flex:1;"><div style="font-weight:600;font-size:13px;">Adrian Vega</div><div style="font-size:11px;color:var(--light-gray);">Welder &middot; Specialist</div></div>
+              <span class="badge green" style="font-size:10px;">Available</span>
+            </div>
+          </div>
+          <div id="teamUnassignedMembers" style="display:none;">
+            <div style="padding:16px;text-align:center;font-size:12px;color:var(--light-gray);">No team selected. Use the employee list below to assign individuals.</div>
+          </div>
+        </div>
+
+        <!-- Assign Individual Employees -->
+        <div style="font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--gold-dark);margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid var(--gold-dim);">Assign Individual Employees</div>
+        <div style="position:relative;margin-bottom:10px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="2" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          <input type="text" id="jobEmpSearch" placeholder="Search employees..." oninput="filterJobEmployees(this.value)" style="width:100%;padding:8px 10px 8px 32px;border:1px solid #D1D1D6;border-radius:6px;font-size:12px;font-family:'Barlow',sans-serif;outline:none;transition:border-color 0.15s;" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#D1D1D6'">
+        </div>
+        <div id="jobEmpList" style="max-height:260px;overflow-y:auto;border:1px solid #E5E5EA;border-radius:8px;">
+          <div class="job-emp-item" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-bottom:1px solid #F2F2F7;cursor:pointer;transition:background 0.1s;" onmouseover="this.style.background='#FAFAFA'" onmouseout="this.style.background=''">
+            <input type="checkbox" checked style="accent-color:var(--gold);width:15px;height:15px;cursor:pointer;">
+            <div style="width:32px;height:32px;border-radius:50%;background:var(--gold-dim);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;color:var(--gold-dark);">EO</div>
+            <div style="flex:1;"><div style="font-weight:600;font-size:13px;">Ezven Ortiz</div><div style="font-size:11px;color:var(--light-gray);">Lead Inspector &middot; Team Alpha</div></div>
+            <span class="badge green" style="font-size:10px;">Available</span>
+          </div>
+          <div class="job-emp-item" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-bottom:1px solid #F2F2F7;cursor:pointer;transition:background 0.1s;" onmouseover="this.style.background='#FAFAFA'" onmouseout="this.style.background=''">
+            <input type="checkbox" checked style="accent-color:var(--gold);width:15px;height:15px;cursor:pointer;">
+            <div style="width:32px;height:32px;border-radius:50%;background:var(--gold-dim);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;color:var(--gold-dark);">LL</div>
+            <div style="flex:1;"><div style="font-weight:600;font-size:13px;">Leo Lawrence</div><div style="font-size:11px;color:var(--light-gray);">Inspector L1 &middot; Team Alpha</div></div>
+            <span class="badge green" style="font-size:10px;">Available</span>
+          </div>
+          <div class="job-emp-item" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-bottom:1px solid #F2F2F7;cursor:pointer;transition:background 0.1s;" onmouseover="this.style.background='#FAFAFA'" onmouseout="this.style.background=''">
+            <input type="checkbox" checked style="accent-color:var(--gold);width:15px;height:15px;cursor:pointer;">
+            <div style="width:32px;height:32px;border-radius:50%;background:var(--gold-dim);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;color:var(--gold-dark);">CW</div>
+            <div style="flex:1;"><div style="font-weight:600;font-size:13px;">Caleb Washington</div><div style="font-size:11px;color:var(--light-gray);">Field Tech &middot; Team Alpha</div></div>
+            <span class="badge green" style="font-size:10px;">Available</span>
+          </div>
+          <div class="job-emp-item" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-bottom:1px solid #F2F2F7;cursor:pointer;transition:background 0.1s;" onmouseover="this.style.background='#FAFAFA'" onmouseout="this.style.background=''">
+            <input type="checkbox" style="accent-color:var(--gold);width:15px;height:15px;cursor:pointer;">
+            <div style="width:32px;height:32px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;color:var(--gray);">SS</div>
+            <div style="flex:1;"><div style="font-weight:600;font-size:13px;">Sebastian Salgado</div><div style="font-size:11px;color:var(--light-gray);">Inspector (Night) &middot; Team Bravo</div></div>
+            <span class="badge green" style="font-size:10px;">Available</span>
+          </div>
+          <div class="job-emp-item" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-bottom:1px solid #F2F2F7;cursor:pointer;transition:background 0.1s;" onmouseover="this.style.background='#FAFAFA'" onmouseout="this.style.background=''">
+            <input type="checkbox" style="accent-color:var(--gold);width:15px;height:15px;cursor:pointer;">
+            <div style="width:32px;height:32px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;color:var(--gray);">BC</div>
+            <div style="flex:1;"><div style="font-weight:600;font-size:13px;">Briston Clark</div><div style="font-size:11px;color:var(--light-gray);">Field Tech (Night) &middot; Team Bravo</div></div>
+            <span class="badge green" style="font-size:10px;">Available</span>
+          </div>
+          <div class="job-emp-item" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-bottom:1px solid #F2F2F7;cursor:pointer;transition:background 0.1s;" onmouseover="this.style.background='#FAFAFA'" onmouseout="this.style.background=''">
+            <input type="checkbox" style="accent-color:var(--gold);width:15px;height:15px;cursor:pointer;">
+            <div style="width:32px;height:32px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;color:var(--gray);">MR</div>
+            <div style="flex:1;"><div style="font-weight:600;font-size:13px;">Marcus Reyes</div><div style="font-size:11px;color:var(--light-gray);">Senior Inspector</div></div>
+            <span class="badge green" style="font-size:10px;">Available</span>
+          </div>
+          <div class="job-emp-item" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-bottom:1px solid #F2F2F7;cursor:pointer;transition:background 0.1s;" onmouseover="this.style.background='#FAFAFA'" onmouseout="this.style.background=''">
+            <input type="checkbox" style="accent-color:var(--gold);width:15px;height:15px;cursor:pointer;">
+            <div style="width:32px;height:32px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;color:var(--gray);">JM</div>
+            <div style="flex:1;"><div style="font-weight:600;font-size:13px;">Javier Morales</div><div style="font-size:11px;color:var(--light-gray);">NDT Technician</div></div>
+            <span class="badge green" style="font-size:10px;">Available</span>
+          </div>
+          <div class="job-emp-item" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-bottom:1px solid #F2F2F7;cursor:pointer;transition:background 0.1s;" onmouseover="this.style.background='#FAFAFA'" onmouseout="this.style.background=''">
+            <input type="checkbox" style="accent-color:var(--gold);width:15px;height:15px;cursor:pointer;">
+            <div style="width:32px;height:32px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;color:var(--gray);">DS</div>
+            <div style="flex:1;"><div style="font-weight:600;font-size:13px;">Derek Simmons</div><div style="font-size:11px;color:var(--light-gray);">Inspector L2</div></div>
+            <span class="badge green" style="font-size:10px;">Available</span>
+          </div>
+          <div class="job-emp-item" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-bottom:1px solid #F2F2F7;cursor:pointer;transition:background 0.1s;" onmouseover="this.style.background='#FAFAFA'" onmouseout="this.style.background=''">
+            <input type="checkbox" style="accent-color:var(--gold);width:15px;height:15px;cursor:pointer;">
+            <div style="width:32px;height:32px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;color:var(--gray);">AV</div>
+            <div style="flex:1;"><div style="font-weight:600;font-size:13px;">Adrian Vega</div><div style="font-size:11px;color:var(--light-gray);">Welder</div></div>
+            <span class="badge green" style="font-size:10px;">Available</span>
+          </div>
+          <div class="job-emp-item" style="display:flex;align-items:center;gap:10px;padding:10px 12px;cursor:pointer;transition:background 0.1s;" onmouseover="this.style.background='#FAFAFA'" onmouseout="this.style.background=''">
+            <input type="checkbox" style="accent-color:var(--gold);width:15px;height:15px;cursor:pointer;">
+            <div style="width:32px;height:32px;border-radius:50%;background:#F2F2F7;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;color:var(--gray);">TF</div>
+            <div style="flex:1;"><div style="font-weight:600;font-size:13px;">Tommy Fuentes</div><div style="font-size:11px;color:var(--light-gray);">Helper</div></div>
+            <span class="badge green" style="font-size:10px;">Available</span>
+          </div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px;">
+          <div style="font-size:11px;color:var(--light-gray);">3 selected &middot; 10 total employees</div>
+        </div>
+      </div></div>
+      <div style="display:flex;gap:8px;margin-top:16px;"><button class="btn btn-outline" style="flex:1;">Save Draft</button><button class="btn btn-primary" style="flex:1;">Dispatch Now</button></div>
+    </div>
+  </div>
+</div>
+
+<div class="panel"><div class="panel-header"><div class="panel-title">Resolved inspection package &mdash; pulled from the request</div><button class="btn btn-outline btn-sm" onclick="window.location.href='inspection-package.html'">View package</button></div><div class="panel-body"><div class="chain-wrap"><div class="chain"><div class="chain-node"><div class="cn-k">Asset</div><div class="cn-v">Non-Mag Drill Collar</div><div class="cn-s">8 &times; 6 5/8 in</div></div><div class="chain-arrow">&rsaquo;</div><div class="chain-node"><div class="cn-k">Standard</div><div class="cn-v">DS-1 Vol 3 / RP 7G-2</div><div class="cn-s">5th Ed.</div></div><div class="chain-arrow">&rsaquo;</div><div class="chain-node"><div class="cn-k">Procedure</div><div class="cn-v">ZP-NMDC-01</div><div class="cn-s">Rev 4</div></div><div class="chain-arrow">&rsaquo;</div><div class="chain-node"><div class="cn-k">Method</div><div class="cn-v">ET &middot; VT &middot; Dim</div><div class="cn-s">Electromagnetic</div></div><div class="chain-arrow">&rsaquo;</div><div class="chain-node"><div class="cn-k">Technique</div><div class="cn-v">Hardband / Heat-Check</div><div class="cn-s">Encircling coil</div></div><div class="chain-arrow">&rsaquo;</div><div class="chain-node"><div class="cn-k">Equipment</div><div class="cn-v">ET set + probe + ref std</div><div class="cn-s">Calibration OK</div></div><div class="chain-arrow">&rsaquo;</div><div class="chain-node acc"><div class="cn-k">Acceptance</div><div class="cn-v">DS-1 Cat 3&ndash;5</div><div class="cn-s">No override</div></div><div class="chain-arrow">&rsaquo;</div><div class="chain-node"><div class="cn-k">Qualification</div><div class="cn-v">ET Level II</div><div class="cn-s">Gates the crew list</div></div><div class="chain-arrow">&rsaquo;</div><div class="chain-node"><div class="cn-k">Report</div><div class="cn-v">Non-Mag DC Report</div><div class="cn-s">38 columns</div></div></div></div><div class="note-box" style="margin-top:10px">Because REQ-2026-0118 named the asset, this whole package is already decided. It gates who can be assigned below &mdash; the crew picker will not offer a technician who does not hold ET Level II.</div></div></div><div style="height:16px"></div><div class="grid-2"><div class="panel"><div class="panel-header"><div class="panel-title">Pre-job checklist &mdash; set at dispatch</div><button class="btn btn-primary btn-sm" onclick="wfToast('Checklist attached to job')">Attach to job</button></div><div class="panel-body"><div class="sub" style="margin-bottom:10px">Loaded from the package, editable per job. The crew cannot check in until every mandatory item is cleared.</div><div class="chk"><div class="chk-box on"></div><div><div>JSA reviewed and signed by all crew</div><div class="sub">Template JSAT-01 &middot; mandatory</div></div></div><div class="chk"><div class="chk-box on"></div><div><div>ET instrument calibration verified</div><div class="sub">Nortec 600 &middot; due Nov 04, 2026 &middot; mandatory</div></div></div><div class="chk"><div class="chk-box on"></div><div><div>Notched reference standard loaded</div><div class="sub">REF-ET-07 &middot; Truck 12 &middot; mandatory</div></div></div><div class="chk"><div class="chk-box on"></div><div><div>Customer site orientation current</div><div class="sub">Alliance Midland &middot; expires Sep 30, 2026</div></div></div><div class="chk"><div class="chk-box on"></div><div><div>PPE inspected &mdash; FR, gloves, UV shield</div><div class="sub">Mandatory</div></div></div><div class="chk"><div class="chk-box"></div><div><div>Tool count confirmed against ticket</div><div class="sub">8 collars expected &middot; mandatory</div></div></div><div class="chk"><div class="chk-box"></div><div><div>Customer rep contacted on arrival</div><div class="sub">D. Madrid &middot; via masked number</div></div></div><div class="chk"><div class="chk-box"></div><div><div>Photograph the rack before starting</div><div class="sub">Optional</div></div></div><div style="margin-top:12px"><button class="btn btn-outline btn-sm">+ Add checklist item</button> <button class="btn btn-ghost btn-sm">Load from template</button></div></div></div><div class="panel"><div class="panel-header"><div class="panel-title">Dispatch readiness</div></div><div class="panel-body"><div class="kv"><span class="k">Request</span><span class="v">REQ-2026-0118 &middot; Premium Oilfield</span></div><div class="kv"><span class="k">Package</span><span class="v">PKG-014 &middot; Non-Mag DC Cat 3-5</span></div><div class="kv"><span class="k">Qualification required</span><span class="v"><span class="qual">ET Level II</span></span></div><div class="kv"><span class="k">Eligible technicians</span><span class="v">4 of 42 &mdash; filtered automatically</span></div><div class="kv"><span class="k">Equipment reserved</span><span class="v">Nortec 600, REF-ET-07, Truck 12</span></div><div class="kv"><span class="k">Geofence</span><span class="v">Midland Yard Bay 3 &middot; 150 m radius</span></div><div class="kv"><span class="k">PO cover</span><span class="v">PO 44821 &middot; $18,400 remaining</span></div><div class="kv"><span class="k">Estimated cost</span><span class="v">$1,842 labour + $312 mileage</span></div><div class="kv"><span class="k">Quoted to client</span><span class="v">$4,150</span></div><div class="kv"><span class="k"><b>Estimated margin</b></span><span class="v"><b>51.9%</b></span></div><div class="note-box" style="margin-top:12px">The margin is visible <b>before</b> the crew rolls, not after the invoice is raised. This is the number Hunter said he has never been able to see in time to act on it.</div></div></div></div>
+</main>
+
+<!-- ===== PIN LOCATION MAP MODAL ===== -->
+<div id="jobPinMapModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:9999;animation:fadeIn 0.2s;" onclick="if(event.target===this)closeJobPinMapModal()">
+  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--white);border-radius:16px;width:680px;max-width:95vw;max-height:90vh;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.4);">
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid #E5E5EA;">
+      <div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:18px;text-transform:uppercase;letter-spacing:0.5px;">Pin Location on Map</div>
+        <div style="font-size:11px;color:var(--light-gray);margin-top:2px;">Click on the map to place a pin or search for a location</div>
+      </div>
+      <button onclick="closeJobPinMapModal()" style="background:none;border:none;font-size:22px;cursor:pointer;color:var(--gray);padding:0 4px;line-height:1;">&times;</button>
+    </div>
+    <div style="padding:16px 20px;">
+      <!-- Search Bar -->
+      <div style="display:flex;gap:8px;margin-bottom:12px;">
+        <div style="flex:1;position:relative;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="2" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          <input type="text" id="jobPinSearchInput" class="form-input" placeholder="Search address or coordinates..." style="padding-left:32px;margin-bottom:0;">
+        </div>
+        <button class="btn btn-sm btn-primary" onclick="searchJobPinLocation()">Search</button>
+      </div>
+      <!-- Map Area -->
+      <div style="position:relative;height:360px;border-radius:10px;overflow:hidden;border:1px solid #E5E5EA;cursor:crosshair;" onclick="placeJobPin(event)" id="jobPinMapArea">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d106864.95625393529!2d-102.0779146!3d31.9973456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1710000000000!5m2!1sen!2sus" width="100%" height="100%" style="border:0;pointer-events:none;" allowfullscreen="" loading="lazy"></iframe>
+        <!-- Pin Marker Overlay -->
+        <div id="jobPinMarker" style="display:none;position:absolute;z-index:10;transform:translate(-50%,-100%);pointer-events:none;">
+          <div style="font-size:32px;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3));line-height:1;">📍</div>
+        </div>
+        <!-- Click overlay for placing pin -->
+        <div style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:5;" onclick="placeJobPin(event)"></div>
+      </div>
+      <!-- Coordinates Display -->
+      <div style="display:flex;gap:12px;margin-top:12px;">
+        <div class="form-group" style="flex:1;margin-bottom:0;">
+          <label class="form-label">Latitude</label>
+          <input type="text" class="form-input" id="jobPinLat" placeholder="31.9973" readonly style="background:#F9F9F9;">
+        </div>
+        <div class="form-group" style="flex:1;margin-bottom:0;">
+          <label class="form-label">Longitude</label>
+          <input type="text" class="form-input" id="jobPinLng" placeholder="-102.0779" readonly style="background:#F9F9F9;">
+        </div>
+        <div class="form-group" style="flex:2;margin-bottom:0;">
+          <label class="form-label">Location Label (Optional)</label>
+          <input type="text" class="form-input" id="jobPinLabel" placeholder="e.g. Pad Site North of Hwy 302">
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:flex-end;gap:8px;padding:14px 20px;border-top:1px solid #E5E5EA;background:#FAFAFA;">
+      <button class="btn btn-ghost" onclick="closeJobPinMapModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="saveJobPinLocation()">Save Pin Location</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Handle Site/Location dropdown change
+  function handleSiteLocationChange(sel) {
+    var pinInfo = document.getElementById('pinLocationInfo');
+    if (sel.value === 'pin_location') {
+      pinInfo.style.display = 'block';
+    } else {
+      pinInfo.style.display = 'none';
+    }
+  }
+
+  // Open pin map modal
+  function openJobPinMapModal() {
+    document.getElementById('jobPinMapModal').style.display = 'block';
+  }
+
+  // Close pin map modal
+  function closeJobPinMapModal() {
+    document.getElementById('jobPinMapModal').style.display = 'none';
+  }
+
+  // Place pin on map click
+  function placeJobPin(e) {
+    var mapArea = document.getElementById('jobPinMapArea');
+    var rect = mapArea.getBoundingClientRect();
+    var x = e.clientX - rect.left;
+    var y = e.clientY - rect.top;
+    var marker = document.getElementById('jobPinMarker');
+    marker.style.display = 'block';
+    marker.style.left = x + 'px';
+    marker.style.top = y + 'px';
+    // Simulate coordinates based on click position relative to map center (Midland, TX area)
+    var latRange = 0.15;
+    var lngRange = 0.25;
+    var lat = (32.05 - (y / rect.height) * latRange).toFixed(6);
+    var lng = (-102.20 + (x / rect.width) * lngRange).toFixed(6);
+    document.getElementById('jobPinLat').value = lat;
+    document.getElementById('jobPinLng').value = lng;
+  }
+
+  // Search location (simulated)
+  function searchJobPinLocation() {
+    var query = document.getElementById('jobPinSearchInput').value;
+    if (query.trim()) {
+      // Simulate finding a location
+      document.getElementById('jobPinLat').value = '31.9973';
+      document.getElementById('jobPinLng').value = '-102.0779';
+      var marker = document.getElementById('jobPinMarker');
+      marker.style.display = 'block';
+      marker.style.left = '50%';
+      marker.style.top = '50%';
+    }
+  }
+
+  // Save pin location
+  function saveJobPinLocation() {
+    var lat = document.getElementById('jobPinLat').value;
+    var lng = document.getElementById('jobPinLng').value;
+    var label = document.getElementById('jobPinLabel').value;
+    if (lat && lng) {
+      // Update the Site Preview panel
+      var sitePreview = document.querySelector('.map-placeholder div');
+      if (sitePreview) {
+        sitePreview.innerHTML = '📍 Pinned Location' + (label ? ': ' + label : '') + '<br><span style="font-size:11px;opacity:0.8;">' + lat + ', ' + lng + '</span>';
+      }
+      closeJobPinMapModal();
+    }
+  }
+
+  // Show/hide team members
+  function showTeamMembers(team) {
+    document.getElementById('teamAlphaMembers').style.display = team === 'alpha' ? '' : 'none';
+    document.getElementById('teamBravoMembers').style.display = team === 'bravo' ? '' : 'none';
+    document.getElementById('teamCharlieMembers').style.display = team === 'charlie' ? '' : 'none';
+    document.getElementById('teamUnassignedMembers').style.display = team === 'unassigned' ? '' : 'none';
+  }
+
+  // Filter employees in job assignment
+  function filterJobEmployees(val) {
+    var items = document.querySelectorAll('#jobEmpList .job-emp-item');
+    val = val.toLowerCase();
+    items.forEach(function(item) {
+      var text = item.textContent.toLowerCase();
+      item.style.display = text.includes(val) ? '' : 'none';
+    });
+  }
+
+  // Add job checklist item
+  function addJobChecklistItem() {
+    document.getElementById('jobAddTaskRow').style.display = 'block';
+  }
+
+  // Save job checklist item
+  function saveJobChecklistItem() {
+    var name = document.getElementById('jobNewTaskName').value;
+    var desc = document.getElementById('jobNewTaskDesc').value;
+    var priority = document.getElementById('jobNewTaskPriority').value;
+    if (!name.trim()) return;
+    var badgeClass = priority === 'Required' ? 'gold' : priority === 'Standard' ? 'blue' : 'green';
+    var html = '<div class="checklist-item" style="display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid #F2F2F7;">' +
+      '<input type="checkbox" style="margin-top:3px;width:16px;height:16px;accent-color:var(--gold);cursor:pointer;">' +
+      '<div style="flex:1;"><div style="font-weight:600;font-size:13px;">' + name + '</div>' +
+      (desc ? '<div style="font-size:11px;color:var(--light-gray);">' + desc + '</div>' : '') +
+      '</div><span class="badge ' + badgeClass + '" style="font-size:10px;">' + priority + '</span></div>';
+    document.getElementById('jobChecklistContainer').insertAdjacentHTML('beforeend', html);
+    document.getElementById('jobNewTaskName').value = '';
+    document.getElementById('jobNewTaskDesc').value = '';
+    document.getElementById('jobAddTaskRow').style.display = 'none';
+  }
+</script>
+
+<script src="../js/app.js"></script>
+</body>
+</html>

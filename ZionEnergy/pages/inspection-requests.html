@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CrewViewPro - Inspection Requests</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&family=Barlow+Condensed:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+<!-- ===== SIDEBAR ===== -->
+<nav class="sidebar">
+  <div class="sidebar-logo">
+    <div class="bolt">&#9889;</div>
+    <div class="brand">Crew<span>View</span></div>
+  </div>
+  <div class="sidebar-nav">
+    <div class="nav-section">
+      <div class="nav-section-label">Overview</div>
+      <div class="nav-item" onclick="window.location.href='dashboard.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Dashboard</div>
+      <div class="nav-item" onclick="window.location.href='../index.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 8h7M9 12h7M9 16h4"/><circle cx="6" cy="8" r="0.6"/><circle cx="6" cy="12" r="0.6"/><circle cx="6" cy="16" r="0.6"/></svg>Screen Index</div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">Clients & Sites</div>
+      <div class="nav-item" onclick="window.location.href='clients.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M9 8h1M9 12h1M9 16h1M14 8h1M14 12h1M14 16h1"/><rect x="5" y="3" width="14" height="18" rx="1"/></svg>Client Master</div>
+      <div class="nav-item" onclick="window.location.href='client-detail.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Client Profile</div>
+      <div class="nav-item" onclick="window.location.href='portal-users.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Client Portal Users<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">Workforce</div>
+      <div class="nav-item" onclick="window.location.href='employees.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Employees</div>
+      <div class="nav-item" onclick="window.location.href='employee-detail.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Employee Profile</div>
+      <div class="nav-item" onclick="window.location.href='teams.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Teams & Crews</div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">Dispatch</div>
+      <div class="nav-item active" onclick="window.location.href='inspection-requests.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11L2 12v6a2 2 0 002 2h16a2 2 0 002-2v-6l-3.45-6.89A2 2 0 0016.76 4H7.24a2 2 0 00-1.79 1.11z"/></svg>Inspection Requests<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='jobs.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>Jobs & Dispatch<span class="nav-badge">3</span></div>
+      <div class="nav-item" onclick="window.location.href='create-job.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>Create Job & Dispatch</div>
+      <div class="nav-item" onclick="window.location.href='calendar.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Calendar</div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">Inspections</div>
+      <div class="nav-item" onclick="window.location.href='inspections.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 2h6v4H9z"/><path d="M7 4H5v18h14V4h-2"/><path d="M9 12h7M9 16h5"/></svg>Inspections<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='inspection-tickets.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h18v4a2 2 0 000 4v4H3v-4a2 2 0 000-4z"/><path d="M12 7v10"/></svg>Inspection Tickets<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='inspected-items.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>Inspected Items<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='field-capture.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M11 19h2"/></svg>Crew View Capture<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='job-safety.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L4 6v6c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V6z"/></svg>Job Safety Analysis<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">Assets & Standards</div>
+      <div class="nav-item" onclick="window.location.href='standards.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>Standards Library<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='inspection-package.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M7 6h10M5 8v4a2 2 0 002 2h3M19 8v4a2 2 0 01-2 2h-3"/></svg>Inspection Packages<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='asset-models.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>Tool & Item Templates<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='equipment.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21a9 9 0 119-9"/><path d="M12 12l4-3"/></svg>Equipment & Calibration<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">Operations</div>
+      <div class="nav-item" onclick="window.location.href='attendance.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Attendance</div>
+      <div class="nav-item" onclick="window.location.href='timesheet.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="13" r="8"/><path d="M12 9v4M9 2h6"/></svg>Timesheets</div>
+      <div class="nav-item" onclick="window.location.href='overtime.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="13" r="8"/><path d="M12 9v4M9 2h6"/></svg>Overtime<span class="nav-badge">5</span></div>
+      <div class="nav-item" onclick="window.location.href='payroll.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7H5a2 2 0 010-4h13v4"/><path d="M3 5v14a2 2 0 002 2h15v-5"/><path d="M18 12a2 2 0 000 4h4v-4z"/></svg>Payroll<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='geo.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Operations Map</div>
+      <div class="nav-item" onclick="window.location.href='mileage.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21L8 3M20 21l-4-18M12 6v3M12 12v3M12 18v3"/></svg>Mileage</div>
+      <div class="nav-item" onclick="window.location.href='billing.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.5 9.5h5M9.5 14.5h5"/></svg>Billing & Costing</div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">Commercial</div>
+      <div class="nav-item" onclick="window.location.href='rate-master.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.6 13.4L12 22l-9-9V4h9z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg>Rate Master<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='purchase-orders.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2h9l5 5v15H6z"/><path d="M15 2v5h5"/><path d="M9 13h6M9 17h4"/></svg>Purchase Orders<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='invoices.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2h9l5 5v15H6z"/><path d="M15 2v5h5"/><path d="M9 12h7M9 16h5"/></svg>Invoices<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='profitability.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 7-7"/><path d="M17 8h4v4"/></svg>Profitability<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">Intelligence</div>
+      <div class="nav-item" onclick="window.location.href='alerts.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>Alerts<span class="nav-badge">8</span></div>
+      <div class="nav-item" onclick="window.location.href='reports.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M8 16v-4M12 16V8M16 16v-6"/></svg>Reports</div>
+      <div class="nav-item" onclick="window.location.href='report-templates.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>Report Templates<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">System</div>
+      <div class="nav-item" onclick="window.location.href='settings.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 11-4 0v-.09A1.65 1.65 0 008 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06A1.65 1.65 0 004.6 15a1.65 1.65 0 00-1.51-1H3a2 2 0 110-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06A1.65 1.65 0 009 4.6a1.65 1.65 0 001-1.51V3a2 2 0 114 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 110 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>Settings</div>
+      <div class="nav-item" onclick="window.location.href='notifications.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>Notifications</div>
+      <div class="nav-item" onclick="window.location.href='login.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><path d="M16 17l5-5-5-5M21 12H9"/></svg>Logout</div>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== TOPBAR ===== -->
+<header class="topbar">
+  <div class="topbar-left">
+    <div>
+      <div class="topbar-title">Inspection Requests</div>
+      <div class="breadcrumb">
+        <a href="dashboard.html">Home</a>
+        <span>/</span>
+        <span>Inspections / Requests</span>
+      </div>
+    </div>
+  </div>
+  <div class="topbar-right">
+    <div class="topbar-search">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      <input type="text" placeholder="Search anything...">
+    </div>
+    <div class="topbar-icon-btn" onclick="window.location.href='notifications.html'">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+      <div class="notif-dot"></div>
+    </div>
+    <div class="user-pill" onclick="window.location.href='settings.html'">
+      <div class="user-avatar">HS</div>
+      <div>
+        <div class="user-name">Hunter Sisti</div>
+        <div class="user-role">Super Admin</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== MAIN CONTENT ===== -->
+<main class="main">
+<div class="new-banner"><span class="new-chip">NEW MODULE</span><span>Client-raised inspection requests arrive here from the Client Portal and are converted into a dispatched inspection job in one action.</span></div>
+<!--LIFECYCLE--><div class="panel"><div class="panel-header"><div class="panel-title">Inspection lifecycle</div></div><div class="panel-body"><div class="workflow-steps"><div class="wf-step active" style="cursor:pointer" onclick="window.location.href='inspection-requests.html'"><div class="wf-dot">1</div>Request<div style="font-size:10px;font-weight:500;color:#8E8E93;margin-top:2px">Client raises it</div></div><div class="wf-step pending" style="cursor:pointer" onclick="window.location.href='inspection-package.html'"><div class="wf-dot">2</div>Package<div style="font-size:10px;font-weight:500;color:#8E8E93;margin-top:2px">Standard resolves</div></div><div class="wf-step pending" style="cursor:pointer" onclick="window.location.href='create-job.html'"><div class="wf-dot">3</div>Dispatch<div style="font-size:10px;font-weight:500;color:#8E8E93;margin-top:2px">Crew + checklist</div></div><div class="wf-step pending" style="cursor:pointer" onclick="window.location.href='job-detail.html'"><div class="wf-dot">4</div>On Job<div style="font-size:10px;font-weight:500;color:#8E8E93;margin-top:2px">Cost + geo, live</div></div><div class="wf-step pending" style="cursor:pointer" onclick="window.location.href='field-capture.html'"><div class="wf-dot">5</div>Capture<div style="font-size:10px;font-weight:500;color:#8E8E93;margin-top:2px">Crew inspects</div></div><div class="wf-step pending" style="cursor:pointer" onclick="window.location.href='inspection-detail.html'"><div class="wf-dot">6</div>Report<div style="font-size:10px;font-weight:500;color:#8E8E93;margin-top:2px">Close out</div></div><div class="wf-step pending" style="cursor:pointer" onclick="window.location.href='invoice-detail.html'"><div class="wf-dot">7</div>Invoice<div style="font-size:10px;font-weight:500;color:#8E8E93;margin-top:2px">Billing authorised</div></div></div><div class="sub" style="text-align:center;margin-top:2px">One record travels the whole way. The request becomes the job, the job becomes the report, the report becomes the invoice &mdash; nothing is re-keyed and nothing is lost between systems.</div></div></div><!--/LIFECYCLE-->
+<div class="kpi-row"><div class="kpi-card gold"><div class="kpi-label">New Requests</div><div class="kpi-value">4</div><div class="kpi-delta"><span class="kpi-delta warn">Awaiting response</span></div></div>
+
+<div class="kpi-card blue"><div class="kpi-label">Accepted, To Schedule</div><div class="kpi-value">2</div><div class="kpi-delta">Ready for dispatch</div></div><div class="kpi-card green"><div class="kpi-label">Converted This Month</div><div class="kpi-value">31</div><div class="kpi-delta"><span class="kpi-delta up">+8 vs last month</span></div></div><div class="kpi-card gray"><div class="kpi-label">Rejected</div><div class="kpi-value">1</div><div class="kpi-delta">With reason recorded</div></div></div><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:10px;"><div class="filter-bar"><div class="filter-pill active" onclick="pickPill(this)">All</div><div class="filter-pill" onclick="pickPill(this)">New</div><div class="filter-pill" onclick="pickPill(this)">Accepted</div><div class="filter-pill" onclick="pickPill(this)">Scheduled</div><div class="filter-pill" onclick="pickPill(this)">Rejected</div></div><div style="display:flex;gap:8px;"><button class="btn btn-outline" onclick="exportTableCSV('reqTable','inspection-requests')">Export CSV</button><button class="btn btn-primary" onclick="openModal('newReqModal')">+ New Request</button></div></div><div style="margin-bottom:14px;"><div style="position:relative;max-width:420px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="2" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg><input type="text" placeholder="Search by request number, client, location..." oninput="filterTable(this,'reqTable')" style="width:100%;padding:10px 12px 10px 38px;border:1px solid #D1D1D6;border-radius:8px;font-size:13px;font-family:'Barlow',sans-serif;background:var(--white);outline:none;" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#D1D1D6'"></div></div><div class="table-container"><table id="reqTable"><thead><tr><th>Request #</th><th>Client / Location</th><th>Requested By</th><th>Requested</th><th>Tools</th><th>Connections</th><th>Status</th><th></th></tr></thead><tbody><tr><td><strong style="font-family:'JetBrains Mono',monospace;font-size:12px;">REQ-2026-0118</strong></td><td>Premium Oilfield Technologies<br><span style="font-size:11px;color:var(--light-gray);">10207 W Industrial Ave, Midland</span></td><td>D. Madrid<br><span style="font-size:11px;color:var(--light-gray);">Portal User</span></td><td>Aug 14, 2026</td><td>Drill Collars (6)</td><td>NC50 (12)</td><td><span class="badge gold">New</span></td><td><button class="btn btn-sm btn-ghost" onclick="openModal('viewReqModal')">View</button><button class="btn btn-sm btn-primary" onclick="openModal('convertModal')">Accept</button></td></tr><tr><td><strong style="font-family:'JetBrains Mono',monospace;font-size:12px;">REQ-2026-0117</strong></td><td>Gordon Technologies<br><span style="font-size:11px;color:var(--light-gray);">12615 W. CR 137, Odessa</span></td><td>N. Palacios<br><span style="font-size:11px;color:var(--light-gray);">Portal User</span></td><td>Aug 13, 2026</td><td>Non Mag Crossover (4)</td><td>AWNT (8)</td><td><span class="badge gold">New</span></td><td><button class="btn btn-sm btn-ghost" onclick="openModal('viewReqModal')">View</button><button class="btn btn-sm btn-primary" onclick="openModal('convertModal')">Accept</button></td></tr><tr><td><strong style="font-family:'JetBrains Mono',monospace;font-size:12px;">REQ-2026-0116</strong></td><td>Survey Rentals Inc<br><span style="font-size:11px;color:var(--light-gray);">2007 Westar Rd, Midland</span></td><td>J. Alexander</td><td>Aug 12, 2026</td><td>Shockmiser (2)</td><td>N/A</td><td><span class="badge blue">Accepted</span></td><td><button class="btn btn-sm btn-ghost" onclick="openModal('viewReqModal')">View</button><button class="btn btn-sm btn-outline" onclick="window.location.href='create-job.html'">Schedule</button></td></tr><tr><td><strong style="font-family:'JetBrains Mono',monospace;font-size:12px;">REQ-2026-0115</strong></td><td>NOV<br><span style="font-size:11px;color:var(--light-gray);">I20 and 1788</span></td><td>R. Vance</td><td>Aug 11, 2026</td><td>Swivel (1)</td><td>N/A</td><td><span class="badge green">Scheduled</span></td><td><button class="btn btn-sm btn-ghost" onclick="window.location.href='inspection-detail.html'">Job 6152</button></td></tr><tr><td><strong style="font-family:'JetBrains Mono',monospace;font-size:12px;">REQ-2026-0114</strong></td><td>Coss Welding Services<br><span style="font-size:11px;color:var(--light-gray);">3101 Mechanical Drive, Odessa</span></td><td>T. Coss</td><td>Aug 09, 2026</td><td>Demay Pump (1)</td><td>N/A</td><td><span class="badge gray">Rejected</span></td><td><button class="btn btn-sm btn-ghost" onclick="openModal('viewReqModal')">View</button></td></tr></tbody></table></div>
+<div id="convertModal" class="wf-modal" style="display:none;">
+  <div class="wf-modal-bg" onclick="closeModal('convertModal')"></div>
+  <div class="wf-modal-card" style="width:700px;">
+    <div class="wf-modal-head">
+      <div>
+        <div class="wf-modal-title">Convert Request to Inspection Job</div>
+        <div class="wf-modal-sub">REQ-2026-0118 &middot; Premium Oilfield Technologies</div>
+      </div>
+      <button class="btn btn-sm btn-ghost" onclick="closeModal('convertModal')" style="font-size:20px;padding:4px 8px;">&times;</button>
+    </div>
+    <div class="wf-modal-body"><div class="form-row"><div class="form-group"><label class="form-label">Client *</label><select class="form-select"><option>Premium Oilfield Technologies</option><option>Gordon Technologies</option></select></div><div class="form-group"><label class="form-label">Location / Site *</label><select class="form-select"><option>10207 W Industrial Ave, Midland TX</option></select></div></div><div class="form-row-3"><div class="form-group"><label class="form-label">Scheduled Date *</label><input class="form-input" type="date" value="2026-08-17"></div><div class="form-group"><label class="form-label">Start Time</label><input class="form-input" type="time" value="07:00"></div><div class="form-group"><label class="form-label">Priority</label><select class="form-select"><option>Normal</option><option>High</option><option>Critical</option></select></div></div><div class="form-row"><div class="form-group"><label class="form-label">Assign Team</label><select class="form-select"><option>Team Alpha (Ezven Ortiz +2)</option><option>Team Bravo</option><option>Individual assignment</option></select></div><div class="form-group"><label class="form-label">Lead Inspector</label><select class="form-select"><option>Isaac Black</option><option>Ezven Ortiz</option><option>Sebastian Salgado</option></select></div></div><div class="form-group"><label class="form-label">Allocate Calibrated Equipment</label><div style="display:flex;gap:8px;flex-wrap:wrap;"><span class="badge green">Gauss Meter ZES-8822-3 &middot; valid to 09/2026</span><span class="badge green">Digital Depth Gauge ZIO-2002251562</span><span class="badge amber">Profile Gauge #3 &middot; expires in 21 days</span></div><div style="font-size:11px;color:var(--light-gray);margin-top:6px;">Equipment with expired calibration cannot be allocated.</div></div><div class="form-group"><label class="form-label">Rate Source</label><select class="form-select"><option>PO-2026-0442 (balance $18,400)</option><option>Rate Master, standard pricing</option></select></div></div>
+    <div class="wf-modal-foot"><button class="btn btn-outline" onclick="closeModal('convertModal')">Cancel</button><button class="btn btn-secondary" onclick="wfToast('Saved as draft job')">Save Draft</button><button class="btn btn-primary" onclick="window.location.href='inspection-detail.html'">Create &amp; Dispatch</button></div>
+  </div>
+</div>
+<div id="viewReqModal" class="wf-modal" style="display:none;">
+  <div class="wf-modal-bg" onclick="closeModal('viewReqModal')"></div>
+  <div class="wf-modal-card" style="width:640px;">
+    <div class="wf-modal-head">
+      <div>
+        <div class="wf-modal-title">Inspection Request</div>
+        <div class="wf-modal-sub">REQ-2026-0118 &middot; raised 14 Aug 2026, 09:12</div>
+      </div>
+      <button class="btn btn-sm btn-ghost" onclick="closeModal('viewReqModal')" style="font-size:20px;padding:4px 8px;">&times;</button>
+    </div>
+    <div class="wf-modal-body"><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px 20px;"><div><div class="form-label" style="margin-bottom:2px;">Client</div><div style="font-size:13px;font-weight:600;">Premium Oilfield Technologies</div></div><div><div class="form-label" style="margin-bottom:2px;">Location</div><div style="font-size:13px;font-weight:600;">10207 W Industrial Ave</div></div><div><div class="form-label" style="margin-bottom:2px;">Requested By</div><div style="font-size:13px;font-weight:600;">D. Madrid (Portal)</div></div><div><div class="form-label" style="margin-bottom:2px;">Contact</div><div style="font-size:13px;font-weight:600;">(432) 563-2338</div></div><div><div class="form-label" style="margin-bottom:2px;">Required By</div><div style="font-size:13px;font-weight:600;">Aug 18, 2026</div></div><div><div class="form-label" style="margin-bottom:2px;">Tools</div><div style="font-size:13px;font-weight:600;">Drill Collars (6)</div></div><div><div class="form-label" style="margin-bottom:2px;">Connections</div><div style="font-size:13px;font-weight:600;">NC50 (12)</div></div><div><div class="form-label" style="margin-bottom:2px;">Status</div><div style="font-size:13px;font-weight:600;"><span class="badge gold">New</span></div></div></div><div style="margin-top:16px;"><div class="form-label">Client Notes</div><div style="font-size:13px;background:var(--off-white);padding:12px;border-radius:8px;">Six collars back from Nabors 1202. Please MPI and VT, full profile on the box end. Items are in the wash bay.</div></div></div>
+    <div class="wf-modal-foot"><button class="btn btn-danger" onclick="wfToast('Request rejected, requester notified')">Reject</button><button class="btn btn-outline" onclick="closeModal('viewReqModal')">Close</button><button class="btn btn-primary" onclick="closeModal('viewReqModal');openModal('convertModal')">Accept</button></div>
+  </div>
+</div>
+<div id="newReqModal" class="wf-modal" style="display:none;">
+  <div class="wf-modal-bg" onclick="closeModal('newReqModal')"></div>
+  <div class="wf-modal-card" style="width:640px;">
+    <div class="wf-modal-head">
+      <div>
+        <div class="wf-modal-title">New Inspection Request</div>
+        <div class="wf-modal-sub">Raised on behalf of a client by office staff</div>
+      </div>
+      <button class="btn btn-sm btn-ghost" onclick="closeModal('newReqModal')" style="font-size:20px;padding:4px 8px;">&times;</button>
+    </div>
+    <div class="wf-modal-body"><div class="form-row"><div class="form-group"><label class="form-label">Client *</label><select class="form-select"><option>Select client...</option><option>Premium Oilfield Technologies</option><option>Gordon Technologies</option><option>NOV</option></select></div><div class="form-group"><label class="form-label">Location *</label><select class="form-select"><option>Select location...</option></select></div></div><div class="form-row"><div class="form-group"><label class="form-label">Tools</label><input class="form-input" placeholder="e.g. Drill Collars (6)"></div><div class="form-group"><label class="form-label">Connections</label><input class="form-input" placeholder="e.g. NC50 (12)"></div></div><div class="form-group"><label class="form-label">Notes</label><textarea class="form-input" rows="3" placeholder="Describe the work required..."></textarea></div></div>
+    <div class="wf-modal-foot"><button class="btn btn-outline" onclick="closeModal('newReqModal')">Cancel</button><button class="btn btn-primary" onclick="closeModal('newReqModal');wfToast('Request REQ-2026-0119 created')">Create Request</button></div>
+  </div>
+</div>
+</main>
+
+<script src="../js/app.js"></script>
+</body>
+</html>

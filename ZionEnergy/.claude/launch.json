@@ -1,0 +1,6 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    { "name": "zion-training", "runtimeExecutable": "python3", "runtimeArgs": ["/private/tmp/claude-501/-Users-aadityanilesiphone-Documents-GitHub-demo2-ZionEnergy/423c3d9b-99c9-4793-8aa9-06e0ff9eb01c/scratchpad/serve.py"], "port": 8779 }
+  ]
+}

@@ -1,0 +1,2277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CrewViewPro - Admin Console</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&family=Barlow+Condensed:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #0A0A0A;
+  --near-black: #141414;
+  --dark-gray: #1C1C1E;
+  --mid-dark: #2A2A2C;
+  --charcoal: #3A3A3C;
+  --gray: #636366;
+  --light-gray: #8E8E93;
+  --silver: #AEAEB2;
+  --off-white: #F2F2F7;
+  --white: #FFFFFF;
+  --gold: #E8A838;
+  --gold-bright: #F5BD4F;
+  --gold-dark: #C48A1A;
+  --gold-dim: rgba(232, 168, 56, 0.08);
+  --gold-glow: rgba(232, 168, 56, 0.15);
+  --green: #34C759;
+  --green-dim: rgba(52, 199, 89, 0.12);
+  --red: #FF3B30;
+  --red-dim: rgba(255, 59, 48, 0.12);
+  --amber: #FF9F0A;
+  --amber-dim: rgba(255, 159, 10, 0.12);
+  --blue: #0A84FF;
+  --blue-dim: rgba(10, 132, 255, 0.12);
+  --sidebar-w: 260px;
+  --topbar-h: 56px;
+  --radius: 8px;
+  --radius-lg: 12px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Barlow', -apple-system, sans-serif;
+  background: var(--off-white);
+  color: var(--near-black);
+  font-size: 14px;
+  line-height: 1.5;
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+  position: fixed;
+  left: 0; top: 0;
+  width: var(--sidebar-w);
+  height: 100vh;
+  background: var(--near-black);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid rgba(255,255,255,0.06);
+}
+
+.sidebar-logo {
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sidebar-logo .bolt {
+  width: 28px; height: 28px;
+  background: var(--gold);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 900;
+  color: var(--black);
+  transform: skewX(-6deg);
+}
+
+.sidebar-logo .brand {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 20px;
+  color: var(--white);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.sidebar-logo .brand span {
+  color: var(--gold);
+}
+
+.sidebar-nav {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px 0;
+}
+
+.sidebar-nav::-webkit-scrollbar { width: 4px; }
+.sidebar-nav::-webkit-scrollbar-thumb { background: var(--charcoal); border-radius: 2px; }
+
+.nav-section {
+  padding: 0 12px;
+  margin-bottom: 4px;
+}
+
+.nav-section-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--gray);
+  padding: 16px 12px 6px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: var(--silver);
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.15s;
+  position: relative;
+  user-select: none;
+}
+
+.nav-item:hover {
+  background: rgba(255,255,255,0.05);
+  color: var(--white);
+}
+
+.nav-item.active {
+  background: var(--gold-glow);
+  color: var(--gold);
+}
+
+.nav-item.active::before {
+  content: '';
+  position: absolute;
+  left: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 24px;
+  background: var(--gold);
+  border-radius: 0 2px 2px 0;
+}
+
+.nav-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+.nav-item.active .nav-icon { opacity: 1; }
+
+.nav-badge {
+  margin-left: auto;
+  background: var(--red);
+  color: var(--white);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 10px;
+  min-width: 18px;
+  text-align: center;
+}
+
+/* ===== TOPBAR ===== */
+.topbar {
+  position: fixed;
+  left: var(--sidebar-w);
+  top: 0;
+  right: 0;
+  height: var(--topbar-h);
+  background: var(--white);
+  border-bottom: 1px solid #E5E5EA;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  z-index: 90;
+}
+
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.topbar-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--near-black);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.topbar-subtitle {
+  font-size: 12px;
+  color: var(--light-gray);
+  font-weight: 500;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--light-gray);
+}
+
+.breadcrumb a { color: var(--gold-dark); text-decoration: none; font-weight: 600; }
+.breadcrumb a:hover { color: var(--gold); }
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.topbar-search {
+  display: flex;
+  align-items: center;
+  background: var(--off-white);
+  border-radius: 8px;
+  padding: 6px 12px;
+  gap: 8px;
+  min-width: 200px;
+}
+
+.topbar-search input {
+  border: none;
+  background: none;
+  outline: none;
+  font-family: 'Barlow', sans-serif;
+  font-size: 13px;
+  color: var(--near-black);
+  width: 100%;
+}
+
+.topbar-icon-btn {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--gray);
+  position: relative;
+  transition: all 0.15s;
+}
+
+.topbar-icon-btn:hover { background: var(--off-white); color: var(--near-black); }
+
+.topbar-icon-btn .notif-dot {
+  position: absolute;
+  top: 6px; right: 6px;
+  width: 8px; height: 8px;
+  background: var(--red);
+  border-radius: 50%;
+  border: 2px solid var(--white);
+}
+
+.user-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 12px 4px 4px;
+  background: var(--off-white);
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.user-avatar {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 12px;
+  color: var(--black);
+}
+
+.user-name { font-weight: 600; font-size: 13px; color: var(--near-black); }
+.user-role { font-size: 11px; color: var(--light-gray); font-weight: 500; }
+
+/* ===== MAIN CONTENT ===== */
+.main {
+  margin-left: var(--sidebar-w);
+  margin-top: var(--topbar-h);
+  height: calc(100vh - var(--topbar-h));
+  overflow-y: auto;
+  padding: 24px;
+}
+
+.main::-webkit-scrollbar { width: 6px; }
+.main::-webkit-scrollbar-thumb { background: #D1D1D6; border-radius: 3px; }
+
+/* ===== SCREEN CONTAINER ===== */
+.screen { display: none; animation: fadeIn 0.2s ease; }
+.screen.active { display: block; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== KPI CARDS ===== */
+.kpi-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.kpi-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  border: 1px solid #E5E5EA;
+  position: relative;
+  overflow: hidden;
+}
+
+.kpi-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 3px;
+}
+
+.kpi-card.gold::before { background: var(--gold); }
+.kpi-card.green::before { background: var(--green); }
+.kpi-card.red::before { background: var(--red); }
+.kpi-card.amber::before { background: var(--amber); }
+.kpi-card.blue::before { background: var(--blue); }
+
+.kpi-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--light-gray);
+  margin-bottom: 8px;
+}
+
+.kpi-value {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 32px;
+  color: var(--near-black);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.kpi-delta {
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.kpi-delta.up { color: var(--green); }
+.kpi-delta.down { color: var(--red); }
+.kpi-delta.warn { color: var(--amber); }
+
+/* ===== DATA TABLE ===== */
+.table-container {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  border: 1px solid #E5E5EA;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.table-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid #E5E5EA;
+}
+
+.table-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.table-actions {
+  display: flex;
+  gap: 8px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background: #FAFAFA;
+}
+
+th {
+  padding: 10px 16px;
+  text-align: left;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--gray);
+  border-bottom: 1px solid #E5E5EA;
+}
+
+td {
+  padding: 12px 16px;
+  font-size: 13px;
+  border-bottom: 1px solid #F2F2F7;
+  color: var(--near-black);
+}
+
+tr:hover td { background: rgba(232, 168, 56, 0.03); }
+
+tr:last-child td { border-bottom: none; }
+
+/* ===== BADGES ===== */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge.green { background: var(--green-dim); color: #1B9E3E; }
+.badge.red { background: var(--red-dim); color: #D62B20; }
+.badge.amber { background: var(--amber-dim); color: #CC7D00; }
+.badge.blue { background: var(--blue-dim); color: #0066CC; }
+.badge.gold { background: var(--gold-dim); color: var(--gold-dark); }
+.badge.gray { background: #F2F2F7; color: var(--gray); }
+
+/* ===== BUTTONS ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-family: 'Barlow', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.15s;
+}
+
+.btn-primary {
+  background: var(--gold);
+  color: var(--black);
+}
+
+.btn-primary:hover { background: var(--gold-bright); }
+
+.btn-secondary {
+  background: var(--near-black);
+  color: var(--white);
+}
+
+.btn-secondary:hover { background: var(--dark-gray); }
+
+.btn-outline {
+  background: transparent;
+  color: var(--near-black);
+  border: 1px solid #D1D1D6;
+}
+
+.btn-outline:hover { background: var(--off-white); border-color: #AEAEB2; }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--gray);
+  padding: 6px 10px;
+}
+
+.btn-ghost:hover { color: var(--near-black); background: var(--off-white); }
+
+.btn-sm { padding: 5px 10px; font-size: 12px; }
+.btn-danger { background: var(--red-dim); color: #D62B20; }
+.btn-danger:hover { background: rgba(255,59,48,0.2); }
+
+/* ===== PANELS ===== */
+.panel {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  border: 1px solid #E5E5EA;
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+
+.panel-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid #E5E5EA;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.panel-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.panel-body { padding: 20px; }
+
+/* ===== GRID LAYOUTS ===== */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+.grid-7-3 { display: grid; grid-template-columns: 7fr 3fr; gap: 24px; }
+.grid-3-7 { display: grid; grid-template-columns: 3fr 7fr; gap: 24px; }
+
+/* ===== FORM ELEMENTS ===== */
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--gray);
+  margin-bottom: 6px;
+}
+
+.form-input, .form-select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #D1D1D6;
+  border-radius: 6px;
+  font-family: 'Barlow', sans-serif;
+  font-size: 14px;
+  color: var(--near-black);
+  background: var(--white);
+  transition: border-color 0.15s;
+}
+
+.form-input:focus, .form-select:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px var(--gold-dim);
+}
+
+.form-input::placeholder { color: var(--silver); }
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-row-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+}
+
+/* ===== TABS ===== */
+.tabs {
+  display: flex;
+  border-bottom: 2px solid #E5E5EA;
+  margin-bottom: 24px;
+  gap: 0;
+  overflow-x: auto;
+}
+
+.tab {
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gray);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  white-space: nowrap;
+  transition: all 0.15s;
+}
+
+.tab:hover { color: var(--near-black); }
+
+.tab.active {
+  color: var(--gold-dark);
+  border-bottom-color: var(--gold);
+}
+
+/* ===== CLIENT TABS ===== */
+.client-tab { display: none; }
+.client-tab.active { display: block; animation: fadeIn 0.2s ease; }
+
+/* ===== TABLE NO-WRAP for phone, dates, etc ===== */
+table td, table th { white-space: nowrap; }
+
+/* ===== MAP PLACEHOLDER ===== */
+.map-placeholder {
+  background: linear-gradient(135deg, #E8E8ED 0%, #D8D8DD 100%);
+  border-radius: var(--radius-lg);
+  height: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--gray);
+  font-size: 14px;
+  font-weight: 600;
+  border: 2px dashed #C7C7CC;
+  position: relative;
+  overflow: hidden;
+}
+
+.map-placeholder::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(0,0,0,0.02) 40px, rgba(0,0,0,0.02) 41px),
+    repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(0,0,0,0.02) 40px, rgba(0,0,0,0.02) 41px);
+}
+
+.map-pin {
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  position: absolute;
+  border: 2px solid var(--white);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* ===== ALERT ITEMS ===== */
+.alert-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 16px;
+  border-bottom: 1px solid #F2F2F7;
+  transition: background 0.1s;
+}
+
+.alert-item:hover { background: rgba(232,168,56,0.03); }
+.alert-item:last-child { border-bottom: none; }
+
+.alert-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  margin-top: 5px;
+  flex-shrink: 0;
+}
+
+.alert-dot.critical { background: var(--red); }
+.alert-dot.warning { background: var(--amber); }
+.alert-dot.info { background: var(--blue); }
+
+.alert-content { flex: 1; }
+.alert-text { font-size: 13px; font-weight: 500; color: var(--near-black); }
+.alert-meta { font-size: 11px; color: var(--light-gray); margin-top: 2px; }
+
+/* ===== TIMELINE ===== */
+.timeline-item {
+  display: flex;
+  gap: 16px;
+  padding: 12px 0;
+  position: relative;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: 11px;
+  top: 36px;
+  bottom: 0;
+  width: 2px;
+  background: #E5E5EA;
+}
+
+.timeline-item:last-child::before { display: none; }
+
+.timeline-dot {
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.timeline-dot.gold { background: var(--gold-dim); color: var(--gold-dark); }
+.timeline-dot.green { background: var(--green-dim); color: #1B9E3E; }
+.timeline-dot.blue { background: var(--blue-dim); color: #0066CC; }
+.timeline-dot.red { background: var(--red-dim); color: #D62B20; }
+
+.timeline-content { flex: 1; }
+.timeline-title { font-size: 13px; font-weight: 600; }
+.timeline-time { font-size: 11px; color: var(--light-gray); }
+
+/* ===== PROGRESS BAR ===== */
+.progress-bar {
+  height: 6px;
+  background: #E5E5EA;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.5s ease;
+}
+
+.progress-fill.gold { background: var(--gold); }
+.progress-fill.green { background: var(--green); }
+.progress-fill.red { background: var(--red); }
+
+/* ===== STAT BARS ===== */
+.stat-bar {
+  display: flex;
+  gap: 4px;
+  height: 32px;
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 12px 0;
+}
+
+.stat-segment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--white);
+  min-width: 40px;
+}
+
+/* ===== FILTER BAR ===== */
+.filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.filter-pill {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid #D1D1D6;
+  background: var(--white);
+  color: var(--gray);
+  transition: all 0.15s;
+}
+
+.filter-pill:hover { border-color: var(--gold); color: var(--gold-dark); }
+.filter-pill.active { background: var(--gold); color: var(--black); border-color: var(--gold); }
+
+/* ===== CHECKBOX & SWITCH ===== */
+.switch {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.switch-track {
+  width: 36px; height: 20px;
+  border-radius: 10px;
+  background: #D1D1D6;
+  position: relative;
+  transition: background 0.2s;
+}
+
+.switch-track.on { background: var(--gold); }
+
+.switch-track::after {
+  content: '';
+  position: absolute;
+  top: 2px; left: 2px;
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: var(--white);
+  transition: transform 0.2s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.switch-track.on::after { transform: translateX(16px); }
+
+/* ===== SCREEN-SPECIFIC ===== */
+
+/* Login Screen */
+.login-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - var(--topbar-h) - 48px);
+}
+
+.login-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  width: 400px;
+  border: 1px solid #E5E5EA;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+}
+
+.login-logo {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.login-logo .bolt-lg {
+  display: inline-flex;
+  width: 48px; height: 48px;
+  background: var(--gold);
+  border-radius: 10px;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--black);
+  transform: skewX(-6deg);
+  margin-bottom: 12px;
+}
+
+.login-logo h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 28px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.login-logo h2 span { color: var(--gold); }
+
+/* Calendar grid */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: 100px repeat(7, 1fr);
+  border: 1px solid #E5E5EA;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.cal-header {
+  padding: 10px 8px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--gray);
+  background: #FAFAFA;
+  border-bottom: 1px solid #E5E5EA;
+  text-align: center;
+}
+
+.cal-header:first-child { text-align: left; padding-left: 12px; }
+
+.cal-row-label {
+  padding: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--near-black);
+  border-bottom: 1px solid #F2F2F7;
+  border-right: 1px solid #E5E5EA;
+  background: #FAFAFA;
+}
+
+.cal-cell {
+  padding: 8px 4px;
+  border-bottom: 1px solid #F2F2F7;
+  border-right: 1px solid #F2F2F7;
+  min-height: 48px;
+}
+
+.cal-event {
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  margin: 2px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cal-event.gold { background: var(--gold-dim); color: var(--gold-dark); border-left: 3px solid var(--gold); }
+.cal-event.blue { background: var(--blue-dim); color: #0066CC; border-left: 3px solid var(--blue); }
+.cal-event.green { background: var(--green-dim); color: #1B9E3E; border-left: 3px solid var(--green); }
+
+/* Settings sections */
+.settings-section {
+  padding: 20px;
+  border-bottom: 1px solid #F2F2F7;
+}
+
+.settings-section:last-child { border-bottom: none; }
+
+.settings-title {
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.settings-desc {
+  font-size: 12px;
+  color: var(--light-gray);
+  margin-bottom: 12px;
+}
+
+/* Notification items */
+.notif-item {
+  display: flex;
+  gap: 12px;
+  padding: 14px 20px;
+  border-bottom: 1px solid #F2F2F7;
+  cursor: pointer;
+  transition: background 0.1s;
+}
+
+.notif-item:hover { background: var(--gold-dim); }
+.notif-item.unread { background: rgba(232,168,56,0.04); }
+
+.notif-icon-box {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.notif-icon-box.gold { background: var(--gold-dim); color: var(--gold-dark); }
+.notif-icon-box.red { background: var(--red-dim); color: #D62B20; }
+.notif-icon-box.blue { background: var(--blue-dim); color: #0066CC; }
+.notif-icon-box.green { background: var(--green-dim); color: #1B9E3E; }
+
+.notif-text { font-size: 13px; font-weight: 500; }
+.notif-time { font-size: 11px; color: var(--light-gray); margin-top: 2px; }
+
+/* Inspection workflow steps */
+.workflow-steps {
+  display: flex;
+  gap: 0;
+  margin: 16px 0;
+}
+
+.wf-step {
+  flex: 1;
+  text-align: center;
+  padding: 12px 8px;
+  position: relative;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.wf-step::after {
+  content: '';
+  position: absolute;
+  top: 18px;
+  right: -50%;
+  width: 100%;
+  height: 2px;
+  background: #E5E5EA;
+  z-index: 0;
+}
+
+.wf-step:last-child::after { display: none; }
+
+.wf-dot {
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  margin: 0 auto 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.wf-step.done .wf-dot { background: var(--green); color: var(--white); }
+.wf-step.active .wf-dot { background: var(--gold); color: var(--black); }
+.wf-step.pending .wf-dot { background: #E5E5EA; color: var(--gray); }
+.wf-step.done::after { background: var(--green); }
+.wf-step.active::after { background: var(--gold); }
+
+/* Commission calc */
+.commission-box {
+  background: var(--gold-dim);
+  border: 1px solid var(--gold);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin: 12px 0;
+}
+
+.commission-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+  font-size: 13px;
+}
+
+.commission-row.total {
+  border-top: 2px solid var(--gold);
+  margin-top: 8px;
+  padding-top: 8px;
+  font-weight: 700;
+}
+
+/* Responsive helper */
+@media (max-width: 1200px) {
+  .grid-2, .grid-7-3, .grid-3-7 { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== SIDEBAR ===== -->
+<nav class="sidebar">
+  <div class="sidebar-logo">
+    <div class="bolt">&#9889;</div>
+    <div class="brand">Crew<span>View</span></div>
+  </div>
+  <div class="sidebar-nav">
+    <div class="nav-section">
+      <div class="nav-section-label">Overview</div>
+      <div class="nav-item active" onclick="showScreen('dashboard')" data-screen="dashboard">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        Dashboard
+      </div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">Clients & Sites</div>
+      <div class="nav-item" onclick="showScreen('clients')" data-screen="clients">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M9 8h1M9 12h1M9 16h1M14 8h1M14 12h1M14 16h1"/><rect x="5" y="3" width="14" height="18" rx="1"/></svg>
+        Client Master
+      </div>
+      <div class="nav-item" onclick="showScreen('clientDetail')" data-screen="clientDetail">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
+        Client Detail
+      </div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">Workforce</div>
+      <div class="nav-item" onclick="showScreen('employees')" data-screen="employees">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        Employees
+      </div>
+      <div class="nav-item" onclick="showScreen('employeeDetail')" data-screen="employeeDetail">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        Employee Profile
+      </div>
+      <div class="nav-item" onclick="showScreen('teams')" data-screen="teams">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        Teams & Crews
+      </div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">Dispatch</div>
+      <div class="nav-item" onclick="showScreen('jobs')" data-screen="jobs">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+        Jobs & Dispatch
+        <span class="nav-badge">3</span>
+      </div>
+      <div class="nav-item" onclick="showScreen('createJob')" data-screen="createJob">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
+        Create Job
+      </div>
+      <div class="nav-item" onclick="showScreen('jobDetail')" data-screen="jobDetail">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        Job Execution
+      </div>
+      <div class="nav-item" onclick="showScreen('calendar')" data-screen="calendar">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        Calendar
+      </div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">Operations</div>
+      <div class="nav-item" onclick="showScreen('attendance')" data-screen="attendance">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+        Attendance
+      </div>
+      <div class="nav-item" onclick="showScreen('timesheet')" data-screen="timesheet">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg>
+        Timesheets
+      </div>
+      <div class="nav-item" onclick="showScreen('overtime')" data-screen="overtime">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><path d="M12 9v4M12 17h.01"/></svg>
+        Overtime
+        <span class="nav-badge">5</span>
+      </div>
+      <div class="nav-item" onclick="showScreen('geo')" data-screen="geo">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Geo & Locations
+      </div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">Intelligence</div>
+      <div class="nav-item" onclick="showScreen('alerts')" data-screen="alerts">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+        Alerts
+        <span class="nav-badge">8</span>
+      </div>
+      <div class="nav-item" onclick="showScreen('reports')" data-screen="reports">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+        Reports
+      </div>
+      <div class="nav-item" onclick="showScreen('mileage')" data-screen="mileage">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+        Mileage
+      </div>
+      <div class="nav-item" onclick="showScreen('billing')" data-screen="billing">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+        Billing & Costing
+      </div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">System</div>
+      <div class="nav-item" onclick="showScreen('settings')" data-screen="settings">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+        Settings
+      </div>
+      <div class="nav-item" onclick="showScreen('audit')" data-screen="audit">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Audit Trail
+      </div>
+      <div class="nav-item" onclick="showScreen('notifications')" data-screen="notifications">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+        Notifications
+      </div>
+      <div class="nav-item" onclick="showScreen('login')" data-screen="login">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+        Login Screen
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== TOPBAR ===== -->
+<header class="topbar">
+  <div class="topbar-left">
+    <div>
+      <div class="topbar-title" id="topbarTitle">Operational Dashboard</div>
+      <div class="breadcrumb" id="topbarBreadcrumb">
+        <a href="#" onclick="showScreen('dashboard')">Home</a>
+        <span>/</span>
+        <span>Dashboard</span>
+      </div>
+    </div>
+  </div>
+  <div class="topbar-right">
+    <div class="topbar-search">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      <input type="text" placeholder="Search anything...">
+    </div>
+    <div class="topbar-icon-btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+      <div class="notif-dot"></div>
+    </div>
+    <div class="user-pill">
+      <div class="user-avatar">HS</div>
+      <div>
+        <div class="user-name">Hunter Sisti</div>
+        <div class="user-role">Super Admin</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== MAIN CONTENT ===== -->
+<main class="main">
+
+<!-- ==================== SCREEN 1: LOGIN ==================== -->
+<div class="screen" id="screen-login">
+  <div class="login-screen">
+    <div class="login-card">
+      <div class="login-logo">
+        <div class="bolt-lg">&#9889;</div>
+        <h2>Crew<span>View</span>Pro</h2>
+        <p style="font-size:12px;color:var(--light-gray);margin-top:4px;">Powered by Zion Energy Services</p>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email Address</label>
+        <input type="email" class="form-input" placeholder="hunter@zionenergy.com">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-input" placeholder="Enter password" value="••••••••">
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;">
+        <label style="display:flex;align-items:center;gap:6px;font-size:13px;color:var(--gray);cursor:pointer;">
+          <input type="checkbox" checked> Remember me
+        </label>
+        <a href="#" style="font-size:13px;color:var(--gold-dark);text-decoration:none;font-weight:600;">Forgot Password?</a>
+      </div>
+      <button class="btn btn-primary" style="width:100%;justify-content:center;padding:12px;font-size:15px;font-weight:700;letter-spacing:0.5px;">SIGN IN</button>
+      <p style="text-align:center;font-size:11px;color:var(--silver);margin-top:20px;">Session timeout: 30 min | Max 5 login attempts</p>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SCREEN 2: DASHBOARD ==================== -->
+<div class="screen active" id="screen-dashboard">
+  <!-- KPIs -->
+  <div class="kpi-row">
+    <div class="kpi-card gold">
+      <div class="kpi-label">Active Employees</div>
+      <div class="kpi-value">24</div>
+      <div class="kpi-delta up">&#9650; 2 from yesterday</div>
+    </div>
+    <div class="kpi-card blue">
+      <div class="kpi-label">Jobs In Progress</div>
+      <div class="kpi-value">8</div>
+      <div class="kpi-delta warn">3 pending dispatch</div>
+    </div>
+    <div class="kpi-card amber">
+      <div class="kpi-label">OT Risk Alerts</div>
+      <div class="kpi-value">3</div>
+      <div class="kpi-delta down">Review before 5pm</div>
+    </div>
+    <div class="kpi-card red">
+      <div class="kpi-label">Geo Violations</div>
+      <div class="kpi-value">2</div>
+      <div class="kpi-delta down">Immediate attention</div>
+    </div>
+    <div class="kpi-card green">
+      <div class="kpi-label">Est. Weekly Labor Cost</div>
+      <div class="kpi-value">$14,280</div>
+      <div class="kpi-delta down">&#9660; 1.2% vs last week</div>
+    </div>
+  </div>
+
+  <div class="grid-7-3">
+    <div>
+      <!-- Live Map -->
+      <div class="panel">
+        <div class="panel-header">
+          <div class="panel-title">&#128205; Live Operations Map</div>
+          <div style="display:flex;gap:8px;">
+            <button class="btn btn-sm btn-outline">Satellite</button>
+            <button class="btn btn-sm btn-outline">Geo-fences</button>
+            <button class="btn btn-sm btn-outline">Routes</button>
+          </div>
+        </div>
+        <div style="padding:0;">
+          <div class="map-placeholder" style="border-radius:0;border:none;height:300px;">
+            <div class="map-pin" style="background:var(--green);top:30%;left:25%;"></div>
+            <div class="map-pin" style="background:var(--green);top:45%;left:55%;"></div>
+            <div class="map-pin" style="background:var(--blue);top:60%;left:35%;"></div>
+            <div class="map-pin" style="background:var(--gold);top:35%;left:70%;"></div>
+            <div class="map-pin" style="background:var(--red);top:65%;left:75%;"></div>
+            <div class="map-pin" style="background:var(--green);top:50%;left:45%;"></div>
+            <div style="position:relative;z-index:1;text-align:center;">
+              <div style="font-size:24px;margin-bottom:4px;">&#127758;</div>
+              <div>Google Maps / Mapbox Integration</div>
+              <div style="font-size:11px;color:var(--silver);margin-top:4px;">
+                <span style="display:inline-flex;align-items:center;gap:4px;margin-right:12px;"><span style="width:8px;height:8px;border-radius:50%;background:var(--green);display:inline-block;"></span> On Site</span>
+                <span style="display:inline-flex;align-items:center;gap:4px;margin-right:12px;"><span style="width:8px;height:8px;border-radius:50%;background:var(--blue);display:inline-block;"></span> Transit</span>
+                <span style="display:inline-flex;align-items:center;gap:4px;margin-right:12px;"><span style="width:8px;height:8px;border-radius:50%;background:var(--gold);display:inline-block;"></span> Pending</span>
+                <span style="display:inline-flex;align-items:center;gap:4px;"><span style="width:8px;height:8px;border-radius:50%;background:var(--red);display:inline-block;"></span> Violation</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Workforce Status -->
+      <div class="table-container">
+        <div class="table-header">
+          <div class="table-title">&#128101; Workforce Status &mdash; Live</div>
+          <div class="table-actions">
+            <button class="btn btn-sm btn-outline">Export</button>
+          </div>
+        </div>
+        <table>
+          <thead>
+            <tr><th>Employee</th><th>Status</th><th>Job</th><th>Hours</th><th>OT Risk</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Ezven Ortiz</strong><br><span style="font-size:11px;color:var(--light-gray);">Sr. Inspector</span></td><td><span class="badge green">On Site</span></td><td>JOB-2026-0042</td><td>6.2h</td><td><span class="badge green">Safe</span></td></tr>
+            <tr><td><strong>Sebastian Salgado</strong><br><span style="font-size:11px;color:var(--light-gray);">Inspector (Night)</span></td><td><span class="badge green">On Site</span></td><td>JOB-2026-0043</td><td>7.8h</td><td><span class="badge amber">Approaching</span></td></tr>
+            <tr><td><strong>Caleb Washington</strong><br><span style="font-size:11px;color:var(--light-gray);">Field Tech (Day)</span></td><td><span class="badge blue">Transit</span></td><td>JOB-2026-0044</td><td>4.1h</td><td><span class="badge green">Safe</span></td></tr>
+            <tr><td><strong>Briston Clark</strong><br><span style="font-size:11px;color:var(--light-gray);">Field Tech (Night)</span></td><td><span class="badge gold">Pending</span></td><td>JOB-2026-0045</td><td>0.0h</td><td><span class="badge gray">N/A</span></td></tr>
+            <tr><td><strong>Leo Lawrence</strong><br><span style="font-size:11px;color:var(--light-gray);">Inspector L1 (Training)</span></td><td><span class="badge green">On Site</span></td><td>JOB-2026-0041</td><td>5.5h</td><td><span class="badge green">Safe</span></td></tr>
+            <tr><td><strong>Cornell Hunt</strong><br><span style="font-size:11px;color:var(--light-gray);">Seasonal Tech</span></td><td><span class="badge gray">Check-out</span></td><td>JOB-2026-0040</td><td>8.1h</td><td><span class="badge red">In OT</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div>
+      <!-- Today's Attendance -->
+      <div class="panel">
+        <div class="panel-header">
+          <div class="panel-title">&#128197; Today's Attendance</div>
+        </div>
+        <div class="panel-body">
+          <div class="stat-bar">
+            <div class="stat-segment" style="background:var(--green);flex:18;">18</div>
+            <div class="stat-segment" style="background:var(--amber);flex:4;">4</div>
+            <div class="stat-segment" style="background:var(--red);flex:2;">2</div>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--gray);">
+            <span>&#9679; On Time: 18</span>
+            <span>&#9679; Late: 4</span>
+            <span>&#9679; Absent: 2</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- OT Exposure -->
+      <div class="panel">
+        <div class="panel-header">
+          <div class="panel-title">&#9888;&#65039; Overtime Exposure</div>
+        </div>
+        <div style="padding:0;">
+          <table>
+            <thead><tr><th>Employee</th><th>Hours</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td style="font-weight:600;">Sebastian S.</td><td>42.8h</td><td><span class="badge red">2.8h OT</span></td></tr>
+              <tr><td style="font-weight:600;">Cornell H.</td><td>41.1h</td><td><span class="badge red">1.1h OT</span></td></tr>
+              <tr><td style="font-weight:600;">Caleb W.</td><td>38.2h</td><td><span class="badge amber">Approaching</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Active Alerts -->
+      <div class="panel">
+        <div class="panel-header">
+          <div class="panel-title">&#128680; Active Alerts</div>
+          <button class="btn btn-sm btn-ghost" onclick="showScreen('alerts')">View All</button>
+        </div>
+        <div style="padding:0;">
+          <div class="alert-item">
+            <div class="alert-dot critical"></div>
+            <div class="alert-content">
+              <div class="alert-text">Sebastian S. &mdash; OT threshold breached</div>
+              <div class="alert-meta">12 min ago &middot; Overtime</div>
+            </div>
+          </div>
+          <div class="alert-item">
+            <div class="alert-dot critical"></div>
+            <div class="alert-content">
+              <div class="alert-text">Site C &mdash; Geo-fence violation detected</div>
+              <div class="alert-meta">28 min ago &middot; Geo-Compliance</div>
+            </div>
+          </div>
+          <div class="alert-item">
+            <div class="alert-dot warning"></div>
+            <div class="alert-content">
+              <div class="alert-text">Cornell H. &mdash; Early check-out, no approval</div>
+              <div class="alert-meta">45 min ago &middot; Attendance</div>
+            </div>
+          </div>
+          <div class="alert-item">
+            <div class="alert-dot info"></div>
+            <div class="alert-content">
+              <div class="alert-text">Caleb W. &mdash; OT approaching (38.2h)</div>
+              <div class="alert-meta">1h ago &middot; Overtime</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Active Teams -->
+      <div class="panel">
+        <div class="panel-header">
+          <div class="panel-title">&#9889; Active Teams</div>
+        </div>
+        <div class="panel-body">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #F2F2F7;">
+            <div><span style="width:8px;height:8px;border-radius:50%;background:var(--green);display:inline-block;margin-right:8px;"></span><strong>Team Alpha</strong> (4)</div>
+            <span class="badge green">All on site</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #F2F2F7;">
+            <div><span style="width:8px;height:8px;border-radius:50%;background:var(--amber);display:inline-block;margin-right:8px;"></span><strong>Team Bravo</strong> (3)</div>
+            <span class="badge amber">Partial</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #F2F2F7;">
+            <div><span style="width:8px;height:8px;border-radius:50%;background:var(--green);display:inline-block;margin-right:8px;"></span><strong>Team Charlie</strong> (5)</div>
+            <span class="badge green">All on site</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;">
+            <div><span style="width:8px;height:8px;border-radius:50%;background:var(--red);display:inline-block;margin-right:8px;"></span><strong>Team Delta</strong> (2)</div>
+            <span class="badge red">Issues</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SCREEN 3: CLIENT MASTER ==================== -->
+<div class="screen" id="screen-clients">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+    <div class="filter-bar">
+      <div class="filter-pill active">All Clients</div>
+      <div class="filter-pill">Active</div>
+      <div class="filter-pill">Inactive</div>
+      <div class="filter-pill">On Hold</div>
+    </div>
+    <div style="display:flex;gap:8px;">
+      <button class="btn btn-outline">Export CSV</button>
+      <button class="btn btn-primary" onclick="showScreen('clientDetail')">+ Add Client</button>
+    </div>
+  </div>
+  <div class="table-container">
+    <div class="table-header">
+      <div class="table-title">Client Directory</div>
+      <div class="topbar-search" style="min-width:240px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg><input placeholder="Search clients..."></div>
+    </div>
+    <table>
+      <thead><tr><th>Client Name</th><th>Primary Division</th><th>Sites</th><th>Active Jobs</th><th>SLA Status</th><th>Primary Contact</th><th>Actions</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Bridgeport Fishing & Rental</strong></td><td>Main</td><td>3</td><td>2</td><td><span class="badge green">Compliant</span></td><td>bridgeportfishing1979@yahoo.com</td><td><button class="btn btn-sm btn-ghost" onclick="showScreen('clientDetail')">View</button></td></tr>
+        <tr><td><strong>Arrival Energy Solutions</strong></td><td>WTX Operations</td><td>6</td><td>4</td><td><span class="badge amber">At Risk</span></td><td>JArellano@arrival.energy</td><td><button class="btn btn-sm btn-ghost" onclick="showScreen('clientDetail')">View</button></td></tr>
+        <tr><td><strong>Tubular Solutions Inc.</strong></td><td>Main</td><td>2</td><td>1</td><td><span class="badge green">Compliant</span></td><td>danielc@tubularsolutionsinc.com</td><td><button class="btn btn-sm btn-ghost" onclick="showScreen('clientDetail')">View</button></td></tr>
+        <tr><td><strong>Basin Energy Services</strong></td><td>Permian Basin</td><td>4</td><td>3</td><td><span class="badge red">Breached</span></td><td>ops@basinenergy.com</td><td><button class="btn btn-sm btn-ghost" onclick="showScreen('clientDetail')">View</button></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ==================== SCREEN 4: CLIENT DETAIL ==================== -->
+<div class="screen" id="screen-clientDetail">
+  <!-- Header -->
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+    <div>
+      <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:24px;">Arrival Energy Solutions</h2>
+      <div style="display:flex;gap:8px;margin-top:4px;align-items:center;"><span class="badge green">Active</span><span style="font-size:12px;color:var(--light-gray);">Client Code: CLI-0023 &middot; Since Jan 2024</span></div>
+    </div>
+    <div style="display:flex;gap:8px;"><button class="btn btn-outline">Deactivate</button><button class="btn btn-primary">Save Changes</button></div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs" id="clientDetailTabs">
+    <div class="tab active" onclick="showClientTab('general')">General Info</div>
+    <div class="tab" onclick="showClientTab('divisions')">Divisions</div>
+    <div class="tab" onclick="showClientTab('sites')">Sites & Locations</div>
+    <div class="tab" onclick="showClientTab('contacts')">Contacts</div>
+    <div class="tab" onclick="showClientTab('sla')">SLA Config</div>
+    <div class="tab" onclick="showClientTab('documents')">Documents & Field Intel</div>
+    <div class="tab" onclick="showClientTab('jobHistory')">Job History</div>
+    <div class="tab" onclick="showClientTab('billing')">Billing</div>
+  </div>
+
+  <!-- ===== TAB 1: GENERAL INFO ===== -->
+  <div class="client-tab active" id="clientTab-general">
+    <div class="grid-7-3">
+      <div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">Company Information</div></div><div class="panel-body">
+          <div class="form-row"><div class="form-group"><label class="form-label">Company Name</label><input class="form-input" value="Arrival Energy Solutions"></div><div class="form-group"><label class="form-label">Client Code</label><input class="form-input" value="CLI-0023" readonly style="background:#FAFAFA;"></div></div>
+          <div class="form-row-3"><div class="form-group"><label class="form-label">Industry</label><select class="form-select"><option selected>Oil & Gas</option><option>Energy</option><option>Industrial</option></select></div><div class="form-group"><label class="form-label">Status</label><select class="form-select"><option selected>Active</option><option>Inactive</option><option>On Hold</option></select></div><div class="form-group"><label class="form-label">Created Date</label><input class="form-input" value="Jan 15, 2024" readonly style="background:#FAFAFA;"></div></div>
+        </div></div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">Primary Address</div></div><div class="panel-body">
+          <div class="form-group"><label class="form-label">Street Address</label><input class="form-input" value="1200 Industrial Blvd"></div>
+          <div class="form-row-3"><div class="form-group"><label class="form-label">City</label><input class="form-input" value="Midland"></div><div class="form-group"><label class="form-label">State</label><input class="form-input" value="TX"></div><div class="form-group"><label class="form-label">ZIP Code</label><input class="form-input" value="79701"></div></div>
+        </div></div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">Billing Address</div></div><div class="panel-body">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
+            <div class="switch"><div class="switch-track" style="background:var(--gold);"><div class="switch-thumb" style="left:18px;"></div></div><span style="font-size:13px;font-weight:500;">Same as primary address</span></div>
+          </div>
+          <div class="form-group"><label class="form-label">Street Address</label><input class="form-input" value="1200 Industrial Blvd" readonly style="background:#FAFAFA;"></div>
+          <div class="form-row-3"><div class="form-group"><label class="form-label">City</label><input class="form-input" value="Midland" readonly style="background:#FAFAFA;"></div><div class="form-group"><label class="form-label">State</label><input class="form-input" value="TX" readonly style="background:#FAFAFA;"></div><div class="form-group"><label class="form-label">ZIP Code</label><input class="form-input" value="79701" readonly style="background:#FAFAFA;"></div></div>
+        </div></div>
+      </div>
+      <div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">Financial Info</div></div><div class="panel-body">
+          <div class="form-group"><label class="form-label">Tax ID / EIN</label><input class="form-input" value="XX-XXXXXXX"></div>
+          <div class="form-group"><label class="form-label">Account Originator</label><select class="form-select"><option selected>Ezven Ortiz</option><option>Isaac Black</option></select></div>
+          <div class="form-group"><label class="form-label">Primary Division</label><select class="form-select"><option selected>WTX Operations</option><option>Permian Basin</option><option>East Texas</option></select></div>
+        </div></div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">Quick Stats</div></div><div class="panel-body">
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:13px;color:var(--gray);">Active Divisions</span><span style="font-weight:700;">3</span></div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:13px;color:var(--gray);">Total Sites</span><span style="font-weight:700;">6</span></div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:13px;color:var(--gray);">Active Jobs</span><span style="font-weight:700;">2</span></div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:13px;color:var(--gray);">Total Contacts</span><span style="font-weight:700;">5</span></div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;"><span style="font-size:13px;color:var(--gray);">SLA Status</span><span class="badge green">Compliant</span></div>
+        </div></div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">Admin Notes</div></div><div class="panel-body">
+          <textarea class="form-input" rows="4" style="resize:vertical;" placeholder="Internal notes about this client...">Priority client - Hunter has direct relationship with Jamie Arellano. Always assign Team Alpha for their inspections. Requires 24-hour notice for scheduling changes.</textarea>
+        </div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TAB 2: DIVISIONS ===== -->
+  <div class="client-tab" id="clientTab-divisions">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+      <div style="font-size:13px;color:var(--gray);">3 divisions under this client. Each division can have its own contacts, sites, and book reference.</div>
+      <button class="btn btn-primary">+ Add Division</button>
+    </div>
+    <div class="grid-3">
+      <div class="panel"><div class="panel-header"><div class="panel-title" style="display:flex;align-items:center;gap:8px;"><span style="width:10px;height:10px;border-radius:50%;background:var(--green);"></span>WTX Operations</div><span class="badge green">Active</span></div><div class="panel-body">
+        <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:12px;color:var(--gray);">Division Code</span><span style="font-weight:600;font-size:13px;">WTX-01</span></div>
+        <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:12px;color:var(--gray);">Book Reference</span><span style="font-weight:600;font-size:13px;">Book A</span></div>
+        <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:12px;color:var(--gray);">Sites</span><span style="font-weight:600;font-size:13px;">3</span></div>
+        <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:12px;color:var(--gray);">Contacts</span><span style="font-weight:600;font-size:13px;">2</span></div>
+        <div style="display:flex;justify-content:space-between;padding:6px 0;"><span style="font-size:12px;color:var(--gray);">Active Jobs</span><span style="font-weight:600;font-size:13px;">1</span></div>
+        <div style="display:flex;gap:8px;margin-top:12px;"><button class="btn btn-sm btn-outline">Edit</button><button class="btn btn-sm btn-ghost">View Sites</button></div>
+      </div></div>
+      <div class="panel"><div class="panel-header"><div class="panel-title" style="display:flex;align-items:center;gap:8px;"><span style="width:10px;height:10px;border-radius:50%;background:var(--green);"></span>Permian Basin</div><span class="badge green">Active</span></div><div class="panel-body">
+        <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:12px;color:var(--gray);">Division Code</span><span style="font-weight:600;font-size:13px;">PB-01</span></div>
+        <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:12px;color:var(--gray);">Book Reference</span><span style="font-weight:600;font-size:13px;">Book B</span></div>
+        <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:12px;color:var(--gray);">Sites</span><span style="font-weight:600;font-size:13px;">2</span></div>
+        <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:12px;color:var(--gray);">Contacts</span><span style="font-weight:600;font-size:13px;">1</span></div>
+        <div style="display:flex;justify-content:space-between;padding:6px 0;"><span style="font-size:12px;color:var(--gray);">Active Jobs</span><span style="font-weight:600;font-size:13px;">1</span></div>
+        <div style="display:flex;gap:8px;margin-top:12px;"><button class="btn btn-sm btn-outline">Edit</button><button class="btn btn-sm btn-ghost">View Sites</button></div>
+      </div></div>
+      <div class="panel"><div class="panel-header"><div class="panel-title" style="display:flex;align-items:center;gap:8px;"><span style="width:10px;height:10px;border-radius:50%;background:var(--green);"></span>East Texas</div><span class="badge green">Active</span></div><div class="panel-body">
+        <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:12px;color:var(--gray);">Division Code</span><span style="font-weight:600;font-size:13px;">ETX-01</span></div>
+        <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:12px;color:var(--gray);">Book Reference</span><span style="font-weight:600;font-size:13px;">Book A</span></div>
+        <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:12px;color:var(--gray);">Sites</span><span style="font-weight:600;font-size:13px;">1</span></div>
+        <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:12px;color:var(--gray);">Contacts</span><span style="font-weight:600;font-size:13px;">1</span></div>
+        <div style="display:flex;justify-content:space-between;padding:6px 0;"><span style="font-size:12px;color:var(--gray);">Active Jobs</span><span style="font-weight:600;font-size:13px;">0</span></div>
+        <div style="display:flex;gap:8px;margin-top:12px;"><button class="btn btn-sm btn-outline">Edit</button><button class="btn btn-sm btn-ghost">View Sites</button></div>
+      </div></div>
+    </div>
+    <div class="panel"><div class="panel-header"><div class="panel-title">All Divisions</div></div>
+      <div style="padding:0;"><table><thead><tr><th>Division</th><th>Code</th><th>Book Ref</th><th>Sites</th><th>Contacts</th><th>Active Jobs</th><th>Status</th><th>Actions</th></tr></thead><tbody>
+        <tr><td><strong>WTX Operations</strong></td><td style="font-family:'JetBrains Mono',monospace;font-size:12px;">WTX-01</td><td>Book A</td><td>3</td><td>2</td><td>1</td><td><span class="badge green">Active</span></td><td><button class="btn btn-sm btn-ghost">Edit</button><button class="btn btn-sm btn-ghost">Remove</button></td></tr>
+        <tr><td><strong>Permian Basin</strong></td><td style="font-family:'JetBrains Mono',monospace;font-size:12px;">PB-01</td><td>Book B</td><td>2</td><td>1</td><td>1</td><td><span class="badge green">Active</span></td><td><button class="btn btn-sm btn-ghost">Edit</button><button class="btn btn-sm btn-ghost">Remove</button></td></tr>
+        <tr><td><strong>East Texas</strong></td><td style="font-family:'JetBrains Mono',monospace;font-size:12px;">ETX-01</td><td>Book A</td><td>1</td><td>1</td><td>0</td><td><span class="badge green">Active</span></td><td><button class="btn btn-sm btn-ghost">Edit</button><button class="btn btn-sm btn-ghost">Remove</button></td></tr>
+      </tbody></table></div>
+    </div>
+  </div>
+
+  <!-- ===== TAB 3: SITES & LOCATIONS ===== -->
+  <div class="client-tab" id="clientTab-sites">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+      <div class="filter-bar" style="margin-bottom:0;"><div class="filter-pill active">All Sites (6)</div><div class="filter-pill">WTX Operations</div><div class="filter-pill">Permian Basin</div><div class="filter-pill">East Texas</div></div>
+      <button class="btn btn-primary">+ Add Site</button>
+    </div>
+    <div class="grid-7-3">
+      <div>
+        <div class="table-container"><table><thead><tr><th>Site Name</th><th>Division</th><th>Address</th><th>Geo-fence</th><th>SLA</th><th>Actions</th></tr></thead><tbody>
+          <tr><td><strong>WTX Yard 3</strong></td><td>WTX Operations</td><td>1200 Industrial Blvd, Midland, TX</td><td><span class="badge blue">200m radius</span></td><td><span class="badge green">Configured</span></td><td><button class="btn btn-sm btn-ghost">Edit</button><button class="btn btn-sm btn-ghost">Map</button></td></tr>
+          <tr><td><strong>WTX Field Station</strong></td><td>WTX Operations</td><td>County Rd 127, Stanton, TX</td><td><span class="badge blue">500m polygon</span></td><td><span class="badge green">Configured</span></td><td><button class="btn btn-sm btn-ghost">Edit</button><button class="btn btn-sm btn-ghost">Map</button></td></tr>
+          <tr><td><strong>WTX Storage Facility</strong></td><td>WTX Operations</td><td>3500 E Hwy 80, Midland, TX</td><td><span class="badge blue">150m radius</span></td><td><span class="badge amber">Pending</span></td><td><button class="btn btn-sm btn-ghost">Edit</button><button class="btn btn-sm btn-ghost">Map</button></td></tr>
+          <tr><td><strong>Permian Yard</strong></td><td>Permian Basin</td><td>800 N Grant Ave, Odessa, TX</td><td><span class="badge blue">300m radius</span></td><td><span class="badge green">Configured</span></td><td><button class="btn btn-sm btn-ghost">Edit</button><button class="btn btn-sm btn-ghost">Map</button></td></tr>
+          <tr><td><strong>PB Remote Pad</strong></td><td>Permian Basin</td><td>FM 1788 & CR 405, Penwell, TX</td><td><span class="badge amber">Pending</span></td><td><span class="badge gray">None</span></td><td><button class="btn btn-sm btn-ghost">Edit</button><button class="btn btn-sm btn-ghost">Map</button></td></tr>
+          <tr><td><strong>ETX Inspection Hub</strong></td><td>East Texas</td><td>1450 Industrial Dr, Tyler, TX</td><td><span class="badge blue">200m radius</span></td><td><span class="badge green">Configured</span></td><td><button class="btn btn-sm btn-ghost">Edit</button><button class="btn btn-sm btn-ghost">Map</button></td></tr>
+        </tbody></table></div>
+      </div>
+      <div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">Site Map Preview</div></div>
+          <div class="map-placeholder" style="height:250px;border-radius:0;border:none;">
+            <div class="map-pin" style="background:var(--green);top:30%;left:40%;"></div>
+            <div class="map-pin" style="background:var(--green);top:45%;left:55%;"></div>
+            <div class="map-pin" style="background:var(--amber);top:60%;left:35%;"></div>
+            <div class="map-pin" style="background:var(--green);top:35%;left:65%;"></div>
+            <div class="map-pin" style="background:var(--green);top:70%;left:60%;"></div>
+            <div class="map-pin" style="background:var(--green);top:50%;left:45%;"></div>
+            <div style="position:relative;z-index:1;">6 Sites Mapped<br><span style="font-size:11px;">Click a site row to highlight on map</span></div>
+          </div>
+        </div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">Direction Notes</div></div><div class="panel-body">
+          <div style="padding:8px 0;border-bottom:1px solid #F2F2F7;">
+            <div style="font-weight:600;font-size:13px;">WTX Field Station</div>
+            <div style="font-size:12px;color:var(--gray);margin-top:4px;">Take County Rd 127 past the grain elevator, left at the unmarked fork, 2.3 miles to the pad. Look for the blue storage containers. Cell service is spotty past mile marker 12.</div>
+          </div>
+          <div style="padding:8px 0;">
+            <div style="font-weight:600;font-size:13px;">PB Remote Pad</div>
+            <div style="font-size:12px;color:var(--gray);margin-top:4px;">Turn right off FM 1788 at the white cattle guard. Dirt road for 1.5 miles. No cell service. GPS may not work past the turn-off.</div>
+          </div>
+        </div></div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">Field-Submitted Pins</div><span class="badge amber">2 Pending Review</span></div><div class="panel-body">
+          <div style="padding:8px 0;border-bottom:1px solid #F2F2F7;">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <div><div style="font-weight:600;font-size:13px;">New pad location</div><div style="font-size:11px;color:var(--light-gray);">Submitted by Caleb W. &middot; Mar 8, 2026</div></div>
+              <div style="display:flex;gap:4px;"><button class="btn btn-sm btn-primary">Accept</button><button class="btn btn-sm btn-ghost">Reject</button></div>
+            </div>
+          </div>
+          <div style="padding:8px 0;">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <div><div style="font-weight:600;font-size:13px;">Updated gate access point</div><div style="font-size:11px;color:var(--light-gray);">Submitted by Leo L. &middot; Mar 6, 2026</div></div>
+              <div style="display:flex;gap:4px;"><button class="btn btn-sm btn-primary">Accept</button><button class="btn btn-sm btn-ghost">Reject</button></div>
+            </div>
+          </div>
+        </div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TAB 4: CONTACTS ===== -->
+  <div class="client-tab" id="clientTab-contacts">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+      <div class="filter-bar" style="margin-bottom:0;"><div class="filter-pill active">All Contacts (5)</div><div class="filter-pill">Primary</div><div class="filter-pill">Operations</div><div class="filter-pill">Billing</div><div class="filter-pill">Emergency</div></div>
+      <button class="btn btn-primary">+ Add Contact</button>
+    </div>
+    <div class="panel">
+      <div style="padding:0;"><table><thead><tr><th>Name</th><th>Email</th><th>Email Type</th><th>Phone</th><th>Role</th><th>Division</th><th>Location</th><th>SMS Status</th><th>Actions</th></tr></thead><tbody>
+        <tr><td><strong>Jamie Arellano</strong></td><td>JArellano@arrival.energy</td><td><span class="badge gold">Manager</span></td><td>(432) 555-0101</td><td><span class="badge blue">Primary</span></td><td>WTX Operations</td><td>WTX Yard 3</td><td><span class="badge green">Verified</span></td><td><button class="btn btn-sm btn-ghost">Edit</button></td></tr>
+        <tr><td><strong>Miguel Pinedo</strong></td><td>MPinedo@arrival.energy</td><td><span class="badge gray">Shop</span></td><td>(432) 555-0102</td><td><span class="badge gold">Operations</span></td><td>Permian Basin</td><td>Permian Yard</td><td><span class="badge green">Verified</span></td><td><button class="btn btn-sm btn-ghost">Edit</button></td></tr>
+        <tr><td><strong>Armando Leon</strong></td><td>aleon@arrival.energy</td><td><span class="badge gray">Standard</span></td><td>(432) 555-0103</td><td><span class="badge amber">Billing</span></td><td>All</td><td>All</td><td><span class="badge amber">Unverified</span></td><td><button class="btn btn-sm btn-ghost">Edit</button></td></tr>
+        <tr><td><strong>Ryan McSween</strong></td><td>RMcSween@arrival.energy</td><td><span class="badge gray">Standard</span></td><td>(432) 555-0104</td><td><span class="badge red">Emergency</span></td><td>WTX Operations</td><td>All WTX Sites</td><td><span class="badge green">Verified</span></td><td><button class="btn btn-sm btn-ghost">Edit</button></td></tr>
+        <tr><td><strong>OSaleem</strong></td><td>OSaleem@arrival.energy</td><td><span class="badge gold">Manager</span></td><td>&mdash;</td><td><span class="badge gold">Operations</span></td><td>East Texas</td><td>ETX Inspection Hub</td><td><span class="badge gray">N/A</span></td><td><button class="btn btn-sm btn-ghost">Edit</button></td></tr>
+      </tbody></table></div>
+    </div>
+    <div class="grid-2">
+      <div class="panel"><div class="panel-header"><div class="panel-title">Add / Edit Contact</div></div><div class="panel-body">
+        <div class="form-row"><div class="form-group"><label class="form-label">Full Name</label><input class="form-input" placeholder="Contact name..."></div><div class="form-group"><label class="form-label">Email Address</label><input class="form-input" type="email" placeholder="email@example.com"></div></div>
+        <div class="form-row-3"><div class="form-group"><label class="form-label">Phone</label><input class="form-input" type="tel" placeholder="(xxx) xxx-xxxx"></div><div class="form-group"><label class="form-label">Email Type</label><select class="form-select"><option>Standard</option><option>Manager Email</option><option>Shop Email</option></select></div><div class="form-group"><label class="form-label">Contact Role</label><select class="form-select"><option>Primary</option><option>Operations</option><option>Billing</option><option>Emergency</option></select></div></div>
+        <div class="form-row-3"><div class="form-group"><label class="form-label">Division</label><select class="form-select"><option>All Divisions</option><option>WTX Operations</option><option>Permian Basin</option><option>East Texas</option></select></div><div class="form-group"><label class="form-label">Location</label><select class="form-select"><option>All Locations</option><option>WTX Yard 3</option><option>WTX Field Station</option><option>Permian Yard</option></select></div><div class="form-group"><label class="form-label">Role / Title</label><input class="form-input" placeholder="e.g. Site Manager"></div></div>
+        <div style="display:flex;gap:8px;margin-top:8px;"><button class="btn btn-primary">Save Contact</button><button class="btn btn-outline">Cancel</button></div>
+      </div></div>
+      <div class="panel"><div class="panel-header"><div class="panel-title">Contact Summary</div></div><div class="panel-body">
+        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:13px;color:var(--gray);">Total Contacts</span><span style="font-weight:700;">5</span></div>
+        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:13px;color:var(--gray);">Email Verified</span><span style="font-weight:700;color:var(--green);">4</span></div>
+        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:13px;color:var(--gray);">Email Bounced</span><span style="font-weight:700;color:var(--red);">0</span></div>
+        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:13px;color:var(--gray);">SMS Verified</span><span style="font-weight:700;color:var(--green);">3</span></div>
+        <div style="display:flex;justify-content:space-between;padding:8px 0;"><span style="font-size:13px;color:var(--gray);">SMS Unverified</span><span style="font-weight:700;color:var(--amber);">1</span></div>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- ===== TAB 5: SLA CONFIG ===== -->
+  <div class="client-tab" id="clientTab-sla">
+    <div class="kpi-row" style="margin-bottom:16px;">
+      <div class="kpi-card green"><div class="kpi-label">SLA Compliance</div><div class="kpi-value">96%</div></div>
+      <div class="kpi-card gold"><div class="kpi-label">Avg Response Time</div><div class="kpi-value">18m</div></div>
+      <div class="kpi-card blue"><div class="kpi-label">Breaches (30d)</div><div class="kpi-value">1</div></div>
+      <div class="kpi-card red"><div class="kpi-label">At Risk Now</div><div class="kpi-value">0</div></div>
+    </div>
+    <div class="grid-2">
+      <div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">Waiting Time & Response</div></div><div class="panel-body">
+          <div class="form-row"><div class="form-group"><label class="form-label">Max Waiting Time Before Breach (min)</label><input class="form-input" type="number" value="30"></div><div class="form-group"><label class="form-label">Max Response Time (min)</label><input class="form-input" type="number" value="60"></div></div>
+          <div class="form-group"><label class="form-label">Grace Period (min)</label><input class="form-input" type="number" value="5"></div>
+        </div></div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">Missed Attendance Triggers</div></div><div class="panel-body">
+          <div class="form-row"><div class="form-group"><label class="form-label">Late Arrival Threshold (min)</label><input class="form-input" type="number" value="15"></div><div class="form-group"><label class="form-label">Absent After (min)</label><input class="form-input" type="number" value="60"></div></div>
+          <div class="form-group"><label class="form-label">Auto-Escalate After Missed Check-in</label><select class="form-select"><option selected>Yes - Notify Ops Manager</option><option>No</option></select></div>
+        </div></div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">Quality Requirements</div></div><div class="panel-body">
+          <div class="form-group"><label class="form-label">Min Inspection Quality Score</label><input class="form-input" type="number" value="95"></div>
+          <div class="form-group"><label class="form-label">Required Certifications</label><select class="form-select" multiple style="height:80px;"><option selected>API 570 Inspector</option><option selected>NDT Level II</option><option>ASME Pressure Vessel</option></select></div>
+        </div></div>
+      </div>
+      <div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">Breach Escalation Logic</div></div><div class="panel-body">
+          <div style="font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--gray);margin-bottom:12px;">Escalation Chain</div>
+          <div class="timeline-item">
+            <div class="timeline-dot gold">1</div>
+            <div class="timeline-content"><div class="timeline-title">Warning Alert</div><div class="timeline-time">At breach threshold - Notify Dispatcher</div></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot amber" style="background:var(--amber-dim);color:#CC7D00;">2</div>
+            <div class="timeline-content"><div class="timeline-title">Escalate to Ops Manager</div><div class="timeline-time">15 min after breach - Email + Push notification</div></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot red">3</div>
+            <div class="timeline-content"><div class="timeline-title">Critical Alert to Super Admin</div><div class="timeline-time">30 min after breach - Email + SMS + Push</div></div>
+          </div>
+          <div class="timeline-item" style="margin-bottom:0;">
+            <div class="timeline-dot red">4</div>
+            <div class="timeline-content"><div class="timeline-title">Client Notification</div><div class="timeline-time">60 min after breach - Email to primary contact</div></div>
+          </div>
+        </div></div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">Per-Site SLA Overrides</div></div>
+          <div style="padding:0;"><table><thead><tr><th>Site</th><th>Wait Time</th><th>Response</th><th>Status</th></tr></thead><tbody>
+            <tr><td>WTX Yard 3</td><td>30 min</td><td>60 min</td><td><span class="badge green">Active</span></td></tr>
+            <tr><td>PB Remote Pad</td><td>45 min</td><td>90 min</td><td><span class="badge amber">Custom</span></td></tr>
+            <tr><td>ETX Inspection Hub</td><td>30 min</td><td>60 min</td><td><span class="badge green">Default</span></td></tr>
+          </tbody></table></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TAB 6: DOCUMENTS & FIELD INTEL ===== -->
+  <div class="client-tab" id="clientTab-documents">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+      <div class="filter-bar" style="margin-bottom:0;"><div class="filter-pill active">All (12)</div><div class="filter-pill">Site Photos</div><div class="filter-pill">Map Drawings</div><div class="filter-pill">Task Sheets</div><div class="filter-pill">Client Info</div></div>
+      <button class="btn btn-primary">+ Upload Document</button>
+    </div>
+    <div class="grid-7-3">
+      <div>
+        <div class="panel">
+          <div style="padding:0;"><table><thead><tr><th>Document</th><th>Type</th><th>Uploaded By</th><th>Date</th><th>Site</th><th>Actions</th></tr></thead><tbody>
+            <tr><td><strong>WTX Yard 3 - Site Layout Map</strong></td><td><span class="badge blue">Map Drawing</span></td><td>Caleb Washington</td><td>Mar 10, 2026</td><td>WTX Yard 3</td><td><button class="btn btn-sm btn-ghost">View</button><button class="btn btn-sm btn-ghost">Download</button></td></tr>
+            <tr><td><strong>Gate Access Photo - West Entrance</strong></td><td><span class="badge green">Site Photo</span></td><td>Leo Lawrence</td><td>Mar 9, 2026</td><td>WTX Yard 3</td><td><button class="btn btn-sm btn-ghost">View</button><button class="btn btn-sm btn-ghost">Download</button></td></tr>
+            <tr><td><strong>Client Spec Sheet - Inspection Reqs</strong></td><td><span class="badge gold">Client Info</span></td><td>Isaac Black</td><td>Mar 8, 2026</td><td>All Sites</td><td><button class="btn btn-sm btn-ghost">View</button><button class="btn btn-sm btn-ghost">Download</button></td></tr>
+            <tr><td><strong>Permian Yard - Tank Layout</strong></td><td><span class="badge blue">Map Drawing</span></td><td>Ezven Ortiz</td><td>Mar 5, 2026</td><td>Permian Yard</td><td><button class="btn btn-sm btn-ghost">View</button><button class="btn btn-sm btn-ghost">Download</button></td></tr>
+            <tr><td><strong>Safety Data Sheet - H2S Protocol</strong></td><td><span class="badge red">Safety Doc</span></td><td>Isaac Black</td><td>Mar 3, 2026</td><td>All Sites</td><td><button class="btn btn-sm btn-ghost">View</button><button class="btn btn-sm btn-ghost">Download</button></td></tr>
+            <tr><td><strong>Daily Task Checklist - WTX</strong></td><td><span class="badge amber">Task Sheet</span></td><td>Sebastian Salgado</td><td>Mar 1, 2026</td><td>WTX Field Station</td><td><button class="btn btn-sm btn-ghost">View</button><button class="btn btn-sm btn-ghost">Download</button></td></tr>
+            <tr><td><strong>PB Remote Pad - Access Route Photo</strong></td><td><span class="badge green">Site Photo</span></td><td>Caleb Washington</td><td>Feb 28, 2026</td><td>PB Remote Pad</td><td><button class="btn btn-sm btn-ghost">View</button><button class="btn btn-sm btn-ghost">Download</button></td></tr>
+          </tbody></table></div>
+        </div>
+      </div>
+      <div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">Document Stats</div></div><div class="panel-body">
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:13px;color:var(--gray);">Total Documents</span><span style="font-weight:700;">12</span></div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:13px;color:var(--gray);">Site Photos</span><span style="font-weight:700;">4</span></div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:13px;color:var(--gray);">Map Drawings</span><span style="font-weight:700;">3</span></div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:13px;color:var(--gray);">Task Sheets</span><span style="font-weight:700;">2</span></div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;"><span style="font-size:13px;color:var(--gray);">Client Info Sheets</span><span style="font-weight:700;">3</span></div>
+        </div></div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">Recent Activity</div></div><div class="panel-body">
+          <div class="timeline-item">
+            <div class="timeline-dot green">&#10003;</div>
+            <div class="timeline-content"><div class="timeline-title">Site layout uploaded</div><div class="timeline-time">Caleb Washington &middot; 2 hours ago</div></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot blue">&#128247;</div>
+            <div class="timeline-content"><div class="timeline-title">Gate photo submitted</div><div class="timeline-time">Leo Lawrence &middot; Yesterday</div></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot gold">&#128196;</div>
+            <div class="timeline-content"><div class="timeline-title">Spec sheet added</div><div class="timeline-time">Isaac Black &middot; Mar 8, 2026</div></div>
+          </div>
+        </div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TAB 7: JOB HISTORY ===== -->
+  <div class="client-tab" id="clientTab-jobHistory">
+    <div class="kpi-row" style="margin-bottom:16px;">
+      <div class="kpi-card green"><div class="kpi-label">Completed Jobs</div><div class="kpi-value">34</div></div>
+      <div class="kpi-card blue"><div class="kpi-label">Active Jobs</div><div class="kpi-value">2</div></div>
+      <div class="kpi-card gold"><div class="kpi-label">Avg Completion</div><div class="kpi-value">8.2h</div></div>
+      <div class="kpi-card green"><div class="kpi-label">SLA Compliance</div><div class="kpi-value">96%</div></div>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+      <div class="filter-bar" style="margin-bottom:0;"><div class="filter-pill active">All</div><div class="filter-pill">In Progress</div><div class="filter-pill">Completed</div><div class="filter-pill">Cancelled</div></div>
+      <button class="btn btn-outline">Export Job History</button>
+    </div>
+    <div class="table-container"><table><thead><tr><th>Job ID</th><th>Site</th><th>Type</th><th>Team</th><th>Scheduled</th><th>Completed</th><th>Duration</th><th>Status</th><th>SLA</th><th></th></tr></thead><tbody>
+      <tr><td><strong style="font-family:'JetBrains Mono',monospace;font-size:12px;">JOB-2026-0042</strong></td><td>WTX Yard 3</td><td>Inspection</td><td>Alpha</td><td>Mar 10, 7:00 AM</td><td>&mdash;</td><td>In progress</td><td><span class="badge green">In Progress</span></td><td><span class="badge green">On Track</span></td><td><button class="btn btn-sm btn-ghost" onclick="showScreen('jobDetail')">View</button></td></tr>
+      <tr><td><strong style="font-family:'JetBrains Mono',monospace;font-size:12px;">JOB-2026-0039</strong></td><td>Permian Yard</td><td>Repair</td><td>Bravo</td><td>Mar 8, 8:00 PM</td><td>Mar 9, 4:30 AM</td><td>8.5h</td><td><span class="badge green">Completed</span></td><td><span class="badge green">Met</span></td><td><button class="btn btn-sm btn-ghost">View</button></td></tr>
+      <tr><td><strong style="font-family:'JetBrains Mono',monospace;font-size:12px;">JOB-2026-0035</strong></td><td>WTX Field Station</td><td>Inspection</td><td>Alpha</td><td>Mar 5, 6:00 AM</td><td>Mar 5, 3:00 PM</td><td>9.0h</td><td><span class="badge green">Completed</span></td><td><span class="badge green">Met</span></td><td><button class="btn btn-sm btn-ghost">View</button></td></tr>
+      <tr><td><strong style="font-family:'JetBrains Mono',monospace;font-size:12px;">JOB-2026-0031</strong></td><td>WTX Yard 3</td><td>Refacing</td><td>Alpha</td><td>Mar 1, 7:00 AM</td><td>Mar 1, 2:30 PM</td><td>7.5h</td><td><span class="badge green">Completed</span></td><td><span class="badge green">Met</span></td><td><button class="btn btn-sm btn-ghost">View</button></td></tr>
+      <tr><td><strong style="font-family:'JetBrains Mono',monospace;font-size:12px;">JOB-2026-0028</strong></td><td>ETX Inspection Hub</td><td>Inspection</td><td>Charlie</td><td>Feb 26, 7:00 AM</td><td>Feb 26, 5:00 PM</td><td>10.0h</td><td><span class="badge green">Completed</span></td><td><span class="badge amber">Delayed</span></td><td><button class="btn btn-sm btn-ghost">View</button></td></tr>
+      <tr><td><strong style="font-family:'JetBrains Mono',monospace;font-size:12px;">JOB-2026-0024</strong></td><td>PB Remote Pad</td><td>Inspection</td><td>Alpha</td><td>Feb 22, 6:00 AM</td><td>Feb 22, 4:00 PM</td><td>10.0h</td><td><span class="badge green">Completed</span></td><td><span class="badge green">Met</span></td><td><button class="btn btn-sm btn-ghost">View</button></td></tr>
+      <tr><td><strong style="font-family:'JetBrains Mono',monospace;font-size:12px;">JOB-2026-0019</strong></td><td>WTX Yard 3</td><td>Maintenance</td><td>Bravo</td><td>Feb 18, 8:00 PM</td><td>Feb 19, 3:00 AM</td><td>7.0h</td><td><span class="badge green">Completed</span></td><td><span class="badge green">Met</span></td><td><button class="btn btn-sm btn-ghost">View</button></td></tr>
+      <tr><td><strong style="font-family:'JetBrains Mono',monospace;font-size:12px;">JOB-2026-0015</strong></td><td>Permian Yard</td><td>Inspection</td><td>Alpha</td><td>Feb 14, 7:00 AM</td><td>Feb 14, 12:30 PM</td><td>5.5h</td><td><span class="badge green">Completed</span></td><td><span class="badge green">Met</span></td><td><button class="btn btn-sm btn-ghost">View</button></td></tr>
+    </tbody></table></div>
+  </div>
+
+  <!-- ===== TAB 8: BILLING ===== -->
+  <div class="client-tab" id="clientTab-billing">
+    <div class="kpi-row" style="margin-bottom:16px;">
+      <div class="kpi-card gold"><div class="kpi-label">Total Revenue (YTD)</div><div class="kpi-value">$142,500</div></div>
+      <div class="kpi-card blue"><div class="kpi-label">Total Cost (YTD)</div><div class="kpi-value">$78,200</div></div>
+      <div class="kpi-card green"><div class="kpi-label">Gross Margin</div><div class="kpi-value">45.1%</div></div>
+      <div class="kpi-card amber"><div class="kpi-label">Commission Paid</div><div class="kpi-value">$9,645</div></div>
+    </div>
+    <div class="grid-7-3">
+      <div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">Billing Rate Configuration</div></div><div class="panel-body">
+          <div class="form-row-3"><div class="form-group"><label class="form-label">Miles (Per HR)</label><input class="form-input" type="number" value="1.00"></div><div class="form-group"><label class="form-label">Service Charge (Per HR)</label><input class="form-input" type="number" value="70.00"></div><div class="form-group"><label class="form-label">Per Diem (Per HR)</label><input class="form-input" type="number" value="100.00"></div></div>
+          <div class="form-row"><div class="form-group"><label class="form-label">Default Discount %</label><input class="form-input" type="number" value="0.00"></div><div class="form-group"><label class="form-label">Payment Terms</label><select class="form-select"><option selected>Net 30</option><option>Net 15</option><option>Net 45</option><option>Net 60</option></select></div></div>
+        </div></div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">Invoice History</div><button class="btn btn-sm btn-primary">+ Create Invoice</button></div>
+          <div style="padding:0;"><table><thead><tr><th>Invoice #</th><th>Date</th><th>Job</th><th>Amount</th><th>Status</th><th></th></tr></thead><tbody>
+            <tr><td><strong style="font-family:'JetBrains Mono',monospace;font-size:12px;">INV-2026-0087</strong></td><td>Mar 9, 2026</td><td>JOB-2026-0039</td><td style="font-weight:700;">$4,850</td><td><span class="badge green">Paid</span></td><td><button class="btn btn-sm btn-ghost">View</button></td></tr>
+            <tr><td><strong style="font-family:'JetBrains Mono',monospace;font-size:12px;">INV-2026-0079</strong></td><td>Mar 5, 2026</td><td>JOB-2026-0035</td><td style="font-weight:700;">$6,300</td><td><span class="badge green">Paid</span></td><td><button class="btn btn-sm btn-ghost">View</button></td></tr>
+            <tr><td><strong style="font-family:'JetBrains Mono',monospace;font-size:12px;">INV-2026-0071</strong></td><td>Mar 1, 2026</td><td>JOB-2026-0031</td><td style="font-weight:700;">$5,250</td><td><span class="badge amber">Pending</span></td><td><button class="btn btn-sm btn-ghost">View</button></td></tr>
+            <tr><td><strong style="font-family:'JetBrains Mono',monospace;font-size:12px;">INV-2026-0063</strong></td><td>Feb 26, 2026</td><td>JOB-2026-0028</td><td style="font-weight:700;">$7,100</td><td><span class="badge green">Paid</span></td><td><button class="btn btn-sm btn-ghost">View</button></td></tr>
+            <tr><td><strong style="font-family:'JetBrains Mono',monospace;font-size:12px;">INV-2026-0055</strong></td><td>Feb 22, 2026</td><td>JOB-2026-0024</td><td style="font-weight:700;">$7,000</td><td><span class="badge green">Paid</span></td><td><button class="btn btn-sm btn-ghost">View</button></td></tr>
+          </tbody></table></div>
+        </div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">Mileage Billed to Client</div></div>
+          <div style="padding:0;"><table><thead><tr><th>Period</th><th>Work Miles</th><th>Rate</th><th>Total</th><th>Status</th></tr></thead><tbody>
+            <tr><td>Mar 1 - Mar 15, 2026</td><td>342 miles</td><td>$0.67/mi</td><td style="font-weight:700;">$229.14</td><td><span class="badge amber">Unbilled</span></td></tr>
+            <tr><td>Feb 15 - Feb 28, 2026</td><td>285 miles</td><td>$0.67/mi</td><td style="font-weight:700;">$190.95</td><td><span class="badge green">Billed</span></td></tr>
+            <tr><td>Feb 1 - Feb 14, 2026</td><td>310 miles</td><td>$0.67/mi</td><td style="font-weight:700;">$207.70</td><td><span class="badge green">Billed</span></td></tr>
+          </tbody></table></div>
+        </div>
+      </div>
+      <div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">Account Originator</div></div><div class="panel-body">
+          <div style="display:flex;gap:12px;align-items:center;margin-bottom:16px;">
+            <div style="width:40px;height:40px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;color:var(--black);">EO</div>
+            <div><div style="font-weight:700;">Ezven Ortiz</div><div style="font-size:12px;color:var(--light-gray);">Sr. Inspector / Account Lead</div></div>
+          </div>
+          <div class="form-group"><label class="form-label">Commission Rate</label><select class="form-select"><option>10%</option><option selected>15%</option><option>20%</option></select></div>
+        </div></div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">Commission Summary</div></div><div class="panel-body">
+          <div class="commission-box">
+            <div class="commission-row"><span>Total Revenue (YTD):</span><span>$142,500</span></div>
+            <div class="commission-row"><span>Total Labor Cost:</span><span style="color:var(--red);">-$52,300</span></div>
+            <div class="commission-row"><span>Total Travel/Costs:</span><span style="color:var(--red);">-$25,900</span></div>
+            <div class="commission-row"><span>Gross Margin:</span><span style="font-weight:700;">$64,300</span></div>
+            <div class="commission-row total"><span>Commission (15%):</span><span style="color:var(--green);font-weight:800;">$9,645</span></div>
+          </div>
+        </div></div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">Gross Margin Trend</div></div><div class="panel-body">
+          <div style="display:flex;align-items:flex-end;gap:6px;height:100px;margin-bottom:8px;">
+            <div style="flex:1;background:var(--green);border-radius:4px 4px 0 0;height:75%;opacity:0.8;"></div>
+            <div style="flex:1;background:var(--green);border-radius:4px 4px 0 0;height:82%;opacity:0.8;"></div>
+            <div style="flex:1;background:var(--green);border-radius:4px 4px 0 0;height:68%;opacity:0.85;"></div>
+            <div style="flex:1;background:var(--green);border-radius:4px 4px 0 0;height:90%;opacity:0.85;"></div>
+            <div style="flex:1;background:var(--amber);border-radius:4px 4px 0 0;height:55%;opacity:0.85;"></div>
+            <div style="flex:1;background:var(--green);border-radius:4px 4px 0 0;height:85%;"></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--light-gray);"><span>Oct</span><span>Nov</span><span>Dec</span><span>Jan</span><span>Feb</span><span>Mar</span></div>
+        </div></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ==================== SCREEN 5: EMPLOYEES ==================== -->
+<div class="screen" id="screen-employees">
+  <div class="kpi-row" style="margin-bottom:16px;">
+    <div class="kpi-card gold"><div class="kpi-label">Total Active</div><div class="kpi-value">24</div></div>
+    <div class="kpi-card blue"><div class="kpi-label">On Shift Today</div><div class="kpi-value">20</div></div>
+    <div class="kpi-card amber"><div class="kpi-label">On Overtime</div><div class="kpi-value">3</div></div>
+    <div class="kpi-card red"><div class="kpi-label">Absent Today</div><div class="kpi-value">2</div></div>
+  </div>
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+    <div class="filter-bar"><div class="filter-pill active">All</div><div class="filter-pill">Lead Inspector</div><div class="filter-pill">Technician</div><div class="filter-pill">Field Assistant</div><div class="filter-pill">Seasonal</div></div>
+    <div style="display:flex;gap:8px;"><button class="btn btn-outline">Import CSV</button><button class="btn btn-primary" onclick="showScreen('employeeDetail')">+ Add Employee</button></div>
+  </div>
+  <div class="table-container">
+    <table>
+      <thead><tr><th>Employee</th><th>Role</th><th>Team</th><th>Shift</th><th>Status</th><th>Hours/Week</th><th>OT Status</th><th>Compliance</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Isaac Black</strong></td><td>Ops Manager & Lead Inspector</td><td>Oversight</td><td>Day</td><td><span class="badge green">Active</span></td><td>38.5</td><td><span class="badge green">Safe</span></td><td><span class="badge green">Current</span></td></tr>
+        <tr><td><strong>Ezven Ortiz</strong></td><td>Sr. Inspector / Account Lead</td><td>Alpha</td><td>Day</td><td><span class="badge green">Active</span></td><td>36.2</td><td><span class="badge green">Safe</span></td><td><span class="badge green">Current</span></td></tr>
+        <tr><td><strong>Sebastian Salgado</strong></td><td>Inspector (Lead Night Shift)</td><td>Bravo</td><td>Night</td><td><span class="badge green">Active</span></td><td>42.8</td><td><span class="badge red">In OT</span></td><td><span class="badge green">Current</span></td></tr>
+        <tr><td><strong>Leo Lawrence</strong></td><td>Inspector Level I (Training)</td><td>Alpha</td><td>Day</td><td><span class="badge green">Active</span></td><td>35.5</td><td><span class="badge green">Safe</span></td><td><span class="badge amber">Expiring</span></td></tr>
+        <tr><td><strong>Caleb Washington</strong></td><td>Field Technician (Day)</td><td>Alpha</td><td>Day</td><td><span class="badge green">Active</span></td><td>38.2</td><td><span class="badge amber">Approaching</span></td><td><span class="badge green">Current</span></td></tr>
+        <tr><td><strong>Briston Clark</strong></td><td>Field Technician (Night)</td><td>Bravo</td><td>Night</td><td><span class="badge green">Active</span></td><td>34.0</td><td><span class="badge green">Safe</span></td><td><span class="badge green">Current</span></td></tr>
+        <tr><td><strong>Cornell Hunt</strong></td><td>Seasonal Field Technician</td><td>Charlie</td><td>Flex</td><td><span class="badge green">Active</span></td><td>41.1</td><td><span class="badge red">In OT</span></td><td><span class="badge green">Current</span></td></tr>
+        <tr><td><strong>Joseph Sanchez</strong></td><td>Seasonal Field Technician</td><td>Charlie</td><td>Weekends</td><td><span class="badge green">Active</span></td><td>16.0</td><td><span class="badge green">Safe</span></td><td><span class="badge green">Current</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ==================== SCREEN 6/7: EMPLOYEE DETAIL ==================== -->
+<div class="screen" id="screen-employeeDetail">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+    <div style="display:flex;gap:16px;align-items:center;">
+      <div style="width:56px;height:56px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px;color:var(--black);">EO</div>
+      <div><h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:24px;">Ezven Ortiz</h2><div style="display:flex;gap:8px;margin-top:4px;"><span class="badge gold">Sr. Inspector / Account Lead</span><span class="badge green">Active</span><span style="font-size:12px;color:var(--light-gray);">Team Alpha &middot; Day Shift</span></div></div>
+    </div>
+    <div style="display:flex;gap:8px;"><button class="btn btn-outline">Edit Profile</button><button class="btn btn-primary">Save</button></div>
+  </div>
+  <div class="tabs">
+    <div class="tab active">Overview</div><div class="tab">Assignments</div><div class="tab">Attendance & Time</div><div class="tab">Overtime</div><div class="tab">Mileage</div><div class="tab">Certifications</div><div class="tab">Payroll</div><div class="tab">Commission</div><div class="tab">Documents</div><div class="tab">Audit Log</div>
+  </div>
+  <div class="grid-7-3">
+    <div>
+      <div class="panel"><div class="panel-header"><div class="panel-title">Personal Information</div></div><div class="panel-body">
+        <div class="form-row-3"><div class="form-group"><label class="form-label">Email</label><input class="form-input" value="eortiz@zionenergy.com" readonly></div><div class="form-group"><label class="form-label">Phone</label><input class="form-input" value="(432) 555-0201" readonly></div><div class="form-group"><label class="form-label">Hire Date</label><input class="form-input" value="March 15, 2023" readonly></div></div>
+        <div class="form-row-3"><div class="form-group"><label class="form-label">Pay Type</label><input class="form-input" value="Hourly" readonly></div><div class="form-group"><label class="form-label">Pay Rate</label><input class="form-input" value="$42.00/hr" readonly></div><div class="form-group"><label class="form-label">OT Threshold</label><input class="form-input" value="40 hours/week" readonly></div></div>
+      </div></div>
+      <div class="panel"><div class="panel-header"><div class="panel-title">Commission Tracking</div></div><div class="panel-body">
+        <div class="commission-box">
+          <div style="font-weight:700;margin-bottom:8px;font-size:13px;">Account: Arrival Energy Solutions</div>
+          <div class="commission-row"><span>Job Billed:</span><span>$10,000</span></div>
+          <div class="commission-row"><span>Inspector Labor:</span><span style="color:var(--red);">-$3,000</span></div>
+          <div class="commission-row"><span>Travel / Costs:</span><span style="color:var(--red);">-$2,000</span></div>
+          <div class="commission-row"><span>Gross Margin:</span><span style="font-weight:700;">$5,000</span></div>
+          <div class="commission-row total"><span>Commission (15%):</span><span style="color:var(--green);font-weight:800;">$750</span></div>
+        </div>
+      </div></div>
+    </div>
+    <div>
+      <div class="panel"><div class="panel-header"><div class="panel-title">This Week</div></div><div class="panel-body">
+        <div style="text-align:center;margin-bottom:12px;"><div class="kpi-value" style="font-size:48px;">36.2</div><div style="font-size:12px;color:var(--light-gray);">Hours Worked</div></div>
+        <div class="progress-bar"><div class="progress-fill gold" style="width:90%;"></div></div>
+        <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--light-gray);margin-top:4px;"><span>0h</span><span>40h threshold</span></div>
+      </div></div>
+      <div class="panel"><div class="panel-header"><div class="panel-title">Certifications</div></div><div class="panel-body">
+        <div style="padding:6px 0;border-bottom:1px solid #F2F2F7;"><div style="font-weight:600;font-size:13px;">API 570 Inspector</div><div style="font-size:11px;color:var(--light-gray);">Expires: Dec 2026</div><span class="badge green" style="margin-top:2px;">Current</span></div>
+        <div style="padding:6px 0;border-bottom:1px solid #F2F2F7;"><div style="font-weight:600;font-size:13px;">NDT Level II - MT</div><div style="font-size:11px;color:var(--light-gray);">Expires: Aug 2026</div><span class="badge green" style="margin-top:2px;">Current</span></div>
+        <div style="padding:6px 0;"><div style="font-weight:600;font-size:13px;">Eye Exam</div><div style="font-size:11px;color:var(--light-gray);">Last: Jan 2026</div><span class="badge green" style="margin-top:2px;">Valid</span></div>
+      </div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SCREEN 8: TEAMS ==================== -->
+<div class="screen" id="screen-teams">
+  <div style="display:flex;justify-content:space-between;margin-bottom:20px;"><h2 style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;">Team & Crew Management</h2><button class="btn btn-primary">+ Create Team</button></div>
+  <div class="grid-2">
+    <div class="panel"><div class="panel-header"><div class="panel-title" style="display:flex;align-items:center;gap:8px;"><span style="width:10px;height:10px;border-radius:50%;background:var(--green);"></span>Team Alpha</div><span class="badge green">Active</span></div><div class="panel-body">
+      <div style="font-size:12px;color:var(--light-gray);margin-bottom:12px;">Day Shift &middot; Home Base: Midland Shop</div>
+      <div style="font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--gray);margin-bottom:8px;">Quality Control Chain</div>
+      <div style="display:flex;gap:8px;align-items:center;margin-bottom:16px;">
+        <div style="background:var(--gold-dim);border:1px solid var(--gold);border-radius:6px;padding:8px 12px;text-align:center;"><div style="font-size:11px;color:var(--gold-dark);font-weight:700;">CREW LEAD</div><div style="font-weight:700;font-size:13px;">Ezven Ortiz</div><div style="font-size:11px;color:var(--light-gray);">Lead Inspector</div></div>
+        <span style="color:var(--silver);">&#8594;</span>
+        <div style="background:#F2F2F7;border-radius:6px;padding:8px 12px;text-align:center;"><div style="font-size:11px;color:var(--gray);font-weight:700;">TECHNICIAN</div><div style="font-weight:700;font-size:13px;">Leo Lawrence</div><div style="font-size:11px;color:var(--light-gray);">Inspector L1</div></div>
+        <span style="color:var(--silver);">&#8594;</span>
+        <div style="background:#F2F2F7;border-radius:6px;padding:8px 12px;text-align:center;"><div style="font-size:11px;color:var(--gray);font-weight:700;">ASSISTANT</div><div style="font-weight:700;font-size:13px;">Caleb Washington</div><div style="font-size:11px;color:var(--light-gray);">Field Tech</div></div>
+      </div>
+      <div style="display:flex;gap:8px;"><button class="btn btn-sm btn-outline">Swap Member</button><button class="btn btn-sm btn-outline">Edit Team</button></div>
+    </div></div>
+    <div class="panel"><div class="panel-header"><div class="panel-title" style="display:flex;align-items:center;gap:8px;"><span style="width:10px;height:10px;border-radius:50%;background:var(--amber);"></span>Team Bravo</div><span class="badge amber">Partial</span></div><div class="panel-body">
+      <div style="font-size:12px;color:var(--light-gray);margin-bottom:12px;">Night Shift &middot; Home Base: Odessa Yard</div>
+      <div style="font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--gray);margin-bottom:8px;">Quality Control Chain</div>
+      <div style="display:flex;gap:8px;align-items:center;margin-bottom:16px;">
+        <div style="background:var(--gold-dim);border:1px solid var(--gold);border-radius:6px;padding:8px 12px;text-align:center;"><div style="font-size:11px;color:var(--gold-dark);font-weight:700;">CREW LEAD</div><div style="font-weight:700;font-size:13px;">Sebastian Salgado</div><div style="font-size:11px;color:var(--light-gray);">Inspector (Night)</div></div>
+        <span style="color:var(--silver);">&#8594;</span>
+        <div style="background:#F2F2F7;border-radius:6px;padding:8px 12px;text-align:center;"><div style="font-size:11px;color:var(--gray);font-weight:700;">ASSISTANT</div><div style="font-weight:700;font-size:13px;">Briston Clark</div><div style="font-size:11px;color:var(--light-gray);">Field Tech (Night)</div></div>
+      </div>
+      <div style="display:flex;gap:8px;"><button class="btn btn-sm btn-outline">Swap Member</button><button class="btn btn-sm btn-outline">Edit Team</button></div>
+    </div></div>
+  </div>
+</div>
+
+<!-- ==================== SCREEN 9: JOBS LIST ==================== -->
+<div class="screen" id="screen-jobs">
+  <div style="display:flex;justify-content:space-between;margin-bottom:12px;">
+    <div class="filter-bar"><div class="filter-pill active">All</div><div class="filter-pill">Draft</div><div class="filter-pill">Scheduled</div><div class="filter-pill">Dispatched</div><div class="filter-pill">In Progress</div><div class="filter-pill">Completed</div></div>
+    <div style="display:flex;gap:8px;"><button class="btn btn-outline">Map View</button><button class="btn btn-outline" onclick="showScreen('calendar')">Calendar</button><button class="btn btn-primary" onclick="showScreen('createJob')">+ Create Job</button></div>
+  </div>
+  <div class="table-container"><table><thead><tr><th>Job ID</th><th>Client / Site</th><th>Type</th><th>Team</th><th>Scheduled</th><th>Status</th><th>Priority</th><th>SLA</th><th></th></tr></thead><tbody>
+    <tr><td><strong style="font-family:'JetBrains Mono',monospace;font-size:12px;">JOB-2026-0042</strong></td><td>Arrival Energy<br><span style="font-size:11px;color:var(--light-gray);">WTX Yard 3</span></td><td>Inspection</td><td>Alpha</td><td>Mar 10, 7:00 AM</td><td><span class="badge green">In Progress</span></td><td><span class="badge gold">High</span></td><td><span class="badge green">On Track</span></td><td><button class="btn btn-sm btn-ghost" onclick="showScreen('jobDetail')">View</button></td></tr>
+    <tr><td><strong style="font-family:'JetBrains Mono',monospace;font-size:12px;">JOB-2026-0043</strong></td><td>Bridgeport Fishing<br><span style="font-size:11px;color:var(--light-gray);">Main Shop</span></td><td>Repair</td><td>Bravo</td><td>Mar 10, 8:00 PM</td><td><span class="badge blue">Dispatched</span></td><td><span class="badge gray">Normal</span></td><td><span class="badge green">On Track</span></td><td><button class="btn btn-sm btn-ghost" onclick="showScreen('jobDetail')">View</button></td></tr>
+    <tr><td><strong style="font-family:'JetBrains Mono',monospace;font-size:12px;">JOB-2026-0044</strong></td><td>Tubular Solutions<br><span style="font-size:11px;color:var(--light-gray);">Field Site B</span></td><td>Inspection</td><td>Charlie</td><td>Mar 11, 6:00 AM</td><td><span class="badge gold">Scheduled</span></td><td><span class="badge red">Critical</span></td><td><span class="badge amber">At Risk</span></td><td><button class="btn btn-sm btn-ghost" onclick="showScreen('jobDetail')">View</button></td></tr>
+    <tr><td><strong style="font-family:'JetBrains Mono',monospace;font-size:12px;">JOB-2026-0045</strong></td><td>Basin Energy<br><span style="font-size:11px;color:var(--light-gray);">Permian Yard</span></td><td>Refacing</td><td>Unassigned</td><td>Mar 12, 7:00 AM</td><td><span class="badge gray">Draft</span></td><td><span class="badge gray">Normal</span></td><td><span class="badge gray">&mdash;</span></td><td><button class="btn btn-sm btn-ghost">Dispatch</button></td></tr>
+  </tbody></table></div>
+</div>
+
+<!-- ==================== SCREEN 10: CREATE JOB ==================== -->
+<div class="screen" id="screen-createJob">
+  <div style="display:flex;gap:24px;margin-bottom:20px;"><div class="filter-bar"><div class="filter-pill active">1. Client & Site</div><div class="filter-pill">2. Job Details</div><div class="filter-pill">3. Schedule</div><div class="filter-pill">4. Team</div><div class="filter-pill">5. Route</div><div class="filter-pill">6. Billing</div><div class="filter-pill">7. Review</div></div></div>
+  <div class="grid-7-3">
+    <div>
+      <div class="panel"><div class="panel-header"><div class="panel-title">Client & Site Selection</div></div><div class="panel-body">
+        <div class="form-row"><div class="form-group"><label class="form-label">Client</label><select class="form-select"><option>Arrival Energy Solutions</option><option>Bridgeport Fishing & Rental</option><option>Tubular Solutions Inc.</option></select></div><div class="form-group"><label class="form-label">Division</label><select class="form-select"><option>WTX Operations</option></select></div></div>
+        <div class="form-group"><label class="form-label">Site / Location</label><select class="form-select"><option>WTX Yard 3 - 1200 Industrial Blvd, Midland, TX</option></select></div>
+        <div class="form-group"><label class="form-label">Direction Notes</label><textarea class="form-input" rows="3" style="resize:vertical;" placeholder="Turn-by-turn notes for field locations with spotty service...">Take County Rd 127 past the grain elevator, left at the unmarked fork, 2.3 miles to the pad. Look for the blue storage containers.</textarea></div>
+      </div></div>
+      <div class="panel"><div class="panel-header"><div class="panel-title">Job Details</div></div><div class="panel-body">
+        <div class="form-row-3"><div class="form-group"><label class="form-label">Job Type</label><select class="form-select"><option>Inspection</option><option>Repair</option><option>Refacing</option></select></div><div class="form-group"><label class="form-label">Inspection Type</label><select class="form-select"><option>Magnetic Particle</option><option>Dye Penetrant</option></select></div><div class="form-group"><label class="form-label">Priority</label><select class="form-select"><option>Normal</option><option>High</option><option selected>Critical</option></select></div></div>
+        <div class="form-group"><label class="form-label">Description & Special Instructions</label><textarea class="form-input" rows="3" style="resize:vertical;" placeholder="Job description..."></textarea></div>
+      </div></div>
+      <div class="panel"><div class="panel-header"><div class="panel-title">Billing Configuration</div></div><div class="panel-body">
+        <div class="form-row-3"><div class="form-group"><label class="form-label">Miles (Per HR)</label><input class="form-input" type="number" value="1.00"></div><div class="form-group"><label class="form-label">Service Charge (Per HR)</label><input class="form-input" type="number" value="70.00"></div><div class="form-group"><label class="form-label">Per Diem (Per HR)</label><input class="form-input" type="number" value="100.00"></div></div>
+        <div class="form-row"><div class="form-group"><label class="form-label">Discount %</label><input class="form-input" type="number" value="0.00"></div><div class="form-group"><label class="form-label">Estimated Subtotal</label><input class="form-input" value="$171.00" readonly style="background:#FAFAFA;font-weight:700;"></div></div>
+      </div></div>
+    </div>
+    <div>
+      <div class="panel"><div class="panel-header"><div class="panel-title">Site Preview</div></div>
+        <div class="map-placeholder" style="height:180px;border-radius:0;border:none;"><div style="position:relative;z-index:1;">&#128205; WTX Yard 3<br><span style="font-size:11px;">Geo-fence: 200m radius</span></div></div>
+      </div>
+      <div class="panel"><div class="panel-header"><div class="panel-title">Schedule</div></div><div class="panel-body">
+        <div class="form-group"><label class="form-label">Start Date & Time</label><input class="form-input" type="datetime-local" value="2026-03-11T06:00"></div>
+        <div class="form-group"><label class="form-label">Estimated End</label><input class="form-input" type="datetime-local" value="2026-03-11T18:00"></div>
+        <div class="form-group"><label class="form-label">Reminder</label><select class="form-select"><option selected>1 hour before</option></select></div>
+      </div></div>
+      <div class="panel"><div class="panel-header"><div class="panel-title">Assign Team</div></div><div class="panel-body">
+        <div class="form-group"><label class="form-label">Team</label><select class="form-select"><option selected>Team Alpha (Ezven Ortiz)</option></select></div>
+        <div style="background:var(--amber-dim);border-radius:6px;padding:10px;font-size:12px;color:#CC7D00;font-weight:600;">&#9888; OT Impact: Caleb W. will reach 42.2h (+2.2h OT)</div>
+      </div></div>
+      <div style="display:flex;gap:8px;margin-top:16px;"><button class="btn btn-outline" style="flex:1;">Save Draft</button><button class="btn btn-primary" style="flex:1;">Dispatch Now</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SCREEN 11: JOB DETAIL / EXECUTION ==================== -->
+<div class="screen" id="screen-jobDetail">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+    <div><div style="display:flex;gap:8px;align-items:center;"><h2 style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;">JOB-2026-0042</h2><span class="badge green">In Progress</span><span class="badge gold">High Priority</span></div><div style="font-size:13px;color:var(--light-gray);margin-top:2px;">Arrival Energy Solutions &middot; WTX Yard 3 &middot; Inspection (Magnetic Particle)</div></div>
+    <div style="display:flex;gap:8px;"><button class="btn btn-outline">Reassign</button><button class="btn btn-outline">Extend</button><button class="btn btn-primary">Mark Complete</button></div>
+  </div>
+  <div style="font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--gray);margin-bottom:8px;">Inspection Workflow Progress</div>
+  <div class="panel" style="padding:16px 20px;">
+    <div class="workflow-steps">
+      <div class="wf-step done"><div class="wf-dot">&#10003;</div><div>Tool Arrival</div></div>
+      <div class="wf-step done"><div class="wf-dot">&#10003;</div><div>Clean</div></div>
+      <div class="wf-step done"><div class="wf-dot">&#10003;</div><div>Prepare</div></div>
+      <div class="wf-step active"><div class="wf-dot">4</div><div>Inspect</div></div>
+      <div class="wf-step pending"><div class="wf-dot">5</div><div>Report</div></div>
+      <div class="wf-step pending"><div class="wf-dot">6</div><div>Verify</div></div>
+      <div class="wf-step pending"><div class="wf-dot">7</div><div>Demag</div></div>
+    </div>
+  </div>
+  <div class="grid-7-3">
+    <div>
+      <div class="panel"><div class="panel-header"><div class="panel-title">Crew Status</div></div><div style="padding:0;"><table><thead><tr><th>Member</th><th>Role</th><th>Check-in</th><th>Hours</th><th>Geo</th></tr></thead><tbody>
+        <tr><td><strong>Ezven Ortiz</strong></td><td>Crew Lead / Inspector</td><td>6:52 AM</td><td>6.2h</td><td><span class="badge green">&#10003; Match</span></td></tr>
+        <tr><td><strong>Leo Lawrence</strong></td><td>Technician (Training)</td><td>6:58 AM</td><td>5.5h</td><td><span class="badge green">&#10003; Match</span></td></tr>
+        <tr><td><strong>Caleb Washington</strong></td><td>Field Assistant</td><td>7:12 AM</td><td>4.1h</td><td><span class="badge amber">&#9888; Late</span></td></tr>
+      </tbody></table></div></div>
+      <div class="panel"><div class="panel-header"><div class="panel-title">Inspector Time & Mileage</div></div><div style="padding:0;"><table><thead><tr><th>Date</th><th>Start</th><th>End</th><th>Hours</th><th>Type</th><th>Rate</th></tr></thead><tbody>
+        <tr><td>02/25/2026</td><td>7:46 AM</td><td>9:09 AM</td><td>1.38</td><td>Regular</td><td>$0.00</td></tr>
+      </tbody></table></div><div style="padding:12px 16px;border-top:1px solid #E5E5EA;display:flex;justify-content:space-between;"><span style="font-weight:700;font-size:13px;">Total Hours: 1.38</span><span style="font-weight:700;font-size:13px;">Total Miles: 16.0</span></div></div>
+    </div>
+    <div>
+      <div class="panel"><div class="panel-header"><div class="panel-title">&#128339; Event Timeline</div></div><div class="panel-body">
+        <div class="timeline-item"><div class="timeline-dot gold">&#9889;</div><div class="timeline-content"><div class="timeline-title">Job Dispatched</div><div class="timeline-time">5:30 AM</div></div></div>
+        <div class="timeline-item"><div class="timeline-dot blue">&#8599;</div><div class="timeline-content"><div class="timeline-title">Ezven Ortiz en route</div><div class="timeline-time">6:15 AM</div></div></div>
+        <div class="timeline-item"><div class="timeline-dot green">&#10003;</div><div class="timeline-content"><div class="timeline-title">Ezven checked in (geo-match)</div><div class="timeline-time">6:52 AM</div></div></div>
+        <div class="timeline-item"><div class="timeline-dot green">&#10003;</div><div class="timeline-content"><div class="timeline-title">Leo checked in (geo-match)</div><div class="timeline-time">6:58 AM</div></div></div>
+        <div class="timeline-item"><div class="timeline-dot red">&#9888;</div><div class="timeline-content"><div class="timeline-title">Caleb late check-in (12 min)</div><div class="timeline-time">7:12 AM</div></div></div>
+        <div class="timeline-item"><div class="timeline-dot gold">&#128196;</div><div class="timeline-content"><div class="timeline-title">Field note added by Ezven</div><div class="timeline-time">8:45 AM</div></div></div>
+      </div></div>
+      <div class="panel"><div class="panel-header"><div class="panel-title">Closeout Checklist</div></div><div class="panel-body">
+        <label style="display:flex;align-items:center;gap:8px;padding:6px 0;font-size:13px;cursor:pointer;"><input type="checkbox" checked> Post Job Cleanup</label>
+        <label style="display:flex;align-items:center;gap:8px;padding:6px 0;font-size:13px;cursor:pointer;"><input type="checkbox" checked> Tool/Supply Check</label>
+        <label style="display:flex;align-items:center;gap:8px;padding:6px 0;font-size:13px;cursor:pointer;"><input type="checkbox"> Customer Signoff</label>
+        <label style="display:flex;align-items:center;gap:8px;padding:6px 0;font-size:13px;cursor:pointer;"><input type="checkbox"> Trash Removal</label>
+        <label style="display:flex;align-items:center;gap:8px;padding:6px 0;font-size:13px;cursor:pointer;"><input type="checkbox"> Post Tool/Truck Clean Up</label>
+      </div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SCREEN 12: CALENDAR ==================== -->
+<div class="screen" id="screen-calendar">
+  <div style="display:flex;justify-content:space-between;margin-bottom:16px;"><div style="display:flex;gap:8px;align-items:center;"><button class="btn btn-sm btn-outline">&larr;</button><h2 style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;">Week of March 9 - 15, 2026</h2><button class="btn btn-sm btn-outline">&rarr;</button></div><div style="display:flex;gap:8px;"><div class="filter-pill">Day</div><div class="filter-pill active">Week</div><div class="filter-pill">Month</div></div></div>
+  <div class="calendar-grid">
+    <div class="cal-header">Team</div><div class="cal-header">Mon 9</div><div class="cal-header">Tue 10</div><div class="cal-header">Wed 11</div><div class="cal-header">Thu 12</div><div class="cal-header">Fri 13</div><div class="cal-header">Sat 14</div><div class="cal-header">Sun 15</div>
+    <div class="cal-row-label">Alpha</div><div class="cal-cell"><div class="cal-event gold">Arrival Energy</div></div><div class="cal-cell"><div class="cal-event gold">Arrival Energy</div></div><div class="cal-cell"><div class="cal-event blue">Tubular Sol.</div></div><div class="cal-cell"></div><div class="cal-cell"><div class="cal-event green">Basin Energy</div></div><div class="cal-cell"></div><div class="cal-cell"></div>
+    <div class="cal-row-label">Bravo</div><div class="cal-cell"></div><div class="cal-cell"><div class="cal-event gold">Bridgeport</div></div><div class="cal-cell"><div class="cal-event gold">Bridgeport</div></div><div class="cal-cell"><div class="cal-event blue">Arrival Energy</div></div><div class="cal-cell"><div class="cal-event blue">Arrival Energy</div></div><div class="cal-cell"></div><div class="cal-cell"></div>
+    <div class="cal-row-label">Charlie</div><div class="cal-cell"><div class="cal-event green">Basin Energy</div></div><div class="cal-cell"></div><div class="cal-cell"><div class="cal-event green">Basin Energy</div></div><div class="cal-cell"><div class="cal-event gold">Tubular Sol.</div></div><div class="cal-cell"></div><div class="cal-cell"><div class="cal-event blue">Arrival</div></div><div class="cal-cell"></div>
+    <div class="cal-row-label">Delta</div><div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell"><div class="cal-event gold">Bridgeport</div></div><div class="cal-cell"><div class="cal-event gold">Bridgeport</div></div><div class="cal-cell"></div><div class="cal-cell"></div>
+  </div>
+</div>
+
+<!-- ==================== SCREEN 13: ATTENDANCE ==================== -->
+<div class="screen" id="screen-attendance">
+  <div class="kpi-row" style="margin-bottom:16px;">
+    <div class="kpi-card green"><div class="kpi-label">Present</div><div class="kpi-value">20</div></div>
+    <div class="kpi-card green"><div class="kpi-label">On Time</div><div class="kpi-value">16</div></div>
+    <div class="kpi-card amber"><div class="kpi-label">Late Arrival</div><div class="kpi-value">4</div></div>
+    <div class="kpi-card red"><div class="kpi-label">Absent</div><div class="kpi-value">2</div></div>
+    <div class="kpi-card blue"><div class="kpi-label">Early Exit</div><div class="kpi-value">1</div></div>
+  </div>
+  <div style="display:flex;justify-content:space-between;margin-bottom:12px;"><div class="filter-bar"><div class="filter-pill active">Today</div><div class="filter-pill">Yesterday</div><div class="filter-pill">This Week</div><div class="filter-pill">Custom</div></div><div style="display:flex;gap:8px;"><button class="btn btn-outline">Map View</button><button class="btn btn-outline">Export</button></div></div>
+  <div class="table-container"><table><thead><tr><th>Employee</th><th>Team</th><th>Scheduled</th><th>Check-in</th><th>Check-out</th><th>Hours</th><th>Geo</th><th>Status</th></tr></thead><tbody>
+    <tr><td><strong>Ezven Ortiz</strong></td><td>Alpha</td><td>6:00 AM</td><td>5:52 AM</td><td>&mdash;</td><td>6.2h</td><td><span class="badge green">&#10003;</span></td><td><span class="badge green">On Time</span></td></tr>
+    <tr><td><strong>Sebastian Salgado</strong></td><td>Bravo</td><td>8:00 PM</td><td>8:15 PM</td><td>&mdash;</td><td>7.8h</td><td><span class="badge green">&#10003;</span></td><td><span class="badge amber">Late (15m)</span></td></tr>
+    <tr><td><strong>Leo Lawrence</strong></td><td>Alpha</td><td>6:00 AM</td><td>5:58 AM</td><td>&mdash;</td><td>5.5h</td><td><span class="badge green">&#10003;</span></td><td><span class="badge green">On Time</span></td></tr>
+    <tr><td><strong>Caleb Washington</strong></td><td>Alpha</td><td>6:00 AM</td><td>6:12 AM</td><td>&mdash;</td><td>4.1h</td><td><span class="badge amber">&#9888;</span></td><td><span class="badge amber">Late (12m)</span></td></tr>
+    <tr><td><strong>Cornell Hunt</strong></td><td>Charlie</td><td>6:00 AM</td><td>5:55 AM</td><td>2:05 PM</td><td>8.1h</td><td><span class="badge green">&#10003;</span></td><td><span class="badge blue">Complete</span></td></tr>
+  </tbody></table></div>
+</div>
+
+<!-- ==================== SCREEN 14: TIMESHEET ==================== -->
+<div class="screen" id="screen-timesheet">
+  <div style="display:flex;justify-content:space-between;margin-bottom:16px;"><h2 style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;">Timesheet Approval &mdash; Week of Mar 9</h2><div style="display:flex;gap:8px;"><button class="btn btn-outline">Export Payroll</button><button class="btn btn-primary">Batch Approve</button></div></div>
+  <div class="table-container"><table><thead><tr><th>Employee</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th><th>Total</th><th>OT</th><th>Status</th></tr></thead><tbody>
+    <tr><td><strong>Ezven Ortiz</strong></td><td>8.0</td><td>6.2</td><td>8.5</td><td>7.0</td><td>6.5</td><td>&mdash;</td><td style="font-weight:700;">36.2</td><td>0.0</td><td><span class="badge gold">Pending</span></td></tr>
+    <tr><td><strong>Sebastian S.</strong></td><td>9.5</td><td>8.8</td><td>8.0</td><td>8.5</td><td>8.0</td><td>&mdash;</td><td style="font-weight:700;">42.8</td><td style="color:var(--red);font-weight:700;">2.8</td><td><span class="badge gold">Pending</span></td></tr>
+    <tr><td><strong>Caleb W.</strong></td><td>8.0</td><td>4.1</td><td>8.5</td><td>8.0</td><td>9.6</td><td>&mdash;</td><td style="font-weight:700;">38.2</td><td>0.0</td><td><span class="badge green">Approved</span></td></tr>
+    <tr><td><strong>Cornell H.</strong></td><td>8.5</td><td>8.1</td><td>8.0</td><td>8.5</td><td>8.0</td><td>&mdash;</td><td style="font-weight:700;">41.1</td><td style="color:var(--red);font-weight:700;">1.1</td><td><span class="badge gold">Pending</span></td></tr>
+  </tbody></table></div>
+</div>
+
+<!-- ==================== SCREEN 15: OVERTIME ==================== -->
+<div class="screen" id="screen-overtime">
+  <div class="kpi-row">
+    <div class="kpi-card red"><div class="kpi-label">In Overtime</div><div class="kpi-value">3</div></div>
+    <div class="kpi-card amber"><div class="kpi-label">Approaching OT</div><div class="kpi-value">2</div></div>
+    <div class="kpi-card gold"><div class="kpi-label">Projected Weekly OT Cost</div><div class="kpi-value">$892</div></div>
+    <div class="kpi-card blue"><div class="kpi-label">OT vs Last Week</div><div class="kpi-value">+14%</div><div class="kpi-delta down">&#9650; Trending up</div></div>
+  </div>
+  <div class="table-container"><div class="table-header"><div class="table-title">Overtime Risk Monitor</div><button class="btn btn-sm btn-outline">Configure Thresholds</button></div><table><thead><tr><th>Employee</th><th>Team</th><th>Hours</th><th>Threshold</th><th>Remaining</th><th>Projected</th><th>OT Status</th><th>OT Cost</th><th></th></tr></thead><tbody>
+    <tr style="background:var(--red-dim);"><td><strong>Sebastian Salgado</strong></td><td>Bravo</td><td style="font-weight:700;">42.8h</td><td>40h</td><td style="color:var(--red);font-weight:700;">-2.8h</td><td>44.5h</td><td><span class="badge red">In OT</span></td><td style="font-weight:700;">$176</td><td><button class="btn btn-sm btn-danger">Reassign</button></td></tr>
+    <tr style="background:var(--red-dim);"><td><strong>Cornell Hunt</strong></td><td>Charlie</td><td style="font-weight:700;">41.1h</td><td>40h</td><td style="color:var(--red);font-weight:700;">-1.1h</td><td>41.1h</td><td><span class="badge red">In OT</span></td><td style="font-weight:700;">$44</td><td><button class="btn btn-sm btn-danger">Reassign</button></td></tr>
+    <tr style="background:var(--amber-dim);"><td><strong>Caleb Washington</strong></td><td>Alpha</td><td style="font-weight:700;">38.2h</td><td>40h</td><td style="color:var(--amber);font-weight:600;">1.8h</td><td>42.2h</td><td><span class="badge amber">Approaching</span></td><td style="font-weight:700;">$0</td><td><button class="btn btn-sm btn-outline">Monitor</button></td></tr>
+    <tr><td><strong>Ezven Ortiz</strong></td><td>Alpha</td><td>36.2h</td><td>40h</td><td>3.8h</td><td>38.0h</td><td><span class="badge green">Safe</span></td><td>$0</td><td></td></tr>
+    <tr><td><strong>Leo Lawrence</strong></td><td>Alpha</td><td>35.5h</td><td>40h</td><td>4.5h</td><td>37.0h</td><td><span class="badge green">Safe</span></td><td>$0</td><td></td></tr>
+  </tbody></table></div>
+</div>
+
+<!-- ==================== SCREEN 16: GEO ==================== -->
+<div class="screen" id="screen-geo">
+  <div class="grid-7-3">
+    <div class="panel" style="margin-bottom:0;"><div class="panel-header"><div class="panel-title">&#127758; Live Location & Geo-Compliance</div><div style="display:flex;gap:8px;"><button class="btn btn-sm btn-outline">Geo-fences</button><button class="btn btn-sm btn-outline">Heat Map</button><button class="btn btn-sm btn-outline">Playback</button></div></div>
+      <div class="map-placeholder" style="height:480px;border-radius:0;border:none;">
+        <div class="map-pin" style="background:var(--green);top:25%;left:20%;width:16px;height:16px;"></div>
+        <div class="map-pin" style="background:var(--green);top:40%;left:50%;width:16px;height:16px;"></div>
+        <div class="map-pin" style="background:var(--blue);top:55%;left:30%;width:16px;height:16px;"></div>
+        <div class="map-pin" style="background:var(--red);top:60%;left:70%;width:16px;height:16px;"></div>
+        <div style="position:absolute;top:56%;left:66%;width:60px;height:60px;border:2px dashed var(--red);border-radius:50%;opacity:0.5;"></div>
+        <div style="position:relative;z-index:1;text-align:center;"><div style="font-size:28px;margin-bottom:4px;">&#128506;</div><div>Google Maps / Mapbox - Full Screen<br><span style="font-size:11px;">Geo-fence polygons, employee pins, route overlays</span></div></div>
+      </div>
+    </div>
+    <div>
+      <div class="panel"><div class="panel-header"><div class="panel-title">Active Violations</div></div><div style="padding:0;">
+        <div class="alert-item"><div class="alert-dot critical"></div><div class="alert-content"><div class="alert-text">Caleb W. checked in outside geo-fence</div><div class="alert-meta">WTX Yard 3 &middot; 210m from boundary</div></div></div>
+        <div class="alert-item"><div class="alert-dot critical"></div><div class="alert-content"><div class="alert-text">Unknown movement at Basin yard</div><div class="alert-meta">No assigned crew &middot; Confidence: Medium</div></div></div>
+      </div></div>
+      <div class="panel"><div class="panel-header"><div class="panel-title">Employee Pins (Review)</div></div><div class="panel-body">
+        <div style="padding:8px 0;border-bottom:1px solid #F2F2F7;"><div style="font-weight:600;font-size:13px;">New pin from Ezven Ortiz</div><div style="font-size:11px;color:var(--light-gray);">Arrival Energy - New pad location<br>31.9686&deg;N, 102.0769&deg;W</div><div style="display:flex;gap:6px;margin-top:6px;"><button class="btn btn-sm btn-primary">Accept</button><button class="btn btn-sm btn-outline">Adjust</button><button class="btn btn-sm btn-danger">Reject</button></div></div>
+      </div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SCREEN 17: ALERTS ==================== -->
+<div class="screen" id="screen-alerts">
+  <div class="kpi-row" style="margin-bottom:16px;">
+    <div class="kpi-card red"><div class="kpi-label">Critical</div><div class="kpi-value">3</div></div>
+    <div class="kpi-card amber"><div class="kpi-label">Warning</div><div class="kpi-value">5</div></div>
+    <div class="kpi-card blue"><div class="kpi-label">Info</div><div class="kpi-value">4</div></div>
+    <div class="kpi-card green"><div class="kpi-label">Resolved Today</div><div class="kpi-value">7</div></div>
+  </div>
+  <div class="filter-bar" style="margin-bottom:12px;"><div class="filter-pill active">All</div><div class="filter-pill">Geo-Fence</div><div class="filter-pill">SLA</div><div class="filter-pill">Overtime</div><div class="filter-pill">Late Arrival</div><div class="filter-pill">Early Exit</div><div class="filter-pill">Patterns</div></div>
+  <div class="panel"><div style="padding:0;">
+    <div class="alert-item"><div class="alert-dot critical"></div><div class="alert-content"><div class="alert-text"><strong>Sebastian Salgado</strong> &mdash; Overtime threshold breached (42.8h)</div><div class="alert-meta">12 min ago &middot; Overtime &middot; Confidence: <strong>High</strong></div></div><div style="display:flex;gap:4px;"><button class="btn btn-sm btn-outline">Acknowledge</button><button class="btn btn-sm btn-danger">Escalate</button></div></div>
+    <div class="alert-item"><div class="alert-dot critical"></div><div class="alert-content"><div class="alert-text"><strong>Site C</strong> &mdash; Geo-fence violation detected (210m outside)</div><div class="alert-meta">28 min ago &middot; Geo-Compliance &middot; Confidence: <strong>High</strong></div></div><div style="display:flex;gap:4px;"><button class="btn btn-sm btn-outline">Acknowledge</button><button class="btn btn-sm btn-ghost">Override</button></div></div>
+    <div class="alert-item"><div class="alert-dot critical"></div><div class="alert-content"><div class="alert-text"><strong>Basin Energy - Permian Yard</strong> &mdash; SLA breach (response time exceeded)</div><div class="alert-meta">1h ago &middot; SLA &middot; Confidence: <strong>High</strong></div></div><div style="display:flex;gap:4px;"><button class="btn btn-sm btn-outline">Acknowledge</button></div></div>
+    <div class="alert-item"><div class="alert-dot warning"></div><div class="alert-content"><div class="alert-text"><strong>Cornell Hunt</strong> &mdash; Early check-out without approval</div><div class="alert-meta">45 min ago &middot; Attendance &middot; Confidence: <strong>High</strong></div></div><div><button class="btn btn-sm btn-outline">Review</button></div></div>
+    <div class="alert-item"><div class="alert-dot warning"></div><div class="alert-content"><div class="alert-text"><strong>Caleb Washington</strong> &mdash; OT approaching (38.2h / 40h)</div><div class="alert-meta">1h ago &middot; Overtime &middot; Confidence: <strong>Medium</strong></div></div><div><button class="btn btn-sm btn-ghost">Dismiss</button></div></div>
+    <div class="alert-item"><div class="alert-dot info"></div><div class="alert-content"><div class="alert-text"><strong>Leo Lawrence</strong> &mdash; API certification expiring in 60 days</div><div class="alert-meta">3h ago &middot; Compliance</div></div><div><button class="btn btn-sm btn-ghost">View</button></div></div>
+  </div></div>
+</div>
+
+<!-- ==================== SCREEN 18: REPORTS ==================== -->
+<div class="screen" id="screen-reports">
+  <h2 style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;margin-bottom:16px;">Reports & Analytics</h2>
+  <div class="grid-3">
+    <div class="panel" style="cursor:pointer;"><div class="panel-body" style="text-align:center;padding:32px 20px;"><div style="font-size:28px;margin-bottom:8px;">&#128181;</div><div style="font-weight:700;font-size:15px;">Payroll Reports</div><div style="font-size:12px;color:var(--light-gray);margin-top:4px;">Hours &times; Rate, OT, Mileage</div></div></div>
+    <div class="panel" style="cursor:pointer;"><div class="panel-body" style="text-align:center;padding:32px 20px;"><div style="font-size:28px;margin-bottom:8px;">&#128197;</div><div style="font-weight:700;font-size:15px;">Attendance Reports</div><div style="font-size:12px;color:var(--light-gray);margin-top:4px;">Daily, Weekly, Monthly</div></div></div>
+    <div class="panel" style="cursor:pointer;"><div class="panel-body" style="text-align:center;padding:32px 20px;"><div style="font-size:28px;margin-bottom:8px;">&#9888;&#65039;</div><div style="font-weight:700;font-size:15px;">Overtime Reports</div><div style="font-size:12px;color:var(--light-gray);margin-top:4px;">Cost analysis & trends</div></div></div>
+    <div class="panel" style="cursor:pointer;"><div class="panel-body" style="text-align:center;padding:32px 20px;"><div style="font-size:28px;margin-bottom:8px;">&#128295;</div><div style="font-weight:700;font-size:15px;">Job Execution</div><div style="font-size:12px;color:var(--light-gray);margin-top:4px;">SLA compliance, completion times</div></div></div>
+    <div class="panel" style="cursor:pointer;"><div class="panel-body" style="text-align:center;padding:32px 20px;"><div style="font-size:28px;margin-bottom:8px;">&#128663;</div><div style="font-weight:700;font-size:15px;">Mileage Reports</div><div style="font-size:12px;color:var(--light-gray);margin-top:4px;">Work/Personal, Tax rebate</div></div></div>
+    <div class="panel" style="cursor:pointer;"><div class="panel-body" style="text-align:center;padding:32px 20px;"><div style="font-size:28px;margin-bottom:8px;">&#128200;</div><div style="font-weight:700;font-size:15px;">Gross Margin Analysis</div><div style="font-size:12px;color:var(--light-gray);margin-top:4px;">Revenue - Costs = Margin per job</div></div></div>
+    <div class="panel" style="cursor:pointer;"><div class="panel-body" style="text-align:center;padding:32px 20px;"><div style="font-size:28px;margin-bottom:8px;">&#128737;</div><div style="font-weight:700;font-size:15px;">Compliance & Audit</div><div style="font-size:12px;color:var(--light-gray);margin-top:4px;">Certifications, violations</div></div></div>
+    <div class="panel" style="cursor:pointer;"><div class="panel-body" style="text-align:center;padding:32px 20px;"><div style="font-size:28px;margin-bottom:8px;">&#128202;</div><div style="font-weight:700;font-size:15px;">Client Reports</div><div style="font-size:12px;color:var(--light-gray);margin-top:4px;">P&L per client</div></div></div>
+    <div class="panel" style="cursor:pointer;"><div class="panel-body" style="text-align:center;padding:32px 20px;"><div style="font-size:28px;margin-bottom:8px;">&#128190;</div><div style="font-weight:700;font-size:15px;">Saved & Scheduled</div><div style="font-size:12px;color:var(--light-gray);margin-top:4px;">Auto-generated reports</div></div></div>
+  </div>
+</div>
+
+<!-- ==================== SCREEN 19: MILEAGE ==================== -->
+<div class="screen" id="screen-mileage">
+  <div class="kpi-row"><div class="kpi-card gold"><div class="kpi-label">Work Miles Today</div><div class="kpi-value">248</div></div><div class="kpi-card blue"><div class="kpi-label">Work Miles This Week</div><div class="kpi-value">1,120</div></div><div class="kpi-card green"><div class="kpi-label">Billable Miles</div><div class="kpi-value">890</div></div><div class="kpi-card gold"><div class="kpi-label">Est. Reimbursement</div><div class="kpi-value">$623</div></div></div>
+  <div class="filter-bar" style="margin-bottom:12px;"><div class="filter-pill active">All Trips</div><div class="filter-pill">Work</div><div class="filter-pill">Personal</div><div class="filter-pill">Pending Review</div></div>
+  <div class="table-container"><table><thead><tr><th>Employee</th><th>Date</th><th>From</th><th>To</th><th>Miles</th><th>Type</th><th>Job</th><th>Billable</th><th>Amount</th><th>Status</th></tr></thead><tbody>
+    <tr><td><strong>Ezven Ortiz</strong></td><td>Mar 10</td><td>Shop</td><td>WTX Yard 3</td><td>16.0</td><td><span class="badge gold">Work</span></td><td>JOB-0042</td><td>Yes</td><td>$11.20</td><td><span class="badge green">Approved</span></td></tr>
+    <tr><td><strong>Caleb Washington</strong></td><td>Mar 10</td><td>Home</td><td>Shop</td><td>8.5</td><td><span class="badge gray">Personal</span></td><td>&mdash;</td><td>No</td><td>$0.00</td><td><span class="badge green">Approved</span></td></tr>
+    <tr><td><strong>Caleb Washington</strong></td><td>Mar 10</td><td>Shop</td><td>WTX Yard 3</td><td>16.0</td><td><span class="badge gold">Work</span></td><td>JOB-0042</td><td>Yes</td><td>$11.20</td><td><span class="badge gold">Pending</span></td></tr>
+    <tr><td><strong>Sebastian Salgado</strong></td><td>Mar 10</td><td>Odessa Yard</td><td>Bridgeport Shop</td><td>42.3</td><td><span class="badge gold">Work</span></td><td>JOB-0043</td><td>Yes</td><td>$29.61</td><td><span class="badge gold">Pending</span></td></tr>
+  </tbody></table></div>
+</div>
+
+<!-- ==================== SCREEN 20: BILLING ==================== -->
+<div class="screen" id="screen-billing">
+  <div class="kpi-row"><div class="kpi-card gold"><div class="kpi-label">Avg Gross Margin</div><div class="kpi-value">48%</div></div><div class="kpi-card green"><div class="kpi-label">Revenue This Month</div><div class="kpi-value">$87,400</div></div><div class="kpi-card red"><div class="kpi-label">Total Costs</div><div class="kpi-value">$45,440</div></div><div class="kpi-card blue"><div class="kpi-label">Commission Paid</div><div class="kpi-value">$6,294</div></div></div>
+  <div class="table-container"><div class="table-header"><div class="table-title">Job Costing & Gross Margin</div><button class="btn btn-sm btn-outline">Export</button></div><table><thead><tr><th>Job ID</th><th>Client</th><th>Billed</th><th>Labor</th><th>Travel</th><th>Supplies</th><th>Total Cost</th><th>Margin</th><th>Margin %</th><th>Commission</th></tr></thead><tbody>
+    <tr><td><strong style="font-family:'JetBrains Mono',monospace;font-size:12px;">JOB-0042</strong></td><td>Arrival Energy</td><td style="font-weight:700;">$10,000</td><td>$3,000</td><td>$800</td><td>$1,200</td><td>$5,000</td><td style="color:var(--green);font-weight:700;">$5,000</td><td><span class="badge green">50%</span></td><td>$750</td></tr>
+    <tr><td><strong style="font-family:'JetBrains Mono',monospace;font-size:12px;">JOB-0038</strong></td><td>Bridgeport</td><td style="font-weight:700;">$6,500</td><td>$2,100</td><td>$400</td><td>$600</td><td>$3,100</td><td style="color:var(--green);font-weight:700;">$3,400</td><td><span class="badge green">52%</span></td><td>$510</td></tr>
+    <tr><td><strong style="font-family:'JetBrains Mono',monospace;font-size:12px;">JOB-0035</strong></td><td>Tubular Solutions</td><td style="font-weight:700;">$4,200</td><td>$1,800</td><td>$600</td><td>$400</td><td>$2,800</td><td style="color:var(--amber);font-weight:700;">$1,400</td><td><span class="badge amber">33%</span></td><td>$0</td></tr>
+  </tbody></table></div>
+</div>
+
+<!-- ==================== SCREEN 21: SETTINGS ==================== -->
+<div class="screen" id="screen-settings">
+  <h2 style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;margin-bottom:16px;">System Configuration</h2>
+  <div class="tabs"><div class="tab active">Organization</div><div class="tab">Roles & Access</div><div class="tab">Overtime Rules</div><div class="tab">Geo-Fence</div><div class="tab">SLA Templates</div><div class="tab">Notifications</div><div class="tab">Payroll</div><div class="tab">Integrations</div><div class="tab">Inspections</div><div class="tab">Automation</div></div>
+  <div class="panel">
+    <div class="settings-section"><div class="settings-title">Organization Details</div><div class="settings-desc">Company name, timezone, and fiscal year settings.</div><div class="form-row-3"><div class="form-group"><label class="form-label">Company Name</label><input class="form-input" value="Zion Energy Services"></div><div class="form-group"><label class="form-label">Timezone</label><select class="form-select"><option selected>Central Time (CT)</option></select></div><div class="form-group"><label class="form-label">Currency</label><select class="form-select"><option selected>USD ($)</option></select></div></div></div>
+    <div class="settings-section"><div class="settings-title">Global Overtime Rules</div><div class="settings-desc">Default thresholds applied to all employees unless overridden.</div><div class="form-row-3"><div class="form-group"><label class="form-label">Weekly OT Threshold</label><input class="form-input" type="number" value="40"></div><div class="form-group"><label class="form-label">OT Rate Multiplier</label><input class="form-input" value="1.5x"></div><div class="form-group"><label class="form-label">OT Warning At (hours)</label><input class="form-input" type="number" value="35"></div></div></div>
+    <div class="settings-section"><div class="settings-title">Clock-In / Clock-Out Reminders</div><div class="settings-desc">Automated reminders with role-based task lists and verification checklists.</div><div style="display:flex;gap:24px;"><div class="switch"><div class="switch-track on"></div><span style="font-size:13px;font-weight:600;">Clock-in: Show daily tasks by role</span></div><div class="switch"><div class="switch-track on"></div><span style="font-size:13px;font-weight:600;">Clock-out: Require verification checklist</span></div></div></div>
+    <div class="settings-section"><div class="settings-title">Default Mileage Rate</div><div class="settings-desc">IRS standard mileage rate for reimbursement calculation.</div><div style="width:200px;"><div class="form-group"><label class="form-label">Rate per mile</label><input class="form-input" value="$0.70"></div></div></div>
+  </div>
+</div>
+
+<!-- ==================== SCREEN 22: AUDIT ==================== -->
+<div class="screen" id="screen-audit">
+  <h2 style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;margin-bottom:16px;">Audit Trail</h2>
+  <div class="filter-bar" style="margin-bottom:12px;"><div class="filter-pill active">All Actions</div><div class="filter-pill">Create</div><div class="filter-pill">Update</div><div class="filter-pill">Delete</div><div class="filter-pill">Override</div><div class="filter-pill">Export</div></div>
+  <div class="table-container"><table><thead><tr><th>Timestamp</th><th>User</th><th>Action</th><th>Module</th><th>Description</th><th>IP</th></tr></thead><tbody>
+    <tr><td style="font-family:'JetBrains Mono',monospace;font-size:11px;">2026-03-10 13:22:08</td><td><strong>Hunter Sisti</strong><br><span style="font-size:11px;color:var(--light-gray);">Super Admin</span></td><td><span class="badge gold">Override</span></td><td>Geo-Compliance</td><td>Overrode geo-violation for Caleb W. at WTX Yard 3</td><td>192.168.1.45</td></tr>
+    <tr><td style="font-family:'JetBrains Mono',monospace;font-size:11px;">2026-03-10 12:15:33</td><td><strong>Isaac Black</strong><br><span style="font-size:11px;color:var(--light-gray);">Ops Manager</span></td><td><span class="badge green">Approve</span></td><td>Timesheets</td><td>Approved timesheet for Ezven Ortiz (Week Mar 3-9)</td><td>10.0.0.22</td></tr>
+    <tr><td style="font-family:'JetBrains Mono',monospace;font-size:11px;">2026-03-10 11:45:01</td><td><strong>Isaac Black</strong><br><span style="font-size:11px;color:var(--light-gray);">Ops Manager</span></td><td><span class="badge blue">Create</span></td><td>Dispatch</td><td>Created JOB-2026-0045 for Basin Energy</td><td>10.0.0.22</td></tr>
+    <tr><td style="font-family:'JetBrains Mono',monospace;font-size:11px;">2026-03-10 09:30:15</td><td><strong>System</strong><br><span style="font-size:11px;color:var(--light-gray);">Automated</span></td><td><span class="badge red">Alert</span></td><td>Overtime</td><td>Generated OT alert for Sebastian Salgado (42.8h)</td><td>&mdash;</td></tr>
+  </tbody></table></div>
+</div>
+
+<!-- ==================== SCREEN 23: NOTIFICATIONS ==================== -->
+<div class="screen" id="screen-notifications">
+  <div style="display:flex;justify-content:space-between;margin-bottom:16px;"><h2 style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;">Notifications</h2><button class="btn btn-outline">Mark All Read</button></div>
+  <div class="filter-bar" style="margin-bottom:12px;"><div class="filter-pill active">All</div><div class="filter-pill">Alerts</div><div class="filter-pill">Reminders</div><div class="filter-pill">Approvals</div><div class="filter-pill">System</div></div>
+  <div class="panel"><div style="padding:0;">
+    <div class="notif-item unread"><div class="notif-icon-box red">&#9888;</div><div><div class="notif-text"><strong>OT Alert:</strong> Sebastian Salgado exceeded 40h threshold (42.8h)</div><div class="notif-time">12 minutes ago</div></div></div>
+    <div class="notif-item unread"><div class="notif-icon-box red">&#128205;</div><div><div class="notif-text"><strong>Geo-Violation:</strong> Check-in outside fence at WTX Yard 3</div><div class="notif-time">28 minutes ago</div></div></div>
+    <div class="notif-item unread"><div class="notif-icon-box gold">&#128196;</div><div><div class="notif-text"><strong>Timesheet Pending:</strong> 3 timesheets awaiting your approval</div><div class="notif-time">1 hour ago</div></div></div>
+    <div class="notif-item"><div class="notif-icon-box gold">&#9889;</div><div><div class="notif-text"><strong>Job Dispatched:</strong> JOB-2026-0042 assigned to Team Alpha</div><div class="notif-time">5 hours ago</div></div></div>
+    <div class="notif-item"><div class="notif-icon-box blue">&#128196;</div><div><div class="notif-text"><strong>New Field Intel:</strong> Ezven submitted a pin for Arrival Energy new pad</div><div class="notif-time">6 hours ago</div></div></div>
+    <div class="notif-item"><div class="notif-icon-box green">&#10003;</div><div><div class="notif-text"><strong>Certification Reminder:</strong> Leo Lawrence API cert expiring in 60 days</div><div class="notif-time">1 day ago</div></div></div>
+  </div></div>
+</div>
+
+</main>
+
+<script>
+const screenMap = {
+  'dashboard': { title: 'Operational Dashboard', crumb: 'Dashboard' },
+  'login': { title: 'Login & Authentication', crumb: 'Login' },
+  'clients': { title: 'Client Master', crumb: 'Clients' },
+  'clientDetail': { title: 'Client Detail', crumb: 'Clients / Detail' },
+  'employees': { title: 'Employee Master', crumb: 'Employees' },
+  'employeeDetail': { title: 'Employee Profile', crumb: 'Employees / Profile' },
+  'teams': { title: 'Teams & Crew Management', crumb: 'Teams' },
+  'jobs': { title: 'Jobs & Dispatch', crumb: 'Dispatch / Jobs' },
+  'createJob': { title: 'Create Job', crumb: 'Dispatch / Create Job' },
+  'jobDetail': { title: 'Job Execution View', crumb: 'Dispatch / Job Detail' },
+  'calendar': { title: 'Job Scheduling Calendar', crumb: 'Dispatch / Calendar' },
+  'attendance': { title: 'Attendance & Time Tracking', crumb: 'Attendance' },
+  'timesheet': { title: 'Timesheet Approval', crumb: 'Timesheets' },
+  'overtime': { title: 'Overtime Monitor', crumb: 'Overtime' },
+  'geo': { title: 'Geo-Compliance & Locations', crumb: 'Geo & Locations' },
+  'alerts': { title: 'Alerts & Exceptions', crumb: 'Alerts' },
+  'reports': { title: 'Reports & Analytics', crumb: 'Reports' },
+  'mileage': { title: 'Mileage Tracker', crumb: 'Mileage' },
+  'billing': { title: 'Billing & Job Costing', crumb: 'Billing' },
+  'settings': { title: 'System Configuration', crumb: 'Settings' },
+  'audit': { title: 'Audit Trail', crumb: 'Audit' },
+  'notifications': { title: 'Notifications', crumb: 'Notifications' },
+};
+
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('screen-' + id).classList.add('active');
+  
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  const navItem = document.querySelector(`.nav-item[data-screen="${id}"]`);
+  if (navItem) navItem.classList.add('active');
+
+  const info = screenMap[id] || { title: id, crumb: id };
+  document.getElementById('topbarTitle').textContent = info.title;
+  document.getElementById('topbarBreadcrumb').innerHTML = `<a href="#" onclick="showScreen('dashboard')">Home</a><span>/</span><span>${info.crumb}</span>`;
+
+  document.querySelector('.main').scrollTop = 0;
+}
+
+function showClientTab(tabId) {
+  document.querySelectorAll('.client-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('clientTab-' + tabId).classList.add('active');
+  document.querySelectorAll('#clientDetailTabs .tab').forEach(t => t.classList.remove('active'));
+  event.target.classList.add('active');
+}
+</script>
+</body>
+</html>

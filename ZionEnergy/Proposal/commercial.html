@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Zion Unified — Commercial Proposal</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Public+Sans:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#18181B;--ink2:#52525B;--ink3:#A1A1AA;--line:#E4E4E7;--line2:#D4D4D8;
+ --paper:#fff;--panel:#FAFAFA;--brand:#C2410C;--brandd:#9A3412;--soft:#FFF3EC;--sline:#FBD5BE;
+ --ok:#15803D;--oksoft:#F0FDF4;--okline:#BBF7D0;
+ --disp:'Anton',sans-serif;--ui:'Public Sans',system-ui,sans-serif;--mono:'Spline Sans Mono',monospace}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:#71717A;font-family:var(--ui);color:var(--ink);font-size:13px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.page{width:210mm;min-height:297mm;background:var(--paper);margin:22px auto;padding:16mm 15mm 14mm;position:relative;
+ box-shadow:0 10px 40px rgba(0,0,0,.35)}
+@media print{body{background:#fff}.page{margin:0;box-shadow:none;page-break-after:always;min-height:auto}
+ @page{size:A4;margin:0}}
+.top{display:flex;align-items:flex-start;gap:14px;padding-bottom:12px;border-bottom:3px solid var(--ink)}
+.top img{height:30px}
+.top .sp{flex:1}
+.top .meta{text-align:right;font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);line-height:1.7}
+h1{font-family:var(--disp);font-size:40px;line-height:.96;text-transform:uppercase;margin:20px 0 0;letter-spacing:.005em}
+h1 em{font-style:normal;color:var(--brand)}
+.lede{margin:12px 0 0;font-size:14.5px;line-height:1.6;color:var(--ink2);max-width:64ch}
+h2{font-family:var(--disp);font-size:17px;text-transform:uppercase;letter-spacing:.02em;margin:24px 0 10px;
+ padding-bottom:6px;border-bottom:1px solid var(--line)}
+.eyebrow{font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--brand)}
+
+.wins{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:12px}
+.win{border:1px solid var(--line);border-left:3px solid var(--brand);border-radius:4px;padding:10px 12px;background:var(--panel)}
+.win b{display:block;font-size:12.5px;font-weight:700;line-height:1.3}
+.win span{display:block;font-size:11.5px;color:var(--ink2);margin-top:3px;line-height:1.5}
+.win.opt{border-left-color:var(--line2)}
+.win .tag{display:inline-block;font-size:8px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+ padding:1px 5px;border-radius:20px;margin-left:5px;vertical-align:1px}
+.tag.core{background:var(--soft);color:var(--brandd);border:1px solid var(--sline)}
+.tag.add{background:#F4F4F5;color:var(--ink2);border:1px solid var(--line2)}
+
+table{width:100%;border-collapse:collapse;font-size:12px;margin-top:8px}
+th{font-size:8.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);
+ text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);background:var(--panel)}
+td{padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+td.r,th.r{text-align:right;font-family:var(--mono);white-space:nowrap}
+tr.total td{border-top:2px solid var(--ink);border-bottom:0;font-weight:700;padding-top:9px}
+tr.credit td{color:var(--ok)}
+
+.price{display:flex;align-items:stretch;gap:12px;margin-top:14px}
+.pbox{flex:1;border:2px solid var(--ink);border-radius:6px;padding:14px 16px}
+.pbox.hero{background:var(--ink);color:#fff;border-color:var(--ink)}
+.pbox .k{font-size:8.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
+.pbox.hero .k{color:#A1A1AA}
+.pbox .v{font-family:var(--disp);font-size:34px;line-height:1.05;margin-top:5px}
+.pbox .s{font-size:11px;margin-top:4px;color:var(--ink2)}
+.pbox.hero .s{color:#D4D4D8}
+
+.note{border:1px solid var(--line);border-left:3px solid var(--ink);background:var(--panel);
+ padding:10px 12px;font-size:11.5px;color:var(--ink2);line-height:1.55;margin-top:12px}
+.note b{color:var(--ink)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+ul.tick{margin:8px 0 0;padding:0;list-style:none}
+ul.tick li{font-size:11.5px;color:var(--ink2);padding:3px 0 3px 15px;position:relative;line-height:1.5}
+ul.tick li::before{content:'';position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:5px;background:var(--brand)}
+.foot{position:absolute;left:15mm;right:15mm;bottom:9mm;display:flex;justify-content:space-between;
+ font-size:9px;color:var(--ink3);border-top:1px solid var(--line);padding-top:7px;
+ font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase}
+</style>
+</head>
+<body>
+
+<!-- ============ PAGE 1 ============ -->
+<div class="page">
+  <div class="top">
+    <img src="logo-dark.png" alt="Zion Energy Services"/>
+    <div class="sp"></div>
+    <div class="meta">Commercial Proposal<br/>Zion Unified Platform<br/>Nile Technologies Pvt. Ltd.</div>
+  </div>
+
+  <div class="eyebrow" style="margin-top:18px">One platform. One record. One number that finally makes sense.</div>
+  <h1>Everything Zion does,<br/><em>in one system.</em></h1>
+  <p class="lede">Today the crew goes out on one system and the report comes back on another. Nothing joins up, so nothing can be measured. Zion Unified puts dispatch, inspection, reporting and billing on a single record — and for the first time shows you what every job actually earned.</p>
+
+  <h2>What changes for Zion</h2>
+  <div class="wins">
+    <div class="win"><b>Margin on every job <span class="tag core">Core</span></b>
+      <span>Revenue against delivered cost — crew hours at their real pay rate, overtime, mileage and consumables. Profitability by job, customer, site, inspector and service type. You have never had this number.</span></div>
+
+    <div class="win"><b>Live cost per site <span class="tag core">Core</span></b>
+      <span>Geo-fenced check in and out ties every hour a crew spends to the customer's location. You can see what a site is costing you while the job is still running, not after the invoice.</span></div>
+
+    <div class="win"><b>All customers in one place <span class="tag core">Core</span></b>
+      <span>One customer master. Sites, divisions, contacts, SLAs, business rules, price sheets, connection standards, tool templates and full job history — entered once, used by both halves of the business.</span></div>
+
+    <div class="win"><b>The full customer view <span class="tag core">Core</span></b>
+      <span>Open a customer and see everything: every job, every inspection, every item, every report, every invoice, what they owe and how they actually pay.</span></div>
+
+    <div class="win"><b>Your inspection logic, built in <span class="tag core">Core</span></b>
+      <span>Asset &rarr; governing standard &rarr; procedure &rarr; NDT method &rarr; technique &rarr; equipment &rarr; acceptance criteria &rarr; inspector qualification &rarr; report. An inspector cannot apply a drill-collar rule to a rig weld.</span></div>
+
+    <div class="win"><b>A modern, fast platform <span class="tag core">Core</span></b>
+      <span>A brand-new lightweight stack replacing five years of accumulated code. Fast, iPad-ready for the field, and built so new features take days rather than months.</span></div>
+
+    <div class="win opt"><b>Internalised communication <span class="tag add">Add-on</span></b>
+      <span>Crews call and message customers through the platform. They never see the number, it never lands on their phone, and one switch removes a leaver from every conversation at once.</span></div>
+
+    <div class="win opt"><b>Training &amp; certifications <span class="tag add">Add-on</span></b>
+      <span>On-the-job training, competency records and certification expiry tracked against the qualifications each inspection procedure requires.</span></div>
+
+    <div class="win opt"><b>Customer portal <span class="tag add">Add-on</span></b>
+      <span>Your customers raise inspection tickets, follow job status, download reports and see what is outstanding — without calling your office.</span></div>
+
+    <div class="win opt"><b>Zion Intelligence <span class="tag add">Phase 2</span></b>
+      <span>The AI layer: automatic inspection packages from job type, AI-assisted reports and QC, and a system that tells you what needs attention before you go looking.</span></div>
+  </div>
+
+  <div class="note"><b>Why this order.</b> The intelligence layer is only possible once the operating system underneath it exists as structured data — assets, standards, procedures, measurements and costs all in one place. Build the backbone first and the AI becomes configuration rather than a research project. That is why it follows Phase&nbsp;1 rather than competing with it.</div>
+
+  <div class="foot"><span>Zion Unified &middot; Commercial Proposal</span><span>Page 1 of 2</span></div>
+</div>
+
+<!-- ============ PAGE 2 ============ -->
+<div class="page">
+  <div class="top">
+    <img src="logo-dark.png" alt="Zion Energy Services"/>
+    <div class="sp"></div>
+    <div class="meta">Commercial Proposal<br/>Effort &amp; Investment</div>
+  </div>
+
+  <h2>Phase 1 — Zion Unified Core</h2>
+  <table>
+    <thead><tr><th>Module</th><th class="r">Effort</th></tr></thead>
+    <tbody>
+      <tr><td>Platform foundation — access control, roles, kill switch, audit trail, iPad-optimised interface</td><td class="r">25 days</td></tr>
+      <tr><td>Customer, site and division master — business rules, price sheets, contacts, documents</td><td class="r">30 days</td></tr>
+      <tr><td>Workforce — employees, certifications, pay rules, crews and teams</td><td class="r">12 days</td></tr>
+      <tr><td>Jobs and dispatch — absorbing and extending the existing CrewView platform</td><td class="r">10 days</td></tr>
+      <tr><td>Attendance, time, mileage and live site cost tracking</td><td class="r">14 days</td></tr>
+      <tr><td>Standards, procedures, methods and acceptance criteria backbone</td><td class="r">30 days</td></tr>
+      <tr><td>Tool and item templates — the dynamic form and report engine</td><td class="r">28 days</td></tr>
+      <tr><td>Inspections, inspected items, measurements and the tolerance engine</td><td class="r">55 days</td></tr>
+      <tr><td>Equipment and calibration register</td><td class="r">12 days</td></tr>
+      <tr><td>Job safety analysis</td><td class="r">8 days</td></tr>
+      <tr><td>Reporting engine and document output</td><td class="r">30 days</td></tr>
+      <tr><td>Billing, invoicing, profitability and margin analysis</td><td class="r">35 days</td></tr>
+      <tr><td>Data migration — active customers and recent history</td><td class="r">15 days</td></tr>
+      <tr><td>Quality assurance, user acceptance testing, deployment and handover</td><td class="r">36 days</td></tr>
+      <tr class="total"><td>Total engineering effort</td><td class="r">340 days</td></tr>
+    </tbody>
+  </table>
+
+  <table style="margin-top:16px">
+    <tbody>
+      <tr><td>340 man-days at our standard rate of $200 per day</td><td class="r">$68,000</td></tr>
+      <tr class="credit"><td>Less — CrewView dispatch already delivered and absorbed into the platform</td><td class="r">&minus; $22,600</td></tr>
+      <tr class="credit"><td>Less — foundation credit, applied once at the start of the partnership</td><td class="r">&minus; $5,400</td></tr>
+      <tr class="total"><td>Phase 1 investment</td><td class="r">$40,000</td></tr>
+    </tbody>
+  </table>
+
+  <div class="price">
+    <div class="pbox hero"><div class="k">Phase 1 — Zion Unified Core</div>
+      <div class="v">$40,000</div><div class="s">340 man-days &middot; delivery targeted for the new year</div></div>
+    <div class="pbox"><div class="k">Standard day rate</div>
+      <div class="v">$200</div><div class="s">Applied to all future modules</div></div>
+  </div>
+
+  <h2>Optional modules</h2>
+  <table>
+    <thead><tr><th>Module</th><th class="r">Effort</th><th class="r">Investment</th></tr></thead>
+    <tbody>
+      <tr><td><b>Communications Hub</b> — in-app calls and messaging, masked customer numbers, call and message history, instant revocation</td><td class="r">48 days</td><td class="r">$9,600</td></tr>
+      <tr><td><b>Customer Portal</b> — ticket raising, job status, report downloads, outstanding invoices</td><td class="r">45 days</td><td class="r">$9,000</td></tr>
+      <tr><td><b>LMS &amp; Certifications</b> — on-the-job training, competency matrix, certification renewals</td><td class="r">60 days</td><td class="r">$12,000</td></tr>
+      <tr><td><b>Company Document Centre with AI</b> — handbook, processes, W-9, COI, share links and email delivery</td><td class="r">42 days</td><td class="r">$8,400</td></tr>
+      <tr><td><b>Asset Management</b> — maintenance, parts, supplies, vendors, purchase orders, vendor invoices</td><td class="r">80 days</td><td class="r">$16,000</td></tr>
+      <tr><td><b>Advanced Billing</b> — recurring invoices, customer statements, commission, payment gateway</td><td class="r">55 days</td><td class="r">$11,000</td></tr>
+      <tr><td><b>QMS &amp; Safety Data Sheets</b> — corrective actions, document control, supplier SDS register</td><td class="r">32 days</td><td class="r">$6,400</td></tr>
+      <tr><td><b>Standards content encoding</b> — API and AWS acceptance criteria captured into the platform</td><td class="r">30 days</td><td class="r">$6,000</td></tr>
+      <tr><td><b>Full historical migration</b> — the complete five-year archive rather than active records only</td><td class="r">38 days</td><td class="r">$7,600</td></tr>
+      <tr><td><b>Zion Intelligence — AI layer</b> — inspection packages, AI reports and QC, assisted invoicing</td><td class="r">&mdash;</td><td class="r">Phase 2</td></tr>
+    </tbody>
+  </table>
+
+  <div class="two" style="margin-top:18px">
+    <div>
+      <h2 style="margin-top:0">Payment schedule</h2>
+      <ul class="tick">
+        <li><b>20%</b> — kickoff and architecture agreed</li>
+        <li><b>20%</b> — customer, workforce and standards foundation in staging</li>
+        <li><b>20%</b> — inspection and reporting engine demonstrated</li>
+        <li><b>20%</b> — billing, profitability and migration complete</li>
+        <li><b>20%</b> — go-live plus 30 days of stable operation</li>
+      </ul>
+    </div>
+    <div>
+      <h2 style="margin-top:0">Included as standard</h2>
+      <ul class="tick">
+        <li>Four months of post-deployment support</li>
+        <li>Cloud hosting setup and deployment</li>
+        <li>Existing mobile apps updated for the unified platform</li>
+        <li>No recurring licence or platform fees to Nile</li>
+        <li>Full source code and IP transferred to Zion</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="note"><b>Total platform position.</b> With the $22,600 already invested in dispatch, Zion owns the complete operating system of the business for <b>$62,600</b> — replacing a platform that has been under development for five years and is still not finished.</div>
+
+  <div class="foot"><span>Nile Technologies Pvt. Ltd. &middot; A-51, Sector 57, Noida, UP 201301</span><span>Page 2 of 2</span></div>
+</div>
+
+</body>
+</html>

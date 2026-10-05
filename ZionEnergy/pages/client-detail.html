@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CrewViewPro - Client Detail</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&family=Barlow+Condensed:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+<!-- ===== SIDEBAR ===== -->
+<nav class="sidebar">
+  <div class="sidebar-logo">
+    <div class="bolt">&#9889;</div>
+    <div class="brand">Crew<span>View</span></div>
+  </div>
+  <div class="sidebar-nav">
+    <div class="nav-section">
+      <div class="nav-section-label">Overview</div>
+      <div class="nav-item" onclick="window.location.href='dashboard.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Dashboard</div>
+      <div class="nav-item" onclick="window.location.href='../index.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 8h7M9 12h7M9 16h4"/><circle cx="6" cy="8" r="0.6"/><circle cx="6" cy="12" r="0.6"/><circle cx="6" cy="16" r="0.6"/></svg>Screen Index</div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">Clients & Sites</div>
+      <div class="nav-item" onclick="window.location.href='clients.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M9 8h1M9 12h1M9 16h1M14 8h1M14 12h1M14 16h1"/><rect x="5" y="3" width="14" height="18" rx="1"/></svg>Client Master</div>
+      <div class="nav-item active" onclick="window.location.href='client-detail.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Client Profile</div>
+      <div class="nav-item" onclick="window.location.href='portal-users.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Client Portal Users<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">Workforce</div>
+      <div class="nav-item" onclick="window.location.href='employees.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Employees</div>
+      <div class="nav-item" onclick="window.location.href='employee-detail.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Employee Profile</div>
+      <div class="nav-item" onclick="window.location.href='teams.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Teams & Crews</div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">Dispatch</div>
+      <div class="nav-item" onclick="window.location.href='inspection-requests.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11L2 12v6a2 2 0 002 2h16a2 2 0 002-2v-6l-3.45-6.89A2 2 0 0016.76 4H7.24a2 2 0 00-1.79 1.11z"/></svg>Inspection Requests<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='jobs.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>Jobs & Dispatch<span class="nav-badge">3</span></div>
+      <div class="nav-item" onclick="window.location.href='create-job.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>Create Job & Dispatch</div>
+      <div class="nav-item" onclick="window.location.href='calendar.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Calendar</div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">Inspections</div>
+      <div class="nav-item" onclick="window.location.href='inspections.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 2h6v4H9z"/><path d="M7 4H5v18h14V4h-2"/><path d="M9 12h7M9 16h5"/></svg>Inspections<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='inspection-tickets.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h18v4a2 2 0 000 4v4H3v-4a2 2 0 000-4z"/><path d="M12 7v10"/></svg>Inspection Tickets<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='inspected-items.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>Inspected Items<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='field-capture.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M11 19h2"/></svg>Crew View Capture<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='job-safety.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L4 6v6c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V6z"/></svg>Job Safety Analysis<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">Assets & Standards</div>
+      <div class="nav-item" onclick="window.location.href='standards.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>Standards Library<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='inspection-package.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M7 6h10M5 8v4a2 2 0 002 2h3M19 8v4a2 2 0 01-2 2h-3"/></svg>Inspection Packages<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='asset-models.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>Tool & Item Templates<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='equipment.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21a9 9 0 119-9"/><path d="M12 12l4-3"/></svg>Equipment & Calibration<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">Operations</div>
+      <div class="nav-item" onclick="window.location.href='attendance.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Attendance</div>
+      <div class="nav-item" onclick="window.location.href='timesheet.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="13" r="8"/><path d="M12 9v4M9 2h6"/></svg>Timesheets</div>
+      <div class="nav-item" onclick="window.location.href='overtime.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="13" r="8"/><path d="M12 9v4M9 2h6"/></svg>Overtime<span class="nav-badge">5</span></div>
+      <div class="nav-item" onclick="window.location.href='payroll.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7H5a2 2 0 010-4h13v4"/><path d="M3 5v14a2 2 0 002 2h15v-5"/><path d="M18 12a2 2 0 000 4h4v-4z"/></svg>Payroll<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='geo.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Operations Map</div>
+      <div class="nav-item" onclick="window.location.href='mileage.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21L8 3M20 21l-4-18M12 6v3M12 12v3M12 18v3"/></svg>Mileage</div>
+      <div class="nav-item" onclick="window.location.href='billing.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.5 9.5h5M9.5 14.5h5"/></svg>Billing & Costing</div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">Commercial</div>
+      <div class="nav-item" onclick="window.location.href='rate-master.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.6 13.4L12 22l-9-9V4h9z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg>Rate Master<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='purchase-orders.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2h9l5 5v15H6z"/><path d="M15 2v5h5"/><path d="M9 13h6M9 17h4"/></svg>Purchase Orders<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='invoices.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2h9l5 5v15H6z"/><path d="M15 2v5h5"/><path d="M9 12h7M9 16h5"/></svg>Invoices<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+      <div class="nav-item" onclick="window.location.href='profitability.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 7-7"/><path d="M17 8h4v4"/></svg>Profitability<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">Intelligence</div>
+      <div class="nav-item" onclick="window.location.href='alerts.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>Alerts<span class="nav-badge">8</span></div>
+      <div class="nav-item" onclick="window.location.href='reports.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M8 16v-4M12 16V8M16 16v-6"/></svg>Reports</div>
+      <div class="nav-item" onclick="window.location.href='report-templates.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>Report Templates<span class="nav-badge" style="background:rgba(255,196,0,.16);color:#FFC400;">NEW</span></div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">System</div>
+      <div class="nav-item" onclick="window.location.href='settings.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 11-4 0v-.09A1.65 1.65 0 008 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06A1.65 1.65 0 004.6 15a1.65 1.65 0 00-1.51-1H3a2 2 0 110-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06A1.65 1.65 0 009 4.6a1.65 1.65 0 001-1.51V3a2 2 0 114 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 110 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>Settings</div>
+      <div class="nav-item" onclick="window.location.href='notifications.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>Notifications</div>
+      <div class="nav-item" onclick="window.location.href='login.html'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><path d="M16 17l5-5-5-5M21 12H9"/></svg>Logout</div>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== TOPBAR ===== -->
+<header class="topbar">
+  <div class="topbar-left">
+    <div>
+      <div class="topbar-title" id="topbarTitle">Client Detail</div>
+      <div class="breadcrumb" id="topbarBreadcrumb">
+        <a href="dashboard.html">Home</a>
+        <span>/</span>
+        <span>Clients / Detail</span>
+      </div>
+    </div>
+  </div>
+  <div class="topbar-right">
+    <div class="topbar-search">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      <input type="text" placeholder="Search anything...">
+    </div>
+    <div class="topbar-icon-btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+      <div class="notif-dot"></div>
+    </div>
+    <div class="user-pill">
+      <div class="user-avatar">HS</div>
+      <div>
+        <div class="user-name">Hunter Sisti</div>
+        <div class="user-role">Super Admin</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== MAIN CONTENT ===== -->
+<main class="main">
+
+<!-- ==================== SCREEN 4: CLIENT DETAIL ==================== -->
+<div class="screen active" id="screen-clientDetail">
+  <!-- Header -->
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+    <div>
+      <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:24px;">Arrival Energy Solutions</h2>
+      <div style="display:flex;gap:8px;margin-top:4px;align-items:center;"><span class="badge green">Active</span><span style="font-size:12px;color:var(--light-gray);">Client Code: CLI-0023 &middot; Since Jan 2024</span></div>
+    </div>
+    <div style="display:flex;gap:8px;"><button class="btn btn-outline">Deactivate</button><button class="btn btn-primary">Save Changes</button></div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs" id="clientDetailTabs">
+    <div class="tab active" onclick="showClientTab('general')">General Info</div>
+    <div class="tab" onclick="showClientTab('divisions')">Divisions</div>
+    <div class="tab" onclick="showClientTab('sites')">Sites & Locations</div>
+    <div class="tab" onclick="showClientTab('contacts')">Contacts</div>
+    <div class="tab" onclick="showClientTab('sla')">SLA Config</div>
+    <div class="tab" onclick="showClientTab('jobHistory')">Job History</div>
+    <div class="tab" onclick="showClientTab('billing')">Billing</div>
+  </div>
+
+  <!-- ===== TAB 1: GENERAL INFO ===== -->
+  <div class="client-tab active" id="clientTab-general">
+    <div class="grid-7-3">
+      <div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">Company Information</div></div><div class="panel-body">
+          <div class="form-row"><div class="form-group"><label class="form-label">Company Name</label><input class="form-input" value="Arrival Energy Solutions"></div><div class="form-group"><label class="form-label">Client Code</label><input class="form-input" value="CLI-0023" readonly style="background:#FAFAFA;"></div></div>
+          <div class="form-row-3"><div class="form-group"><label class="form-label">Industry</label><select class="form-select"><option selected>Oil & Gas</option><option>Energy</option><option>Industrial</option></select></div><div class="form-group"><label class="form-label">Status</label><select class="form-select"><option selected>Active</option><option>Inactive</option><option>On Hold</option></select></div><div class="form-group"><label class="form-label">Created Date</label><input class="form-input" value="Jan 15, 2024" readonly style="background:#FAFAFA;"></div></div>
+        </div></div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">Primary Address</div></div><div class="panel-body">
+          <div class="form-group"><label class="form-label">Street Address</label><input class="form-input" value="1200 Industrial Blvd"></div>
+          <div class="form-row-3"><div class="form-group"><label class="form-label">City</label><input class="form-input" value="Midland"></div><div class="form-group"><label class="form-label">State</label><input class="form-input" value="TX"></div><div class="form-group"><label class="form-label">ZIP Code</label><input class="form-input" value="79701"></div></div>
+        </div></div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">Billing Address</div></div><div class="panel-body">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
+            <div class="switch"><div class="switch-track" style="background:var(--gold);"><div class="switch-thumb" style="left:18px;"></div></div><span style="font-size:13px;font-weight:500;">Same as primary address</span></div>
+          </div>
+          <div class="form-group"><label class="form-label">Street Address</label><input class="form-input" value="1200 Industrial Blvd" readonly style="background:#FAFAFA;"></div>
+          <div class="form-row-3"><div class="form-group"><label class="form-label">City</label><input class="form-input" value="Midland" readonly style="background:#FAFAFA;"></div><div class="form-group"><label class="form-label">State</label><input class="form-input" value="TX" readonly style="background:#FAFAFA;"></div><div class="form-group"><label class="form-label">ZIP Code</label><input class="form-input" value="79701" readonly style="background:#FAFAFA;"></div></div>
+        </div></div>
+      </div>
+      <div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">Quick Stats</div></div><div class="panel-body">
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:13px;color:var(--gray);">Active Divisions</span><span style="font-weight:700;">3</span></div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:13px;color:var(--gray);">Total Sites</span><span style="font-weight:700;">6</span></div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:13px;color:var(--gray);">Active Jobs</span><span style="font-weight:700;">2</span></div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:13px;color:var(--gray);">Total Contacts</span><span style="font-weight:700;">5</span></div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;"><span style="font-size:13px;color:var(--gray);">SLA Status</span><span class="badge green">Compliant</span></div>
+        </div></div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">Admin Notes</div></div><div class="panel-body">
+          <textarea class="form-input" rows="4" style="resize:vertical;" placeholder="Internal notes about this client...">Priority client - Hunter has direct relationship with Jamie Arellano. Always assign Team Alpha for their inspections. Requires 24-hour notice for scheduling changes.</textarea>
+        </div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TAB 2: DIVISIONS ===== -->
+  <div class="client-tab" id="clientTab-divisions">
+    <!-- Search Bar (hidden when form is open) -->
+    <div id="divisionSearchBar" style="margin-bottom:14px;">
+      <div style="position:relative;max-width:400px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="2" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        <input type="text" placeholder="Search divisions by name, code, region..." style="width:100%;padding:10px 12px 10px 38px;border:1px solid #D1D1D6;border-radius:8px;font-size:13px;font-family:'Barlow',sans-serif;background:var(--white);outline:none;transition:border-color 0.15s;" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#D1D1D6'">
+      </div>
+    </div>
+    <div id="divisionTopBar" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+      <div style="font-size:13px;color:var(--gray);">3 divisions under this client. Each division can have its own contacts and sites.</div>
+      <button class="btn btn-primary" id="addDivisionBtn" onclick="toggleAddDivision()">+ Add Division</button>
+    </div>
+
+    <!-- ADD DIVISION FORM -->
+    <div id="addDivisionForm" style="display:none;border-bottom:2px solid var(--gold);background:linear-gradient(180deg, var(--gold-dim) 0%, var(--white) 100%);border-radius:10px;margin-bottom:16px;">
+      <div style="padding:20px 20px 0 20px;display:flex;justify-content:space-between;align-items:center;">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:32px;height:32px;border-radius:8px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;color:var(--black);">+</div>
+          <div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:16px;text-transform:uppercase;letter-spacing:0.5px;">Add New Division</div>
+            <div style="font-size:11px;color:var(--light-gray);">Client: Arrival Energy Solutions &middot; Fields marked * are required</div>
+          </div>
+        </div>
+        <button class="btn btn-sm btn-ghost" onclick="toggleAddDivision()" style="font-size:18px;padding:4px 8px;">&times;</button>
+      </div>
+      <div style="padding:20px;">
+
+        <!-- Section 1: Division Identity -->
+        <div style="font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--gold-dark);margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid var(--gold-dim);">Division Identity</div>
+        <div class="form-row-3">
+          <div class="form-group">
+            <label class="form-label">Division Name *</label>
+            <input class="form-input" placeholder="e.g. Permian Basin Operations">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Division Code *</label>
+            <input class="form-input" placeholder="e.g. PB-02" style="font-family:'JetBrains Mono',monospace;">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Status</label>
+            <select class="form-select">
+              <option selected>Active</option>
+              <option>Inactive</option>
+              <option>Pending Setup</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Description</label>
+            <input class="form-input" placeholder="Brief description of this division's scope and operations">
+          </div>
+        </div>
+
+        <!-- Section 2: Location & Coverage -->
+        <div style="font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--gold-dark);margin-bottom:12px;margin-top:8px;padding-bottom:6px;border-bottom:1px solid var(--gold-dim);">Location &amp; Coverage Area</div>
+        <div class="form-row-3">
+          <div class="form-group">
+            <label class="form-label">Region / Area *</label>
+            <select class="form-select">
+              <option value="" disabled selected>Select region...</option>
+              <option>West Texas</option>
+              <option>Permian Basin</option>
+              <option>East Texas</option>
+              <option>Eagle Ford</option>
+              <option>Midland-Odessa</option>
+              <option>Delaware Basin</option>
+              <option>Gulf Coast</option>
+              <option>Panhandle</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Primary City</label>
+            <input class="form-input" placeholder="e.g. Midland, TX">
+          </div>
+          <div class="form-group">
+            <label class="form-label">State</label>
+            <select class="form-select">
+              <option selected>Texas</option>
+              <option>New Mexico</option>
+              <option>Oklahoma</option>
+              <option>Louisiana</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Coverage Radius</label>
+            <select class="form-select">
+              <option>25 miles</option>
+              <option selected>50 miles</option>
+              <option>100 miles</option>
+              <option>150 miles</option>
+              <option>Statewide</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Facility Address</label>
+            <div style="position:relative;">
+              <input class="form-input" placeholder="e.g. 4200 W Industrial Ave, Midland, TX 79703" style="padding-right:36px;">
+              <svg style="position:absolute;right:10px;top:50%;transform:translateY(-50%);cursor:pointer;opacity:0.7;" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E8A838" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div style="margin-top:6px;">
+              <a href="javascript:void(0)" onclick="openPinLocationModal()" style="font-size:12px;color:var(--gold-dark);text-decoration:none;display:inline-flex;align-items:center;gap:5px;cursor:pointer;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Pin Location on Map
+                <span style="font-size:10px;color:var(--light-gray);font-style:italic;">(if address not available on Google Maps)</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 3: Contacts & Management -->
+        <div style="font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--gold-dark);margin-bottom:12px;margin-top:8px;padding-bottom:6px;border-bottom:1px solid var(--gold-dim);">Contacts &amp; Management</div>
+        <div class="form-row-3">
+          <div class="form-group">
+            <label class="form-label">Division Manager *</label>
+            <select class="form-select">
+              <option value="" disabled selected>Select manager...</option>
+              <option>Isaac Black &mdash; Operations Manager</option>
+              <option>Ezven Ortiz &mdash; Lead Inspector</option>
+              <option>Marcus Reyes &mdash; Senior Inspector</option>
+              <option>Derek Simmons &mdash; Inspector L2</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Primary Contact Name</label>
+            <input class="form-input" placeholder="e.g. John Smith">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Primary Contact Phone</label>
+            <input class="form-input" placeholder="(432) 555-0000" type="tel">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Primary Contact Email</label>
+            <input class="form-input" placeholder="john.smith@arrivalenergy.com" type="email">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Billing Contact (if different)</label>
+            <input class="form-input" placeholder="billing@arrivalenergy.com" type="email">
+          </div>
+        </div>
+
+        <!-- Section 4: Operational Settings -->
+        <div style="font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--gold-dark);margin-bottom:12px;margin-top:8px;padding-bottom:6px;border-bottom:1px solid var(--gold-dim);">Operational Settings</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Service Types</label>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;">
+              <div class="filter-pill active">API Inspection</div>
+              <div class="filter-pill">NDT &mdash; UT</div>
+              <div class="filter-pill">NDT &mdash; MT</div>
+              <div class="filter-pill">NDT &mdash; RT</div>
+              <div class="filter-pill">Piping</div>
+              <div class="filter-pill">Welding</div>
+              <div class="filter-pill">Pressure Testing</div>
+              <div class="filter-pill">Turnaround</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Default Shift</label>
+            <select class="form-select">
+              <option selected>Day Shift (6 AM &ndash; 6 PM)</option>
+              <option>Night Shift (6 PM &ndash; 6 AM)</option>
+              <option>Swing Shift (2 PM &ndash; 12 AM)</option>
+              <option>Rotating</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Section 5: Compliance & Notes -->
+        <div style="font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--gold-dark);margin-bottom:12px;margin-top:8px;padding-bottom:6px;border-bottom:1px solid var(--gold-dim);">Compliance &amp; Notes</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Required Certifications</label>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;">
+              <div class="filter-pill active">API 570</div>
+              <div class="filter-pill active">TWIC</div>
+              <div class="filter-pill">H2S / SafeLand</div>
+              <div class="filter-pill">OSHA 10</div>
+              <div class="filter-pill">OSHA 30</div>
+              <div class="filter-pill">NDT Level II</div>
+              <div class="filter-pill">Drug Screen</div>
+              <div class="filter-pill">Eye Exam</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Special Instructions / Notes</label>
+            <textarea class="form-input" rows="3" style="resize:vertical;" placeholder="Any special access requirements, client preferences, gate codes, PPE requirements, etc."></textarea>
+          </div>
+        </div>
+
+        <!-- Notification Preferences -->
+        <div class="panel" style="margin-bottom:16px;border:1px solid #E5E5EA;">
+          <div class="panel-header"><div class="panel-title">Notification Preferences</div></div>
+          <div class="panel-body">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+              <div class="form-group" style="margin-bottom:0;">
+                <div class="switch"><div class="switch-track on"></div><span style="font-size:13px;font-weight:500;">Email alerts for new jobs</span></div>
+              </div>
+              <div class="form-group" style="margin-bottom:0;">
+                <div class="switch"><div class="switch-track on"></div><span style="font-size:13px;font-weight:500;">Cert expiry warnings</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div style="display:flex;justify-content:space-between;align-items:center;padding-top:12px;border-top:1px solid #E5E5EA;">
+          <div style="font-size:11px;color:var(--light-gray);">&#128274; Division will be linked to client Arrival Energy Solutions.</div>
+          <div style="display:flex;gap:8px;">
+            <button class="btn btn-outline" onclick="toggleAddDivision()">Cancel</button>
+            <button class="btn btn-outline">Save as Draft</button>
+            <button class="btn btn-primary" style="padding:10px 24px;">Create Division</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-3">
+      <div class="panel"><div class="panel-header"><div class="panel-title" style="display:flex;align-items:center;gap:8px;"><span style="width:10px;height:10px;border-radius:50%;background:var(--green);"></span>WTX Operations</div><span class="badge green">Active</span></div><div class="panel-body">
+        <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:12px;color:var(--gray);">Division Code</span><span style="font-weight:600;font-size:13px;">WTX-01</span></div>
+
+        <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:12px;color:var(--gray);">Sites</span><span style="font-weight:600;font-size:13px;">3</span></div>
+        <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:12px;color:var(--gray);">Contacts</span><span style="font-weight:600;font-size:13px;">2</span></div>
+        <div style="display:flex;justify-content:space-between;padding:6px 0;"><span style="font-size:12px;color:var(--gray);">Active Jobs</span><span style="font-weight:600;font-size:13px;">1</span></div>
+        <div style="display:flex;gap:8px;margin-top:12px;"><button class="btn btn-sm btn-outline">Edit</button><button class="btn btn-sm btn-ghost">View Sites</button></div>
+      </div></div>
+      <div class="panel"><div class="panel-header"><div class="panel-title" style="display:flex;align-items:center;gap:8px;"><span style="width:10px;height:10px;border-radius:50%;background:var(--green);"></span>Permian Basin</div><span class="badge green">Active</span></div><div class="panel-body">
+        <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:12px;color:var(--gray);">Division Code</span><span style="font-weight:600;font-size:13px;">PB-01</span></div>
+        <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:12px;color:var(--gray);">Sites</span><span style="font-weight:600;font-size:13px;">2</span></div>
+        <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:12px;color:var(--gray);">Contacts</span><span style="font-weight:600;font-size:13px;">1</span></div>
+        <div style="display:flex;justify-content:space-between;padding:6px 0;"><span style="font-size:12px;color:var(--gray);">Active Jobs</span><span style="font-weight:600;font-size:13px;">1</span></div>
+        <div style="display:flex;gap:8px;margin-top:12px;"><button class="btn btn-sm btn-outline">Edit</button><button class="btn btn-sm btn-ghost">View Sites</button></div>
+      </div></div>
+      <div class="panel"><div class="panel-header"><div class="panel-title" style="display:flex;align-items:center;gap:8px;"><span style="width:10px;height:10px;border-radius:50%;background:var(--green);"></span>East Texas</div><span class="badge green">Active</span></div><div class="panel-body">
+        <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:12px;color:var(--gray);">Division Code</span><span style="font-weight:600;font-size:13px;">ETX-01</span></div>
+
+        <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:12px;color:var(--gray);">Sites</span><span style="font-weight:600;font-size:13px;">1</span></div>
+        <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:12px;color:var(--gray);">Contacts</span><span style="font-weight:600;font-size:13px;">1</span></div>
+        <div style="display:flex;justify-content:space-between;padding:6px 0;"><span style="font-size:12px;color:var(--gray);">Active Jobs</span><span style="font-weight:600;font-size:13px;">0</span></div>
+        <div style="display:flex;gap:8px;margin-top:12px;"><button class="btn btn-sm btn-outline">Edit</button><button class="btn btn-sm btn-ghost">View Sites</button></div>
+      </div></div>
+    </div>
+    <div class="panel"><div class="panel-header"><div class="panel-title">All Divisions</div></div>
+      <div style="padding:0;"><table><thead><tr><th>Division</th><th>Code</th><th>Sites</th><th>Contacts</th><th>Active Jobs</th><th>Status</th><th>Actions</th></tr></thead><tbody>
+        <tr><td><strong>WTX Operations</strong></td><td style="font-family:'JetBrains Mono',monospace;font-size:12px;">WTX-01</td><td>3</td><td>2</td><td>1</td><td><span class="badge green">Active</span></td><td><button class="btn btn-sm btn-ghost">Edit</button><button class="btn btn-sm btn-ghost">Remove</button></td></tr>
+        <tr><td><strong>Permian Basin</strong></td><td style="font-family:'JetBrains Mono',monospace;font-size:12px;">PB-01</td><td>2</td><td>1</td><td>1</td><td><span class="badge green">Active</span></td><td><button class="btn btn-sm btn-ghost">Edit</button><button class="btn btn-sm btn-ghost">Remove</button></td></tr>
+        <tr><td><strong>East Texas</strong></td><td style="font-family:'JetBrains Mono',monospace;font-size:12px;">ETX-01</td><td>1</td><td>1</td><td>0</td><td><span class="badge green">Active</span></td><td><button class="btn btn-sm btn-ghost">Edit</button><button class="btn btn-sm btn-ghost">Remove</button></td></tr>
+      </tbody></table></div>
+    </div>
+  </div>
+
+  <!-- ===== TAB 3: SITES & LOCATIONS ===== -->
+  <div class="client-tab" id="clientTab-sites">
+    <div id="sitesToolbar" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div class="filter-bar" id="sitesFilterBar" style="margin-bottom:0;"><div class="filter-pill active">All Sites (6)</div><div class="filter-pill">WTX Operations</div><div class="filter-pill">Permian Basin</div><div class="filter-pill">East Texas</div></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div id="sitesSearchBar" style="position:relative;">
+          <svg style="position:absolute;left:10px;top:50%;transform:translateY(-50%);opacity:0.5;" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          <input class="form-input" placeholder="Search sites..." style="padding-left:32px;font-size:13px;width:200px;height:36px;">
+        </div>
+        <button class="btn btn-primary" id="addSiteBtn" onclick="toggleAddSite()">+ Add Site</button>
+      </div>
+    </div>
+
+    <!-- ===== ADD SITE FORM ===== -->
+    <div id="addSiteForm" style="display:none;margin-bottom:24px;animation:fadeIn 0.2s ease;">
+      <!-- Breadcrumbs -->
+      <div class="breadcrumb" style="margin-bottom:12px;font-size:13px;">
+        <a href="clients.html" style="color:var(--gold-dark);text-decoration:none;">Clients</a>
+        <span>/</span>
+        <a href="client-detail.html" style="color:var(--gold-dark);text-decoration:none;">Arrival Energy Solutions</a>
+        <span>/</span>
+        <a href="javascript:void(0)" onclick="showClientTab('sites')" style="color:var(--gold-dark);text-decoration:none;">Sites &amp; Locations</a>
+        <span>/</span>
+        <span style="color:var(--black);font-weight:600;">Add New Site</span>
+      </div>
+      <div class="panel" style="border-top:3px solid var(--gold);">
+        <div class="panel-header" style="background:linear-gradient(180deg, var(--gold-dim) 0%, var(--white) 100%);">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div style="width:32px;height:32px;border-radius:8px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;color:var(--black);">+</div>
+            <div>
+              <div class="panel-title" style="margin:0;">Add New Site / Location</div>
+              <div style="font-size:11px;color:var(--light-gray);margin-top:2px;">Define a new work site with address, geo-fence, and operational details</div>
+            </div>
+          </div>
+          <button class="btn btn-sm btn-ghost" onclick="toggleAddSite()" style="font-size:18px;padding:4px 8px;">&times;</button>
+        </div>
+        <div class="panel-body">
+
+          <!-- Section 1: Site Identity -->
+          <div style="font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--gold-dark);margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid var(--gold-dim);">Site Identity</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Site Name *</label>
+              <input class="form-input" placeholder="e.g. WTX Yard 4, Permian North Pad">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Site Code</label>
+              <input class="form-input" placeholder="e.g. WTX-04" style="font-family:'JetBrains Mono',monospace;">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Division *</label>
+              <select class="form-select">
+                <option value="" disabled selected>Select division...</option>
+                <option>WTX Operations</option>
+                <option>Permian Basin</option>
+                <option>East Texas</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Status</label>
+              <select class="form-select">
+                <option selected>Active</option>
+                <option>Inactive</option>
+                <option>Under Setup</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Section 2: Address & Location -->
+          <div style="font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--gold-dark);margin-bottom:12px;margin-top:20px;padding-bottom:6px;border-bottom:1px solid var(--gold-dim);">Address &amp; Location</div>
+          <div class="form-row">
+            <div class="form-group" style="flex:2;">
+              <label class="form-label">Facility Address</label>
+              <div style="position:relative;">
+                <input class="form-input" placeholder="e.g. 4200 W Industrial Ave, Midland, TX 79703" style="padding-right:36px;">
+                <svg style="position:absolute;right:10px;top:50%;transform:translateY(-50%);cursor:pointer;opacity:0.7;" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E8A838" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div style="margin-top:6px;">
+                <a href="javascript:void(0)" onclick="openPinLocationModal()" style="font-size:12px;color:var(--gold-dark);text-decoration:none;display:inline-flex;align-items:center;gap:5px;cursor:pointer;">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  Pin Location on Map
+                  <span style="font-size:10px;color:var(--light-gray);font-style:italic;">(if address not available on Google Maps)</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="form-row-3">
+            <div class="form-group">
+              <label class="form-label">City</label>
+              <input class="form-input" placeholder="e.g. Midland">
+            </div>
+            <div class="form-group">
+              <label class="form-label">State</label>
+              <select class="form-select">
+                <option value="" disabled selected>Select...</option>
+                <option selected>Texas</option>
+                <option>New Mexico</option>
+                <option>Oklahoma</option>
+                <option>Louisiana</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">ZIP Code</label>
+              <input class="form-input" placeholder="e.g. 79703">
+            </div>
+          </div>
+
+          <!-- Section 3: Geo-fence Configuration -->
+          <div style="font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--gold-dark);margin-bottom:12px;margin-top:20px;padding-bottom:6px;border-bottom:1px solid var(--gold-dim);">Geo-fence Configuration</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Radius (meters)</label>
+              <input class="form-input" type="number" placeholder="e.g. 200" value="200">
+            </div>
+          </div>
+
+          <!-- Section 4: Operational Details -->
+          <div style="font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--gold-dark);margin-bottom:12px;margin-top:20px;padding-bottom:6px;border-bottom:1px solid var(--gold-dim);">Operational Details</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Site Type</label>
+              <select class="form-select">
+                <option value="" disabled selected>Select type...</option>
+                <option>Yard / Facility</option>
+                <option>Field Location</option>
+                <option>Remote Pad</option>
+                <option>Storage Facility</option>
+                <option>Inspection Hub</option>
+                <option>Office</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Primary Contact</label>
+              <select class="form-select">
+                <option value="" disabled selected>Select contact...</option>
+                <option>John Davis &mdash; Operations Manager</option>
+                <option>Sarah Johnson &mdash; Dispatch Lead</option>
+                <option>Michael Torres &mdash; Field Supervisor</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Access Instructions</label>
+              <textarea class="form-input" rows="2" style="resize:vertical;" placeholder="Gate codes, road directions, landmarks, special access requirements..."></textarea>
+            </div>
+          </div>
+          <div style="margin-top:8px;">
+            <div class="form-group" style="margin-bottom:0;">
+              <div class="switch"><div class="switch-track on"></div><span style="font-size:13px;font-weight:500;">Require check-in at site</span></div>
+              <div style="font-size:11px;color:var(--light-gray);margin-top:4px;margin-left:44px;">Crew must check in when arriving at this site</div>
+            </div>
+          </div>
+
+          <!-- Section 5: Notes -->
+          <div style="margin-top:20px;">
+            <div class="form-group">
+              <label class="form-label">Site Notes</label>
+              <textarea class="form-input" rows="2" style="resize:vertical;" placeholder="Any additional notes about this site..."></textarea>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div style="display:flex;justify-content:space-between;align-items:center;padding-top:16px;border-top:1px solid #E5E5EA;">
+            <div style="font-size:11px;color:var(--light-gray);">&#128274; Site will be added under the selected division</div>
+            <div style="display:flex;gap:8px;">
+              <button class="btn btn-outline" onclick="toggleAddSite()">Cancel</button>
+              <button class="btn btn-outline">Save as Draft</button>
+              <button class="btn btn-primary" style="padding:10px 24px;" onclick="toggleAddSite()">Add Site</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Search filter for sites table -->
+    <div style="margin-bottom:12px;max-width:400px;">
+      <div style="position:relative;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="2" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        <input type="text" placeholder="Search sites by name, division, address..." oninput="filterTable(this,'sitesTable')" style="width:100%;padding:10px 12px 10px 38px;border:1px solid #D1D1D6;border-radius:8px;font-size:13px;font-family:'Barlow',sans-serif;background:var(--white);outline:none;transition:border-color 0.15s;" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#D1D1D6'">
+      </div>
+    </div>
+
+    <div class="grid-7-3">
+      <div>
+        <div class="table-container"><table id="sitesTable"><thead><tr><th>Site Name</th><th>Division</th><th>Address</th><th>Geo-fence</th><th>SLA</th><th>Actions</th></tr></thead><tbody>
+          <tr><td><strong>WTX Yard 3</strong></td><td>WTX Operations</td><td>1200 Industrial Blvd, Midland, TX</td><td><span class="badge blue">200m radius</span></td><td><span class="badge green">Configured</span></td><td><button class="btn btn-sm btn-ghost">Edit</button><button class="btn btn-sm btn-ghost">Map</button></td></tr>
+          <tr><td><strong>WTX Field Station</strong></td><td>WTX Operations</td><td>County Rd 127, Stanton, TX</td><td><span class="badge blue">500m polygon</span></td><td><span class="badge green">Configured</span></td><td><button class="btn btn-sm btn-ghost">Edit</button><button class="btn btn-sm btn-ghost">Map</button></td></tr>
+          <tr><td><strong>WTX Storage Facility</strong></td><td>WTX Operations</td><td>3500 E Hwy 80, Midland, TX</td><td><span class="badge blue">150m radius</span></td><td><span class="badge amber">Pending</span></td><td><button class="btn btn-sm btn-ghost">Edit</button><button class="btn btn-sm btn-ghost">Map</button></td></tr>
+          <tr><td><strong>Permian Yard</strong></td><td>Permian Basin</td><td>800 N Grant Ave, Odessa, TX</td><td><span class="badge blue">300m radius</span></td><td><span class="badge green">Configured</span></td><td><button class="btn btn-sm btn-ghost">Edit</button><button class="btn btn-sm btn-ghost">Map</button></td></tr>
+          <tr><td><strong>PB Remote Pad</strong></td><td>Permian Basin</td><td>FM 1788 & CR 405, Penwell, TX</td><td><span class="badge amber">Pending</span></td><td><span class="badge gray">None</span></td><td><button class="btn btn-sm btn-ghost">Edit</button><button class="btn btn-sm btn-ghost">Map</button></td></tr>
+          <tr><td><strong>ETX Inspection Hub</strong></td><td>East Texas</td><td>1450 Industrial Dr, Tyler, TX</td><td><span class="badge blue">200m radius</span></td><td><span class="badge green">Configured</span></td><td><button class="btn btn-sm btn-ghost">Edit</button><button class="btn btn-sm btn-ghost">Map</button></td></tr>
+        </tbody></table></div>
+      </div>
+      <div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">Site Map Preview</div></div>
+          <div class="map-placeholder" style="height:250px;border-radius:0;border:none;">
+            <div class="map-pin" style="background:var(--green);top:30%;left:40%;"></div>
+            <div class="map-pin" style="background:var(--green);top:45%;left:55%;"></div>
+            <div class="map-pin" style="background:var(--amber);top:60%;left:35%;"></div>
+            <div class="map-pin" style="background:var(--green);top:35%;left:65%;"></div>
+            <div class="map-pin" style="background:var(--green);top:70%;left:60%;"></div>
+            <div class="map-pin" style="background:var(--green);top:50%;left:45%;"></div>
+            <div style="position:relative;z-index:1;">6 Sites Mapped<br><span style="font-size:11px;">Click a site row to highlight on map</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Notes & Field-Submitted Pins in a single row -->
+    <div class="grid-2" style="margin-top:16px;">
+      <div class="panel"><div class="panel-header"><div class="panel-title">Notes</div></div><div class="panel-body">
+        <div style="padding:8px 0;border-bottom:1px solid #F2F2F7;">
+          <div style="font-weight:600;font-size:13px;">WTX Field Station</div>
+          <div style="font-size:12px;color:var(--gray);margin-top:4px;">Take County Rd 127 past the grain elevator, left at the unmarked fork, 2.3 miles to the pad. Look for the blue storage containers. Cell service is spotty past mile marker 12.</div>
+        </div>
+        <div style="padding:8px 0;">
+          <div style="font-weight:600;font-size:13px;">PB Remote Pad</div>
+          <div style="font-size:12px;color:var(--gray);margin-top:4px;">Turn right off FM 1788 at the white cattle guard. Dirt road for 1.5 miles. No cell service. GPS may not work past the turn-off.</div>
+        </div>
+      </div></div>
+      <div class="panel"><div class="panel-header"><div class="panel-title">Field-Submitted Pins</div><span class="badge amber">2 Pending Review</span></div><div class="panel-body">
+        <div style="padding:8px 0;border-bottom:1px solid #F2F2F7;">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <div><div style="font-weight:600;font-size:13px;">New pad location</div><div style="font-size:11px;color:var(--light-gray);">Submitted by Caleb W. &middot; Mar 8, 2026</div><div style="font-size:11px;margin-top:3px;"><span style="color:var(--gray);font-weight:600;">Site:</span> <span style="color:var(--black);">PB Remote Pad</span> &middot; <span style="color:var(--gray);font-weight:600;">Division:</span> <span style="color:var(--black);">Permian Basin</span></div></div>
+            <div style="display:flex;gap:4px;"><button class="btn btn-sm btn-primary">Accept</button><button class="btn btn-sm btn-ghost">Reject</button></div>
+          </div>
+        </div>
+        <div style="padding:8px 0;">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <div><div style="font-weight:600;font-size:13px;">Updated gate access point</div><div style="font-size:11px;color:var(--light-gray);">Submitted by Leo L. &middot; Mar 6, 2026</div><div style="font-size:11px;margin-top:3px;"><span style="color:var(--gray);font-weight:600;">Site:</span> <span style="color:var(--black);">WTX Field Station</span> &middot; <span style="color:var(--gray);font-weight:600;">Division:</span> <span style="color:var(--black);">WTX Operations</span></div></div>
+            <div style="display:flex;gap:4px;"><button class="btn btn-sm btn-primary">Accept</button><button class="btn btn-sm btn-ghost">Reject</button></div>
+          </div>
+        </div>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- ===== TAB 4: CONTACTS ===== -->
+  <div class="client-tab" id="clientTab-contacts">
+    <div id="contactSearchBar" style="margin-bottom:14px;">
+      <div style="position:relative;max-width:400px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="2" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        <input type="text" placeholder="Search contacts by name, email, role..." style="width:100%;padding:10px 12px 10px 38px;border:1px solid #D1D1D6;border-radius:8px;font-size:13px;font-family:'Barlow',sans-serif;background:var(--white);outline:none;transition:border-color 0.15s;" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#D1D1D6'">
+      </div>
+    </div>
+    <div id="contactFilterBar" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+      <div class="filter-bar" style="margin-bottom:0;"><div class="filter-pill active">All Contacts (5)</div><div class="filter-pill">Primary</div><div class="filter-pill">Operations</div><div class="filter-pill">Billing</div><div class="filter-pill">Emergency</div></div>
+      <button class="btn btn-primary" id="addContactBtn" onclick="toggleAddContact()">+ Add Contact</button>
+    </div>
+
+    <!-- ADD/EDIT CONTACT FORM (hidden by default) -->
+    <div id="addContactForm" style="display:none;border-bottom:2px solid var(--gold);background:linear-gradient(180deg, var(--gold-dim) 0%, var(--white) 100%);border-radius:10px;margin-bottom:16px;">
+      <div style="padding:20px 20px 0 20px;display:flex;justify-content:space-between;align-items:center;">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:32px;height:32px;border-radius:8px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;color:var(--black);">+</div>
+          <div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:16px;text-transform:uppercase;letter-spacing:0.5px;" id="contactFormTitle">Add New Contact</div>
+            <div style="font-size:11px;color:var(--light-gray);">Client: Arrival Energy Solutions &middot; Fields marked * are required</div>
+          </div>
+        </div>
+        <button class="btn btn-sm btn-ghost" onclick="toggleAddContact()" style="font-size:18px;padding:4px 8px;">&times;</button>
+      </div>
+      <div style="padding:20px;">
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">Full Name *</label><input class="form-input" placeholder="Contact name..."></div>
+          <div class="form-group"><label class="form-label">Email Address *</label><input class="form-input" type="email" placeholder="email@example.com"></div>
+        </div>
+        <div class="form-row-3">
+          <div class="form-group"><label class="form-label">Phone</label><input class="form-input" type="tel" placeholder="(xxx) xxx-xxxx"></div>
+          <div class="form-group"><label class="form-label">Contact Role *</label><select class="form-select"><option value="" disabled selected>Select role...</option><option>Primary</option><option>Operations</option><option>Billing</option><option>Emergency</option></select></div>
+          <div class="form-group"><label class="form-label">Division</label><select class="form-select"><option>All Divisions</option><option>WTX Operations</option><option>Permian Basin</option><option>East Texas</option></select></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">Role / Title</label><input class="form-input" placeholder="e.g. Site Manager"></div>
+        </div>
+        <div style="display:flex;justify-content:flex-end;gap:8px;padding-top:12px;border-top:1px solid #E5E5EA;">
+          <button class="btn btn-outline" onclick="toggleAddContact()">Cancel</button>
+          <button class="btn btn-primary" onclick="toggleAddContact()">Save Contact</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div style="padding:0;"><table><thead><tr><th>Name</th><th>Email</th><th>Phone</th><th>Role</th><th>Division</th><th>Actions</th></tr></thead><tbody>
+        <tr><td><strong>Jamie Arellano</strong></td><td>JArellano@arrival.energy</td><td>(432) 555-0101</td><td><span class="badge blue">Primary</span></td><td>WTX Operations</td><td><button class="btn btn-sm btn-ghost" onclick="toggleAddContact('Edit Contact')">Edit</button></td></tr>
+        <tr><td><strong>Miguel Pinedo</strong></td><td>MPinedo@arrival.energy</td><td>(432) 555-0102</td><td><span class="badge gold">Operations</span></td><td>Permian Basin</td><td><button class="btn btn-sm btn-ghost" onclick="toggleAddContact('Edit Contact')">Edit</button></td></tr>
+        <tr><td><strong>Armando Leon</strong></td><td>aleon@arrival.energy</td><td>(432) 555-0103</td><td><span class="badge amber">Billing</span></td><td>All</td><td><button class="btn btn-sm btn-ghost" onclick="toggleAddContact('Edit Contact')">Edit</button></td></tr>
+        <tr><td><strong>Ryan McSween</strong></td><td>RMcSween@arrival.energy</td><td>(432) 555-0104</td><td><span class="badge red">Emergency</span></td><td>WTX Operations</td><td><button class="btn btn-sm btn-ghost" onclick="toggleAddContact('Edit Contact')">Edit</button></td></tr>
+        <tr><td><strong>OSaleem</strong></td><td>OSaleem@arrival.energy</td><td>&mdash;</td><td><span class="badge gold">Operations</span></td><td>East Texas</td><td><button class="btn btn-sm btn-ghost" onclick="toggleAddContact('Edit Contact')">Edit</button></td></tr>
+      </tbody></table></div>
+    </div>
+  </div>
+
+  <!-- ===== TAB 5: SLA CONFIG ===== -->
+  <div class="client-tab" id="clientTab-sla">
+    <div class="kpi-row" style="margin-bottom:16px;">
+      <div class="kpi-card green"><div class="kpi-label">SLA Compliance</div><div class="kpi-value">96%</div></div>
+      <div class="kpi-card gold"><div class="kpi-label">Avg Response Time</div><div class="kpi-value">18m</div></div>
+      <div class="kpi-card blue"><div class="kpi-label">Breaches (30d)</div><div class="kpi-value">1</div></div>
+      <div class="kpi-card red"><div class="kpi-label">At Risk Now</div><div class="kpi-value">0</div></div>
+    </div>
+    <div class="grid-2">
+      <div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">Waiting Time & Response</div></div><div class="panel-body">
+          <div class="form-row"><div class="form-group"><label class="form-label">Max Waiting Time Before Breach (min)</label><input class="form-input" type="number" value="30"></div><div class="form-group"><label class="form-label">Max Response Time (min)</label><input class="form-input" type="number" value="60"></div></div>
+          <div class="form-group"><label class="form-label">Grace Period (min)</label><input class="form-input" type="number" value="5"></div>
+        </div></div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">Missed Attendance Triggers</div></div><div class="panel-body">
+          <div class="form-row"><div class="form-group"><label class="form-label">Late Arrival Threshold (min)</label><input class="form-input" type="number" value="15"></div><div class="form-group"><label class="form-label">Absent After (min)</label><input class="form-input" type="number" value="60"></div></div>
+          <div class="form-group"><label class="form-label">Auto-Escalate After Missed Check-in</label><select class="form-select"><option selected>Yes - Notify Ops Manager</option><option>No</option></select></div>
+        </div></div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">Certification Requirement</div><button class="btn btn-sm btn-primary" onclick="toggleAddCertReq()">+ Add Certification</button></div><div class="panel-body">
+          <!-- Add Certification Inline Form -->
+          <div id="addCertReqForm" style="display:none;background:var(--gold-dim);border:1px solid var(--gold);border-radius:8px;padding:14px;margin-bottom:14px;">
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--gold-dark);margin-bottom:10px;">New Certification</div>
+            <div class="form-row-3">
+              <div class="form-group" style="margin-bottom:0;"><label class="form-label">Certification Name *</label><input class="form-input" id="newCertName" placeholder="e.g. OSHA 30"></div>
+              <div class="form-group" style="margin-bottom:0;"><label class="form-label">Issuing Body</label><input class="form-input" id="newCertBody" placeholder="e.g. OSHA"></div>
+              <div class="form-group" style="margin-bottom:0;"><label class="form-label">Priority</label>
+                <select class="form-select" id="newCertPriority"><option selected>Required</option><option>Preferred</option><option>Optional</option></select>
+              </div>
+            </div>
+            <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:10px;">
+              <button class="btn btn-sm btn-outline" onclick="toggleAddCertReq()">Cancel</button>
+              <button class="btn btn-sm btn-primary" onclick="saveCertReq()">Add</button>
+            </div>
+          </div>
+          <!-- Certification List -->
+          <div id="certReqContainer">
+            <div class="cert-req-item" style="display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid #F2F2F7;">
+              <div style="display:flex;align-items:center;gap:10px;"><input type="checkbox" checked style="accent-color:var(--gold);width:15px;height:15px;"><div><div style="font-weight:600;font-size:13px;">API 570 Inspector</div><div style="font-size:11px;color:var(--light-gray);">American Petroleum Institute</div></div></div><span class="badge gold" style="font-size:10px;">Required</span>
+            </div>
+            <div class="cert-req-item" style="display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid #F2F2F7;">
+              <div style="display:flex;align-items:center;gap:10px;"><input type="checkbox" checked style="accent-color:var(--gold);width:15px;height:15px;"><div><div style="font-weight:600;font-size:13px;">NDT Level II</div><div style="font-size:11px;color:var(--light-gray);">ASNT</div></div></div><span class="badge gold" style="font-size:10px;">Required</span>
+            </div>
+            <div class="cert-req-item" style="display:flex;align-items:center;justify-content:space-between;padding:8px 0;">
+              <div style="display:flex;align-items:center;gap:10px;"><input type="checkbox" style="accent-color:var(--gold);width:15px;height:15px;"><div><div style="font-weight:600;font-size:13px;">ASME Pressure Vessel</div><div style="font-size:11px;color:var(--light-gray);">ASME</div></div></div><span class="badge blue" style="font-size:10px;">Preferred</span>
+            </div>
+          </div>
+        </div></div>
+      </div>
+      <div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">Breach Escalation Logic</div></div><div class="panel-body">
+          <div style="font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--gray);margin-bottom:12px;">Escalation Chain</div>
+          <div class="timeline-item">
+            <div class="timeline-dot gold">1</div>
+            <div class="timeline-content"><div class="timeline-title">Warning Alert</div><div class="timeline-time">At breach threshold - Notify Dispatcher</div></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot amber" style="background:var(--amber-dim);color:#CC7D00;">2</div>
+            <div class="timeline-content"><div class="timeline-title">Escalate to Ops Manager</div><div class="timeline-time">15 min after breach - Email + Push notification</div></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot red">3</div>
+            <div class="timeline-content"><div class="timeline-title">Critical Alert to Super Admin</div><div class="timeline-time">30 min after breach - Email + SMS + Push</div></div>
+          </div>
+          <div class="timeline-item" style="margin-bottom:0;">
+            <div class="timeline-dot red">4</div>
+            <div class="timeline-content"><div class="timeline-title">Client Notification</div><div class="timeline-time">60 min after breach - Email to primary contact</div></div>
+          </div>
+        </div></div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">Per-Site SLA Overrides</div></div>
+          <div style="padding:0;"><table><thead><tr><th>Site</th><th>Wait Time</th><th>Response</th><th>Status</th></tr></thead><tbody>
+            <tr><td>WTX Yard 3</td><td>30 min</td><td>60 min</td><td><span class="badge green">Active</span></td></tr>
+            <tr><td>PB Remote Pad</td><td>45 min</td><td>90 min</td><td><span class="badge amber">Custom</span></td></tr>
+            <tr><td>ETX Inspection Hub</td><td>30 min</td><td>60 min</td><td><span class="badge green">Default</span></td></tr>
+          </tbody></table></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TAB 6: DOCUMENTS & FIELD INTEL ===== -->
+  <div class="client-tab" id="clientTab-documents">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+      <div class="filter-bar" style="margin-bottom:0;"><div class="filter-pill active">All (12)</div><div class="filter-pill">Site Photos</div><div class="filter-pill">Map Drawings</div><div class="filter-pill">Task Sheets</div><div class="filter-pill">Client Info</div></div>
+      <button class="btn btn-primary">+ Upload Document</button>
+    </div>
+    <div class="grid-7-3">
+      <div>
+        <div class="panel">
+          <div style="padding:0;"><table><thead><tr><th>Document</th><th>Type</th><th>Uploaded By</th><th>Date</th><th>Site</th><th>Actions</th></tr></thead><tbody>
+            <tr><td><strong>WTX Yard 3 - Site Layout Map</strong></td><td><span class="badge blue">Map Drawing</span></td><td>Caleb Washington</td><td>Mar 10, 2026</td><td>WTX Yard 3</td><td><button class="btn btn-sm btn-ghost">View</button><button class="btn btn-sm btn-ghost">Download</button></td></tr>
+            <tr><td><strong>Gate Access Photo - West Entrance</strong></td><td><span class="badge green">Site Photo</span></td><td>Leo Lawrence</td><td>Mar 9, 2026</td><td>WTX Yard 3</td><td><button class="btn btn-sm btn-ghost">View</button><button class="btn btn-sm btn-ghost">Download</button></td></tr>
+            <tr><td><strong>Client Spec Sheet - Inspection Reqs</strong></td><td><span class="badge gold">Client Info</span></td><td>Isaac Black</td><td>Mar 8, 2026</td><td>All Sites</td><td><button class="btn btn-sm btn-ghost">View</button><button class="btn btn-sm btn-ghost">Download</button></td></tr>
+            <tr><td><strong>Permian Yard - Tank Layout</strong></td><td><span class="badge blue">Map Drawing</span></td><td>Ezven Ortiz</td><td>Mar 5, 2026</td><td>Permian Yard</td><td><button class="btn btn-sm btn-ghost">View</button><button class="btn btn-sm btn-ghost">Download</button></td></tr>
+            <tr><td><strong>H2S Site Protocol</strong></td><td><span class="badge red">Safety Doc</span></td><td>Isaac Black</td><td>Mar 3, 2026</td><td>All Sites</td><td><button class="btn btn-sm btn-ghost">View</button><button class="btn btn-sm btn-ghost">Download</button></td></tr>
+            <tr><td><strong>Daily Task Checklist - WTX</strong></td><td><span class="badge amber">Task Sheet</span></td><td>Sebastian Salgado</td><td>Mar 1, 2026</td><td>WTX Field Station</td><td><button class="btn btn-sm btn-ghost">View</button><button class="btn btn-sm btn-ghost">Download</button></td></tr>
+            <tr><td><strong>PB Remote Pad - Access Route Photo</strong></td><td><span class="badge green">Site Photo</span></td><td>Caleb Washington</td><td>Feb 28, 2026</td><td>PB Remote Pad</td><td><button class="btn btn-sm btn-ghost">View</button><button class="btn btn-sm btn-ghost">Download</button></td></tr>
+          </tbody></table></div>
+        </div>
+      </div>
+      <div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">Document Stats</div></div><div class="panel-body">
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:13px;color:var(--gray);">Total Documents</span><span style="font-weight:700;">12</span></div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:13px;color:var(--gray);">Site Photos</span><span style="font-weight:700;">4</span></div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:13px;color:var(--gray);">Map Drawings</span><span style="font-weight:700;">3</span></div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #F2F2F7;"><span style="font-size:13px;color:var(--gray);">Task Sheets</span><span style="font-weight:700;">2</span></div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;"><span style="font-size:13px;color:var(--gray);">Client Info Sheets</span><span style="font-weight:700;">3</span></div>
+        </div></div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">Recent Activity</div></div><div class="panel-body">
+          <div class="timeline-item">
+            <div class="timeline-dot green">&#10003;</div>
+            <div class="timeline-content"><div class="timeline-title">Site layout uploaded</div><div class="timeline-time">Caleb Washington &middot; 2 hours ago</div></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot blue">&#128247;</div>
+            <div class="timeline-content"><div class="timeline-title">Gate photo submitted</div><div class="timeline-time">Leo Lawrence &middot; Yesterday</div></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot gold">&#128196;</div>
+            <div class="timeline-content"><div class="timeline-title">Spec sheet added</div><div class="timeline-time">Isaac Black &middot; Mar 8, 2026</div></div>
+          </div>
+        </div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TAB 7: JOB HISTORY ===== -->
+  <div class="client-tab" id="clientTab-jobHistory">
+    <div class="kpi-row" style="margin-bottom:16px;">
+      <div class="kpi-card green"><div class="kpi-label">Completed Jobs</div><div class="kpi-value">34</div></div>
+      <div class="kpi-card blue"><div class="kpi-label">Active Jobs</div><div class="kpi-value">2</div></div>
+      <div class="kpi-card gold"><div class="kpi-label">Avg Completion</div><div class="kpi-value">8.2h</div></div>
+      <div class="kpi-card green"><div class="kpi-label">SLA Compliance</div><div class="kpi-value">96%</div></div>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+      <div class="filter-bar" style="margin-bottom:0;"><div class="filter-pill active">All</div><div class="filter-pill">In Progress</div><div class="filter-pill">Completed</div><div class="filter-pill">Cancelled</div></div>
+      <button class="btn btn-outline">Export Job History</button>
+    </div>
+    <div class="table-container"><table><thead><tr><th>Job ID</th><th>Site</th><th>Type</th><th>Team</th><th>Scheduled</th><th>Completed</th><th>Duration</th><th>Status</th><th>SLA</th><th></th></tr></thead><tbody>
+      <tr><td><strong style="font-family:'JetBrains Mono',monospace;font-size:12px;">JOB-2026-0042</strong></td><td>WTX Yard 3</td><td>Inspection</td><td>Alpha</td><td>Mar 10, 7:00 AM</td><td>&mdash;</td><td>In progress</td><td><span class="badge green">In Progress</span></td><td><span class="badge green">On Track</span></td><td><button class="btn btn-sm btn-ghost" onclick="window.location.href='job-detail.html'">View</button></td></tr>
+      <tr><td><strong style="font-family:'JetBrains Mono',monospace;font-size:12px;">JOB-2026-0039</strong></td><td>Permian Yard</td><td>Repair</td><td>Bravo</td><td>Mar 8, 8:00 PM</td><td>Mar 9, 4:30 AM</td><td>8.5h</td><td><span class="badge green">Completed</span></td><td><span class="badge green">Met</span></td><td><button class="btn btn-sm btn-ghost">View</button></td></tr>
+      <tr><td><strong style="font-family:'JetBrains Mono',monospace;font-size:12px;">JOB-2026-0035</strong></td><td>WTX Field Station</td><td>Inspection</td><td>Alpha</td><td>Mar 5, 6:00 AM</td><td>Mar 5, 3:00 PM</td><td>9.0h</td><td><span class="badge green">Completed</span></td><td><span class="badge green">Met</span></td><td><button class="btn btn-sm btn-ghost">View</button></td></tr>
+      <tr><td><strong style="font-family:'JetBrains Mono',monospace;font-size:12px;">JOB-2026-0031</strong></td><td>WTX Yard 3</td><td>Refacing</td><td>Alpha</td><td>Mar 1, 7:00 AM</td><td>Mar 1, 2:30 PM</td><td>7.5h</td><td><span class="badge green">Completed</span></td><td><span class="badge green">Met</span></td><td><button class="btn btn-sm btn-ghost">View</button></td></tr>
+      <tr><td><strong style="font-family:'JetBrains Mono',monospace;font-size:12px;">JOB-2026-0028</strong></td><td>ETX Inspection Hub</td><td>Inspection</td><td>Charlie</td><td>Feb 26, 7:00 AM</td><td>Feb 26, 5:00 PM</td><td>10.0h</td><td><span class="badge green">Completed</span></td><td><span class="badge amber">Delayed</span></td><td><button class="btn btn-sm btn-ghost">View</button></td></tr>
+      <tr><td><strong style="font-family:'JetBrains Mono',monospace;font-size:12px;">JOB-2026-0024</strong></td><td>PB Remote Pad</td><td>Inspection</td><td>Alpha</td><td>Feb 22, 6:00 AM</td><td>Feb 22, 4:00 PM</td><td>10.0h</td><td><span class="badge green">Completed</span></td><td><span class="badge green">Met</span></td><td><button class="btn btn-sm btn-ghost">View</button></td></tr>
+      <tr><td><strong style="font-family:'JetBrains Mono',monospace;font-size:12px;">JOB-2026-0019</strong></td><td>WTX Yard 3</td><td>Maintenance</td><td>Bravo</td><td>Feb 18, 8:00 PM</td><td>Feb 19, 3:00 AM</td><td>7.0h</td><td><span class="badge green">Completed</span></td><td><span class="badge green">Met</span></td><td><button class="btn btn-sm btn-ghost">View</button></td></tr>
+      <tr><td><strong style="font-family:'JetBrains Mono',monospace;font-size:12px;">JOB-2026-0015</strong></td><td>Permian Yard</td><td>Inspection</td><td>Alpha</td><td>Feb 14, 7:00 AM</td><td>Feb 14, 12:30 PM</td><td>5.5h</td><td><span class="badge green">Completed</span></td><td><span class="badge green">Met</span></td><td><button class="btn btn-sm btn-ghost">View</button></td></tr>
+    </tbody></table></div>
+  </div>
+
+  <!-- ===== TAB 8: BILLING ===== -->
+  <div class="client-tab" id="clientTab-billing">
+    <div class="kpi-row" style="margin-bottom:16px;">
+      <div class="kpi-card gold"><div class="kpi-label">Total Billed (YTD)</div><div class="kpi-value">$142,500</div></div>
+      <div class="kpi-card amber"><div class="kpi-label">Outstanding Balance</div><div class="kpi-value">$5,250</div></div>
+      <div class="kpi-card blue"><div class="kpi-label">Mileage Billed</div><div class="kpi-value">$627.79</div></div>
+      <div class="kpi-card green"><div class="kpi-label">Supplies Cost</div><div class="kpi-value">$552.00</div></div>
+    </div>
+    <div class="grid-7-3">
+      <div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">Invoice History</div><div style="display:flex;gap:6px;"><button class="btn btn-sm btn-outline" onclick="exportTableCSV('invoiceHistoryTable','invoice-history.csv')">Export</button><button class="btn btn-sm btn-primary" onclick="openCreateInvoiceModal()">+ Create Invoice</button></div></div>
+          <div style="padding:12px 16px 0 16px;">
+            <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:12px;">
+              <div style="position:relative;flex:1;min-width:180px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="2" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                <input type="text" placeholder="Search invoices..." oninput="filterTable(this,'invoiceHistoryTable')" style="width:100%;padding:8px 10px 8px 32px;border:1px solid #D1D1D6;border-radius:6px;font-size:12px;font-family:'Barlow',sans-serif;" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#D1D1D6'">
+              </div>
+              <div style="display:flex;align-items:center;gap:6px;">
+                <span style="font-size:11px;color:var(--gray);font-weight:600;">From</span>
+                <input type="date" id="invFromDate" onchange="filterTableByDateRange('invoiceHistoryTable','invFromDate','invToDate')" style="padding:6px 8px;border:1px solid #D1D1D6;border-radius:6px;font-size:12px;font-family:'Barlow',sans-serif;">
+                <span style="font-size:11px;color:var(--gray);font-weight:600;">To</span>
+                <input type="date" id="invToDate" onchange="filterTableByDateRange('invoiceHistoryTable','invFromDate','invToDate')" style="padding:6px 8px;border:1px solid #D1D1D6;border-radius:6px;font-size:12px;font-family:'Barlow',sans-serif;">
+              </div>
+            </div>
+          </div>
+          <div style="padding:0;"><table id="invoiceHistoryTable"><thead><tr><th>Invoice #</th><th>Date</th><th>Job</th><th>Amount</th><th>Status</th><th></th></tr></thead><tbody>
+            <tr><td><strong style="font-family:'JetBrains Mono',monospace;font-size:12px;">INV-2026-0087</strong></td><td>Mar 9, 2026</td><td>JOB-2026-0039</td><td style="font-weight:700;">$4,850</td><td><span class="badge green">Paid</span></td><td><button class="btn btn-sm btn-ghost" onclick="openViewInvoiceModal('INV-2026-0087','Mar 9, 2026','JOB-2026-0039','$4,850','Paid','Arrival Energy Solutions','Inspection services for WTX Yard 3 — Magnetic Particle Testing')">View</button></td></tr>
+            <tr><td><strong style="font-family:'JetBrains Mono',monospace;font-size:12px;">INV-2026-0079</strong></td><td>Mar 5, 2026</td><td>JOB-2026-0035</td><td style="font-weight:700;">$6,300</td><td><span class="badge green">Paid</span></td><td><button class="btn btn-sm btn-ghost" onclick="openViewInvoiceModal('INV-2026-0079','Mar 5, 2026','JOB-2026-0035','$6,300','Paid','Arrival Energy Solutions','Pipeline inspection — Permian Basin Remote Pad')">View</button></td></tr>
+            <tr><td><strong style="font-family:'JetBrains Mono',monospace;font-size:12px;">INV-2026-0071</strong></td><td>Mar 1, 2026</td><td>JOB-2026-0031</td><td style="font-weight:700;">$5,250</td><td><span class="badge amber">Pending</span></td><td><button class="btn btn-sm btn-ghost" onclick="openViewInvoiceModal('INV-2026-0071','Mar 1, 2026','JOB-2026-0031','$5,250','Pending','Arrival Energy Solutions','UT Inspection — WTX Field Station')">View</button></td></tr>
+            <tr><td><strong style="font-family:'JetBrains Mono',monospace;font-size:12px;">INV-2026-0063</strong></td><td>Feb 26, 2026</td><td>JOB-2026-0028</td><td style="font-weight:700;">$7,100</td><td><span class="badge green">Paid</span></td><td><button class="btn btn-sm btn-ghost" onclick="openViewInvoiceModal('INV-2026-0063','Feb 26, 2026','JOB-2026-0028','$7,100','Paid','Arrival Energy Solutions','Pressure testing — Permian Yard')">View</button></td></tr>
+            <tr><td><strong style="font-family:'JetBrains Mono',monospace;font-size:12px;">INV-2026-0055</strong></td><td>Feb 22, 2026</td><td>JOB-2026-0024</td><td style="font-weight:700;">$7,000</td><td><span class="badge green">Paid</span></td><td><button class="btn btn-sm btn-ghost" onclick="openViewInvoiceModal('INV-2026-0055','Feb 22, 2026','JOB-2026-0024','$7,000','Paid','Arrival Energy Solutions','NDT services — ETX Inspection Hub')">View</button></td></tr>
+          </tbody></table></div>
+        </div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">Mileage Billed to Client</div><button class="btn btn-sm btn-outline" onclick="exportTableCSV('mileageBilledTable','mileage-billed.csv')">Export</button></div>
+          <div style="padding:12px 16px 0 16px;">
+            <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:12px;">
+              <div style="position:relative;flex:1;min-width:180px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="2" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                <input type="text" placeholder="Search mileage..." oninput="filterTable(this,'mileageBilledTable')" style="width:100%;padding:8px 10px 8px 32px;border:1px solid #D1D1D6;border-radius:6px;font-size:12px;font-family:'Barlow',sans-serif;" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#D1D1D6'">
+              </div>
+              <div style="display:flex;align-items:center;gap:6px;">
+                <span style="font-size:11px;color:var(--gray);font-weight:600;">From</span>
+                <input type="date" id="milFromDate" onchange="filterTableByDateRange('mileageBilledTable','milFromDate','milToDate')" style="padding:6px 8px;border:1px solid #D1D1D6;border-radius:6px;font-size:12px;font-family:'Barlow',sans-serif;">
+                <span style="font-size:11px;color:var(--gray);font-weight:600;">To</span>
+                <input type="date" id="milToDate" onchange="filterTableByDateRange('mileageBilledTable','milFromDate','milToDate')" style="padding:6px 8px;border:1px solid #D1D1D6;border-radius:6px;font-size:12px;font-family:'Barlow',sans-serif;">
+              </div>
+            </div>
+          </div>
+          <div style="padding:0;"><table id="mileageBilledTable"><thead><tr><th>Period</th><th>Work Miles</th><th>Rate</th><th>Total</th><th>Status</th></tr></thead><tbody>
+            <tr><td>Mar 1 - Mar 15, 2026</td><td>342 miles</td><td>$0.67/mi</td><td style="font-weight:700;">$229.14</td><td><span class="badge amber">Unbilled</span></td></tr>
+            <tr><td>Feb 15 - Feb 28, 2026</td><td>285 miles</td><td>$0.67/mi</td><td style="font-weight:700;">$190.95</td><td><span class="badge green">Billed</span></td></tr>
+            <tr><td>Feb 1 - Feb 14, 2026</td><td>310 miles</td><td>$0.67/mi</td><td style="font-weight:700;">$207.70</td><td><span class="badge green">Billed</span></td></tr>
+          </tbody></table></div>
+        </div>
+
+        <!-- ===== SUPPLIES SECTION ===== -->
+        <div class="panel"><div class="panel-header"><div class="panel-title">Supplies & Materials</div><div style="display:flex;gap:6px;"><button class="btn btn-sm btn-outline" onclick="exportTableCSV('suppliesTable','supplies.csv')">Export</button><button class="btn btn-sm btn-primary" id="addSupplyBtn" onclick="toggleAddSupplyForm()">+ Add Supply</button></div></div>
+
+          <!-- Add Supply Form -->
+          <div id="addSupplyForm" style="display:none;padding:16px;border-bottom:1px solid #E5E5EA;background:rgba(232,168,56,0.03);animation:fadeIn 0.2s ease;">
+            <div style="font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--gold-dark);margin-bottom:12px;">New Supply Entry</div>
+            <div class="form-row">
+              <div class="form-group"><label class="form-label">Job ID *</label>
+                <select class="form-select" id="supplyJobId">
+                  <option value="" disabled selected>Select job...</option>
+                  <option>JOB-2026-0042</option>
+                  <option>JOB-2026-0039</option>
+                  <option>JOB-2026-0035</option>
+                  <option>JOB-2026-0031</option>
+                  <option>JOB-2026-0028</option>
+                </select>
+              </div>
+              <div class="form-group"><label class="form-label">Date *</label>
+                <input class="form-input" type="date" id="supplyDate">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label class="form-label">Item Name *</label>
+                <input class="form-input" id="supplyItem" placeholder="e.g. MT Ink, UT Couplant, Weld Caps">
+              </div>
+              <div class="form-group"><label class="form-label">Quantity *</label>
+                <input class="form-input" type="number" id="supplyQty" placeholder="1" min="1">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label class="form-label">Unit Cost ($) *</label>
+                <input class="form-input" type="number" id="supplyUnitCost" placeholder="0.00" step="0.01" min="0">
+              </div>
+              <div class="form-group"><label class="form-label">Category</label>
+                <select class="form-select" id="supplyCategory">
+                  <option value="" disabled selected>Select category...</option>
+                  <option>Consumables</option>
+                  <option>Equipment Rental</option>
+                  <option>Safety Gear</option>
+                  <option>Chemicals</option>
+                  <option>Parts & Hardware</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group"><label class="form-label">Notes</label>
+              <input class="form-input" id="supplyNotes" placeholder="Optional notes...">
+            </div>
+            <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:8px;">
+              <button class="btn btn-outline btn-sm" onclick="toggleAddSupplyForm()">Cancel</button>
+              <button class="btn btn-primary btn-sm" onclick="saveSupplyItem()">Add Supply</button>
+            </div>
+          </div>
+
+          <!-- Search & Filter -->
+          <div style="padding:12px 16px 0 16px;">
+            <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:12px;">
+              <div style="position:relative;flex:1;min-width:180px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="2" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                <input type="text" placeholder="Search supplies..." oninput="filterTable(this,'suppliesTable')" style="width:100%;padding:8px 10px 8px 32px;border:1px solid #D1D1D6;border-radius:6px;font-size:12px;font-family:'Barlow',sans-serif;" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='#D1D1D6'">
+              </div>
+              <div style="display:flex;align-items:center;gap:6px;">
+                <span style="font-size:11px;color:var(--gray);font-weight:600;">From</span>
+                <input type="date" id="supFromDate" onchange="filterTableByDateRange('suppliesTable','supFromDate','supToDate')" style="padding:6px 8px;border:1px solid #D1D1D6;border-radius:6px;font-size:12px;font-family:'Barlow',sans-serif;">
+                <span style="font-size:11px;color:var(--gray);font-weight:600;">To</span>
+                <input type="date" id="supToDate" onchange="filterTableByDateRange('suppliesTable','supFromDate','supToDate')" style="padding:6px 8px;border:1px solid #D1D1D6;border-radius:6px;font-size:12px;font-family:'Barlow',sans-serif;">
+              </div>
+            </div>
+          </div>
+          <div style="padding:0;"><table id="suppliesTable"><thead><tr><th>Date</th><th>Job ID</th><th>Item</th><th>Category</th><th>Qty</th><th>Unit Cost</th><th>Total</th></tr></thead><tbody id="suppliesBody">
+            <tr><td>Mar 14, 2026</td><td style="font-family:'JetBrains Mono',monospace;font-size:12px;">JOB-2026-0042</td><td>MT Ink (Black)</td><td><span class="badge blue">Consumables</span></td><td>3</td><td>$45.00</td><td style="font-weight:700;">$135.00</td></tr>
+            <tr><td>Mar 12, 2026</td><td style="font-family:'JetBrains Mono',monospace;font-size:12px;">JOB-2026-0042</td><td>UT Couplant Gel</td><td><span class="badge blue">Consumables</span></td><td>2</td><td>$28.50</td><td style="font-weight:700;">$57.00</td></tr>
+            <tr><td>Mar 10, 2026</td><td style="font-family:'JetBrains Mono',monospace;font-size:12px;">JOB-2026-0039</td><td>Weld Caps (Box)</td><td><span class="badge gold">Parts &amp; Hardware</span></td><td>1</td><td>$120.00</td><td style="font-weight:700;">$120.00</td></tr>
+            <tr><td>Mar 8, 2026</td><td style="font-family:'JetBrains Mono',monospace;font-size:12px;">JOB-2026-0035</td><td>Safety Harness Rental</td><td><span class="badge green">Equipment Rental</span></td><td>2</td><td>$75.00</td><td style="font-weight:700;">$150.00</td></tr>
+            <tr><td>Mar 5, 2026</td><td style="font-family:'JetBrains Mono',monospace;font-size:12px;">JOB-2026-0035</td><td>Penetrant Spray (Aerosol)</td><td><span class="badge amber">Chemicals</span></td><td>5</td><td>$18.00</td><td style="font-weight:700;">$90.00</td></tr>
+          </tbody></table></div>
+        </div>
+      </div>
+      <div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">Billing Rate Configuration</div></div><div class="panel-body">
+          <div class="form-group"><label class="form-label">Miles (Per HR)</label><input class="form-input" type="number" value="1.00"></div>
+          <div class="form-group"><label class="form-label">Service Charge (Per HR)</label><input class="form-input" type="number" value="70.00"></div>
+        </div></div>
+        <div class="panel"><div class="panel-header"><div class="panel-title">Billing Summary</div></div><div class="panel-body">
+          <div style="display:flex;align-items:flex-end;gap:6px;height:100px;margin-bottom:8px;">
+            <div style="flex:1;background:var(--green);border-radius:4px 4px 0 0;height:75%;opacity:0.8;"></div>
+            <div style="flex:1;background:var(--green);border-radius:4px 4px 0 0;height:82%;opacity:0.8;"></div>
+            <div style="flex:1;background:var(--green);border-radius:4px 4px 0 0;height:68%;opacity:0.85;"></div>
+            <div style="flex:1;background:var(--green);border-radius:4px 4px 0 0;height:90%;opacity:0.85;"></div>
+            <div style="flex:1;background:var(--amber);border-radius:4px 4px 0 0;height:55%;opacity:0.85;"></div>
+            <div style="flex:1;background:var(--green);border-radius:4px 4px 0 0;height:85%;"></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--light-gray);"><span>Oct</span><span>Nov</span><span>Dec</span><span>Jan</span><span>Feb</span><span>Mar</span></div>
+        </div></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ===== CREATE INVOICE MODAL ===== -->
+<div id="createInvoiceModal" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:9999;animation:fadeIn 0.2s ease;">
+  <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);" onclick="closeCreateInvoiceModal()"></div>
+  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--white);border-radius:14px;width:600px;max-height:85vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,0.3);">
+    <!-- Modal Header -->
+    <div style="padding:16px 24px;border-bottom:1px solid #E5E5EA;background:linear-gradient(180deg, var(--gold-dim) 0%, var(--white) 100%);display:flex;justify-content:space-between;align-items:center;">
+      <div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;display:flex;align-items:center;gap:8px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold-dark)" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8M16 17H8M10 9H8"/></svg>
+          Create New Invoice
+        </div>
+        <div style="font-size:12px;color:var(--light-gray);margin-top:2px;">Fill in the invoice details for Arrival Energy Solutions</div>
+      </div>
+      <button class="btn btn-sm btn-ghost" onclick="closeCreateInvoiceModal()" style="font-size:20px;padding:4px 8px;">&times;</button>
+    </div>
+    <!-- Modal Body -->
+    <div style="padding:20px 24px;">
+      <!-- Invoice # -->
+      <div class="form-group">
+        <label class="form-label">Invoice # *</label>
+        <input class="form-input" placeholder="e.g. INV-2026-0088" style="font-family:'JetBrains Mono',monospace;">
+      </div>
+      <!-- Date & Job -->
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Invoice Date *</label>
+          <input class="form-input" type="date">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Job *</label>
+          <select class="form-select">
+            <option value="" disabled selected>Select job...</option>
+            <option>JOB-2026-0042</option>
+            <option>JOB-2026-0039</option>
+            <option>JOB-2026-0035</option>
+            <option>JOB-2026-0031</option>
+            <option>JOB-2026-0028</option>
+            <option>JOB-2026-0024</option>
+          </select>
+        </div>
+      </div>
+      <!-- Amount & Status -->
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Amount ($) *</label>
+          <input class="form-input" type="number" placeholder="e.g. 5000.00" step="0.01">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Status *</label>
+          <select class="form-select">
+            <option value="" disabled selected>Select status...</option>
+            <option>Pending</option>
+            <option>Paid</option>
+            <option>Overdue</option>
+            <option>Cancelled</option>
+          </select>
+        </div>
+      </div>
+      <!-- Notes -->
+      <div class="form-group">
+        <label class="form-label">Notes</label>
+        <textarea class="form-input" rows="3" style="resize:vertical;" placeholder="Optional notes for this invoice..."></textarea>
+      </div>
+    </div>
+    <!-- Modal Footer -->
+    <div style="padding:14px 24px;border-top:1px solid #E5E5EA;display:flex;justify-content:flex-end;gap:8px;">
+      <button class="btn btn-outline" onclick="closeCreateInvoiceModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="closeCreateInvoiceModal()">Create Invoice</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== VIEW INVOICE MODAL ===== -->
+<div id="viewInvoiceModal" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:9999;animation:fadeIn 0.2s ease;">
+  <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);" onclick="closeViewInvoiceModal()"></div>
+  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--white);border-radius:14px;width:580px;max-height:85vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,0.3);">
+    <!-- Modal Header -->
+    <div style="padding:16px 24px;border-bottom:1px solid #E5E5EA;background:linear-gradient(180deg, var(--gold-dim) 0%, var(--white) 100%);display:flex;justify-content:space-between;align-items:center;">
+      <div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;display:flex;align-items:center;gap:8px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold-dark)" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8M16 17H8M10 9H8"/></svg>
+          Invoice Details
+        </div>
+        <div id="viewInvSubtitle" style="font-size:12px;color:var(--light-gray);margin-top:2px;">Viewing invoice record</div>
+      </div>
+      <button class="btn btn-sm btn-ghost" onclick="closeViewInvoiceModal()" style="font-size:20px;padding:4px 8px;">&times;</button>
+    </div>
+    <!-- Modal Body -->
+    <div style="padding:20px 24px;">
+      <!-- Invoice # & Status -->
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+        <div>
+          <div style="font-size:11px;color:var(--light-gray);text-transform:uppercase;letter-spacing:1px;font-weight:600;">Invoice Number</div>
+          <div id="viewInvNumber" style="font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:800;color:var(--black);margin-top:2px;">—</div>
+        </div>
+        <span id="viewInvStatus" class="badge green" style="font-size:12px;padding:6px 14px;">—</span>
+      </div>
+
+      <!-- Details Grid -->
+      <div style="background:#F9F9FB;border-radius:10px;padding:16px;margin-bottom:16px;">
+        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #E5E5EA;">
+          <span style="font-size:13px;color:var(--gray);font-weight:600;">Date</span>
+          <span id="viewInvDate" style="font-weight:600;font-size:13px;">—</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #E5E5EA;">
+          <span style="font-size:13px;color:var(--gray);font-weight:600;">Client</span>
+          <span id="viewInvClient" style="font-weight:600;font-size:13px;">—</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #E5E5EA;">
+          <span style="font-size:13px;color:var(--gray);font-weight:600;">Job</span>
+          <span id="viewInvJob" style="font-family:'JetBrains Mono',monospace;font-weight:600;font-size:13px;">—</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:8px 0;">
+          <span style="font-size:13px;color:var(--gray);font-weight:600;">Amount</span>
+          <span id="viewInvAmount" style="font-weight:800;font-size:16px;color:var(--gold-dark);">—</span>
+        </div>
+      </div>
+
+      <!-- Description -->
+      <div style="margin-bottom:16px;">
+        <div style="font-size:11px;color:var(--light-gray);text-transform:uppercase;letter-spacing:1px;font-weight:600;margin-bottom:6px;">Description</div>
+        <div id="viewInvDescription" style="font-size:13px;color:var(--gray);background:#F9F9FB;border-radius:8px;padding:12px;line-height:1.5;">—</div>
+      </div>
+
+      <!-- Update Status -->
+      <div style="display:flex;align-items:center;gap:12px;">
+        <span style="font-size:13px;font-weight:600;color:var(--gray);">Update Status:</span>
+        <select class="form-select" id="viewInvStatusSelect" onchange="updateViewInvStatus(this.value)" style="font-size:12px;padding:6px 10px;min-width:130px;">
+          <option value="Pending">Pending</option>
+          <option value="Paid">Paid</option>
+          <option value="Overdue">Overdue</option>
+          <option value="Cancelled">Cancelled</option>
+        </select>
+      </div>
+    </div>
+    <!-- Modal Footer -->
+    <div style="padding:14px 24px;border-top:1px solid #E5E5EA;display:flex;justify-content:flex-end;gap:8px;">
+      <button class="btn btn-outline" onclick="closeViewInvoiceModal()">Close</button>
+      <button class="btn btn-primary" onclick="closeViewInvoiceModal()">Save Changes</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PIN LOCATION MODAL ===== -->
+<div id="pinLocationModal" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:9999;animation:fadeIn 0.2s ease;">
+  <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);" onclick="closePinLocationModal()"></div>
+  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--white);border-radius:14px;width:700px;max-height:85vh;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.3);">
+    <!-- Modal Header -->
+    <div style="padding:16px 24px;border-bottom:1px solid #E5E5EA;background:linear-gradient(180deg, var(--gold-dim) 0%, var(--white) 100%);display:flex;justify-content:space-between;align-items:center;">
+      <div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;display:flex;align-items:center;gap:8px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold-dark)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Pin Location on Map
+        </div>
+        <div style="font-size:12px;color:var(--light-gray);margin-top:2px;">Click on the map to drop a pin at the exact facility location</div>
+      </div>
+      <button class="btn btn-sm btn-ghost" onclick="closePinLocationModal()" style="font-size:20px;padding:4px 8px;">&times;</button>
+    </div>
+    <!-- Search Bar -->
+    <div style="padding:12px 24px;border-bottom:1px solid #E5E5EA;background:#FAFAFA;">
+      <div style="position:relative;">
+        <svg style="position:absolute;left:10px;top:50%;transform:translateY(-50%);opacity:0.5;" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        <input id="mapSearchInput" class="form-input" placeholder="Search for a location..." style="padding-left:32px;font-size:13px;" onkeyup="searchMapLocation(this.value)">
+      </div>
+    </div>
+    <!-- Map Area -->
+    <div style="padding:16px 24px;">
+      <div id="pinMapArea" style="width:100%;height:360px;border-radius:10px;border:2px solid #E5E5EA;position:relative;overflow:hidden;cursor:crosshair;background:#E8E0D0;" onclick="pinOnMap(event)">
+        <!-- Map Grid Lines -->
+        <svg style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0.15;" xmlns="http://www.w3.org/2000/svg">
+          <defs><pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M 50 0 L 0 0 0 50" fill="none" stroke="#000" stroke-width="0.5"/></pattern></defs>
+          <rect width="100%" height="100%" fill="url(#grid)"/>
+        </svg>
+        <!-- Simulated Map Roads -->
+        <div style="position:absolute;top:0;left:0;right:0;bottom:0;">
+          <div style="position:absolute;top:30%;left:0;right:0;height:3px;background:rgba(0,0,0,0.12);"></div>
+          <div style="position:absolute;top:55%;left:0;right:0;height:2px;background:rgba(0,0,0,0.08);"></div>
+          <div style="position:absolute;top:0;bottom:0;left:35%;width:3px;background:rgba(0,0,0,0.12);"></div>
+          <div style="position:absolute;top:0;bottom:0;left:65%;width:2px;background:rgba(0,0,0,0.08);"></div>
+          <div style="position:absolute;top:15%;left:10%;transform:rotate(-30deg);width:200px;height:2px;background:rgba(0,0,0,0.06);"></div>
+          <div style="position:absolute;top:70%;left:50%;transform:rotate(20deg);width:180px;height:2px;background:rgba(0,0,0,0.06);"></div>
+          <!-- Labels -->
+          <div style="position:absolute;top:26%;left:5%;font-size:10px;color:rgba(0,0,0,0.25);font-weight:600;">W Industrial Ave</div>
+          <div style="position:absolute;top:52%;left:45%;font-size:10px;color:rgba(0,0,0,0.25);font-weight:600;">E County Rd 120</div>
+          <div style="position:absolute;top:8%;left:32%;font-size:10px;color:rgba(0,0,0,0.25);font-weight:600;transform:rotate(90deg);">N Midland Dr</div>
+          <div style="position:absolute;top:75%;left:20%;font-size:9px;color:rgba(0,0,0,0.18);font-weight:500;">Midland, TX 79703</div>
+        </div>
+        <!-- Pin Marker (hidden by default) -->
+        <div id="mapPinMarker" style="display:none;position:absolute;z-index:10;transform:translate(-50%,-100%);pointer-events:none;">
+          <svg width="32" height="42" viewBox="0 0 32 42" fill="none"><path d="M16 0C7.16 0 0 7.16 0 16c0 12 16 26 16 26s16-14 16-26C32 7.16 24.84 0 16 0z" fill="#E8A838"/><circle cx="16" cy="16" r="7" fill="white"/><circle cx="16" cy="16" r="3" fill="#E8A838"/></svg>
+        </div>
+        <!-- Instruction Overlay -->
+        <div id="mapClickInstruction" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;pointer-events:none;">
+          <div style="background:rgba(0,0,0,0.7);color:white;padding:12px 20px;border-radius:8px;font-size:13px;font-weight:500;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" style="vertical-align:middle;margin-right:6px;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Click anywhere on the map to pin location
+          </div>
+        </div>
+      </div>
+      <!-- Coordinates Display -->
+      <div id="pinCoordinatesDisplay" style="display:none;margin-top:12px;padding:10px 14px;background:#F2F2F7;border-radius:8px;display:flex;justify-content:space-between;align-items:center;">
+        <div style="display:flex;gap:16px;">
+          <div><span style="font-size:11px;color:var(--light-gray);">Latitude</span><div id="pinLat" style="font-weight:600;font-size:13px;font-family:'JetBrains Mono',monospace;">—</div></div>
+          <div><span style="font-size:11px;color:var(--light-gray);">Longitude</span><div id="pinLng" style="font-weight:600;font-size:13px;font-family:'JetBrains Mono',monospace;">—</div></div>
+        </div>
+        <span class="badge gold" style="font-size:10px;">Pinned</span>
+      </div>
+    </div>
+    <!-- Modal Footer -->
+    <div style="padding:14px 24px;border-top:1px solid #E5E5EA;display:flex;justify-content:space-between;align-items:center;">
+      <button class="btn btn-sm btn-ghost" onclick="clearMapPin()" style="color:var(--red);font-size:12px;">Clear Pin</button>
+      <div style="display:flex;gap:8px;">
+        <button class="btn btn-outline" onclick="closePinLocationModal()">Cancel</button>
+        <button class="btn btn-primary" onclick="saveMapPin()">Save Location</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<script>
+// Pin Location Modal
+function openPinLocationModal() {
+  document.getElementById('pinLocationModal').style.display = '';
+  clearMapPin();
+}
+function closePinLocationModal() {
+  document.getElementById('pinLocationModal').style.display = 'none';
+}
+
+function pinOnMap(e) {
+  var rect = e.currentTarget.getBoundingClientRect();
+  var x = e.clientX - rect.left;
+  var y = e.clientY - rect.top;
+  var marker = document.getElementById('mapPinMarker');
+  marker.style.left = x + 'px';
+  marker.style.top = y + 'px';
+  marker.style.display = '';
+  document.getElementById('mapClickInstruction').style.display = 'none';
+  // Simulate lat/lng based on position (Midland TX area ~31.9-32.1, -102.0 to -102.2)
+  var lat = (32.05 - (y / rect.height) * 0.2).toFixed(6);
+  var lng = (-102.10 + (x / rect.width) * 0.2).toFixed(6);
+  document.getElementById('pinLat').textContent = lat;
+  document.getElementById('pinLng').textContent = lng;
+  document.getElementById('pinCoordinatesDisplay').style.display = 'flex';
+}
+
+function clearMapPin() {
+  document.getElementById('mapPinMarker').style.display = 'none';
+  document.getElementById('mapClickInstruction').style.display = '';
+  document.getElementById('pinCoordinatesDisplay').style.display = 'none';
+  document.getElementById('pinLat').textContent = '—';
+  document.getElementById('pinLng').textContent = '—';
+}
+
+function saveMapPin() {
+  var lat = document.getElementById('pinLat').textContent;
+  var lng = document.getElementById('pinLng').textContent;
+  if (lat === '—') { alert('Please pin a location on the map first.'); return; }
+  closePinLocationModal();
+}
+
+function searchMapLocation(q) {
+  // Placeholder for search functionality
+}
+</script>
+
+<script src="../js/app.js"></script>
+</body>
+</html>

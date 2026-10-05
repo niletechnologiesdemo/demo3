@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Zion Unified — One Platform</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Public+Sans:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../reporting/app.css"/>
+<link rel="icon" href="../assets/logo-light.png"/>
+</head>
+<body>
+<div id="root"></div>
+
+<script>window.DB_KEY = 'zion.unified.v1'; window.DB_LISTS = ['crews','jobs','attendance','mileage'];</script>
+<script src="../reporting/data.js"></script>
+<script src="ops-data.js"></script>
+<script src="../reporting/ai.js"></script>
+
+<script>
+  window.APP_NAME = 'Zion Unified';
+  window.APP_TAG  = 'Unified';
+  window.NAV_OVERRIDE = [
+    { g:'Overview', items:[ { r:'dashboard', n:'Overview', i:'grid', k:'dashboard' } ] },
+    { g:'Field Operations', items:[
+      { r:'jobs',       n:'Dispatch Board', i:'truck',    k:'dashboard',   c:()=>window.ZD.jobs.length },
+      { r:'crews',      n:'Crews & Teams',  i:'layers',   k:'dashboard',   c:()=>window.ZD.crews.length },
+      { r:'attendance', n:'Attendance',     i:'gauge',    k:'dashboard',   c:()=>window.ZD.attendance.length },
+      { r:'calendar',   n:'Calendar',       i:'table',    k:'dashboard' },
+      { r:'map',        n:'Operations Map', i:'gauge',    k:'dashboard' },
+      { r:'mileage',    n:'Mileage',        i:'link',     k:'dashboard',   c:()=>window.ZD.mileage.length } ] },
+    { g:'Inspection', items:[
+      { r:'inspections', n:'Inspections',    i:'clipboard', k:'inspections', c:()=>window.ZD.inspections.length },
+      { r:'items',       n:'Inspected Items',i:'layers',    k:'items',       c:()=>Object.keys(window.ZD.items).length },
+      { r:'tickets',     n:'Tickets',        i:'table',     k:'inspections', c:()=>window.ZD.tickets.length } ] },
+    { g:'Accounts', items:[
+      { r:'accounts', n:'Customers & Sites', i:'building', k:'accounts', c:()=>window.ZD.customers.length } ] },
+    { g:'Billing', items:[
+      { r:'invoices',  n:'Invoices',             i:'invoice', k:'invoices', c:()=>window.ZD.invoices.length },
+      { r:'payroll',   n:'Payroll',              i:'gauge',   k:'invoices' },
+      { r:'analytics', n:'Revenue Intelligence', i:'gauge',   k:'invoices' } ] },
+    { g:'Configuration', items:[
+      { r:'standards', n:'Connection Standards', i:'gauge',  k:'accounts', c:()=>window.ZD.connectionTypes.length },
+      { r:'formats',   n:'Report Formats',       i:'table',  k:'accounts', c:()=>window.ZD.reportFormats.length },
+      { r:'jsa',       n:'Job Safety Analysis',  i:'shield', k:'inspections', c:()=>window.ZD.jsaTemplates.length },
+      { r:'master',    n:'Master Data',          i:'layers', k:'accounts' },
+      { r:'access',    n:'Roles & Access',       i:'shield', k:'dashboard' } ] },
+    { g:'Platform', items:[
+      { r:'model', n:'Unified Data Model', i:'link', k:'dashboard' } ] }
+  ];
+</script>
+
+<script src="../reporting/app.js"></script>
+<script src="../reporting/views.js"></script>
+<script src="ops-views.js"></script>
+<script>window.UI.init();</script>
+</body>
+</html>

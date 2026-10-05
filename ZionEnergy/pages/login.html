@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CrewViewPro - Login</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&family=Barlow+Condensed:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/styles.css">
+<style>
+  body { background: #141414; }
+  .login-page { display:flex; align-items:center; justify-content:center; min-height:100vh; padding:20px; }
+  .login-card { background:var(--white); border-radius:16px; padding:40px 36px; width:100%; max-width:420px; box-shadow:0 20px 60px rgba(0,0,0,0.4); }
+  .login-logo { text-align:center; margin-bottom:32px; }
+  .login-logo .bolt-lg { font-size:48px; margin-bottom:8px; }
+  .login-logo h2 { font-family:'Barlow Condensed',sans-serif; font-size:28px; font-weight:800; color:var(--black); }
+  .login-logo h2 span { color:var(--gold); }
+  .login-logo p { font-size:12px; color:var(--light-gray); margin-top:4px; }
+</style>
+</head>
+<body>
+
+<div class="login-page">
+  <div class="login-card">
+    <div class="login-logo">
+      <div class="bolt-lg">&#9889;</div>
+      <h2>Crew<span>View</span>Pro</h2>
+      <p>Powered by Zion Energy Services</p>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Email Address</label>
+      <input type="email" class="form-input" placeholder="hunter@zionenergy.com">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Password</label>
+      <input type="password" class="form-input" placeholder="Enter password" value="••••••••">
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;">
+      <label style="display:flex;align-items:center;gap:6px;font-size:13px;color:var(--gray);cursor:pointer;">
+        <input type="checkbox" checked> Remember me
+      </label>
+      <a href="#" style="font-size:13px;color:var(--gold-dark);text-decoration:none;font-weight:600;">Forgot Password?</a>
+    </div>
+    <button class="btn btn-primary" onclick="window.location.href='dashboard.html'" style="width:100%;justify-content:center;padding:12px;font-size:15px;font-weight:700;letter-spacing:0.5px;">SIGN IN</button>
+    <p style="text-align:center;font-size:11px;color:var(--silver);margin-top:20px;">Session timeout: 30 min | Max 5 login attempts</p>
+  </div>
+</div>
+
+</body>
+</html>
