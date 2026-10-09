@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Gregory Care Services — Care Platform Demo</title>
+<link rel="icon" href="assets/img/logo-sm.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&family=Dancing+Script:wght@600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/css/styles.css?v=4" />
+<style>
+  body {
+    background: radial-gradient(circle at 15% 0%, #1F55A6 0%, transparent 45%), radial-gradient(circle at 90% 100%, #1E7A47 0%, transparent 40%), var(--brand-950);
+    min-height: 100vh; color: #fff; padding: 40px 24px 60px;
+  }
+  .wrap { max-width: 1120px; margin: 0 auto; }
+  .head { text-align: center; }
+  .head .logo { width: 150px; height: 150px; background: #fff; border-radius: 50%; padding: 4px; margin: 0 auto 22px; box-shadow: 0 16px 40px rgba(0,0,0,.35); }
+  .head h1 { color: #fff; font-size: 38px; letter-spacing: -.01em; }
+  .head .kicker { display: inline-flex; gap: 8px; align-items: center; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #8FD3A8; margin-bottom: 10px; }
+  .head .lead { color: rgba(255,255,255,.8); font-size: 17px; line-height: 1.6; max-width: 680px; margin: 16px auto 0; }
+
+  .roles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 44px; }
+  .role {
+    background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.14); border-radius: 22px; padding: 26px;
+    color: #fff; display: flex; flex-direction: column; transition: all .2s; position: relative; overflow: hidden;
+  }
+  .role:hover { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.3); transform: translateY(-4px); color: #fff; box-shadow: 0 24px 60px rgba(0,0,0,.35); }
+  .role .ic { width: 54px; height: 54px; border-radius: 15px; display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
+  .role .ic svg.lucide { width: 26px; height: 26px; }
+  .role h2 { color: #fff; font-size: 22px; }
+  .role .sub { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.55); font-weight: 700; margin-top: 4px; }
+  .role p { color: rgba(255,255,255,.8); font-size: 14px; line-height: 1.6; margin-top: 12px; flex: 1; }
+  .role ul { list-style: none; padding: 0; margin: 14px 0 0; display: grid; gap: 7px; }
+  .role li { display: flex; gap: 8px; font-size: 13px; color: rgba(255,255,255,.88); align-items: flex-start; }
+  .role li svg.lucide { width: 15px; height: 15px; color: var(--leaf-500); margin-top: 2px; }
+  .role .go { margin-top: 20px; display: inline-flex; align-items: center; gap: 6px; font-weight: 700; font-size: 14px; color: var(--sun-500); }
+  .role .as { font-size: 12px; color: rgba(255,255,255,.55); margin-top: 6px; }
+
+  .flow { margin-top: 56px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.1); border-radius: 22px; padding: 28px; }
+  .flow h3 { color: #fff; font-size: 20px; }
+  .flow .fsub { color: rgba(255,255,255,.65); font-size: 14px; margin-top: 4px; }
+  .steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 22px; counter-reset: s; }
+  .st { background: rgba(255,255,255,.06); border-radius: 14px; padding: 14px; position: relative; }
+  .st .who { font-size: 10.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 2px 8px; border-radius: 999px; display: inline-block; }
+  .st .who.c { background: var(--sand-500); color: var(--brand-950); }
+  .st .who.a { background: var(--brand-600); color: #fff; }
+  .st .who.p { background: var(--leaf-500); color: #fff; }
+  .st p { color: rgba(255,255,255,.88); font-size: 13px; margin-top: 8px; line-height: 1.45; }
+  .st .n { position: absolute; top: 12px; right: 14px; font-family: var(--font-head); font-weight: 700; color: rgba(255,255,255,.25); font-size: 18px; }
+
+  .tips { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; margin-top: 30px; }
+  .tip { display: inline-flex; gap: 8px; align-items: center; font-size: 13px; color: rgba(255,255,255,.75); background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); padding: 8px 14px; border-radius: 999px; }
+  .tip svg.lucide { width: 15px; height: 15px; color: var(--sun-500); }
+  .tip button { background: none; border: 0; color: var(--sun-500); font-weight: 700; cursor: pointer; font-size: 13px; padding: 0; }
+  .foot { text-align: center; color: rgba(255,255,255,.5); font-size: 12.5px; margin-top: 44px; letter-spacing: .02em; }
+  .foot b { color: rgba(255,255,255,.8); }
+
+  @media (max-width: 960px) { .roles { grid-template-columns: 1fr; } .steps { grid-template-columns: repeat(2, 1fr); } .head h1 { font-size: 30px; } }
+  @media (max-width: 520px) { .steps { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="head">
+    <img class="logo" src="assets/img/logo-sm.jpg" alt="Gregory Care Services logo" />
+    <div class="kicker"><i data-lucide="sparkles" class="ic-sm"></i>Interactive demo</div>
+    <h1>Gregory Care Services · Care Platform</h1>
+    <p class="script" style="font-size:28px;color:#8FD3A8;margin-top:6px">Companionship When You Need it Most</p>
+    <p class="lead">Families book non-medical home care for themselves or a loved one. Gregory Care schedules the visits, the caregiver clocks in and out, and the family receives a report after every visit.</p>
+  </div>
+
+  <div class="roles">
+    <a class="role" href="admin.html">
+      <div class="ic" style="background:var(--brand-600)"><i data-lucide="layout-dashboard"></i></div>
+      <h2>Admin Console</h2><div class="sub">Web app · Owner</div>
+      <p>Receive care requests, confirm the schedule, assign yourself or a caregiver, and review visit reports before sharing them.</p>
+      <ul>
+        <li><i data-lucide="check"></i>Care requests: one-time, weekly or picked dates</li>
+        <li><i data-lucide="check"></i>Schedule & assign: "Me" by default, staff as you grow</li>
+        <li><i data-lucide="check"></i>Live clock-in status and weekly hours</li>
+        <li><i data-lucide="check"></i>Review and share visit reports with families</li>
+      </ul>
+      <span class="go" style="color:#8FD3A8">Open Admin Console <i data-lucide="arrow-right" class="ic-sm"></i></span>
+      <span class="as">Signed in as the Owner</span>
+    </a>
+    <a class="role" href="caregiver.html">
+      <div class="ic" style="background:var(--leaf-600)"><i data-lucide="heart-handshake"></i></div>
+      <h2>Caregiver App</h2><div class="sub">Mobile web · Owner & caregivers</div>
+      <p>Used by the owner on call-outs today, and by staff caregivers as the team grows.</p>
+      <ul>
+        <li><i data-lucide="check"></i>Today's visits, address and care notes</li>
+        <li><i data-lucide="check"></i>Clock in and clock out of each visit</li>
+        <li><i data-lucide="check"></i>Visit report: tasks, ADLs, mood, meals, summary</li>
+        <li><i data-lucide="check"></i>My schedule and my hours</li>
+      </ul>
+      <span class="go" style="color:#8FD3A8">Open Caregiver App <i data-lucide="arrow-right" class="ic-sm"></i></span>
+      <span class="as">Signed in as the Owner (switch to staff in Profile)</span>
+    </a>
+    <a class="role" href="client.html">
+      <div class="ic" style="background:#B0752F"><i data-lucide="smartphone"></i></div>
+      <h2>Client App</h2><div class="sub">Clients & families</div>
+      <p>Book care for yourself or a family member and stay informed about every visit.</p>
+      <ul>
+        <li><i data-lucide="check"></i>Book for myself, Mom, Dad or another family member</li>
+        <li><i data-lucide="check"></i>One visit, weekly, or any dates picked on a calendar</li>
+        <li><i data-lucide="check"></i>See the schedule and when the caregiver arrives</li>
+        <li><i data-lucide="check"></i>Read visit reports and message Gregory Care</li>
+      </ul>
+      <span class="go" style="color:#8FD3A8">Open Client App <i data-lucide="arrow-right" class="ic-sm"></i></span>
+      <span class="as">Signed in as Michelle Johnson (books for her parents)</span>
+    </a>
+  </div>
+
+  <div class="flow">
+    <h3>How a booking flows</h3>
+    <p class="fsub">No quotes or approvals — a request comes in, the owner schedules it, and the family can see everything.</p>
+    <div class="steps">
+      <div class="st"><span class="n">1</span><span class="who c">Client</span><p>Books care for themselves or a family member — one-time, weekly or picked dates</p></div>
+      <div class="st"><span class="n">2</span><span class="who a">Owner</span><p>Confirms the visits and assigns a caregiver — usually "Me"</p></div>
+      <div class="st"><span class="n">3</span><span class="who c">Client</span><p>Sees every visit, its time and the caregiver in the app</p></div>
+      <div class="st"><span class="n">4</span><span class="who p">Caregiver</span><p>Clocks in on arrival — the family sees "here now"</p></div>
+      <div class="st"><span class="n">5</span><span class="who p">Caregiver</span><p>Clocks out and writes the visit report</p></div>
+      <div class="st"><span class="n">6</span><span class="who a">Owner</span><p>Reviews the report (office concerns stay internal) and shares it</p></div>
+      <div class="st"><span class="n">7</span><span class="who c">Client</span><p>Reads the report — tasks, ADLs, mood, meals and a summary</p></div>
+      <div class="st"><span class="n">8</span><span class="who a">Owner</span><p>Hours from clock in/out roll up into each caregiver's timesheet</p></div>
+      <div class="st"><span class="n">9</span><span class="who a">Owner</span><p>Adds caregivers as the business grows — they get an SMS invite</p></div>
+      <div class="st"><span class="n">10</span><span class="who c">Family</span><p>Messages Gregory Care about any booking, any time</p></div>
+    </div>
+  </div>
+
+  <div class="tips">
+    <span class="tip"><i data-lucide="columns-3"></i>Open the apps side by side — changes sync live</span>
+    <span class="tip"><i data-lucide="rotate-ccw"></i><button onclick="if(confirm('Reset all demo data?')){resetDB();alert('Demo data reset.')}">Reset demo data</button></span>
+  </div>
+  <div class="foot">Prepared for <b>Gregory Care Services</b> · San Antonio, TX · by <b>Nile Technologies</b> · Design mockup — sample data only</div>
+</div>
+<script src="assets/vendor/lucide.min.js"></script>
+<script src="assets/js/data.js?v=4"></script>
+<script src="assets/js/core.js?v=4"></script>
+<script>loadDB(); lucide.createIcons();</script>
+</body>
+</html>
